@@ -630,6 +630,7 @@
                                                 <tr>
                                                     <th>Rego</th>
                                                     <th>Model</th>
+                                                    <th>Rate</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -640,10 +641,11 @@
                                                             echo "<tr>";
                                                             echo "<td>". $row["rego"]. "</td>";
                                                             echo "<td>". $row["model"]. "</td>";
+                                                            echo "<td>$". $row["rate"]. ".00</td>";
                                                             echo "</tr>";
                                                         }
                                                     } else {
-                                                        echo "<tr><td>-</td><td>-</td></td>";
+                                                        echo "<tr><td>-</td><td>-</td><td>-</td></td>";
                                                     }
                                                 ?>
 
