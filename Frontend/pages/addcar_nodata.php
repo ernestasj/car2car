@@ -52,48 +52,10 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-    <!--
-        TEST DATA
-    -->
-    <script>
-        // Previous data from a failed attempt to add a car
-        var car = {
-            rego: "ASD-345",
-            manufacturer: "Holden",
-            make: "Commodore",
-            model: "SS",
-            year: "2017",
-            doors: "4",
-            petrol: "ron98",
-            transmission: "auto",
-            enginecc: "3500",
-            kms: "860",
-            body: "sedan",
-            photo: ""
-        };
 
-        // Messages
-        var Messages = [
-            {name: "Pablo Escobar", time: "Yesterday", message: "Yeah Mate, full tank of 98 for yah when I drop it off beautiful ride"},
-            {name: "Jake Paul", time: "Yesterday", message: "Yeah I am in Sydney for a week for recording and need a ride for that time."},
-            {name: "Ernestas", time: "Yesterday", message: "There is an issue with your car mate, got caught in a bingle."},
-        ];
-        
-        // Tasks
-        var Tasks = [
-            {name:"Pablo", rego: "CH55HI", percentage: 40},
-            {name:"Ernestas", rego: "CK16YL", percentage: 20}
-        ];
-        
-        // Alerts
-        var Alerts = [
-            {text: "New Enquiry", time: "4 minutes ago"},
-            {text: "3 New Shares on your Ad", time: "12 minutes ago"},
-            {text: "Vehicle Returned", time: "4 minutes ago"}
-        ];
-        </script>
+
             <?php include("../php/addcar_data.php"); ?>
-            <script>
+        <script>
         function UpdateFromPrevious(car) {
             var previous_values = {
                 rego: "",

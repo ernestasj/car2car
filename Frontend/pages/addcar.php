@@ -52,9 +52,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-    <!--
-        TEST DATA
-    -->
+
     <script>
         // Previous data from a failed attempt to add a car
         var car = {
