@@ -71,14 +71,15 @@
             body: "sedan",
             photo: ""
         };
-
+        var Messages = {};
+        /*
         // Messages
         var Messages = [
             {name: "Pablo Escobar", time: "Yesterday", message: "Yeah Mate, full tank of 98 for yah when I drop it off beautiful ride"},
             {name: "Jake Paul", time: "Yesterday", message: "Yeah I am in Sydney for a week for recording and need a ride for that time."},
             {name: "Ernestas", time: "Yesterday", message: "There is an issue with your car mate, got caught in a bingle."},
         ];
-        
+        */
         // Tasks
         var Tasks = [
             {name:"Pablo", rego: "CH55HI", percentage: 40},
@@ -92,7 +93,13 @@
             {text: "Vehicle Returned", time: "4 minutes ago"}
         ];
         </script>
-            <?php include("../php/addcar_data.php"); ?>
+            <script>
+
+
+
+
+
+            </script>
             <script>
         function UpdateFromPrevious(car) {
             var previous_values = {
@@ -198,10 +205,34 @@
             });
         }
 
+
+
+        function LoadJSON(file, callback){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    obj = JSON.parse(this.responseText);
+                    callback(obj);
+                    //console.log(myObj);
+                }
+            };
+            xmlhttp.open("GET", file, true);
+            xmlhttp.send();
+        }
+
         $( document ).ready(function() {
-            InsertMessages(Messages, "messages", FormatMessage);
-            InsertMessages(Tasks, "tasks", FormatTask);
-            InsertMessages(Alerts, "alerts", FormatAlert);
+            LoadJSON("../json/messages.php", function(messages){
+                InsertMessages(messages, "messages", FormatMessage);
+            });
+            
+            LoadJSON("../json/tasks.php", function(tasks){
+                InsertMessages(tasks, "tasks", FormatTask);
+            });
+
+            LoadJSON("../json/alerts.php", function(alerts){
+                InsertMessages(alerts, "alerts", FormatAlert);
+            });
+            
             if(typeof car !== 'undefined')
             {
                 UpdateFromPrevious(car);
