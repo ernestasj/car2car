@@ -239,6 +239,12 @@
                         <li>
                             <a href="forms.php"><i class="fa fa-edit fa-fw"></i> Bookings</a>
                         </li>
+                        <li>
+                            <a href="addcar.html"><i class="fa fa-edit fa-fw"></i> Add a car</a>
+                        </li>
+                        <li>
+                            <a href="triplog.html"><i class="fa fa-edit fa-fw"></i> View Recent Trips</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -258,15 +264,23 @@
                     <span>Fill in the below fields to add your vehicle you wish to rent.</span>
                     <br />
                     <br />
-                    <form>
+                    <form  method="POST">
                         Registration Number: <input  type="text" name="Registration"><br>
-                        Make: <input type="text" name="make"><br>
+                        Make: <select name="make">
+                                <option value="Holden">Holden</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Jeep">Jeep</option>
+                            </select><br>
                         Model: <input type="text" name="model"><br>
                         Year: <input type="text" name="year"><br>
                         Seats: <input type="text" name="seats"><br>
                         Type: <input type="text" name="type"><br>
                         Fuel Type: <input type="text" name="Fuel Type"><br>
                         Description: <input type="text" name="Description"><br>
+                        <br>
+                        <input type="submit" value="Add your car">
                     </form>
                 </div>
                 <!-- /.col-lg-12 -->
