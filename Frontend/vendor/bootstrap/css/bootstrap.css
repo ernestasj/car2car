@@ -220,6 +220,7 @@ th {
   }
   thead {
     display: table-header-group;
+    height: 500px;
   }
   tr,
   img {
