@@ -11,5 +11,10 @@
             return $object;    
         }
 
+        function AsArray(){
+            $data = ["text" => $this->text, "time" => $this->time];
+            return $data;
+        }
+
     }
 ?>

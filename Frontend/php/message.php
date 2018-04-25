@@ -13,6 +13,11 @@
             $object .= "}";
             return $object;    
         }
+
+        function AsArray(){
+            $data = ["name" => $this->from, "message" => $this->text, "time" => $this->time];
+            return $data;
+        }
     }
 
 

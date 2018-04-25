@@ -55,5 +55,14 @@
             $object .= "];";
             return $object;
         }
+        function ToJSON()
+        {
+            $data = [];
+            foreach($this->messages as $message) {
+                array_push($data, $message->AsArray());
+            }
+            return json_encode($data);
+        }
+
     }
 ?>

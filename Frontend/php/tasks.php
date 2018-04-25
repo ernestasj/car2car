@@ -17,7 +17,7 @@
         function ReadDB($db, $email, $amount, $order) {
 /*            
             $stmt = $db->stmt_init();
-            $stmt = $db->prepare("call GetMessages(?, ?, ?, ?)");
+            $stmt = $db->prepare("call GetTasks(?, ?, ?, ?)");
             $stmt->bind_param("sss", $email, $amount, $order);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -55,5 +55,15 @@
             $object .= "];";
             return $object;
         }
+
+        function ToJSON()
+        {
+            $data = [];
+            foreach($this->tasks as $task) {
+                array_push($data, $task->AsArray());
+            }
+            return json_encode($data);
+        }
+
     }
 ?>

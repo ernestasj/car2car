@@ -13,6 +13,12 @@
             return $object;    
         }
 
+        function AsArray(){
+            $data = ["name" => $this->name, "rego" => $this->rego, "percentage" => $this->percentage];
+            return $data;
+        }
+
+
     }
 ?>
 
