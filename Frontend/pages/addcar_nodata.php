@@ -52,37 +52,127 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-    <!--
-        TEST DATA
-    -->
-    <script src="../js/util.js"></script>
-    <script src="../js/addcar.js"></script>
-    
-<script>
 
-    $( document ).ready(function() {
-        LoadJSON("../json/messages.php", function(messages){
-            InsertMessages(messages, "messages", FormatMessage);
-        });
-        
-        LoadJSON("../json/tasks.php", function(tasks){
-            InsertMessages(tasks, "tasks", FormatTask);
-        });
 
-        LoadJSON("../json/alerts.php", function(alerts){
-            InsertMessages(alerts, "alerts", FormatAlert);
-        });
+            <?php include("../php/addcar_data.php"); ?>
+        <script>
+        function UpdateFromPrevious(car) {
+            var previous_values = {
+                rego: "",
+                manufacturer: "",
+                make: "",
+                model: "",
+                year: "",
+                doors: "",
+                petrol: "",
+                transmission: "",
+                enginecc: "",
+                kms: "",
+                body: "",
+                photo: ""
+            };
+            if(typeof car !== 'undefined')
+            {
+                previous_values = car;
+            }
+
+            if(previous_values.rego != "")
+                $('#rego').val(previous_values.rego);
+            if(previous_values.manufacturer != "")
+                $('#manufacturer').val(previous_values.manufacturer);
+            if(previous_values.make != "")
+                $('#make').val(previous_values.make);
+            if(previous_values.model != "")
+                $('#model').val(previous_values.model);
+            if(previous_values.year != "")
+                $('#year').val(previous_values.year);
+            if(previous_values.doors != "")
+                $('#doors').val(previous_values.doors);
+            if(previous_values.petrol != "")
+                $('#petrol').val(previous_values.petrol);
+            if(previous_values.transmission != "")
+                $('#transmission').val(previous_values.transmission);
+            if(previous_values.enginecc != "")
+                $('#enginecc').val(previous_values.enginecc);
+            if(previous_values.kms != "")
+                $('#kms').val(previous_values.kms);
+            if(previous_values.body != "")
+                $('#body').val(previous_values.body);
+            if(previous_values.photo != "")
+                $('#photo').val(previous_values.photo);
+        }
         
-        if(typeof car !== 'undefined')
-        {
-            UpdateFromPrevious(car);
+        function FormatMessage(message){
+            var tag = '<li>';
+            tag += '<a href="#">';
+            tag += '<div>';
+            tag += '<strong>' + message.name + '</strong>';
+            tag += '<span class="pull-right text-muted">';
+            tag += '<em>'+ message.time +'</em>';
+            tag += '</span>';
+            tag += '</div>';
+            tag += '<div>' + message.message + '</div>';
+            tag += '</a>';
+            tag += '</li>';
+            return tag;
+
         }
 
-        PrepareForm();
+        function MapProgressToClass(progress) {
+            if(progress>20)
+                return "progress-bar-success";
+            else
+                return "progress-bar-info";
+        }
 
-    });
+        function FormatAlert(alert){
+            var tag = "";
+            tag += '<li> <a href="#"> <div>';
+            tag += '<i class="fa fa-comment fa-fw"></i>' + alert.text;
+            tag += '<span class="pull-right text-muted small">' + alert.time+ '</span>';
+            tag += '</div> </a> </li>';
 
-</script>
+            return tag;
+        }
+
+
+        function FormatTask(task) {
+            var tag = '<li><a href="#"><div><p><strong>'+task.name+' - '+task.rego+'</strong>';
+            tag += '<span class="pull-right text-muted">'+task.percentage+'% Complete</span>';
+            tag += '</p><div class="progress "><div class="progress-bar ' + MapProgressToClass(task.percentage) + '" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: ' + task.percentage+'%">';
+            tag += '<span class="sr-only">'+ task.percentage +'% Complete (success)</span>';
+            tag += '</div> </div> </div> </a> </li>';
+            return tag;
+
+        }
+        function InsertMessages(messages, id, format){
+            var first = true;
+            messages.forEach(function(message){
+                var tag = "";
+                if(!first) {
+                    tag += '<li class="divider"></li>'
+                } else {
+                    first = false;
+                }
+                tag += format(message);
+                $("#" + id ).append(tag);
+
+            });
+        }
+
+        $( document ).ready(function() {
+            InsertMessages(Messages, "messages", FormatMessage);
+            InsertMessages(Tasks, "tasks", FormatTask);
+            InsertMessages(Alerts, "alerts", FormatAlert);
+            if(typeof car !== 'undefined')
+            {
+                UpdateFromPrevious(car);
+            }
+
+
+        });
+
+    </script>
 
 
 </head>
@@ -175,12 +265,6 @@
                         <li>
                             <a href="forms.php"><i class="fa fa-edit fa-fw"></i> Bookings</a>
                         </li>
-                        <li>
-                            <a href="addcar.html"><i class="fa fa-edit fa-fw"></i> Add a car</a>
-                        </li>
-                        <li>
-                            <a href="triplog.html"><i class="fa fa-edit fa-fw"></i> View Recent Trips</a>
-                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -201,23 +285,15 @@
                     <span>Fill in the below fields to add your vehicle you wish to rent.</span>
                     <br />
                     <br />
-                    <form  method="POST">
-
+                    <form action"" method="post">
                         Registration Number: <input  type="text" name="Registration"><br>
-                        Make: <select name="make">
-                                <option value="Holden">Holden</option>
-                                <option value="Ford">Ford</option>
-                                <option value="Mazda">Mazda</option>
-                                <option value="Nissan">Nissan</option>
-                                <option value="Jeep">Jeep</option>
-                            </select><br>
+                        Make: <input type="text" name="make"><br>
                         Model: <input type="text" name="model"><br>
                         Year: <input type="text" name="year"><br>
                         Seats: <input type="text" name="seats"><br>
                         Type: <input type="text" name="type"><br>
                         Fuel Type: <input type="text" name="Fuel Type"><br>
                         Description: <input type="text" name="Description"><br>
-
                         <
                     </form>-->
                     <div class="list-car-panel panel panel-default">
@@ -225,7 +301,7 @@
                                 <h3 class="panel-title">List Car</h3>
                             </div>
                             <div class="panel-body">
-                                <form role="form" action = "" method = "post" enctype="multipart/form-data" id="addcarform">
+                                <form role="form" action = "" method = "post" enctype="multipart/form-data">
                                     <fieldset>
                                         <div class="form-group">
                                             <label for="rego">Rego:</label>
@@ -305,7 +381,7 @@
                                             </label>
                                         </div>
                                         <!-- Change this to a button or input when using this as a form -->
-                                        <button class="btn btn-lg btn-success btn-block" id="btnSubmit">List Car</button>
+                                        <button type="submit" class="btn btn-lg btn-success btn-block">List Car</button>
                                     </fieldset>
                                 </form>
                             </div>
