@@ -9,4 +9,6 @@
     echo "\n";
     echo '</script>';
 
+    echo $messages->ToJSON();
+
 ?>
