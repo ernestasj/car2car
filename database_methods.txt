@@ -1,0 +1,86 @@
+Add requests for database proceedures here
+
+name and return fields and information
+
+If a parameter is known add it here such as knowing order is important so add an order fields
+
+eg;
+
+GetCarList()
+
+returns list of cars
+
+fields
+
+"rego" - 
+"rating" -
+"photourl" - 
+
+passing
+
+order - asc or desc
+
+offset - 
+
+count - 
+
+Other required fields might be added by the database person if they are required.
+
+============================
+DATABASE PROCEDURE LIST
+============================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================
+Ignore this for now. they are old.
+=================================
+ListCar(rego, manufacturer, make, model, year, doors, petrol_type, engine_cc, kms, type, transmission, towbar, aircon, description)
+
+CreateAccount(email, fname, lname, licence, card_type, card_number, expiry, card_name, photo)
+
+Search(search_text, price_min, price_max, auto, manual, start_day, end_day, manufacturer, make, model, km_min, km_max, engine_min, engine_max, year_min, year_max, doors_min, doors_max, sedan, coupe, ute, suv, ron91, ron95, ron98, diesel, electric, towbar)
+
+IsNewMessages(email)
+
+NewMessageCount(email)
+
+GetMessages(email, last_x, bookingPK...) // Return last x?
+
+SendMessage(message, email, bookingPK...)
+
+DeclineBooking(email, bookingPK...)
+
+AcceptBooking(email, bookingPK...)
+
+GetCarReview(rego)
+
+GetRenterReview(email)
+
+GetCarReviews(order, offset)
+
+SubmitCarReview(rego, email, rating, review)
+
+SubmitRenterReview(email, target_user_email, rating, review)
+
+GetCarDetails(rego)
+
+GetUserDetails(email)
+
+CreateBooking(email, rego, start_date, end_date)
+
+SetAvailableDate(date)
+
+SetUnavailableDate(date)
+

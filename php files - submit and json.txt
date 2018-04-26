@@ -1,0 +1,231 @@
+php files
+
+=========================
+php files for submitting data to the database
+
+/submit
+=========================
+addcar.php
+-------------------------
+adds a car to the database
+
+fields
+
+see form in addcar.html
+
+"rego" -
+"make" - 
+"model" -
+"doors" - 
+"petrol" - 
+and so on
+
+I forget how files work at the moment but there is working code for this already
+files
+
+"photo" 
+
+returns list of invalid or missing fields
+
+
+use same fields as above. if it is ok return ""
+if it is missing completely return "missing"
+if it is invalid return "invalid"
+
+
+{
+    "rego" - "invalid",
+    "make" - "missing",
+    "doors" - ""
+}
+
+-------------------------
+createaccount.php
+-------------------------
+
+submits an account for account creation.
+
+
+I need to go over this with what already exists. Not a full list at the moment.
+fields
+"email",
+"firstname",
+"lastname",
+"password"
+
+
+files
+"photo" - photo of user
+
+returns each field and if it was correct or not. ie; email not in use already, credit card valid
+
+use same fields as above. if it is ok return ""
+if it is missing completely return "missing"
+if it is invalid return "invalid"
+
+{
+    "email" : "" or "inuse" or "invalid",
+    "ccnumber": "" or "invalid",
+    "photo": "", "toobig", "missing",
+}
+
+=========================
+php files for retrieving data from the database
+
+/json
+=========================
+messages.php
+-------------------------
+returns one or more messages. single messages not chats
+
+fields
+
+'order' - asc, desc
+
+'count' - int - number to return
+
+'orderby' - date
+
+
+{
+    messages : [
+        {
+            "firstname": "",
+            "date": "ss:mm:hh:dd:mm:yy",
+            "message": "message text",
+            "reference": "reference to the chat this message is contained in. php reference so the backend knows what message this is."
+        }
+    ]
+}
+
+-------------------------
+addcarform.php
+-------------------------
+returns values of select fields for addcar.html submit form
+
+Each is an ordered array if possible
+
+'make' list of possible makes - alpha
+
+'doors' - list of possible door options - numerical
+
+'petrol' - list of possible petrol - alpha
+
+'body' - list of possible bodies - alpha
+
+'transmission' - transmission type - alpha
+
+{"make": ["","",""],
+"doors": [],
+"petrol: [],
+"body": [],
+transmission: []
+ }
+-------------------------
+models.php
+-------------------------
+
+returns the models associated with a make
+
+'make' - manufacturer
+
+returns array of model names in alpha order
+
+{"models": ["","",""] }
+
+
+
+-------------------------
+chatlist.php
+-------------------------
+returns a list of chats for this user with a reference to that chat
+order by date
+
+{
+    chats: [
+        {
+            "firstname": "",
+            "unread": "true" or "false",
+            "lastmessage": "text of last message",
+            "time sent": "ss:mm:hh:dd:mm:yyyy",
+            "reference": "number maybe? reference for the backend to know which chat this is. can be number. Will be passed when adding to chat or reading whole chat"
+        },
+        repeat
+}
+
+-------------------------
+chat.php
+-------------------------
+
+returns the content of a chat
+
+fields
+
+"count" - number of messages
+"order" - "asc" or "desc"
+"offset" - offset of of where the asc or desc should start. offset one with asc and count 4 returns messages 1-4 ignoring the most recent and returning 4 messages after it.
+
+"reference" = reference to chat in message.php or chatlist.php
+
+{
+    "firstname" : "",
+    "messages" : [
+        "message" : "message text",
+        "image" : "reference to image if we add this in later for sending images via messages. ignore for now."
+    ]
+}
+
+
+-------------------------
+search.php
+-------------------------
+
+returns a list of cars based on criteria
+
+fields 
+
+a lot. need to go over the main search page in the google drive
+
+for now
+
+"count" - number to return
+"offset" - number to skip
+"order" - asc or desc
+
+returns
+
+{
+    results: [
+        car : {
+            "image": "link to image of car",
+            "rating": "rating of car",
+            "rego": "rego of car",
+            "reference": "reference so php backend knows which car this is when it is called in car.php to view the car"
+        }
+    ]
+}
+
+-------------------------
+car.php
+-------------------------
+
+return the information about a car
+
+
+fields
+
+"reference" : "reference from search.php or somewhere else."
+
+needs to be expanded
+
+{
+    "image": "link to image of car",
+    "rating": "rating of car",
+    "rego": "rego of car",
+    "reference": "reference so php backend knows which car this is when it is called in car.php to view the car"
+}
+
+
+-------------------------
+.php
+-------------------------
