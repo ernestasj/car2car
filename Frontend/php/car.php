@@ -109,5 +109,11 @@
             echo $this->JSObject($name);
         }
 
+        function AsArray(){
+            $data = ["rego" => $this->rego, "make" => $this->make, "model" => $this->model];
+            return $data;
+        }
+
+
     }
 ?>

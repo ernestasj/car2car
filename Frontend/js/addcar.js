@@ -64,12 +64,14 @@ AddCar.Body = '\
                         </div>\
                         <div class="form-group">\
                             <label for="transmission">Transmission:</label>\
-                            <select class="custom-select" name="transmission" id="transmission">\
-                                <option selected>Tranmission</option>\
-                                <option value="auto">auto</option>\
-                                <option value="manual">manual</option>\
-                            </select>\
-                        </div>\
+                                <input type="checkbox" checked data-toggle="toggle" id="checkboxtransmission">\
+                                <select type="hidden" class="custom-select" name="transmission" id="transmission">\
+                                    <option selected>Tranmission</option>\
+                                    <option value="auto">auto</option>\
+                                    <option value="manual">manual</option>\
+                                </select>\
+                            </label>\
+                            </div>\
                         <div class="form-group">\
                             <label for="body">Body:</label>\
                             <select class="custom-select" name="body" id="body">\
@@ -99,10 +101,26 @@ AddCar.Display = function(page){
     $("#"+page.header).html(AddCar.Header);
     $("#"+page.body).html(AddCar.Body);
 
+    AddCar.FormCustomisation();
+
     AddCar.InsertJSON();
-    //Util.PrepareForm("#addcarform", "../submit/addcar.php", "#btnSubmit", "", AddCar.SubmitCallback);
-        AddCar.PrepareForm();
+    Util.PrepareForm("#addcarform", "../submit/addcar.php", "#btnSubmit", Util.DoNothing, AddCar.SubmitCallback, function() {
+        Util.UpdateToggles(AddCar.ToggleValues);
+    });
 };
+
+AddCar.FormCustomisation = function()
+{
+  $(function() {
+    $('#checkboxtransmission').bootstrapToggle({
+      on: 'Auto',
+      off: 'Manual',
+      offstyle: 'success'
+    });
+  })
+
+  //$('#transmission').css('visibility', 'hidden');
+}
 
 AddCar.InsertJSON = function()
 {
@@ -111,8 +129,6 @@ AddCar.InsertJSON = function()
     {
         AddCar.UpdateFromPrevious(car);
     }
-
-    AddCar.PrepareForm();
 };
 
 
@@ -199,11 +215,21 @@ AddCar.UpdateFromPrevious = function(car) {
         $('#photo').val(previous_values.photo);
 }
 
+AddCar.ToggleValues = [
+    {checkbox: "#checkboxtransmission", target: "#transmission", on: "auto", off: "manual"}
+]
 
+AddCar.SubmitCallback = function(data)
+{
+
+}
+/*
 
 AddCar.PrepareForm = function() {
 
     $("#btnSubmit").click(function (event) {
+        
+        Util.UpdateToggles(AddCar.ToggleValues);
 
         //stop submit the form, we will post it manually.
         event.preventDefault();
@@ -247,3 +273,4 @@ AddCar.PrepareForm = function() {
 
     });
 }
+*/

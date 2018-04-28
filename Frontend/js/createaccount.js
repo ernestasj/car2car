@@ -36,29 +36,6 @@ CreateAccount.Body = '\
                             <input class="form-control" placeholder="Driver Licence" name="licence" type="text" autofocus>\
                         </div>\
                         <div class="form-group">\
-                            <select class="custom-select" name="cardtype">\
-                                <option selected>Card Type</option>\
-                                <option value="mastercard">Mastercard</option>\
-                                <option value="visa">Visa</option>\
-                            </select>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="ccnumber">Card Number:</label>\
-                            <input class="form-control" placeholder="Card Number" name="ccnumber" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="expiry">Expiry:</label>\
-                            <input class="form-control" placeholder="Expiry" name="expiry" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="cvc">CVC:</label>\
-                            <input class="form-control" placeholder="cvc" name="cvc" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="cardname">Name On Card:</label>\
-                            <input class="form-control" placeholder="Name on Card" name="cardname" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
                             <label class="custom-file">\
                                 <input type="file" id="file" class="custom-file-input" name="photo">\
                                 <span class="custom-file-control"></span>\

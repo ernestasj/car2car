@@ -2,19 +2,67 @@
     class Cars {
         var $cars = [];
 
-        function AddCar($car)
+        function LoadCars($db, $keywords)
         {
-            array_push($cars, $car);
+            $result = $this->ReadDB($db, $keywords);
+            
+            // Load rows from DB
+            $rows;
+            foreach($result as $row)
+            {
+                $this->AddCar($row);
+            }
         }
-        /*
-        function LoadCars($db, $search_criteria)
-        {               
-            $stmt = $db->prepare("call GetCars(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("", $email, $this->rego, $this->manufacturer, $this->make, $this->model, $this->year, $this->doors, $this->petrol, $this->transmission, $this->enginecc, $this->kms, $this->body, $this->photo);
-            $stmt->execute();
-            $stmt->close();    
 
+        function ReadDB($db, $keywords) {
+/*            
+            $stmt = $db->stmt_init();
+            $stmt = $db->prepare("call GetMessages(?, ?, ?, ?)");
+            $stmt->bind_param("sss", $email, $amount, $order);
+            $stmt->execute();
+            $result = $stmt->get_result();
+*/
+            $result = [
+                ['rego' => "HGD-ERT", 'make' => "Holden", 'model' => 'Commodore'],
+                ['rego' => "ASS-WTF", 'make' => "Ford", 'model' => 'Falcon'],
+                ['rego' => "ASD-FGH", 'make' => "Toyota", 'model' => '86']
+            ];
+
+            return $result;
         }
-        */
+
+        function AddCar($row)
+        {
+            $car = new Car;
+            $car->rego = $row['rego'];
+            $car->make = $row['make'];
+            $car->model = $row['model'];
+            array_push($this->cars, $car);
+        }
+
+        function ToJSArray($name)
+        {
+            $object = "var ". $name . " = [";
+            $first = true;
+            foreach($this->cars as $car){
+                if(!$first) {
+                    $object .= ",";
+                } else {
+                    $first = false;
+                }
+                $object .= $car->AsJSDict();
+            }
+            $object .= "];";
+            return $object;
+        }
+        function ToJSON()
+        {
+            $data = [];
+            foreach($this->cars as $car) {
+                array_push($data, $car->AsArray());
+            }
+            return json_encode($data);
+        }
+
     }
 ?>

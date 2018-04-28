@@ -6,7 +6,6 @@ Util.LoadJSON = function(file, callback, parameters){
         if (this.readyState == 4 && this.status == 200) {
             obj = JSON.parse(this.responseText);
             callback(obj);
-            //console.log(myObj);
         }
     };
     parameters = parameters || "";
@@ -27,15 +26,15 @@ Util.ButtonListener = function(btn, callback, parameters)
     });
 }
 
-Util.PrepareForm = function(form, url, btn, result, callback) {
+Util.PrepareForm = function(formid, url, btn, result, callback, precall) {
 
     $(btn).click(function (event) {
-
+        precall();
         //stop submit the form, we will post it manually.
         event.preventDefault();
 
         // Get form
-        var form = $(form)[0];
+        var form = $(formid)[0];
 
         // Create an FormData object 
         var data = new FormData(form);
@@ -56,9 +55,9 @@ Util.PrepareForm = function(form, url, btn, result, callback) {
             cache: false,
             timeout: 600000,
             success: function (data) {
-                if(callback)
+                if(typeof(callback) !== undefined)
                 {
-                    callback(data);
+                    callback(JSON.parse(data));
                 }
                 $(result).text(data);
                 console.log("SUCCESS : ", data);
@@ -80,4 +79,19 @@ Util.PrepareForm = function(form, url, btn, result, callback) {
 Util.DoNothing = function(arg)
 {
 
+}
+
+Util.UpdateToggles = function(combos)
+{
+    combos.forEach(function(combo){
+    var checked = $(combo.checkbox).is(":checked");
+        if(checked)
+        {
+            $(combo.target).val(combo.on);
+        }
+        else
+        {
+            $(combo.target).val(combo.off);
+        }            
+    });
 }
