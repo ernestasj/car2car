@@ -54,12 +54,15 @@ TripLog.MakeHeader = function(headers)
 TripLog.MakeRows = function(rows) {
     var html = "";
     rows.forEach(function(row, r_index) {
+        html += "<tr>";
         TripLog.TableOrder.forEach(function(field, f_index){
             html += "<td>";
             html += row[field];
             html += "</td>";
         });
+        html += "</tr>";
     });
+    
     return html;
 }
 

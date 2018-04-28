@@ -117,19 +117,19 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a onclick="Switch('Dashboard')"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a id="link_dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a onclick="Switch('TripLog')"><i class="fa fa-table fa-fw"></i> Recent Trips</a>
+                            <a id="link_triplog"><i class="fa fa-table fa-fw"></i> Recent Trips</a>
                         </li>
                         <li>
-                            <a onclick="Switch('Bookings')"><i class="fa fa-edit fa-fw"></i> Bookings</a>
+                            <a id="link_bookings"><i class="fa fa-edit fa-fw"></i> Bookings</a>
                         </li>
                         <li>
-                            <a onclick="Switch('AddCar')"><i class="fa fa-edit fa-fw"></i> Add a car</a>
+                            <a id="link_addcar"><i class="fa fa-edit fa-fw"></i> Add a car</a>
                         </li>
                         <li>
-                            <a onclick="Switch('CreateAccount')"><i class="fa fa-edit fa-fw"></i> Create Account</a>
+                            <a id="link_createaccount"><i class="fa fa-edit fa-fw"></i> Create Account</a>
                         </li>
                         </li>
                     </ul>
@@ -177,18 +177,19 @@
     <script src="../js/login.js"></script>  
     <script src="../js/navbar.js"></script> 
     <script src="../js/page.js"></script> 
+    <script src="../js/sidebar.js"></script> 
     
 <script>
-
+    Dashboard = {};
+    Bookings = {};
     $( document ).ready(function() {
         var page_layout = {
             header: "content-header",
             body: "content-body"
         };
         
-        Login.Display(page_layout);
-
-
+        Login.Display(Page.Layout);
+        SideBar.AddListeners();
         NavBar.IntervalUpdate(5000);
     });
 </script>
