@@ -2,7 +2,6 @@
     class Car {
         var $email = "";
         var $rego = "rego";
-        var $manufacturer = "manufacturer";
         var $make = "make";
         var $model = "model";
         var $year = "year";
@@ -19,8 +18,8 @@
             switch( func_num_args() ) {
                 case 0:self::__construct0();
                     break;
-                case 12:
-                    self::__construct12( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4], $argv[5], $argv[6], $argv[7], $argv[8], $argv[9], $argv[10], $argv[11] );
+                case 11:
+                    self::__construct11( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4], $argv[5], $argv[6], $argv[7], $argv[8], $argv[9], $argv[10]);
                     break;
                 case 3:
                     self::__construct3( $argv[0], $argv[1], $argv[2] );
@@ -29,17 +28,16 @@
         }
          
         function WriteDB($db, $email) {
-            $stmt = $db->prepare("call ListCar(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssssssssssss", $email, $this->rego, $this->manufacturer, $this->make, $this->model, $this->year, $this->doors, $this->petrol, $this->transmission, $this->enginecc, $this->kms, $this->body, $this->photo);
+            $stmt = $db->prepare("call ListCar(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssssssssss", $email, $this->rego, $this->make, $this->model, $this->year, $this->doors, $this->petrol, $this->transmission, $this->enginecc, $this->kms, $this->body, $this->photo);
             $stmt->execute();
             $stmt->close();    
         }
 
-        function __construct12($rego, $manufacturer, $make, $model, $year, $doors, $petrol, $transmission, $enginecc, $kms, $body, $photo)
+        function __construct11($rego, $make, $model, $year, $doors, $petrol, $transmission, $enginecc, $kms, $body, $photo)
         {
             
             $this->rego = $rego;
-            $this->manufacturer = $manufacturer;
             $this->make = $make;
             $this->model = $model;
             $this->year = $year;
@@ -55,7 +53,6 @@
         function __construct0()
         {
             $this->rego = "rego";
-            $this->manufacturer = "manufacturer";
             $this->make = "make";
             $this->model = "model";
             $this->year = "year";
@@ -82,7 +79,6 @@
         function UpdateFromRow($row) {
             $this->email = $row["email"];
             $this->rego = $row["rego"];
-            $this->manufacturer = $row["manufacturer"];
             $this->make = $row["make"];
             $this->model = $row["model"];
             $this->year = $row["year"];

@@ -100,7 +100,8 @@ AddCar.Display = function(page){
     $("#"+page.body).html(AddCar.Body);
 
     AddCar.InsertJSON();
-    AddCar.PrepareForm();
+    //Util.PrepareForm("#addcarform", "../submit/addcar.php", "#btnSubmit", "", AddCar.SubmitCallback);
+        AddCar.PrepareForm();
 };
 
 AddCar.InsertJSON = function()
@@ -197,6 +198,7 @@ AddCar.UpdateFromPrevious = function(car) {
     if(previous_values.photo != "")
         $('#photo').val(previous_values.photo);
 }
+
 
 
 AddCar.PrepareForm = function() {

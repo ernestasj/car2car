@@ -19,7 +19,10 @@ Util.ButtonListener = function(btn, callback, parameters)
     $(btn).click(function (event) {
         event.preventDefault();
         $(btn).prop("disabled", true);
-        callback(parameters);
+        if(parameters)
+            callback(parameters);
+        else 
+            callback();
         $(btn).prop("disabled", false);
     });
 }
