@@ -1,3 +1,134 @@
+var AddCar = {};
+
+AddCar.Header = '\
+    <div class="col-lg-12">\
+        <h1 class="page-header">Add a new car!</h1>\
+    </div>\
+    <!-- /.col-lg-12 -->';
+
+AddCar.Body = '\
+    <div class="col-lg-12" >\
+        <div class="list-car-panel panel panel-default">\
+            <div class="panel-heading">\
+                <h3 class="panel-title">List Car</h3>\
+            </div>\
+            <div class="panel-body">\
+                <form role="form" action = "" method = "post" enctype="multipart/form-data" id="addcarform">\
+                    <fieldset>\
+                        <div class="form-group">\
+                            <label for="rego">Rego:</label>\
+                            <input class="form-control" placeholder="Rego" name="rego" type="text" autofocus id="rego">\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="manufacturer">Manufacturer:</label>\
+                            <input class="form-control" placeholder="Manufacturer" name="manufacturer" type="text" id="manufacturer">\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="make">Make:</label>\
+                            <input class="form-control" placeholder="Make" name="make" type="text" id="make">\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="model">Model:</label>\
+                            <input class="form-control" placeholder="Model" name="model" type="text" id="model">\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="year">Year:</label>\
+                            <input class="form-control" placeholder="Year" name="year" type="text" id="year">\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="enginecc">Engine size (cc):</label>\
+                            <input class="form-control" placeholder="cc" name="enginecc" type="text" id="enginecc">\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="kms">Odometer kms:</label>\
+                            <input class="form-control" placeholder="kms" name="kms" type="text" id="kms">\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="doors">Doors:</label>\
+                            <select class="custom-select" name="doors" id="doors">\
+                                <option selected>Doors</option>\
+                                <option value="1">1</option>\
+                                <option value="2">2</option>\
+                                <option value="3">3</option>\
+                                <option value="4">4</option>\
+                                <option value="5">5</option>\
+                                <option value="6">6+</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="petrol">Petrol:</label>\
+                            <select class="custom-select" name="petrol" id="petrol">\
+                                <option selected>Petrol</option>\
+                                <option value="ron91">ron91</option>\
+                                <option value="ron95">ron95</option>\
+                                <option value="ron98">ron98</option>\
+                                <option value="diesel">diesel</option>\
+                                <option value="electric">electric</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="transmission">Transmission:</label>\
+                            <select class="custom-select" name="transmission" id="transmission">\
+                                <option selected>Tranmission</option>\
+                                <option value="auto">auto</option>\
+                                <option value="manual">manual</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="body">Body:</label>\
+                            <select class="custom-select" name="body" id="body">\
+                                <option selected>Body</option>\
+                                <option value="sedan">sedan</option>\
+                                <option value="hatch">hatch</option>\
+                                <option value="coupe">coupe</option>\
+                                <option value="suv">suv</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label class="custom-file">\
+                                <input type="file" id="file" class="custom-file-input" name="photo" id="photo">\
+                                <span class="custom-file-control"></span>\
+                            </label>\
+                        </div>\
+                        <!-- Change this to a button or input when using this as a form -->\
+                        <button class="btn btn-lg btn-success btn-block" id="btnSubmit">List Car</button>\
+                    </fieldset>\
+                </form>\
+            </div>\
+        </div>\
+    </div>';
+
+
+AddCar.Display = function(page){
+    $("#"+page.header).html(AddCar.Header);
+    $("#"+page.body).html(AddCar.Body);
+
+    AddCar.InsertJSON();
+    AddCar.PrepareForm();
+};
+
+AddCar.InsertJSON = function()
+{
+    Util.LoadJSON("../json/messages.php", function(messages){
+        AddCar.InsertMessages(messages, "messages", AddCar.FormatMessage);
+    });
+    
+    Util.LoadJSON("../json/tasks.php", function(tasks){
+        AddCar.InsertMessages(tasks, "tasks", AddCar.FormatTask);
+    });
+
+    Util.LoadJSON("../json/alerts.php", function(alerts){
+        AddCar.InsertMessages(alerts, "alerts", AddCar.FormatAlert);
+    });
+    
+    if(typeof car !== 'undefined')
+    {
+        AddCar.UpdateFromPrevious(car);
+    }
+
+    AddCar.PrepareForm();
+};
+
 
 // Previous data from a failed attempt to add a car
 var car = {
@@ -36,7 +167,7 @@ var Alerts = [
     {text: "Vehicle Returned", time: "4 minutes ago"}
 ];
 
-function UpdateFromPrevious(car) {
+AddCar.UpdateFromPrevious = function(car) {
     var previous_values = {
         rego: "",
         manufacturer: "",
@@ -82,7 +213,7 @@ function UpdateFromPrevious(car) {
         $('#photo').val(previous_values.photo);
 }
 
-function FormatMessage(message){
+AddCar.FormatMessage = function(message){
     var tag = '<li>';
     tag += '<a href="#">';
     tag += '<div>';
@@ -98,14 +229,14 @@ function FormatMessage(message){
 
 }
 
-function MapProgressToClass(progress) {
+AddCar.MapProgressToClass = function(progress) {
     if(progress>20)
         return "progress-bar-success";
     else
         return "progress-bar-info";
 }
 
-function FormatAlert(alert){
+AddCar.FormatAlert = function(alert){
     var tag = "";
     tag += '<li> <a href="#"> <div>';
     tag += '<i class="fa fa-comment fa-fw"></i>' + alert.text;
@@ -116,16 +247,16 @@ function FormatAlert(alert){
 }
 
 
-function FormatTask(task) {
+AddCar.FormatTask = function(task) {
     var tag = '<li><a href="#"><div><p><strong>'+task.name+' - '+task.rego+'</strong>';
     tag += '<span class="pull-right text-muted">'+task.percentage+'% Complete</span>';
-    tag += '</p><div class="progress "><div class="progress-bar ' + MapProgressToClass(task.percentage) + '" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: ' + task.percentage+'%">';
+    tag += '</p><div class="progress "><div class="progress-bar ' + AddCar.MapProgressToClass(task.percentage) + '" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: ' + task.percentage+'%">';
     tag += '<span class="sr-only">'+ task.percentage +'% Complete (success)</span>';
     tag += '</div> </div> </div> </a> </li>';
     return tag;
 
 }
-function InsertMessages(messages, id, format){
+AddCar.InsertMessages = function(messages, id, format){
     var first = true;
     messages.forEach(function(message){
         var tag = "";
@@ -140,7 +271,7 @@ function InsertMessages(messages, id, format){
     });
 }
 
-function PrepareForm() {
+AddCar.PrepareForm = function() {
 
     $("#btnSubmit").click(function (event) {
 
