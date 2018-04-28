@@ -30,7 +30,7 @@ Search.Display = function(page){
     $("#"+page.header).html(Search.Header);
     $("#"+page.body).html(Search.Body);
 
-    Util.PrepareForm("#searchform", "../json/search.php", "#btnSearch", "", Search.DisplayResults);
+    Util.PrepareForm("#searchform", "../json/search.php", "#btnSearch", "", Search.DisplayResults, Util.DoNothing);
 };
 
 Search.DisplayResults = function(data) {

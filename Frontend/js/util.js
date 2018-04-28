@@ -29,7 +29,11 @@ Util.ButtonListener = function(btn, callback, parameters)
 Util.PrepareForm = function(formid, url, btn, result, callback, precall) {
 
     $(btn).click(function (event) {
-        precall();
+        if(precall)
+        {
+            precall();
+        }
+            
         //stop submit the form, we will post it manually.
         event.preventDefault();
 
@@ -93,5 +97,16 @@ Util.UpdateToggles = function(combos)
         {
             $(combo.target).val(combo.off);
         }            
+    });
+}
+
+Util.AddListener = function(id, call, parameters){
+    Util.ButtonListener(id, call, parameters);
+}
+
+Util.AddListeners = function (listeners)
+{
+    listeners.forEach(function(parameters){
+        Util.AddListener(parameters.id, parameters.call, parameters.parameters);
     });
 }

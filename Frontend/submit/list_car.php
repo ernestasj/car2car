@@ -32,8 +32,8 @@
         $kms = mysqli_real_escape_string($db,$_POST['kms']);
         $body = mysqli_real_escape_string($db,$_POST['body']);
         $photoname = $_FILES['photo']['name'];
-        $uploadfile = './' . basename($_FILES['photo']['name']);
-        $success = move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
+        //$uploadfile = './' . basename($_FILES['photo']['name']);
+        //$success = move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
 
         $car = new Car($rego, $manufacturer, $make, $model, $year, $doors, $petrol, $transmission, $enginecc, $kms, $body, $photoname);
         $car->WriteDB($db, $email);

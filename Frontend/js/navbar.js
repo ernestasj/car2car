@@ -5,6 +5,7 @@ NavBar.Update = function()
     NavBar.UpdateMessages();
     NavBar.UpdateTasks();
     NavBar.UpdateAlerts();
+    Util.AddListeners(NavBar.Listeners);
 }
 
 NavBar.UpdateMessages = function()
@@ -106,3 +107,12 @@ NavBar.InsertMessages = function(messages, id, format){
 
     });
 }
+
+NavBar.Logout = function(parameters)
+{
+    Util.ButtonListener("#logout", Login.Display, parameters);
+}
+
+NavBar.Listeners = [
+    {id: "#logout", call: NavBar.Logout, parameters: Page.Layout}
+];
