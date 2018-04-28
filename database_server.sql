@@ -25,24 +25,12 @@ DROP TABLE IF EXISTS `booking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking` (
-  `rego` varchar(8) NOT NULL,
-  `start` date NOT NULL,
-  `end` date NOT NULL,
-  `confirmed` tinyint(4) DEFAULT '0',
-  `confirmedat` datetime DEFAULT NULL,
-  `username` varchar(45) NOT NULL,
-  PRIMARY KEY (`rego`,`username`,`start`,`end`)
+  `owneremail` varchar(45) NOT NULL,
+  `rego` varchar(45) NOT NULL,
+  `renteremail` varchar(45) NOT NULL,
+  `days` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `booking`
---
-
-LOCK TABLES `booking` WRITE;
-/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `car`
@@ -52,117 +40,22 @@ DROP TABLE IF EXISTS `car`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `car` (
-  `rego` varchar(8) NOT NULL,
-  `model` varchar(45) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  `rate` int(11) NOT NULL,
-  PRIMARY KEY (`rego`)
+  `rego` varchar(45) NOT NULL,
+  `make` varchar(45) DEFAULT NULL,
+  `model` varchar(45) DEFAULT NULL,
+  `manufacturer` varchar(45) DEFAULT NULL,
+  `petrol` varchar(45) DEFAULT NULL,
+  `transmission` varchar(45) DEFAULT NULL,
+  `year` varchar(45) DEFAULT NULL,
+  `doors` varchar(45) DEFAULT NULL,
+  `enginecc` varchar(45) DEFAULT NULL,
+  `kms` varchar(45) DEFAULT NULL,
+  `body` varchar(45) DEFAULT NULL,
+  `photo` varchar(45) DEFAULT NULL,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`rego`,`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `car`
---
-
-LOCK TABLES `car` WRITE;
-/*!40000 ALTER TABLE `car` DISABLE KEYS */;
-INSERT INTO `car` VALUES ('PIZZA1','Prius','pizzacat',35),('PIZZA2','Prius','pizzacat',35);
-/*!40000 ALTER TABLE `car` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `colour`
---
-
-DROP TABLE IF EXISTS `colour`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `colour` (
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `colour`
---
-
-LOCK TABLES `colour` WRITE;
-/*!40000 ALTER TABLE `colour` DISABLE KEYS */;
-/*!40000 ALTER TABLE `colour` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `manufacturer`
---
-
-DROP TABLE IF EXISTS `manufacturer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `manufacturer` (
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `manufacturer`
---
-
-LOCK TABLES `manufacturer` WRITE;
-/*!40000 ALTER TABLE `manufacturer` DISABLE KEYS */;
-INSERT INTO `manufacturer` VALUES ('Ferarri'),('Ford'),('Holden'),('Mitsubishi'),('Porshe'),('Toyota');
-/*!40000 ALTER TABLE `manufacturer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `message`
---
-
-DROP TABLE IF EXISTS `message`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `message` (
-  `sender` varchar(45) DEFAULT NULL,
-  `receiver` varchar(45) DEFAULT NULL,
-  `message` mediumtext,
-  `date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `message`
---
-
-LOCK TABLES `message` WRITE;
-/*!40000 ALTER TABLE `message` DISABLE KEYS */;
-/*!40000 ALTER TABLE `message` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `model`
---
-
-DROP TABLE IF EXISTS `model`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `model` (
-  `manufacturer` varchar(45) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`manufacturer`,`name`),
-  CONSTRAINT `maufacturer` FOREIGN KEY (`manufacturer`) REFERENCES `manufacturer` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `model`
---
-
-LOCK TABLES `model` WRITE;
-/*!40000 ALTER TABLE `model` DISABLE KEYS */;
-INSERT INTO `model` VALUES ('Ford','F250'),('Ford','Falcon'),('Ford','Ranger'),('Holden','Berina'),('Holden','Commodore'),('Mitsubishi','Lancer'),('Toyota','86'),('Toyota','Camery'),('Toyota','Hilux'),('Toyota','Prius');
-/*!40000 ALTER TABLE `model` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -172,27 +65,20 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `name` varchar(45) NOT NULL,
-  `licence` varchar(45) NOT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `licence` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
-  `username` varchar(45) NOT NULL,
-  PRIMARY KEY (`username`)
+  `ccnumber` varchar(45) DEFAULT NULL,
+  `ccexpiry` varchar(45) DEFAULT NULL,
+  `cvc` varchar(45) DEFAULT NULL,
+  `cardtype` varchar(45) DEFAULT NULL,
+  `cardname` varchar(45) DEFAULT NULL,
+  `photo` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('Bob Brown','123457','password','bobb'),('Bob','123456','aabc','pizzacat');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping events for database 'car'
---
 
 --
 -- Dumping routines for database 'car'
@@ -281,6 +167,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `AddBooking` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddBooking`(owneremail varchar(45), rego varchar(45), renteremail varchar(45), days varchar(45))
+BEGIN
+	INSERT INTO BOOKING (owneremail, rego, renteremail, days) VALUES (owneremail, rego, renteremail, days);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `AddCar` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -342,6 +247,63 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `AllCarsList` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AllCarsList`()
+BEGIN
+	SELECT * FROM car;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `CreateAccount` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateAccount`(email varchar(45), pass varchar(45), firstname varchar(45), lastname varchar(45), licence varchar(45), cardtype varchar(45), ccnumber varchar(45), expiry varchar(45), cvc varchar(45), cardname varchar(45), photo varchar(45))
+BEGIN
+	INSERT INTO user (email, password, firstname, lastname, licence, cardtype, ccnumber, ccexpiry, cvc, cardname, photo) VALUES (email, pass, firstname, lastname, licence, cardtype, ccnumber, expiry, cvc, cardname, photo);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `CreateAccout` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateAccout`(email varchar(45), pass varchar(45), firstname varchar(45), lastname varchar(45), licence varchar(45), cardtype varchar(45), ccnumber varchar(45), expiry varchar(45), cvc varchar(45), cardname varchar(45), photo varchar(45))
+BEGIN
+	INSERT INTO user (email, password, firstname, lastname, licence, cardtype, ccnumber, ccexpiry, cvc, cardname, photo) VALUES (email, pass, firstname, lastname, licence, cardtype, ccnumber, expiry, cvc, cardname, photo);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `CreateUser` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -352,9 +314,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateUser`(name VARCHAR(45), licence VARCHAR(45), password VARCHAR(45), username VARCHAR(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateUser`(email varchar(45), pass varchar(45), firstname varchar(45), lastname varchar(45), licence varchar(45), cardtype varchar(45), ccnumber varchar(45), expiry varchar(45), cvc varchar(45), cardname varchar(45), photo varchar(45))
 BEGIN
-	INSERT INTO user (name, licence, password, username) VALUES (name, licence, password, username);
+	INSERT INTO user (email, password, firstname, lastname, licence, cardtype, ccnumber, ccexpiry, cvc, cardname, photo) VALUES (email, pass, firstname, lastname, licence, cardtype, ccnumber, expiry, cvc, cardname, photo);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -418,6 +380,44 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetCar` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCar`(email varchar(45), rego varchar(45))
+BEGIN
+	SELECT 
+		email AS email,
+		rego AS rego, 
+		manufacturer AS manufacturer, 
+		make AS make, 
+        model AS model, 
+        year AS year, 
+        doors AS doors, 
+        petrol AS petrol, 
+        transmission AS transmission, 
+        enginecc AS enginecc,
+        kms AS kms,
+        body AS body,
+        photo AS photo
+	FROM 
+		car
+	WHERE
+		car.rego = rego 
+		AND 
+        car.email = email;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `GetPassword` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -431,6 +431,59 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPassword`(username VARCHAR(45))
 BEGIN
 	SELECT password FROM user WHERE username = user.username ORDER BY user.username LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetUser` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUser`(email varchar(45))
+BEGIN
+	SELECT 
+		email AS email,
+        password as password,
+		firstname AS first_name,
+        lastname AS last_name,
+        licence AS licence,
+        cardtype as cardtype,
+        ccnumber as ccnumber,
+        ccexpiry as expiry,
+        cvc as cvc,
+        cardname as cardname,
+        photo as photo
+	FROM
+		user
+	WHERE
+		user.email = email;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ListCar` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ListCar`(email varchar(45), rego varchar(45), manufacturer varchar(45), make varchar(45), model varchar(45), year varchar(45), doors varchar(45), petrol varchar(45), transmission varchar(45), enginecc varchar(45), kms varchar(45), body varchar(45), photoname varchar(45))
+BEGIN
+	INSERT INTO car (email, rego, manufacturer, make, model, year, doors, petrol, transmission, enginecc, kms, body, photo) VALUES (email, rego, manufacturer, make, model, year, doors, petrol, transmission, enginecc, kms, body, photoname);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -506,7 +559,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `UsersListOfCars`(username VARCHAR(45))
 BEGIN
-	SELECT rego, model FROM CAR WHERE CAR.username = username;
+	SELECT rego, model, rate FROM CAR WHERE CAR.username = username;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -523,4 +576,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-12  8:36:57
+-- Dump completed on 2018-04-28 13:53:08
