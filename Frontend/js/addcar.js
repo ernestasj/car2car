@@ -105,18 +105,7 @@ AddCar.Display = function(page){
 
 AddCar.InsertJSON = function()
 {
-    Util.LoadJSON("../json/messages.php", function(messages){
-        AddCar.InsertMessages(messages, "messages", AddCar.FormatMessage);
-    });
-    
-    Util.LoadJSON("../json/tasks.php", function(tasks){
-        AddCar.InsertMessages(tasks, "tasks", AddCar.FormatTask);
-    });
-
-    Util.LoadJSON("../json/alerts.php", function(alerts){
-        AddCar.InsertMessages(alerts, "alerts", AddCar.FormatAlert);
-    });
-    
+   
     if(typeof car !== 'undefined')
     {
         AddCar.UpdateFromPrevious(car);
@@ -209,63 +198,6 @@ AddCar.UpdateFromPrevious = function(car) {
         $('#photo').val(previous_values.photo);
 }
 
-AddCar.FormatMessage = function(message){
-    var tag = '<li>';
-    tag += '<a href="#">';
-    tag += '<div>';
-    tag += '<strong>' + message.name + '</strong>';
-    tag += '<span class="pull-right text-muted">';
-    tag += '<em>'+ message.time +'</em>';
-    tag += '</span>';
-    tag += '</div>';
-    tag += '<div>' + message.message + '</div>';
-    tag += '</a>';
-    tag += '</li>';
-    return tag;
-
-}
-
-AddCar.MapProgressToClass = function(progress) {
-    if(progress>20)
-        return "progress-bar-success";
-    else
-        return "progress-bar-info";
-}
-
-AddCar.FormatAlert = function(alert){
-    var tag = "";
-    tag += '<li> <a href="#"> <div>';
-    tag += '<i class="fa fa-comment fa-fw"></i>' + alert.text;
-    tag += '<span class="pull-right text-muted small">' + alert.time+ '</span>';
-    tag += '</div> </a> </li>';
-
-    return tag;
-}
-
-
-AddCar.FormatTask = function(task) {
-    var tag = '<li><a href="#"><div><p><strong>'+task.name+' - '+task.rego+'</strong>';
-    tag += '<span class="pull-right text-muted">'+task.percentage+'% Complete</span>';
-    tag += '</p><div class="progress "><div class="progress-bar ' + AddCar.MapProgressToClass(task.percentage) + '" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: ' + task.percentage+'%">';
-    tag += '<span class="sr-only">'+ task.percentage +'% Complete (success)</span>';
-    tag += '</div> </div> </div> </a> </li>';
-    return tag;
-
-}
-AddCar.InsertMessages = function(messages, id, format){
-    var first = true;
-    messages.forEach(function(message){
-        var tag = "";
-        if(!first) {
-            tag += '<li class="divider"></li>'
-        } else {
-            first = false;
-        }
-        tag += format(message);
-        $("#" + id ).append(tag);
-
-    });
-}
 
 AddCar.PrepareForm = function() {
 

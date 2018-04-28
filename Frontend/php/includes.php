@@ -3,7 +3,6 @@
     include("car.php");
     include("booking.php");
     include("user.php");
-    include("util.php");
     include("message.php");
     include("messages.php");
     include("alert.php");
