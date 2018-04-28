@@ -16,9 +16,16 @@ see form in addcar.html
 "rego" -
 "make" - 
 "model" -
+"year" - 
 "doors" - 
 "petrol" - 
-and so on
+"enginecc" -
+"kms" -
+"doors" -
+"petrol" -
+"transmission" -
+"body" -
+
 
 I forget how files work at the moment but there is working code for this already
 files
@@ -49,9 +56,16 @@ submits an account for account creation.
 I need to go over this with what already exists. Not a full list at the moment.
 fields
 "email",
+"password",
 "firstname",
 "lastname",
-"password"
+"licence",
+"cardtype",
+"ccnumber",
+"expiry",
+"cvc",
+"cardname",
+
 
 
 files

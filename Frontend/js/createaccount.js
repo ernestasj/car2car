@@ -13,7 +13,7 @@ CreateAccount.Body = '\
                 <h3 class="panel-title">Create Account</h3>\
             </div>\
             <div class="panel-body">\
-                <form role="form" action = "" method = "post" enctype="multipart/form-data">\
+                <form role="form" action = "" method = "post" enctype="multipart/form-data" id="createaccountform">\
                     <fieldset>\
                         <div class="form-group">\
                             <label for="email">Email Address:</label>\
@@ -65,7 +65,7 @@ CreateAccount.Body = '\
                             </label>\
                         </div>\
                         <!-- Change this to a button or input when using this as a form -->\
-                        <button type="submit" class="btn btn-lg btn-success btn-block">Create Account</button>\
+                        <button class="btn btn-lg btn-success btn-block" id="btnSubmit">Create Account</button>\
                     </fieldset>\
                 </form>\
             </div>\
@@ -75,5 +75,56 @@ CreateAccount.Body = '\
 CreateAccount.Display = function(page){
     $("#"+page.header).html(CreateAccount.Header);
     $("#"+page.body).html(CreateAccount.Body);
+
+    CreateAccount.PrepareForm("#createaccountform", "../submit/createaccount.php", "#btnSubmit", "");
 };
+
+
+CreateAccount.PrepareForm = function(form, url, btn, result) {
+
+    $(btn).click(function (event) {
+
+        //stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        // Get form
+        var form = $(form)[0];
+
+        // Create an FormData object 
+        var data = new FormData(form);
+
+        // If you want to add an extra field for the FormData
+        //data.append("CustomField", "This is some extra data, testing");
+
+        // disabled the submit button
+        $(btn).prop("disabled", true);
+
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: url,
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+
+                $(result).text(data);
+                console.log("SUCCESS : ", data);
+                $(btn).prop("disabled", false);
+
+            },
+            error: function (e) {
+
+                $(result).text(e.responseText);
+                console.log("ERROR : ", e);
+                $(btn).prop("disabled", false);
+
+            }
+        });
+
+    });
+}
+
     

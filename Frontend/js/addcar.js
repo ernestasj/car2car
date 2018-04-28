@@ -20,10 +20,6 @@ AddCar.Body = '\
                             <input class="form-control" placeholder="Rego" name="rego" type="text" autofocus id="rego">\
                         </div>\
                         <div class="form-group">\
-                            <label for="manufacturer">Manufacturer:</label>\
-                            <input class="form-control" placeholder="Manufacturer" name="manufacturer" type="text" id="manufacturer">\
-                        </div>\
-                        <div class="form-group">\
                             <label for="make">Make:</label>\
                             <input class="form-control" placeholder="Make" name="make" type="text" id="make">\
                         </div>\
