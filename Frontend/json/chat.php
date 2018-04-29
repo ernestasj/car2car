@@ -1,5 +1,5 @@
 <?php
-
+    // this needs a class. messageid comes from inbox
     $messages = [];
     
     $message1 = [["sender" => "Bob", "message" => "Hello! :D"]];
