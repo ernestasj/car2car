@@ -21,11 +21,14 @@ AddCar.Body = '\
                         </div>\
                         <div class="form-group">\
                             <label for="make">Make:</label>\
-                            <input class="form-control" placeholder="Make" name="make" type="text" id="make">\
+                            <select class="form-control" name="make" id="make">\
+                            <option selected>Model</option>\
+                            </select>\
                         </div>\
                         <div class="form-group">\
                             <label for="model">Model:</label>\
-                            <input class="form-control" placeholder="Model" name="model" type="text" id="model">\
+                            <select class="form-control" name="model" id="model">\
+                            </select>\
                         </div>\
                         <div class="form-group">\
                             <label for="year">Year:</label>\
@@ -102,8 +105,7 @@ AddCar.Display = function(page){
     $("#"+page.body).html(AddCar.Body);
 
     AddCar.FormCustomisation();
-
-    AddCar.InsertJSON();
+    //AddCar.InsertJSON();
     Util.PrepareForm("#addcarform", "../submit/addcar.php", "#btnSubmit", Util.DoNothing, AddCar.SubmitCallback, function() {
         Util.UpdateToggles(AddCar.ToggleValues);
     });
@@ -118,9 +120,29 @@ AddCar.FormCustomisation = function()
       offstyle: 'success'
     });
   })
+  Util.LoadJSON("../json/makes.php", function(data){
+      AddCar.AddMakes("#make", data);
+  });
+   
+    $("#make").change(function() {
+        var make = $("#make").val();
+        Util.LoadJSON("../json/models.php", function(data){
+            console.log(data);
+            AddCar.AddModels("#model", data);
+        }, {make: make});      
+    });
+  //AddCar.AddMakes("#make", AddCar.Makes);
 
   //$('#transmission').css('visibility', 'hidden');
 }
+
+AddCar.Makes = [
+    {value: "ford", text: "Ford"},
+    {value: "holden", text: "Holden"},
+    {value: "mazda", text: "Mazda"},
+    {value: "subaru", text: "Subaru"},
+    {value: "toyota", text: "Toyota"}
+];
 
 AddCar.InsertJSON = function()
 {
@@ -223,6 +245,19 @@ AddCar.SubmitCallback = function(data)
 {
 
 }
+
+AddCar.AddMakes = function(id, value_pairs)
+{
+    Util.AppendChoices(id, value_pairs);
+}
+
+AddCar.AddModels = function(id, value_pairs)
+{
+    $(id).empty();
+    Util.AppendChoices(id, value_pairs);
+}
+
+
 /*
 
 AddCar.PrepareForm = function() {

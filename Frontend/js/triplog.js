@@ -39,38 +39,7 @@ TripLog.TableHeaders = {
     cost: "Cost"
 };
 
-TripLog.MakeHeader = function(headers)
-{
-    var html = "<tr>";
-    TripLog.TableOrder.forEach(function(item, index){
-        html += "<th>";
-        html += headers[item];
-        html += "</th>";
-    });
-    html += "</tr>";
-    return html;
-};
-
-TripLog.MakeRows = function(rows) {
-    var html = "";
-    rows.forEach(function(row, r_index) {
-        html += "<tr>";
-        TripLog.TableOrder.forEach(function(field, f_index){
-            html += "<td>";
-            html += row[field];
-            html += "</td>";
-        });
-        html += "</tr>";
-    });
-    
-    return html;
-}
-
 TripLog.MakeTable = function(rows)
 {
-
-    var table = "";
-    table += TripLog.MakeHeader(TripLog.TableHeaders);
-    table += TripLog.MakeRows(rows);
-    $("#triplogtable").html(table);
+    var table = Util.MakeTable("#triplogtable", TripLog.TableHeaders, rows, TripLog.TableOrder);
 }

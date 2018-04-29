@@ -28,6 +28,11 @@
 
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     
+    <link href="../dist/css/navbar.css" rel="stylesheet">
+
+    <link href="../dist/css/rating.css" rel="stylesheet">
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -59,7 +64,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <i class="newmail fa fa-envelope fa-fw" id="mail_icon"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages" id="messages">
 
@@ -131,10 +136,16 @@
                             <a id="link_bookings"><i class="fa fa-edit fa-fw"></i> Bookings</a>
                         </li>
                         <li>
-                            <a id="link_addcar"><i class="fa fa-edit fa-fw"></i> Add a car</a>
+                            <a id="link_addcar"><i class="fa fa-car fa-fw"></i> Add a car</a>
                         </li>
                         <li>
                             <a id="link_createaccount"><i class="fa fa-edit fa-fw"></i> Create Account</a>
+                        </li>
+                        <li>
+                            <a id="link_review"><i class="fa fa-edit fa-fw"></i> Review</a>
+                        </li>
+                        <li>
+                            <a id="link_chat"><i class="fa fa-commenting-o fa-fw"></i> Chat</a>
                         </li>
                         </li>
                     </ul>
@@ -184,7 +195,11 @@
     <script src="../js/navbar.js"></script> 
     <script src="../js/search.js"></script> 
     <script src="../js/carlist.js"></script> 
+    <script src="../js/review.js"></script>
+    <script src="../js/chat.js"></script>
+    <script src="../js/chatlist.js"></script>
     <script src="../js/sidebar.js"></script>
+
     
 <script>
     Dashboard = {};

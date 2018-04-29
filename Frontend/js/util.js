@@ -9,8 +9,29 @@ Util.LoadJSON = function(file, callback, parameters){
         }
     };
     parameters = parameters || "";
-    xmlhttp.open("GET", file + parameters, true);
+    xmlhttp.open("GET", file + Util.ParseForGet(parameters), true);
     xmlhttp.send();
+}
+
+Util.ParseForGet = function(pairs)
+{
+    var exp = "?";
+    var first = true;
+    for(var key in pairs)
+    {
+        if(first)
+        {
+            first = false;
+        }
+        else
+        {
+            exp+= "&";
+        }
+        exp += key;
+        exp += "=";
+        exp += pairs[key];
+    }
+    return exp;
 }
 
 Util.ButtonListener = function(btn, callback, parameters)
@@ -108,5 +129,66 @@ Util.AddListeners = function (listeners)
 {
     listeners.forEach(function(parameters){
         Util.AddListener(parameters.id, parameters.call, parameters.parameters);
+    });
+}
+
+Util.MakeHeader = function(headers, order, classes)
+{
+    var classes = classes || {};
+    var header = classes.header || {};
+    var row_class = header.row || "";
+    
+    var html = "<tr class='"+row_class+"'>";
+    order.forEach(function(item, index) {
+        var field = header.field || {};
+        var field_class = field[item] || "";
+        html += "<th class='"+field_class+"'>";
+        html += headers[item];
+        html += "</th>";
+    });
+    html += "</tr>";
+    return html;
+};
+
+Util.MakeRows = function(rows, order, classes) {
+    var html = "";
+    rows.forEach(function(row, r_index) {
+        var classes = classes || {};
+        var body = classes.body || {};
+        var row_class = body.row || "";
+        html += "<tr class='"+row_class+"'>";
+        order.forEach(function(field_name, f_index) {
+            var field = body.field || {};
+            var field_class = field[field_name] || "";    
+            html += "<td class='"+field_class+"'>";
+            html += row[field_name];
+            html += "</td>";
+        });
+        html += "</tr>";
+    });
+    
+    return html;
+}
+
+Util.MakeTable = function(target, headers, rows, order, classes)
+{
+    var table = "";
+    table += Util.MakeHeader(headers, order, classes);
+    table += Util.MakeRows(rows, order, classes);
+    $(target).html(table);
+}
+
+Util.AppendChoice = function(id, value, text, classes)
+{
+    var classes = classes || "";
+    var html = "";
+    html += "<option class='"+value+"' class='"+classes+"'>"+text+"</option>";
+    $(id).append(html);
+}
+
+Util.AppendChoices = function(id, choices)
+{
+    choices.forEach(function(choice){
+        Util.AppendChoice(id, choice.value, choice.text, choice.classes);
     });
 }

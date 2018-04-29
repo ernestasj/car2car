@@ -116,3 +116,13 @@ NavBar.Logout = function(parameters)
 NavBar.Listeners = [
     {id: "#logout", call: NavBar.Logout, parameters: Page.Layout}
 ];
+
+NavBar.SetNewMail = function()
+{
+    $('#mail_icon').addClass("newmail");
+}
+
+NavBar.UnsetNewMail = function()
+{
+    $('#mail_icon').removeClass("newmail");
+}

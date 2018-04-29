@@ -17,7 +17,8 @@ CarList.Body = '\
 CarList.Display = function(page, data) {
     $("#"+page.header).html(CarList.Header);
     $("#"+page.body).html(CarList.Body);
-    CarList.MakeTable(data);
+    //CarList.MakeTable(data);
+    Util.MakeTable("#carlisttable", CarList.TableHeaders, data, CarList.TableOrder);
    
 }
 
@@ -28,38 +29,3 @@ CarList.TableHeaders = {
     make: "Make",
     model: "Model",
 };
-
-CarList.MakeHeader = function(headers)
-{
-    var html = "<tr>";
-    CarList.TableOrder.forEach(function(item, index){
-        html += "<th>";
-        html += headers[item];
-        html += "</th>";
-    });
-    html += "</tr>";
-    return html;
-};
-
-CarList.MakeRows = function(rows) {
-    var html = "";
-    rows.forEach(function(row, r_index) {
-        html += "<tr>";
-        CarList.TableOrder.forEach(function(field, f_index){
-            html += "<td>";
-            html += row[field];
-            html += "</td>";
-        });
-        html += "</tr>";
-    });
-    
-    return html;
-}
-
-CarList.MakeTable = function(rows)
-{
-    var table = "";
-    table += CarList.MakeHeader(CarList.TableHeaders);
-    table += CarList.MakeRows(rows);
-    $("#carlisttable").html(table);
-}
