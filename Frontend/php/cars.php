@@ -7,27 +7,37 @@
             $result = $this->ReadDB($db, $keywords);
             
             // Load rows from DB
+            if(mysqli_num_rows($result) > 0)
+            {
+                while($row = mysqli_fetch_array($result))
+                {
+                    $this->AddCar($row);
+                }
+            }
+            /*
             $rows;
             foreach($result as $row)
             {
-                $this->AddCar($row);
+                $this->AddCar($row);  
             }
+            */
         }
 
         function ReadDB($db, $keywords) {
-/*            
+            $count = 10;
+            $offset = 0;
             $stmt = $db->stmt_init();
-            $stmt = $db->prepare("call GetMessages(?, ?, ?, ?)");
-            $stmt->bind_param("sss", $email, $amount, $order);
+            $stmt = $db->prepare("call Search(?, ?, ?)");
+            $stmt->bind_param("sii", $keywords, $count, $offset);
             $stmt->execute();
             $result = $stmt->get_result();
-*/
+            /*
             $result = [
                 ['rego' => "HGD-ERT", 'make' => "Holden", 'model' => 'Commodore'],
                 ['rego' => "ASS-WTF", 'make' => "Ford", 'model' => 'Falcon'],
                 ['rego' => "ASD-FGH", 'make' => "Toyota", 'model' => '86']
             ];
-
+            */
             return $result;
         }
 

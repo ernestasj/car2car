@@ -1,8 +1,18 @@
 <?php
     include("../php/includes.php");
 
-    $cars = new Cars;
-    $cars->LoadCars($db, "words");
-
-    echo $cars->ToJSON();
+    if(isset($_POST["keywords"]))
+    {
+        $keywords = $_POST["keywords"];
+        $cars = new Cars;
+        $cars->LoadCars($db, $keywords);
+    
+        echo $cars->ToJSON();
+    
+    }
+    else
+    {
+        echo [];
+    }
+    
 ?>

@@ -11,7 +11,7 @@ ChatList.Header = '\
         <div class="panel-heading">\
             <h3 class="panel-title">Chat</h3>\
         </div>\
-        <div class="panel-body">\
+        <div class="panel-body" id="chatlist_body">\
         </div>\
     </div>\
 </div>';
@@ -19,6 +19,6 @@ ChatList.Header = '\
 ChatList.Display = function(page){
     $("#"+page.header).html(ChatList.Header);
     $("#"+page.body).html(ChatList.Body);
-
+    
     //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
 };

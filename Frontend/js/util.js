@@ -80,19 +80,20 @@ Util.PrepareForm = function(formid, url, btn, result, callback, precall) {
             cache: false,
             timeout: 600000,
             success: function (data) {
+                console.log("SUCCESS : ", data);
                 if(typeof(callback) !== undefined)
                 {
                     callback(JSON.parse(data));
                 }
                 $(result).text(data);
-                console.log("SUCCESS : ", data);
+                
                 $(btn).prop("disabled", false);
 
             },
             error: function (e) {
-
-                $(result).text(e.responseText);
                 console.log("ERROR : ", e);
+                $(result).text(e.responseText);
+                
                 $(btn).prop("disabled", false);
 
             }

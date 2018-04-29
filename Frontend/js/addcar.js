@@ -44,25 +44,20 @@ AddCar.Body = '\
                         </div>\
                         <div class="form-group">\
                             <label for="doors">Doors:</label>\
-                            <select class="custom-select" name="doors" id="doors">\
+                            <select class="form-control" name="doors" id="doors">\
                                 <option selected>Doors</option>\
-                                <option value="1">1</option>\
-                                <option value="2">2</option>\
-                                <option value="3">3</option>\
-                                <option value="4">4</option>\
-                                <option value="5">5</option>\
-                                <option value="6">6+</option>\
                             </select>\
                         </div>\
                         <div class="form-group">\
                             <label for="petrol">Petrol:</label>\
-                            <select class="custom-select" name="petrol" id="petrol">\
+                            <select class="form-control" name="petrol" id="petrol">\
                                 <option selected>Petrol</option>\
-                                <option value="ron91">ron91</option>\
-                                <option value="ron95">ron95</option>\
-                                <option value="ron98">ron98</option>\
-                                <option value="diesel">diesel</option>\
-                                <option value="electric">electric</option>\
+                            </select>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="body">Body:</label>\
+                            <select class="form-control" name="body" id="body">\
+                                <option selected>Body</option>\
                             </select>\
                         </div>\
                         <div class="form-group">\
@@ -74,16 +69,6 @@ AddCar.Body = '\
                                     <option value="manual">manual</option>\
                                 </select>\
                             </label>\
-                            </div>\
-                        <div class="form-group">\
-                            <label for="body">Body:</label>\
-                            <select class="custom-select" name="body" id="body">\
-                                <option selected>Body</option>\
-                                <option value="sedan">sedan</option>\
-                                <option value="hatch">hatch</option>\
-                                <option value="coupe">coupe</option>\
-                                <option value="suv">suv</option>\
-                            </select>\
                         </div>\
                         <div class="form-group">\
                             <label class="custom-file">\
@@ -105,6 +90,10 @@ AddCar.Display = function(page){
     $("#"+page.body).html(AddCar.Body);
 
     AddCar.FormCustomisation();
+    Util.UpdateToggles(AddCar.ToggleValues);
+    $("#checkboxtransmission").change(function() {
+        Util.UpdateToggles(AddCar.ToggleValues);
+    });
     //AddCar.InsertJSON();
     Util.PrepareForm("#addcarform", "../submit/addcar.php", "#btnSubmit", Util.DoNothing, AddCar.SubmitCallback, function() {
         Util.UpdateToggles(AddCar.ToggleValues);
@@ -120,18 +109,33 @@ AddCar.FormCustomisation = function()
       offstyle: 'success'
     });
   })
+
   Util.LoadJSON("../json/makes.php", function(data){
-      AddCar.AddMakes("#make", data);
+        Util.AppendChoices("#make", data);
+      //AddCar.AddMakes("#make", data);
   });
    
     $("#make").change(function() {
         var make = $("#make").val();
         Util.LoadJSON("../json/models.php", function(data){
-            console.log(data);
             AddCar.AddModels("#model", data);
         }, {make: make});      
     });
-  //AddCar.AddMakes("#make", AddCar.Makes);
+
+
+    Util.LoadJSON("../json/petrol.php", function(data){
+        AddCar.AddPetrol("#petrol", data);
+    });
+
+    Util.LoadJSON("../json/doors.php", function(data){
+        Util.AppendChoices("#doors", data);
+    });
+  
+    Util.LoadJSON("../json/body.php", function(data){
+        Util.AppendChoices("#body", data);
+    });
+
+    //AddCar.AddMakes("#make", AddCar.Makes);
 
   //$('#transmission').css('visibility', 'hidden');
 }
@@ -257,6 +261,10 @@ AddCar.AddModels = function(id, value_pairs)
     Util.AppendChoices(id, value_pairs);
 }
 
+AddCar.AddPetrol = function(id, value_pairs)
+{
+    Util.AppendChoices(id, value_pairs);
+}
 
 /*
 
