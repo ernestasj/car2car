@@ -8,7 +8,9 @@ SideBar.Listenters = [
     {id: "#link_createaccount", call: CreateAccount.Display, parameters: Page.Layout},
     {id: "#link_search", call: Search.Display, parameters: Page.Layout},
     {id: "#link_review", call: Review.Display, parameters: Page.Layout},
-    {id: "#link_chat", call: Chat.Display, parameters: Page.Layout}
+    {id: "#link_chat", call: Chat.Display, parameters: Page.Layout},
+    {id: "#link_inbox", call: Inbox.Display, parameters: Page.Layout}
+    
     
     
 ];

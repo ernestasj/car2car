@@ -4,6 +4,7 @@ Util.LoadJSON = function(file, callback, parameters){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            //console.log(this.responseText);
             obj = JSON.parse(this.responseText);
             callback(obj);
         }
@@ -157,7 +158,8 @@ Util.MakeRows = function(rows, order, classes) {
         var classes = classes || {};
         var body = classes.body || {};
         var row_class = body.row || "";
-        html += "<tr class='"+row_class+"'>";
+        var id = row.id || "";
+        html += "<tr class='"+row_class+"' data-id='"+ id + "'>";
         order.forEach(function(field_name, f_index) {
             var field = body.field || {};
             var field_class = field[field_name] || "";    
@@ -171,12 +173,16 @@ Util.MakeRows = function(rows, order, classes) {
     return html;
 }
 
-Util.MakeTable = function(target, headers, rows, order, classes)
+Util.MakeTable = function(target, headers, rows, order, classes, callback)
 {
     var table = "";
     table += Util.MakeHeader(headers, order, classes);
     table += Util.MakeRows(rows, order, classes);
     $(target).html(table);
+    if(callback)
+    {
+        callback();
+    }
 }
 
 Util.AppendChoice = function(id, value, text, classes)

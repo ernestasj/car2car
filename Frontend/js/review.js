@@ -12,7 +12,7 @@ Review.Header = '\
             <h3 class="panel-title">Review</h3>\
         </div>\
         <div class="panel-body">\
-            <form role="form" action = "" method = "post" enctype="multipart/form-data" id="searchform">\
+            <form role="form" action = "" method = "post" enctype="multipart/form-data" id="reviewform">\
                 <fieldset>\
                     <div class="form-group rating">\
                         <label>\
@@ -50,6 +50,7 @@ Review.Header = '\
                         <label for="rego">Comments:</label>\
                         <textarea class="form-control" placeholder="Your comments" name="comments" rows="10" autofocus id="comments"></textarea>\
                     </div>\
+                    <input type="hidden" name="carid" id="carid">\
                     <button class="btn btn-lg btn-success btn-block" id="btnSubmit">Submit Review</button>\
                 </fieldset>\
             </form>\
@@ -57,9 +58,11 @@ Review.Header = '\
     </div>\
 </div>';
 
-Review.Display = function(page){
+Review.Display = function(page, carid){
     $("#"+page.header).html(Review.Header);
     $("#"+page.body).html(Review.Body);
 
-    //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
+    $('#carid').val(carid);
+
+    Util.PrepareForm("#reviewform", "../json/addreview.php", "#btnSubmit", "", Search.Display, Page.Layout);
 };

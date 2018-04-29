@@ -1,6 +1,5 @@
 <?php
     include ("../php/includes.php");
-   session_start();
 
    $_SESSION['login_user'] = 'bob';
    

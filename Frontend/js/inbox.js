@@ -1,15 +1,15 @@
-var Chat = {};
+var Inbox = {};
 
-Chat.Header = '\
+Inbox.Header = '\
     <div class="col-lg-12">\
-        <h1 class="page-header">Chat</h1>\
+        <h1 class="page-header">Inbox</h1>\
     </div>\
     <!-- /.col-lg-12 -->';
 
-    Chat.Body = '<div class="col-lg-12" >\
+    Inbox.Body = '<div class="col-lg-12" >\
     <div class="list-car-panel panel panel-default">\
         <div class="panel-heading">\
-            <h3 class="panel-title">Chat</h3>\
+            <h3 class="panel-title">Inbox</h3>\
         </div>\
         <div class="panel-body">\
             <form role="form" action = "" method = "post" enctype="multipart/form-data" id="chatform">\
@@ -28,30 +28,33 @@ Chat.Header = '\
 </div>';
 
 
-Chat.FormatMessage = function(message)
+Inbox.AppendMailItem = function(message)
 {
-    var html = '<div class="col-sm-12 well-sm">';
+    var html = '<div class="col-sm-12 well-sm mailitem" id="'+message.messageid+'">';
     html += '<div class="col-sm-2"><b><span class="message-sender">'+message.sender+'</span></b><p/></div>';
     html += '<div class="col-sm-10"><span class="message-content">'+message.message+'</span></div>';
     html += '</div>';
     return html;
 }
 
-Chat.AppendMessages = function(messages)
+Inbox.AppendMailItems = function(messages)
 {
     messages.forEach(function(message){
-        $('#message_history').append(Chat.FormatMessage(message));
+        $('#message_history').append(Inbox.AppendMailItem (message));
     });
 }
 
-Chat.Display = function(page, messageid){
-    $("#"+page.header).html(Chat.Header);
-    $("#"+page.body).html(Chat.Body);
-    Util.LoadJSON("../json/chat.php", function(data){
-        var messages = data.messages;
-        var messageid = data.messageid;
-        Chat.AppendMessages(messages);
-        $("#messageid").val(messageid);
-    }, {messageid: messageid});
+Inbox.Display = function(page){
+    $("#"+page.header).html(Inbox.Header);
+    $("#"+page.body).html(Inbox.Body);
+    Util.LoadJSON("../json/inbox.php", function(messages){
+        Inbox.AppendMailItems(messages);
+        $(".mailitem").click(function(){
+            var messageid = $(this).attr('id');
+            Chat.Display(Page.Layout, messageid);
+        });
+  
+    });
+
     //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
 };

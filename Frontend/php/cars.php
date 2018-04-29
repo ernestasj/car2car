@@ -1,10 +1,13 @@
 <?php
     class Cars {
         var $cars = [];
+        var $db;
 
         function LoadCars($db, $keywords)
         {
-            $result = $this->ReadDB($db, $keywords);
+            $this->db = $db;
+
+            $result = $this->ReadDB($this->db, $keywords);
             
             // Load rows from DB
             if(mysqli_num_rows($result) > 0)
@@ -14,6 +17,7 @@
                     $this->AddCar($row);
                 }
             }
+            
             /*
             $rows;
             foreach($result as $row)
@@ -68,10 +72,32 @@
         function ToJSON()
         {
             $data = [];
+            $count = 0;
             foreach($this->cars as $car) {
-                array_push($data, $car->AsArray());
+                $car_array = $car->AsArray();
+                $car_array['id'] = $count;
+                array_push($data, $car_array);
+                $count = $count + 1;
             }
             return json_encode($data);
+        }
+
+        function AddReview($user, $carid, $rating, $comments)
+        {
+            if(array_key_exists($carid, $cars))
+            {
+                $this->cars[$carid]->AddReview($db, $user, $rating, $comments);
+            }
+                
+        }
+
+        function CarToJSON($carid)
+        {
+            if(array_key_exists($carid, $this->cars))
+            {
+                $car = $this->cars[$carid]->AsArray();
+                return json_encode($car);
+            }
         }
 
     }

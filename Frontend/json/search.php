@@ -6,7 +6,7 @@
         $keywords = $_POST["keywords"];
         $cars = new Cars;
         $cars->LoadCars($db, $keywords);
-    
+        $_SESSION['cars'] = serialize($cars);
         echo $cars->ToJSON();
     
     }

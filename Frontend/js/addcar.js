@@ -137,7 +137,7 @@ AddCar.FormCustomisation = function()
 
     //AddCar.AddMakes("#make", AddCar.Makes);
 
-  //$('#transmission').css('visibility', 'hidden');
+  $('#transmission').css('visibility', 'hidden');
 }
 
 AddCar.Makes = [

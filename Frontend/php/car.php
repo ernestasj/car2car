@@ -114,6 +114,11 @@
             return $data;
         }
 
-
+        function AddReview($db, $user, $rating, $comments)
+        {
+            $stmt = $db->prepare("call AddReview(?, ?, ?)");
+            $stmt->bind_param("sis", $user, (int)$rating, $comments);
+            $stmt->execute();
+        }
     }
 ?>
