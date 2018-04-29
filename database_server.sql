@@ -53,7 +53,8 @@ CREATE TABLE `car` (
   `body` varchar(45) DEFAULT NULL,
   `photo` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
-  PRIMARY KEY (`rego`,`email`)
+  PRIMARY KEY (`rego`,`email`),
+  FULLTEXT KEY `Search` (`make`,`model`,`petrol`,`transmission`,`doors`,`year`,`enginecc`,`body`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -481,9 +482,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ListCar`(email varchar(45), rego varchar(45), manufacturer varchar(45), make varchar(45), model varchar(45), year varchar(45), doors varchar(45), petrol varchar(45), transmission varchar(45), enginecc varchar(45), kms varchar(45), body varchar(45), photoname varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ListCar`(email varchar(45), rego varchar(45), make varchar(45), model varchar(45), year varchar(45), doors varchar(45), petrol varchar(45), transmission varchar(45), enginecc varchar(45), kms varchar(45), body varchar(45), photoname varchar(45))
 BEGIN
-	INSERT INTO car (email, rego, manufacturer, make, model, year, doors, petrol, transmission, enginecc, kms, body, photo) VALUES (email, rego, manufacturer, make, model, year, doors, petrol, transmission, enginecc, kms, body, photoname);
+	INSERT INTO car (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, photo) VALUES (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, photoname);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -503,6 +504,28 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ModelList`(query_manufacturer VARCHAR(45))
 BEGIN
 	SELECT name FROM MODEL WHERE manufacturer = query_manufacturer;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Search` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Search`(keywords longtext, count int, oset int)
+BEGIN
+	SELECT rego AS rego, model AS model, make AS make, MATCH (make, model, petrol, transmission, year, doors, enginecc, body)
+    AGAINST (keywords IN BOOLEAN MODE) AS score FROM car ORDER BY score DESC LIMIT count OFFSET oset;
+    #SELECT id, title, body, MATCH (title,body)  AGAINST ('database' IN BOOLEAN MODE)
+	#AS score FROM articles ORDER BY score DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -576,4 +599,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-28 13:53:08
+-- Dump completed on 2018-04-29 17:02:51
