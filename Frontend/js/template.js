@@ -49,3 +49,20 @@ Template.FileGroup = _.template('\
     </label>\
 </div>\
 ');
+
+// value, text
+Template.Option = _.template('\
+<option value="<%=value%>"><%=text%></option>\
+');
+
+// label, name, id, placeholder, classes, options
+Template.SelectGroup = _.template('\
+<div class="form-group">\
+    <label for="<%=name%>"><%=label%></label>\
+    <select class="form-control <%=classes%>" name="<%=name%>" id="<%=id%>">\
+        <option selected><%=placeholder%></option>\
+        <%=options%>\
+    </select>\
+</div>\
+');
+

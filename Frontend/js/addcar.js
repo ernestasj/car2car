@@ -1,65 +1,134 @@
 var AddCar = {};
 
-AddCar.Header = '\
-    <div class="col-lg-12">\
-        <h1 class="page-header">Add a new car!</h1>\
-    </div>\
-    <!-- /.col-lg-12 -->';
+AddCar.Header = Template.Header({
+    title: "Add a New Car!"
+})
 
-AddCar.Body = '\
-    <div class="col-lg-12" >\
-        <div class="list-car-panel panel panel-default">\
-            <div class="panel-heading">\
-                <h3 class="panel-title">List Car</h3>\
-            </div>\
-            <div class="panel-body">\
-                <form role="form" action = "" method = "post" enctype="multipart/form-data" id="addcarform">\
-                    <fieldset>\
-                        <div class="form-group">\
-                            <label for="rego">Rego:</label>\
-                            <input class="form-control" placeholder="Rego" name="rego" type="text" autofocus id="rego">\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="make">Make:</label>\
-                            <select class="form-control" name="make" id="make">\
-                            <option selected>Model</option>\
-                            </select>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="model">Model:</label>\
-                            <select class="form-control" name="model" id="model">\
-                            </select>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="year">Year:</label>\
-                            <input class="form-control" placeholder="Year" name="year" type="text" id="year">\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="enginecc">Engine size (cc):</label>\
-                            <input class="form-control" placeholder="cc" name="enginecc" type="text" id="enginecc">\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="kms">Odometer kms:</label>\
-                            <input class="form-control" placeholder="kms" name="kms" type="text" id="kms">\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="doors">Doors:</label>\
-                            <select class="form-control" name="doors" id="doors">\
-                                <option selected>Doors</option>\
-                            </select>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="petrol">Petrol:</label>\
-                            <select class="form-control" name="petrol" id="petrol">\
-                                <option selected>Petrol</option>\
-                            </select>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="body">Body:</label>\
-                            <select class="form-control" name="body" id="body">\
-                                <option selected>Body</option>\
-                            </select>\
-                        </div>\
+AddCar.Body = {};
+AddCar.Form = {};
+
+
+AddCar.Form.Rego = Template.InputGroup({
+    label: "Rego",
+    name: "rego",
+    type: "text",
+    placeholder: "ABC123",
+    classes: "",
+    id: "rego"
+});
+
+// label, name, id, placeholder, classes, options
+
+AddCar.Form.Make = Template.SelectGroup({
+    label: "Make",
+    name: "make",
+    placeholder: "Model",
+    classes: "",
+    id: "make",
+    options: ""
+});
+AddCar.Form.Model = Template.SelectGroup({
+    label: "Model",
+    name: "model",
+    placeholder: "Model",
+    classes: "",
+    id: "model",
+    options: ""
+});
+AddCar.Form.Year = Template.InputGroup({
+    label: "Year",
+    name: "year",
+    type: "text",
+    placeholder: "2001",
+    classes: "",
+    id: "year"
+});
+AddCar.Form.EngineSize = Template.InputGroup({
+    label: "Engine Size (cc)",
+    name: "enginecc",
+    type: "text",
+    placeholder: "ABC123",
+    classes: "",
+    id: "rego"
+});
+AddCar.Form.Odometer = Template.InputGroup({
+    label: "Odometer (kms)",
+    name: "kms",
+    type: "text",
+    placeholder: "23093",
+    classes: "",
+    id: "odometer"
+});
+AddCar.Form.Doors = Template.SelectGroup({
+    label: "Doors",
+    name: "doors",
+    placeholder: "Doors",
+    classes: "",
+    id: "doors",
+    options: ""
+});
+AddCar.Form.Petrol = Template.SelectGroup({
+    label: "Petrol",
+    name: "petrol",
+    placeholder: "Petrol",
+    classes: "",
+    id: "petrol",
+    options: ""
+});
+AddCar.Form.Body = Template.SelectGroup({
+    label: "Body",
+    name: "body",
+    placeholder: "Body",
+    classes: "",
+    id: "body",
+    options: ""
+});
+AddCar.Form.Transmission = Template.SelectGroup({
+    label: "Transmission",
+    name: "transmission",
+    placeholder: "Transmission",
+    classes: "",
+    id: "transmission",
+    options:
+        Template.Option({value:"auto", text:"Auto"}) +
+        Template.Option({value:"manual", text:"Manual"})
+});
+AddCar.Form.Photo = Template.FileGroup({
+    label: "Photo",
+    name: "photo",
+    type: "file",
+    placeholder: "Cars Photo",
+    classes: "",
+    id: "file"
+});
+
+AddCar.Form.Submit = Template.Submit({
+    label:"Add Car",
+    id: "btnSubmit"
+});
+AddCar.Body.Form = Template.Form({
+    formid: "addcarform",
+    method: "post",
+    groups: 
+    AddCar.Form.Rego +
+    AddCar.Form.Make +
+    AddCar.Form.Model +
+    AddCar.Form.Year+
+    AddCar.Form.EngineSize+
+    AddCar.Form.Odometer+
+    AddCar.Form.Doors+
+    AddCar.Form.Petrol+
+    AddCar.Form.Body+
+    AddCar.Form.Transmission+
+    AddCar.Form.Photo +
+    AddCar.Form.Submit
+});
+
+AddCar.Body.PanelBody = Template.PanelBody({
+    title: "Car Details",
+    body: AddCar.Body.Form
+});
+/*
                         <div class="form-group">\
                             <label for="transmission">Transmission:</label>\
                                 <input type="checkbox" checked data-toggle="toggle" id="checkboxtransmission">\
@@ -70,38 +139,28 @@ AddCar.Body = '\
                                 </select>\
                             </label>\
                         </div>\
-                        <div class="form-group">\
-                            <label class="custom-file">\
-                                <input type="file" id="file" class="custom-file-input" name="photo" id="photo">\
-                                <span class="custom-file-control"></span>\
-                            </label>\
-                        </div>\
-                        <!-- Change this to a button or input when using this as a form -->\
-                        <button class="btn btn-lg btn-success btn-block" id="btnSubmit">List Car</button>\
-                    </fieldset>\
-                </form>\
-            </div>\
-        </div>\
-    </div>';
-
+ */
 
 AddCar.Display = function(page){
     $("#"+page.header).html(AddCar.Header);
-    $("#"+page.body).html(AddCar.Body);
+    $("#"+page.body).html(AddCar.Body.PanelBody);
 
     AddCar.FormCustomisation();
-    Util.UpdateToggles(AddCar.ToggleValues);
+    //Util.UpdateToggles(AddCar.ToggleValues);
+    /*
     $("#checkboxtransmission").change(function() {
         Util.UpdateToggles(AddCar.ToggleValues);
     });
+    */
     //AddCar.InsertJSON();
     Util.PrepareForm("#addcarform", "../submit/addcar.php", "#btnSubmit", Util.DoNothing, AddCar.SubmitCallback, function() {
-        Util.UpdateToggles(AddCar.ToggleValues);
+        //Util.UpdateToggles(AddCar.ToggleValues);
     });
 };
 
 AddCar.FormCustomisation = function()
 {
+    /*
   $(function() {
     $('#checkboxtransmission').bootstrapToggle({
       on: 'Auto',
@@ -109,7 +168,7 @@ AddCar.FormCustomisation = function()
       offstyle: 'success'
     });
   })
-
+    */
   Util.LoadJSON("../json/makes.php", function(data){
         Util.AppendChoices("#make", data);
       //AddCar.AddMakes("#make", data);
@@ -137,7 +196,7 @@ AddCar.FormCustomisation = function()
 
     //AddCar.AddMakes("#make", AddCar.Makes);
 
-  $('#transmission').css('visibility', 'hidden');
+  //$('#transmission').css('visibility', 'hidden');
 }
 
 AddCar.Makes = [
