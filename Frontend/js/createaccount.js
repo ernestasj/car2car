@@ -1,107 +1,89 @@
 var CreateAccount = {};
 
-CreateAccount.Header = '\
-    <div class="col-lg-12">\
-        <h1 class="page-header">Create an Account!</h1>\
-    </div>\
-    <!-- /.col-lg-12 -->';
+CreateAccount.Header = Template.Header({
+    title: "Create an Account!"
+});
 
-CreateAccount.Body = '\
-    <div class="col-lg-12" >\
-        <div class="list-car-panel panel panel-default">\
-            <div class="panel-heading">\
-                <h3 class="panel-title">Create Account</h3>\
-            </div>\
-            <div class="panel-body">\
-                <form role="form" action = "" method = "post" enctype="multipart/form-data" id="createaccountform">\
-                    <fieldset>\
-                        <div class="form-group">\
-                            <label for="email">Email Address:</label>\
-                            <input class="form-control" placeholder="Email Address" name="email" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="password">Password:</label>\
-                            <input class="form-control" placeholder="password" name="password" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="firstname">First Name:</label>\
-                            <input class="form-control" placeholder="First Name" name="firstname" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="lastname">Last Name:</label>\
-                            <input class="form-control" placeholder="Last Name" name="lastname" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
-                            <label for="licence">Drivers Licence Number:</label>\
-                            <input class="form-control" placeholder="Driver Licence" name="licence" type="text" autofocus>\
-                        </div>\
-                        <div class="form-group">\
-                            <label class="custom-file">\
-                                <input type="file" id="file" class="custom-file-input" name="photo">\
-                                <span class="custom-file-control"></span>\
-                            </label>\
-                        </div>\
-                        <!-- Change this to a button or input when using this as a form -->\
-                        <button class="btn btn-lg btn-success btn-block" id="btnSubmit">Create Account</button>\
-                    </fieldset>\
-                </form>\
-            </div>\
-        </div>\
-    </div>';
+CreateAccount.Body = {};
+CreateAccount.Form = {};
+
+CreateAccount.Form.Email = Template.InputGroup({
+    label: "Email Address",
+    name: "email",
+    type: "text",
+    placeholder: "Email Address",
+    classes: "",
+    id: "email"
+});
+CreateAccount.Form.Password = Template.InputGroup({
+    label: "Password",
+    name: "password",
+    type: "password",
+    placeholder: "Password",
+    classes: "",
+    id: "password"
+});
+CreateAccount.Form.FirstName = Template.InputGroup({
+    label: "First Name",
+    name: "firstname",
+    type: "text",
+    placeholder: "eg; John",
+    classes: "",
+    id: "firstname"
+});
+CreateAccount.Form.LastName = Template.InputGroup({
+    label: "Last Name",
+    name: "lastname",
+    type: "text",
+    placeholder: "eg; Smith",
+    classes: "",
+    id: "lastname"
+});
+CreateAccount.Form.DriversLicence = Template.InputGroup({
+    label: "Drivers Licence",
+    name: "licence",
+    type: "text",
+    placeholder: "eg; 1234567",
+    classes: "",
+    id: "licence"
+});
+CreateAccount.Form.Photo = Template.FileGroup({
+    label: "Photo",
+    name: "photo",
+    type: "file",
+    placeholder: "Your Photo",
+    classes: "",
+    id: "file"
+});
+
+CreateAccount.Form.Submit = Template.Submit({
+    label:"Create Account",
+    id: "btnSubmit"
+});
+
+
+CreateAccount.Body.Form = Template.Form({
+    formid: "createaccountform",
+    method: "post",
+    groups: 
+    CreateAccount.Form.Email +
+    CreateAccount.Form.Password +
+    CreateAccount.Form.FirstName +
+    CreateAccount.Form.LastName +
+    CreateAccount.Form.DriversLicence +
+    CreateAccount.Form.Photo +
+    CreateAccount.Form.Submit
+});
+
+CreateAccount.Body.PanelBody = Template.PanelBody({
+    title: "Account Details",
+    body: CreateAccount.Body.Form
+});
+
 
 CreateAccount.Display = function(page){
+
     $("#"+page.header).html(CreateAccount.Header);
-    $("#"+page.body).html(CreateAccount.Body);
-
-    CreateAccount.PrepareForm("#createaccountform", "../submit/createaccount.php", "#btnSubmit", "");
+    $("#"+page.body).html(CreateAccount.Body.PanelBody);
+    Util.PrepareForm("#createaccountform", "../submit/createaccount.php", "#btnSubmit", "", Util.DoNothing, Util.DoNothing);
 };
-
-
-CreateAccount.PrepareForm = function(form, url, btn, result) {
-
-    $(btn).click(function (event) {
-
-        //stop submit the form, we will post it manually.
-        event.preventDefault();
-
-        // Get form
-        var form = $(form)[0];
-
-        // Create an FormData object 
-        var data = new FormData(form);
-
-        // If you want to add an extra field for the FormData
-        //data.append("CustomField", "This is some extra data, testing");
-
-        // disabled the submit button
-        $(btn).prop("disabled", true);
-
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: url,
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
-
-                $(result).text(data);
-                console.log("SUCCESS : ", data);
-                $(btn).prop("disabled", false);
-
-            },
-            error: function (e) {
-
-                $(result).text(e.responseText);
-                console.log("ERROR : ", e);
-                $(btn).prop("disabled", false);
-
-            }
-        });
-
-    });
-}
-
-    

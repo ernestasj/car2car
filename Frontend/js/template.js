@@ -2,10 +2,10 @@ var Template = {};
 
 Template.Header = _.template('\
     <div class="col-lg-12">\
-        <h1 class="page-header"><%=pagetitle%></h1>\
+        <h1 class="page-header"><%=title%></h1>\
     </div>');
 
-// title
+// title, body
 Template.PanelBody = _.template('\
 <div class="col-lg-12" >\
     <div class="list-car-panel panel panel-default">\
@@ -38,4 +38,14 @@ Template.InputGroup = _.template('\
 // label, id
 Template.Submit = _.template('\
 <button class="btn btn-lg btn-success btn-block" id="<%=id%>"><%=label%></button>\
+');
+
+// name, id
+Template.FileGroup = _.template('\
+<div class="form-group">\
+    <label class="custom-file">\
+        <input type="file" id="<%=id%>" class="custom-file-input" name="<%=name%>">\
+        <span class="custom-file-control"></span>\
+    </label>\
+</div>\
 ');
