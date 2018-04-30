@@ -1,15 +1,15 @@
 <?php
 
     include("config.php");
-    include("car.php");
-    include("cars.php");
-    include("booking.php");
-    include("user.php");
-    include("message.php");
-    include("messages.php");
-    include("alert.php");
-    include("alerts.php");
-    include("task.php");
-    include("tasks.php");
+    include("classes/car.php");
+    include("classes/cars.php");
+    include("classes/booking.php");
+    include("classes/user.php");
+    include("classes/message.php");
+    include("classes/messages.php");
+    include("classes/alert.php");
+    include("classes/alerts.php");
+    include("classes/task.php");
+    include("classes/tasks.php");
     
 ?>

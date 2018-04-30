@@ -66,3 +66,29 @@ Template.SelectGroup = _.template('\
 </div>\
 ');
 
+// id, classes
+Template.Table.Body = _.template('\
+<div class="table-responsive">\
+    <table class="table <%=classes%>" id="<%=id%>">\
+    <%=headers%>\
+    <%=rows%>\
+    </table>\
+</div>');
+
+//header, classes
+Template.Table.Header = _.template('\
+<tr>\
+    <%_forEach(headers, function (header){)%>\
+        <th class="<%=classes%>">header</th>\
+    <%});%>\
+</tr>\
+');
+
+//rows, classes
+Template.Table.Row = _.template('\
+<tr>\
+    <%_forEach(rows, function (row){)%>\
+        <tr class="<%=classes%>">row</tr>\
+    <%});%>\
+</tr>\
+');
