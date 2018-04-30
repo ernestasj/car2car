@@ -66,7 +66,9 @@ Template.SelectGroup = _.template('\
 </div>\
 ');
 
-// id, classes
+Template.Table = {};
+
+// id, classes, headers, rows
 Template.Table.Body = _.template('\
 <div class="table-responsive">\
     <table class="table <%=classes%>" id="<%=id%>">\
@@ -75,20 +77,35 @@ Template.Table.Body = _.template('\
     </table>\
 </div>');
 
-//header, classes
-Template.Table.Header = _.template('\
+//headers, classes, fields
+Template.Table.Headers = _.template('\
 <tr>\
-    <%_forEach(headers, function (header){)%>\
-        <th class="<%=classes%>">header</th>\
+    <%_.forEach(fields, function (field){\
+        var header = headers[field]%>\
+        <th class="<%=classes%>">\
+            <%=header%>\
+        </th>\
     <%});%>\
 </tr>\
 ');
 
-//rows, classes
+// row, classes, fields
 Template.Table.Row = _.template('\
 <tr>\
-    <%_forEach(rows, function (row){)%>\
-        <tr class="<%=classes%>">row</tr>\
+    <%_.forEach(fields, function (field){\
+        var item = row[field];\
+        var id = row["id"] || "";\
+        %>\
+        <td data-id="<%=id%>" class="<%=classes%>"><%=item%></td>\
     <%});%>\
 </tr>\
+');
+
+//rows, classes, fields
+Template.Table.Rows = _.template('\
+<%_.forEach(rows, function (row){\
+    console.log(classes);\
+    var TableRow = Template.Table.Row({row: row, classes: classes, fields: fields});%>\
+    <%=TableRow%>\
+<%});%>\
 ');

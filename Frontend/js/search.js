@@ -10,7 +10,7 @@ Search.Form = {};
 
 Search.Form.Keywords = Template.InputGroup({
     label: "Keywords",
-    name: "rego",
+    name: "keywords",
     type: "text",
     placeholder: "Keywords",
     classes: "",
