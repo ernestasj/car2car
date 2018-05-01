@@ -6,6 +6,51 @@ Chat.Header = '\
     </div>\
     <!-- /.col-lg-12 -->';
 
+Chat.Header = Template.Header({
+   title: "Chat" 
+});
+
+
+
+Chat.Body = {};
+
+Chat.Form = {};
+
+Chat.Form.History = Template.Form.Div({
+    id: "message_history",
+    classes: "messages"
+});
+
+Chat.Form.TextBox = Template.Form.TextBox({
+    id: "message",
+    classes: "",
+    placeholder: "Your message",
+    name: "message",
+    rows: "5",
+
+});
+
+Chat.Form.HiddenInput = Template.Form.HiddenInput({
+    id: "messageid",
+    name: "messageid"
+});
+
+Chat.Form.SendButton = Template.Submit({
+    label:"Send Message",
+    id: "btnSubmit"
+});
+
+Chat.Body.Form = Template.Form({
+    formid: "chatform",
+    method: "post",
+    groups: 
+    Chat.Form.History +
+    Chat.Form.TextBox +
+    Chat.Form.HiddenInput +
+    Chat.Form.SendButton
+});
+
+/*
     Chat.Body = '<div class="col-lg-12" >\
     <div class="list-car-panel panel panel-default">\
         <div class="panel-heading">\
@@ -27,6 +72,7 @@ Chat.Header = '\
     </div>\
 </div>';
 
+*/
 
 Chat.FormatMessage = function(message)
 {
@@ -39,19 +85,29 @@ Chat.FormatMessage = function(message)
 
 Chat.AppendMessages = function(messages)
 {
+
     messages.forEach(function(message){
         $('#message_history').append(Chat.FormatMessage(message));
     });
 }
 
 Chat.Display = function(page, messageid){
+
+
     $("#"+page.header).html(Chat.Header);
-    $("#"+page.body).html(Chat.Body);
+
+    $("#"+page.body).html(Chat.Body.Form);
+
     Util.LoadJSON("../json/chat.php", function(data){
         var messages = data.messages;
+        test_messages = data.messages;
         var messageid = data.messageid;
-        Chat.AppendMessages(messages);
+        console.log(messages);
+        var chat_history = Template.Messages({messages: messages});
+        console.log(chat_history);
+        $("#message_history").html(chat_history);
         $("#messageid").val(messageid);
     }, {messageid: messageid});
     //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
 };
+

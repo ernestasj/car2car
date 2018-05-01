@@ -104,8 +104,42 @@ Template.Table.Row = _.template('\
 //rows, classes, fields
 Template.Table.Rows = _.template('\
 <%_.forEach(rows, function (row){\
-    console.log(classes);\
     var TableRow = Template.Table.Row({row: row, classes: classes, fields: fields});%>\
     <%=TableRow%>\
 <%});%>\
+');
+
+// sender, message
+Template.Message = _.template('\
+<div class="col-sm-12 well-sm">\
+<div class="col-sm-2"><b><span class="message-sender"><%=sender%></span></b><p/></div>\
+<div class="col-sm-10"><span class="message-content"><%=message%></span></div>\
+</div>\
+');
+
+// array of messages (sender, message)
+Template.Messages = _.template('\
+<%_.forEach(messages, function(message){\
+    var msg = Template.Message(message);%>\
+    <%=msg%>\
+<%});%>\
+');
+
+// classes, id
+Template.Form.Div = _.template('\
+<div class="form-group <%=classes%>" id="<%=id%>">\
+</div>\
+');
+
+
+// id, classes, name, rows, placeholder
+Template.Form.TextBox = _.template('\
+<div class="form-group">\
+<textarea class="form-control <%=classes%>" placeholder="<%=placeholder%>" name="<%=name%>" rows="<%=rows%>" autofocus id="<%=id%>"></textarea>\
+</div>\
+');
+
+// name, id
+Template.Form.HiddenInput = _.template('\
+<input type="hidden" name="<%=name%>" id="<%=id%>">\
 ');
