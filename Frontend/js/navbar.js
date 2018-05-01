@@ -52,7 +52,7 @@ NavBar.FormatMessage = function(message){
     var tag = '<li>';
     tag += '<a href="#">';
     tag += '<div>';
-    tag += '<strong>' + message.name + '</strong>';
+    tag += '<strong>' + message.sender + '</strong>';
     tag += '<span class="pull-right text-muted">';
     tag += '<em>'+ message.time +'</em>';
     tag += '</span>';

@@ -11,6 +11,7 @@ Chat.Header = Template.Header({
 });
 
 
+Chat.MessageRetrievalInterval = -1
 
 Chat.Body = {};
 
@@ -108,6 +109,19 @@ Chat.Display = function(page, messageid){
         $("#message_history").html(chat_history);
         $("#messageid").val(messageid);
     }, {messageid: messageid});
-    //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
+
+    Chat.MessageRetrievalInterval = setInterval(Chat.CheckForNewMessages, 3000)
+    Util.PrepareForm("#chatform", "../submit/message.php", "#btnSubmit", "", Util.DoNothing, Util.DoNothing);
 };
 
+Chat.CheckForNewMessages = function()
+{
+    Util.LoadJSON("../json/chat.php", function(data){
+        var messages = data.messages;
+        test_messages = data.messages;
+        var messageid = data.messageid;
+        var chat_history = Template.Messages({messages: messages});
+        $("#message_history").html(chat_history);
+        $("#messageid").val(messageid);
+    }, {messageid: messageid});    
+}
