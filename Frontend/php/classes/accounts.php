@@ -15,6 +15,7 @@ class Account {
                          $lastname, $licence, $cardtype, 
                          $ccnumber, $expiry, $cvc, $cardname) 
     {
+        //Constructor
         $this->email = $email;
         $this->password = $password;
         $this->firstname = $firstname;
@@ -29,12 +30,8 @@ class Account {
 
     function WriteDB($db)
     {
-        //Converts this class to json
-        $jsonTemp = json_encode($this);
         //Writes to database
             //Needs to go here
     }
-    
-
 }
 ?>
