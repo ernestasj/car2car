@@ -4,7 +4,7 @@
    $_SESSION['login_user'] = 'bob';
    
    $rego = "rego";
-      $make = "make";
+   $make = "make";
    $model = "model";
    $year = "year";
    $doors = "";
