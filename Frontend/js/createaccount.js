@@ -90,5 +90,6 @@ CreateAccount.Display = function(page){
 
 CreateAccount.Success= function(data)
 {
+    SideBar.Display(Page.Layout);
     Search.Display(Page.Layout);
 }

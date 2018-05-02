@@ -52,7 +52,7 @@ Bookings.Display = function(page, data) {
             event.stopPropagation();
             event.stopImmediatePropagation();
             var bookingid = $(this).data('id');
-            console.log("Goto booking "+ bookingid +" !");
+            //console.log("Goto booking "+ bookingid +" !");
             
             Chat.Display(Page.Layout, bookingid);
         });

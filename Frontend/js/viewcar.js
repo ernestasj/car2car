@@ -125,7 +125,17 @@ ViewCar.Display = function(page, carid){
     });
     */
     //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
-    Util.PrepareForm("#viewcar", "../submit/addreview.php", "#btnReview", "", Util.DoNothing, Util.DoNothing);
-    Util.PrepareForm("#viewcar", "../submit/booking.php", "#btnBook", "", Util.DoNothing, Util.DoNothing);
+    Util.PrepareForm("#viewcar", "../submit/addreview.php", "#btnReview", "", ViewCar.ConfirmReview, Util.DoNothing);
+    Util.PrepareForm("#viewcar", "../submit/booking.php", "#btnBook", "", ViewCar.ConfirmBooking, Util.DoNothing);
 };
 
+
+ViewCar.ConfirmBooking = function(data)
+{
+    Bookings.Display(Page.Layout);
+}
+
+ViewCar.ConfirmReview = function(data)
+{
+    Search.Display(Page.Layout);
+}

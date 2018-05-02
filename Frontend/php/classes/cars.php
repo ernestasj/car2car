@@ -12,6 +12,9 @@
             // Load rows from DB
             if(mysqli_num_rows($result) > 0)
             {
+                $car = new Car;
+                array_push($this->cars, $car);
+
                 while($row = mysqli_fetch_array($result))
                 {
                     $this->AddCar($db, $row);
@@ -75,9 +78,12 @@
             $data = [];
             $count = 0;
             foreach($this->cars as $car) {
-                $car_array = $car->AsArray();
-                $car_array['id'] = $count;
-                array_push($data, $car_array);
+                if($count > 0)
+                {
+                    $car_array = $car->AsArray();
+                    $car_array['id'] = $count;
+                    array_push($data, $car_array);
+                }
                 $count = $count + 1;
             }
             return json_encode($data);

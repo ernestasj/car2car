@@ -90,7 +90,7 @@ Util.PrepareForm = function(formid, url, btn, result, callback, precall) {
             cache: false,
             timeout: 600000,
             success: function (data) {
-                console.log("SUCCESS : ", data);
+                //console.log("SUCCESS : ", data);
                 if(typeof(callback) !== undefined)
                 {
                     var obj = "";
@@ -234,5 +234,6 @@ Util.IsLoggedIn = function(data)
 
 Util.DefaultPage = function()
 {
+    SideBar.Remove(Page.Layout);
     Login.Display(Page.Layout);
 }

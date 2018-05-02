@@ -92,9 +92,9 @@ Template.Table.Headers = _.template('\
 // row, classes, fields
 Template.Table.Row = _.template('\
 <tr>\
-    <%_.forEach(fields, function (field){\
+    <%var id = row["id"] || "";\
+    _.forEach(fields, function (field){\
         var item = row[field];\
-        var id = row["id"] || "";\
         %>\
         <td data-id="<%=id%>" class="<%=classes%>"><%=item%></td>\
     <%});%>\

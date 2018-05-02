@@ -154,6 +154,7 @@ AddCar.Display = function(page){
     */
     //AddCar.InsertJSON();
     Util.PrepareForm("#addcarform", "../submit/addcar.php", "#btnSubmit", Util.DoNothing, AddCar.SubmitCallback, function() {
+        //Display.Search(Page.Layout);
         //Util.UpdateToggles(AddCar.ToggleValues);
     });
 };
@@ -306,7 +307,8 @@ AddCar.ToggleValues = [
 
 AddCar.SubmitCallback = function(data)
 {
-
+    //console.log("Hello!");
+    Search.Display(Page.Layout);
 }
 
 AddCar.AddMakes = function(id, value_pairs)

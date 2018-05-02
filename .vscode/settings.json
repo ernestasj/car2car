@@ -11,6 +11,6 @@
         "**/Frontend/*.js",
         "**/Frontend/LICENSE",
         "**/Frontend/*.md",
-        "**/*.md",
-    ],
+        "**/*.md"
+    ]
 }
