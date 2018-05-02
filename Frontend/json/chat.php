@@ -1,6 +1,7 @@
 <?php
-    include("../php/loggedin.php");
-    // this needs a class. messageid comes from inbox
+   include("../php/includes.php");
+   include("../php/loggedin.php");
+   // this needs a class. messageid comes from inbox
     $messages = [];
     
     $message1 = [["sender" => "Bob", "message" => "Hello! :D"]];
