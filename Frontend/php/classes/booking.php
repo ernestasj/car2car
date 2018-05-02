@@ -4,6 +4,7 @@
         var $rego = "rego";
         var $renter = "email";
         var $date = "";
+        var $id = 0;
         function __construct() {
             $argv = func_get_args();
             switch( func_num_args() ) {
@@ -54,13 +55,12 @@
             $this->rego = $row["rego"];
             $this->renter = $row["email"];
             $this->date = $row["date"];
+            $this->bookingid = $row['bookingid'];
         }
 
         function AsArray(){
-            $data = ["rego" => $this->rego, "email" => $this->renter, "date" => $this->date];
+            $data = ["rego" => $this->rego, "email" => $this->renter, "date" => $this->date, "id" => $this->bookingid];
             return $data;
         }
-
-
     }
 ?>

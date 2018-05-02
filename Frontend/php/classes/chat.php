@@ -15,20 +15,20 @@
         }
 
         function ReadDB($db, $email, $id) {
- /*            
+            
             $stmt = $db->stmt_init();
-            $stmt = $db->prepare("call GetChatHistory(?, ?, ?)");
+            $stmt = $db->prepare("call GetChatHistory(?, ?)");
             $stmt->bind_param("sss", $email, $id);
             $stmt->execute();
             $result = $stmt->get_result();
-*/
+/*
             $result = [
                 ['sender' => "Pablo", 'time' => "Yesterday", 'message' => "Hi is the car still available?"],
                 ['sender' => "Bob", 'time' => "Yesterday", 'message' => "Yeah."],
                 ['sender' => "Pablo", 'time' => "Yesterday", 'message' => "Can I pick it up tomorrow?"]
             ];
 
-            return $result;
+*/          return $result;
         }
 
         function AddMessage($row)
@@ -36,7 +36,6 @@
             $message = new Message;
             $message->from = $row['sender'];
             $message->text = $row['message'];
-            $message->time = $row['time'];
             array_push($this->messages, $message);
         }
 

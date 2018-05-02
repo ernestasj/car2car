@@ -42,6 +42,7 @@
             $booking->rego = $row['rego'];
             $booking->renter = $row['renter'];
             $booking->date = $row['date'];
+            $booking->bookingid = $row['bookingid'];
             array_push($this->bookings, $booking);
         }
 
@@ -66,7 +67,7 @@
             $count = 0;
             foreach($this->bookings as $booking) {
                 $booking_array = $booking->AsArray();
-                $booking_array['id'] = $count;
+                //$booking_array['id'] = $count;
                 array_push($data, $booking_array);
                 $count = $count + 1;
             }
