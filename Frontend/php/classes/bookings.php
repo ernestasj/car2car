@@ -1,20 +1,20 @@
 <?php
-    class Cars {
-        var $cars = [];
+    class Bookings {
+        var $bookings = [];
         var $db;
 
-        function LoadCars($db, $keywords)
+        function LoadBookings($db, $user)
         {
             $this->db = $db;
 
-            $result = $this->ReadDB($this->db, $keywords);
+            $result = $this->ReadDB($this->db, $user);
             
             // Load rows from DB
             if(mysqli_num_rows($result) > 0)
             {
                 while($row = mysqli_fetch_array($result))
                 {
-                    $this->AddCar($db, $row);
+                    $this->AddBooking($db, $row);
                 }
             }
             
@@ -27,32 +27,22 @@
             */
         }
 
-        function ReadDB($db, $keywords) {
-            $count = 10;
-            $offset = 0;
+        function ReadDB($db, $user) {
             $stmt = $db->stmt_init();
-            $stmt = $db->prepare("call Search(?, ?, ?)");
-            $stmt->bind_param("sii", $keywords, $count, $offset);
+            $stmt = $db->prepare("call GetBookingsMade(?)");
+            $stmt->bind_param("s", $user);
             $stmt->execute();
             $result = $stmt->get_result();
-            /*
-            $result = [
-                ['rego' => "HGD-ERT", 'make' => "Holden", 'model' => 'Commodore'],
-                ['rego' => "ASS-WTF", 'make' => "Ford", 'model' => 'Falcon'],
-                ['rego' => "ASD-FGH", 'make' => "Toyota", 'model' => '86']
-            ];
-            */
             return $result;
         }
 
-        function AddCar($db, $row)
+        function AddBooking($db, $row)
         {
-            $car = new Car;
-            $car->rego = $row['rego'];
-            $car->make = $row['make'];
-            $car->model = $row['model'];
-            $car->AddRating($db);
-            array_push($this->cars, $car);
+            $booking = new Booking;
+            $booking->rego = $row['rego'];
+            $booking->renter = $row['renter'];
+            $booking->date = $row['date'];
+            array_push($this->bookings, $booking);
         }
 
         function ToJSArray($name)
@@ -74,10 +64,10 @@
         {
             $data = [];
             $count = 0;
-            foreach($this->cars as $car) {
-                $car_array = $car->AsArray();
-                $car_array['id'] = $count;
-                array_push($data, $car_array);
+            foreach($this->bookings as $booking) {
+                $booking_array = $booking->AsArray();
+                $booking_array['id'] = $count;
+                array_push($data, $booking_array);
                 $count = $count + 1;
             }
             return json_encode($data);

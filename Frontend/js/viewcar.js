@@ -19,6 +19,7 @@ ViewCar.Form.Book = Template.Submit({
 
 ViewCar.DateInput = Template.Form.DateInput({
     id: "date",
+    name: "date",
     classes: ""
 });
 
@@ -103,16 +104,20 @@ ViewCar.InsertData = function(data)
 ViewCar.Display = function(page, carid){
     $("#"+page.header).html(ViewCar.Header);
     $("#"+page.body).html(ViewCar.Body.PanelBody);
+    $("#carid").val(carid);
+    
     Util.LoadJSON("../json/viewcar.php", function(data){
         //console.log(data);
         ViewCar.InsertData(data);
     }, {carid: carid});
+    
     $(function () {
         $(".datepicker").datepicker({
             format: "mm/dd/yyyy"
         });
     });
-    $("#carid").val(carid);
+    
+    
 
     /*
     $("#btnReview").click(function(){
@@ -121,5 +126,6 @@ ViewCar.Display = function(page, carid){
     */
     //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
     Util.PrepareForm("#viewcar", "../submit/addreview.php", "#btnReview", "", Util.DoNothing, Util.DoNothing);
+    Util.PrepareForm("#viewcar", "../submit/booking.php", "#btnBook", "", Util.DoNothing, Util.DoNothing);
 };
 

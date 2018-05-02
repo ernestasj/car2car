@@ -146,11 +146,11 @@ Template.Form.HiddenInput = _.template('\
 
 
 
-// id, classes
+// id, classes, name
 Template.Form.DateInput = _.template('\
 <div class="form-group">\
     <div class="input-group date <%=classes%>" data-provide="datepicker" id="<%=id%>">\
-        <input type="text" class="form-control" />\
+        <input type="text" class="form-control" name="<%=name%>"/>\
         <div class="input-group-addon">\
             <span class="fa fa-calendar"></span>\
             </span>\

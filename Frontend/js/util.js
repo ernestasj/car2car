@@ -104,7 +104,8 @@ Util.PrepareForm = function(formid, url, btn, result, callback, precall) {
                         {
                             Util.DefaultPage();
                         }
-                        } catch (err)
+                    } 
+                    catch (err)
                     {
                         callback(data);
                     }

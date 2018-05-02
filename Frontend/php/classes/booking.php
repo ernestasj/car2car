@@ -2,16 +2,15 @@
     class Booking {
 
         var $rego = "rego";
-        var $email = "email";
         var $renter = "email";
-        var $days = "";
+        var $date = "";
         function __construct() {
             $argv = func_get_args();
             switch( func_num_args() ) {
                 case 0:self::__construct0();
                     break;
                 case 4:
-                    self::__construct4( $argv[0], $argv[1], $argv[2], $argv[3]);
+                    self::__construct3( $argv[0], $argv[1], $argv[2]);
                     break;
                 case 3:
                     self::__construct3( $argv[0], $argv[1], $argv[2] );
@@ -20,31 +19,28 @@
         }
          
         function WriteDB($db) {
-            $stmt = $db->prepare("call AddBooking(?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $this->rego, $this->email, $this->renter, $this->days);
+            $stmt = $db->prepare("call AddBooking(?, ?, ?)");
+            $stmt->bind_param("sss", $this->rego, $this->renter, $this->date);
             $stmt->execute();
             $stmt->close();
         }
 
-        function __construct4($rego, $email, $renter, $days)
+        function __construct3($rego, $renter, $date)
         {
             
             $this->rego = $rego;
-            $this->email = $email;
             $this->renter = $renter;
-            $this->days = $days;
+            $this->date = $date;
         }
 
         function __construct0()
         {
             $this->rego = "rego";
-            $this->email = "email";
             $this->renter = "email";
-            $this->days = "";
+            $this->date = "";
         }
 
         function ReadDB($db, $email, $rego, $renter, $days) {
-            $stmt = $db->stmt_init();
             $stmt = $db->prepare("call GetBooking(?, ?)");
             $stmt->bind_param("ss", $email, $rego);
             $stmt->execute();
@@ -56,22 +52,15 @@
 
         function UpdateFromRow($row) {
             $this->rego = $row["rego"];
-            $this->manufacturer = $row["manufacturer"];
-            $this->make = $row["make"];
-            $this->model = $row["model"];
-            $this->year = $row["year"];
-            $this->doors = $row["doors"];
-            $this->petrol = $row["petrol"];
-            $this->transmission = $row["transmission"];
-            $this->enginecc = $row["enginecc"];
-            $this->kms = $row["kms"];
-            $this->body = $row["body"];
-            $this->photo = $row["photo"];
+            $this->renter = $row["email"];
+            $this->date = $row["date"];
         }
 
-        function __construct3($db, $email, $rego) {
-            $this->ReadDB($db, $email, $rego);
+        function AsArray(){
+            $data = ["rego" => $this->rego, "email" => $this->renter, "date" => $this->date];
+            return $data;
         }
+
 
     }
 ?>
