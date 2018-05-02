@@ -7,11 +7,12 @@ Bookings.Header = Template.Header({
 Bookings.Body = {};
 
 Bookings.TableHeaders = {
+    renter: "Renter",
     rego: "Rego",
     date: "Date",
 };
 
-Bookings.TableOrder = ["rego", "date"];
+Bookings.TableOrder = ["renter", "rego", "date"];
 
 Bookings.Table = {};
 
@@ -24,7 +25,6 @@ Bookings.Body.Table = "";
 Bookings.Display = function(page, data) {
 
     Util.LoadJSON("../json/booking.php", function(data){
-        console.log(data);
         Bookings.Table.Rows = Template.Table.Rows({
             rows: data,
             fields: Bookings.TableOrder,

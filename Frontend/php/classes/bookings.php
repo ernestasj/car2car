@@ -29,7 +29,7 @@
 
         function ReadDB($db, $user) {
             $stmt = $db->stmt_init();
-            $stmt = $db->prepare("call GetBookingsMade(?)");
+            $stmt = $db->prepare("call GetBookings(?)");
             $stmt->bind_param("s", $user);
             $stmt->execute();
             $result = $stmt->get_result();

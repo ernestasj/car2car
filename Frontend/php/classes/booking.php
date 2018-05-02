@@ -59,7 +59,7 @@
         }
 
         function AsArray(){
-            $data = ["rego" => $this->rego, "email" => $this->renter, "date" => $this->date, "id" => $this->bookingid];
+            $data = ["rego" => $this->rego, "renter" => $this->renter, "date" => $this->date, "id" => $this->bookingid];
             return $data;
         }
     }
