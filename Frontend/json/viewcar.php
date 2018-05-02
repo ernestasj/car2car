@@ -1,5 +1,6 @@
 <?php
     include("../php/includes.php");
+    include("../php/loggedin.php");
 
     if(isset($_GET["carid"]))
     {

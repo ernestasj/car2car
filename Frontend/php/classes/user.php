@@ -7,11 +7,11 @@
         var $first_name = "";
         var $last_name = "";
         var $licence = "";
-        var $cardtype = "";
-        var $ccnumber = "";
-        var $expiry = "";
-        var $cvc = "";
-        var $cardname = "";
+        //var $cardtype = "";
+        //var $ccnumber = "";
+        //var $expiry = "";
+        //var $cvc = "";
+        //var $cardname = "";
         var $photo = "";
         var $messages = [];
         var $tasks = [];
@@ -27,6 +27,9 @@
                     break;
                 case 2:
                     self::__construct2( $argv[0], $argv[1] );
+                    break;
+                case 6:
+                    self::__construct6( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4], $argv[5]);
                     break;
             }
         }
@@ -55,6 +58,18 @@
 
         }
 
+        function __construct6($email, $password, $first_name, $last_name, $licence, $photo)
+        {
+            
+            $this->email = $email;
+            $this->password = $password;
+            $this->first_name = $first_name;
+            $this->last_name = $last_name;
+            $this->licence = $licence;
+            $this->photo = $photo;
+
+        }
+
         function __construct0()
         {
         }
@@ -65,8 +80,11 @@
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
-            $row = mysqli_fetch_assoc($result);
-            $this->UpdateFromRow($row);
+            if($result != false)
+            {
+                $row = mysqli_fetch_assoc($result);
+                $this->UpdateFromRow($row);
+            }
         }
 
         function UpdateFromRow($row) {
@@ -75,11 +93,11 @@
             $this->first_name = $row["first_name"];
             $this->last_name = $row["last_name"];
             $this->licence = $row["licence"];
-            $this->cardtype = $row["cardtype"];
-            $this->ccnumber = $row["ccnumber"];
-            $this->expiry = $row["expiry"];
-            $this->cvc = $row["cvc"];
-            $this->cardname = $row["cardname"];
+            //$this->cardtype = $row["cardtype"];
+            //$this->ccnumber = $row["ccnumber"];
+            //$this->expiry = $row["expiry"];
+            //$this->cvc = $row["cvc"];
+            //$this->cardname = $row["cardname"];
             $this->photo = $row["photo"];
         }
 
@@ -107,6 +125,23 @@
         function InsertAsJSObject($name)
         {
             echo $this->JSObject($name);
+        }
+
+        function CheckPassword($password) 
+        {
+            if($this->email == "")
+            {
+                return false;
+            }
+            else
+            {
+                return $password == $this->password;
+            }   
+            
+        }
+        function GetEmail()
+        {
+            return $this->email;
         }
 
     }

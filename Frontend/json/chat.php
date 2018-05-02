@@ -1,4 +1,5 @@
 <?php
+    include("../php/loggedin.php");
     // this needs a class. messageid comes from inbox
     $messages = [];
     

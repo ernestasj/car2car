@@ -85,5 +85,10 @@ CreateAccount.Display = function(page){
 
     $("#"+page.header).html(CreateAccount.Header);
     $("#"+page.body).html(CreateAccount.Body.PanelBody);
-    Util.PrepareForm("#createaccountform", "../submit/createaccount.php", "#btnSubmit", "", Util.DoNothing, Util.DoNothing);
+    Util.PrepareForm("#createaccountform", "../submit/createaccount.php", "#btnSubmit", "", CreateAccount.Success, Util.DoNothing);
 };
+
+CreateAccount.Success= function(data)
+{
+    Search.Display(Page.Layout);
+}

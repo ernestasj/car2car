@@ -7,7 +7,7 @@
 
         function AsJSDict(){
             $object = "{";
-            $object .= "name: '". $this->from . "',";
+            $object .= "sender: '". $this->from . "',";
             $object .= "message: '". $this->text . "',";
             $object .= "time: '". $this->time . "'";
             $object .= "}";
@@ -15,7 +15,7 @@
         }
 
         function AsArray(){
-            $data = ["name" => $this->from, "message" => $this->text, "time" => $this->time];
+            $data = ["sender" => $this->from, "message" => $this->text, "time" => $this->time];
             return $data;
         }
     }

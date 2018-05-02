@@ -6,7 +6,16 @@ Util.LoadJSON = function(file, callback, parameters){
         if (this.readyState == 4 && this.status == 200) {
             //console.log(this.responseText);
             obj = JSON.parse(this.responseText);
-            callback(obj);
+            //console.log(obj);
+            if(Util.IsLoggedIn(obj))
+            {
+                callback(obj);
+            }
+            else
+            {
+                Util.DefaultPage();
+            }
+        
         }
     };
     parameters = parameters || "";
@@ -84,8 +93,22 @@ Util.PrepareForm = function(formid, url, btn, result, callback, precall) {
                 console.log("SUCCESS : ", data);
                 if(typeof(callback) !== undefined)
                 {
-                    callback(JSON.parse(data));
-                }
+                    var obj = "";
+                    try {
+                        obj = JSON.parse(data);
+                        if(Util.IsLoggedIn(obj))
+                        {
+                            callback(obj);
+                        }
+                        else
+                        {
+                            Util.DefaultPage();
+                        }
+                        } catch (err)
+                    {
+                        callback(data);
+                    }
+            }
                 $(result).text(data);
                 
                 $(btn).prop("disabled", false);
@@ -198,4 +221,17 @@ Util.AppendChoices = function(id, choices)
     choices.forEach(function(choice){
         Util.AppendChoice(id, choice.value, choice.text, choice.classes);
     });
+}
+
+Util.IsLoggedIn = function(data)
+{
+    if("error" in data)
+        return !(data.error == "logged out");
+    else
+        return true;
+}
+
+Util.DefaultPage = function()
+{
+    Login.Display(Page.Layout);
 }
