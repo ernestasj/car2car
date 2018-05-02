@@ -211,3 +211,12 @@ Template.SubHeading = _.template('\
 </div>\
 ');
 
+Template.Sidebar = {};
+
+// id, icon, text
+Template.Sidebar.Item =_.template('\
+<li>\
+    <a id="<%=id%>"><i class="fa <%=icon%> fa-fw"></i> <%=text%></a>\
+</li>\
+');
+

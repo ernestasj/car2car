@@ -69,6 +69,7 @@ Login.Check = function(data)
     if(data.status == 'success')
     {
         Search.Display(Page.Layout);
+        SideBar.Display(Page.Layout);
     }
     else
     {

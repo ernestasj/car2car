@@ -123,9 +123,16 @@ Chat.ClearInput = function () {
 
 Chat.CheckForNewMessages = function()
 {
-    var bookingid = $("#bookingid").val();
-    Util.LoadJSON("../json/chat.php", function(data){
-        var chat_history = Template.Messages({messages: data});
-        $("#message_history").html(chat_history);
-    }, {bookingid: bookingid});
+    if($("#message_history").length == 0)
+    {
+        clearInterval(Chat.MessageRetrievalInterval); 
+    }
+    else
+    {
+        var bookingid = $("#bookingid").val();
+        Util.LoadJSON("../json/chat.php", function(data){
+            var chat_history = Template.Messages({messages: data});
+            $("#message_history").html(chat_history);
+        }, {bookingid: bookingid});
+    }
 }
