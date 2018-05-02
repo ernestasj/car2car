@@ -1,7 +1,6 @@
 <?php
     include ("../php/includes.php");
-
-   $_SESSION['login_user'] = 'bob';
+    include("../php/includes.php");
    
    $rego = "rego";
    $make = "make";
@@ -18,7 +17,7 @@
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // This needs to be bundled into a car class
-        $email = $_SESSION['login_user'];
+        $email = $user->GetEmail();
         $rego = mysqli_real_escape_string($db,$_POST['rego']);
         $make = mysqli_real_escape_string($db,$_POST['make']);
         $model = mysqli_real_escape_string($db,$_POST['model']);

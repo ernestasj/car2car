@@ -143,3 +143,27 @@ Template.Form.TextBox = _.template('\
 Template.Form.HiddenInput = _.template('\
 <input type="hidden" name="<%=name%>" id="<%=id%>">\
 ');
+
+
+
+// id, classes
+Template.Form.DateInput = _.template('\
+<div class="form-group">\
+    <div class="input-group date <%=classes%>" data-provide="datepicker" id="<%=id%>">\
+        <input type="text" class="form-control" />\
+        <div class="input-group-addon">\
+            <span class="fa fa-calendar"></span>\
+            </span>\
+        </div>\
+    </div>\
+</div>\
+');
+
+// id, classes, content, label
+Template.Form.Info = _.template('\
+<div class="form-group">\
+    <label for="<%=name%>"><%=label%></label>\
+    <span id="<%=id%>" classes="<%=classes%>"><%=content%></span>\
+</div>\
+');
+

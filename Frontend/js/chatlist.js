@@ -17,6 +17,7 @@ ChatList.Header = '\
 </div>';
 
 ChatList.Display = function(page){
+
     $("#"+page.header).html(ChatList.Header);
     $("#"+page.body).html(ChatList.Body);
     

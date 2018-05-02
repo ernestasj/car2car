@@ -66,5 +66,12 @@ Login.Display = function(page){
 
 Login.Check = function(data)
 {
-
+    if(data.status == 'success')
+    {
+        Search.Display(Page.Layout);
+    }
+    else
+    {
+        Login.Display(Page.Layout);
+    }
 }

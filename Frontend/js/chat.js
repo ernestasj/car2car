@@ -103,9 +103,7 @@ Chat.Display = function(page, messageid){
         var messages = data.messages;
         test_messages = data.messages;
         var messageid = data.messageid;
-        console.log(messages);
         var chat_history = Template.Messages({messages: messages});
-        console.log(chat_history);
         $("#message_history").html(chat_history);
         $("#messageid").val(messageid);
     }, {messageid: messageid});

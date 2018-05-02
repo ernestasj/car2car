@@ -35,6 +35,7 @@ NavBar.UpdateAlerts = function()
 
 NavBar.IntervalUpdate = function(ms)
 {
+    return;
     if(NavBar.IntervalReference)
     {
         clearInterval(NavBar.IntervalReference);
