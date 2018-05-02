@@ -20,7 +20,7 @@ class CarFormClass
     function refreshValues()
     {
         //Calls to database to get values for fields
+            //DB CODE GOES HERE
     }
-
 }
 ?>
