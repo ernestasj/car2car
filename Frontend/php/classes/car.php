@@ -12,6 +12,7 @@
         var $kms = "kms";
         var $body = "";
         var $photo = "";
+        var $rating = 0;
 
         function __construct() {
             $argv = func_get_args();
@@ -110,14 +111,26 @@
         }
 
         function AsArray(){
-            $data = ["rego" => $this->rego, "make" => $this->make, "model" => $this->model];
+            $data = ["rego" => $this->rego, "make" => $this->make, "model" => $this->model, "rating" => $this->rating];
             return $data;
+        }
+
+        function AddRating($db)
+        {
+            $stmt = $db->stmt_init();
+            $stmt = $db->prepare("call GetRating(?)");
+            $stmt->bind_param("s", $this->rego);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = mysqli_fetch_array($result);
+            $this->rating = $row['rating'];
         }
 
         function AddReview($db, $user, $rating, $comments)
         {
-            $stmt = $db->prepare("call AddReview(?, ?, ?)");
-            $stmt->bind_param("sis", $user, (int)$rating, $comments);
+            $stmt = $db->prepare("call AddReview(?, ?, ?, ?)");
+            $rating_score = (int)$rating;
+            $stmt->bind_param("siss", $user, $rating_score, $comments, $this->rego);
             $stmt->execute();
         }
     }

@@ -14,7 +14,7 @@
             {
                 while($row = mysqli_fetch_array($result))
                 {
-                    $this->AddCar($row);
+                    $this->AddCar($db, $row);
                 }
             }
             
@@ -45,12 +45,13 @@
             return $result;
         }
 
-        function AddCar($row)
+        function AddCar($db, $row)
         {
             $car = new Car;
             $car->rego = $row['rego'];
             $car->make = $row['make'];
             $car->model = $row['model'];
+            $car->AddRating($db);
             array_push($this->cars, $car);
         }
 
@@ -82,9 +83,9 @@
             return json_encode($data);
         }
 
-        function AddReview($user, $carid, $rating, $comments)
+        function AddReview($db, $user, $carid, $rating, $comments)
         {
-            if(array_key_exists($carid, $cars))
+            if(array_key_exists($carid, $this->cars))
             {
                 $this->cars[$carid]->AddReview($db, $user, $rating, $comments);
             }

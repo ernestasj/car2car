@@ -27,24 +27,52 @@ ViewCar.Make = Template.Form.Info({
     label: "Make",
     classes: "",
     content: "Vehicle Make"
-})
+});
 
 ViewCar.Model = Template.Form.Info({
     id: "model",
     label: "Model",
     classes: "",
     content: "Vehicle Model"
+});
+
+ViewCar.Rating = Template.Form.StarRating ({
+    name: "rating"
+});
+
+// id, classes, name, rows, placeholder
+ViewCar.Comments = Template.Form.TextBox({
+    id: "comments",
+    classes: "",
+    name: "comments",
+    rows: "10",
+    placeholder: "Your comments"
 })
 
+ViewCar.ReviewHeader = Template.SubHeading({
+    id: "",
+    classes: "",
+    title: "Leave a Review"
+});
+
+// name, id
+ViewCar.CarID = Template.Form.HiddenInput({
+    id: "carid",
+    name: "carid"
+});
 
 ViewCar.Body.Form = Template.Form({
     formid: "viewcar",
     method: "post",
     groups: 
-    ViewCar.Make +
-    ViewCar.Model +
-    ViewCar.DateInput +
-    ViewCar.Form.Book +
+    ViewCar.Make + 
+    ViewCar.Model + 
+    ViewCar.DateInput + 
+    ViewCar.Form.Book + 
+    ViewCar.ReviewHeader + 
+    ViewCar.Rating + 
+    ViewCar.Comments + 
+    ViewCar.CarID +
     ViewCar.Form.Review
 });
 
@@ -52,6 +80,7 @@ ViewCar.Body.PanelBody = Template.PanelBody({
     title:"Rego",
     body: ViewCar.Body.Form
 });
+
 /*
 ViewCar.Body = '<div class="col-lg-12" >\
     <div class="list-car-panel panel panel-default">\
@@ -83,6 +112,7 @@ ViewCar.Display = function(page, carid){
             format: "mm/dd/yyyy"
         });
     });
+    $("#carid").val(carid);
 
     /*
     $("#btnReview").click(function(){
@@ -90,5 +120,6 @@ ViewCar.Display = function(page, carid){
     });
     */
     //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
+    Util.PrepareForm("#viewcar", "../submit/addreview.php", "#btnReview", "", Util.DoNothing, Util.DoNothing);
 };
 

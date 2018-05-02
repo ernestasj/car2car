@@ -167,3 +167,47 @@ Template.Form.Info = _.template('\
 </div>\
 ');
 
+// name
+Template.Form.StarRating = _.template('\
+<div class="form-group rating">\
+    <label>\
+        <input type="radio" name="<%=name%>" value="1" />\
+        <span class="icon">★</span>\
+    </label>\
+    <label>\
+        <input type="radio" name="<%=name%>" value="2" />\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+    </label>\
+    <label>\
+        <input type="radio" name="<%=name%>" value="3" />\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+    </label>\
+    <label>\
+        <input type="radio" name="<%=name%>" value="4" />\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+    </label>\
+    <label>\
+        <input type="radio" name="<%=name%>" value="5" />\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+    </label>\
+</div>\
+');
+
+
+// classes, id, title
+Template.SubHeading = _.template('\
+<div class="form-group <%=classes%>" id="<%=id%>">\
+<h2><%=title%></h2>\
+</div>\
+');
+

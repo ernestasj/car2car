@@ -1,6 +1,6 @@
 <?php
     include ("../php/includes.php");
-    include("../php/includes.php");
+    include("../php/loggedin.php");
    
    $rego = "rego";
    $make = "make";
