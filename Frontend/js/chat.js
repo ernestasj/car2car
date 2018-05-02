@@ -108,7 +108,7 @@ Chat.Display = function(page, messageid){
         $("#messageid").val(messageid);
     }, {messageid: messageid});
 
-    Chat.MessageRetrievalInterval = setInterval(Chat.CheckForNewMessages, 3000)
+    //Chat.MessageRetrievalInterval = setInterval(Chat.CheckForNewMessages, 3000)
     Util.PrepareForm("#chatform", "../submit/message.php", "#btnSubmit", "", Util.DoNothing, Util.DoNothing);
 };
 
