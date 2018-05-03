@@ -51,30 +51,6 @@ Chat.Body.Form = Template.Form({
     Chat.Form.SendButton
 });
 
-/*
-    Chat.Body = '<div class="col-lg-12" >\
-    <div class="list-car-panel panel panel-default">\
-        <div class="panel-heading">\
-            <h3 class="panel-title">Chat</h3>\
-        </div>\
-        <div class="panel-body">\
-            <form role="form" action = "" method = "post" enctype="multipart/form-data" id="chatform">\
-                <fieldset>\
-                    <div class="form-group messages" id="message_history">\
-                    </div>\
-                    <div class="form-group">\
-                        <textarea class="form-control" placeholder="Your comments" name="message" rows="5" autofocus id="message"></textarea>\
-                        <input type="hidden" name="messageid" id="messageid">\
-                    </div>\
-                    <button class="btn btn-lg btn-success btn-block" id="btnSubmit">Submit Review</button>\
-                </fieldset>\
-            </form>\
-        </div>\
-    </div>\
-</div>';
-
-*/
-
 Chat.FormatMessage = function(message)
 {
     var html = '<div class="col-sm-12 well-sm">';
@@ -93,7 +69,7 @@ Chat.AppendMessages = function(messages)
 }
 
 Chat.Display = function(page, bookingid){
-    console.log(bookingid);
+    //console.log(bookingid);
 
     $("#"+page.header).html(Chat.Header);
 
