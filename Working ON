@@ -16,3 +16,13 @@
 
     - Validation
     - Dummy External Sources (Banking, licence)
+
+
+====================
+    FROM HOA
+====================
+
+Add Home Address
+Add Card Account on Account Creation
+Allow viewing cars without login
+Details of booking
