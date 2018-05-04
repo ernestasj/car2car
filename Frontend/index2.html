@@ -18,6 +18,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
+            <a class="nav-link" href="chat.html">Inbox</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#">Bookings</a>
           </li>
           <li class="nav-item">
@@ -49,9 +52,9 @@
                 <div class="row col-sm-12">
                   <div class="col-sm-8">
                     <input type="text" class="form-control m-1" id="keywords" placeholder="What are you looking for?"> </div>
-                  <div class="col-sm-4" text-center="">
+                  <div class="col-sm-4 btn-group" text-center="">
                     <button type="button" class="btn col-sm-6 btn-outline-primary m-1" id="search">Search</button>
-                    <button class="btn col-sm-4 m-1 btn-outline-primary" id="show_advanced_button" type="button">Adv</button>
+                    <button class="btn col-sm-4 m-1 btn-outline-primary" id="show_advanced_button" type="button">Advanced</button>
                   </div>
                 </div>
                 <div class="col-sm-12" id="advanced_options" style="display:none;">
@@ -223,6 +226,7 @@
             </div>
           </div>
         </div>
+        <div class="col-sm-12"> </div>
       </div>
     </div>
   </div>
@@ -246,6 +250,9 @@
 
       });
   </script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
+    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
+  </pingendo>
 </body>
 
 </html>
