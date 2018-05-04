@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="dist/css/theme.css"> </head>
+
+<body>
+  <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Car2Car</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"> </div>
+    </div>
+  </nav>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <h3> Join us! </h3>
+            </div>
+            <div class="panel-body">
+              <form class="" action="/action_page.php">
+                <div class="">
+                  <h4 class="m-2"> Login </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-12">
+                    <input type="email" class="form-control m-1" id="email" placeholder="Enter email"> </div>
+                  <div class="col-sm-12">
+                    <input type="password" class="form-control m-1" id="pwd" placeholder="Enter password">
+                    <input type="password" class="form-control m-1" id="pwd" placeholder="Verify password"> </div>
+                </div>
+                <div>
+                  <h4 class="m-1"> Personal </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control m-1" id="firstname" placeholder="First Name"> </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control m-1" id="lastname" placeholder="Last Name"> </div>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control m-1" id="dob" placeholder="Date of Birth"> </div>
+                </div>
+                <div>
+                  <h4 class="m-1"> Identification </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control m-1" id="licence" placeholder="Licence No."> </div>
+                  <div class="col-sm-6">
+                    <input type="file" class="form-control-file m-1" id="photo" name="photo"> </div>
+                </div>
+                <div class="">
+                  <h4 class="m-2"> Address </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control m-1" id="number" placeholder="Number"> </div>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control m-1" id="street" placeholder="Street"> </div>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb"> </div>
+                  <div class="col-sm-3">
+                    <select type="text" class="form-control m-1" id="state" placeholder="State">
+                      <option value="nsw" selected="">NSW</option>
+                      <option value="vic">VIC</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control m-1" id="postcode" placeholder="Post code"> </div>
+                </div>
+                <div>
+                  <h4 class="m-1"> Contact </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control m-1" id="mobileno" placeholder="Mobile Number"> </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control m-1" id="landline" placeholder="Landline (Home/Business)"> </div>
+                </div>
+                <div>
+                  <h4 class="m-1"> Payment </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control m-1" id="licence" placeholder="Card No."> </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control m-1" id="exp" placeholder="Expiry mm/yy"> </div>
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control m-1" id="cvc" placeholder="cvc"> </div>
+                  <div class="col-sm-2">
+                    <select type="text" class="form-control m-1" id="cardtype" placeholder="Card Type">
+                      <option value="visa" selected="">Visa</option>
+                      <option value="mastercard">Mastercard</option>
+                      <option value="amex">Amex</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12 text-center py-2">
+                    <button type="submit" class="btn col-sm-4 btn-outline-primary m-1">Join</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </div>
+</body>
+
+</html>
