@@ -6,38 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="dist/css/theme.css"> </head>
+  <link rel="stylesheet" href="dist/css/theme.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
 
-<body>
-  <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">Car2Car</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="chat.html">Inbox</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bookings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="addcar.html">Add Car</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Logout
-              <br> </a>
-          </li>
-        </ul>
-        <form class="form-inline m-0">
-          <button class="btn btn-primary" type="button" id="login">Login</button>
-          <button class="btn btn-primary" type="button" id="signup">Signup</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+<body ng-app="">
+  <div ng-include="'navbar.html'">
+
+  </div>
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -54,7 +30,7 @@
                     <input type="text" class="form-control m-1" id="keywords" placeholder="What are you looking for?"> </div>
                   <div class="col-sm-4 btn-group" text-center="">
                     <button type="button" class="btn col-sm-6 btn-outline-primary m-1" id="search">Search</button>
-                    <button class="btn col-sm-4 m-1 btn-outline-primary" id="show_advanced_button" type="button">Advanced</button>
+                    <button class="btn col-sm-7 col-lg-6 m-1 btn-outline-primary" id="show_advanced_button" type="button">Advanced</button>
                   </div>
                 </div>
                 <div class="col-sm-12" id="advanced_options" style="display:none;">
@@ -250,9 +226,7 @@
 
       });
   </script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
-    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
-  </pingendo>
+
 </body>
 
 </html>

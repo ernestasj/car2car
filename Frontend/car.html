@@ -27,32 +27,35 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">Car2Car</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bookings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Add Car</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Logout
-              <br> </a>
-          </li>
-        </ul>
-        <form class="form-inline m-0">
-          <button class="btn btn-primary" type="submit">Login</button>
-          <button class="btn btn-primary" type="submit">Signup</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">Car2Car</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="chat.html">Inbox</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Bookings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="addcar.html">Add Car</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Logout
+                  <br> </a>
+              </li>
+            </ul>
+            <form class="form-inline m-0">
+              <button class="btn btn-primary" type="button" id="login">Login</button>
+              <button class="btn btn-primary" type="button" id="signup">Signup</button>
+            </form>
+          </div>
+        </div>
+      </nav>
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -137,9 +140,24 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
-    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
-  </pingendo>
+  <script>
+      $(document).ready(function(){
+          $("#show_advanced_button").click(function(){
+            $( "#advanced_options" ).toggle();
+          });
+          $("#login").click(function(){
+            window.location.href = "./login.html";
+          });
+          $("#signup").click(function(){
+            window.location.href = "./createaccount.html";
+          });
+          $("#search").click(function(){
+            window.location.href = "./results.html";
+          });
+  
+        });
+    </script>
+  
 </body>
 
 </html>

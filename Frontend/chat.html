@@ -24,31 +24,13 @@
       left: 0;
     }
   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">Car2Car</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bookings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Add Car</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Logout
-              <br> </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<body ng-app="">
+  <div ng-include="'navbar.html'">
+
+  </div>
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -62,13 +44,13 @@
             <button type="button" class="btn col-sm-12 text-dark btn-outline-info">Date: 23/5/2018 </button>
           </div>
           <div class="col-sm-2">
-            <button type="button" class="btn col-sm-12 btn-secondary">Awaiting Decision</button>
+            <button type="button" class="btn col-sm-12 btn-secondary" id="approval_status">Awaiting Decision</button>
           </div>
           <div class="col-sm-2">
-            <button type="button" class="btn btn-outline-primary col-sm-12">Approve Rental</button>
+            <button type="button" class="btn btn-outline-primary col-sm-12" id="approve_rental">Approve Rental</button>
           </div>
           <div class="col-sm-2">
-            <button type="button" class="btn btn-outline-danger col-sm-12">Deny Rental</button>
+            <button type="button" class="btn btn-outline-danger col-sm-12" id="deny_rental">Deny Rental</button>
           </div>
           <div class="col-sm-2 btn-group-vertical">
             <h3> Amount: $45.00 </h3>
@@ -136,7 +118,74 @@
         <div class="col-sm-2"> </div>
       </div>
     </div>
+    <script>
+        var Approval = {
+          State: {
+            Awaiting:{
+              colour: "btn-secondary",
+              text: "Awaiting Approval"
+            },
+            Denied:{
+              colour: "btn-danger",
+              text: "Approval Denied"
+
+            },
+            Approved:{
+              colour: "btn-primary",
+              text: "Accepted Rental"
+
+            }
+          },
+          Id: "#approval_status",
+          SetState: function(new_state) {
+            console.log(new_state);
+            for(var state in Approval.State)
+            {
+              console.log(state);
+              $(Approval.Id).removeClass(Approval.State[state].colour);
+            }
+            console.log(new_state);
+            $(Approval.Id).addClass(new_state.colour);
+            $(Approval.Id).html(new_state.text);
+            
+          }
+          
+        };
+
+        
+
+        $(document).ready(function(){
+            $("#show_advanced_button").click(function(){
+              $( "#advanced_options" ).toggle();
+            });
+            $("#login").click(function(){
+              window.location.href = "./login.html";
+            });
+            $("#signup").click(function(){
+              window.location.href = "./createaccount.html";
+            });
+            $("#search").click(function(){
+              window.location.href = "./results.html";
+            });
+
+            $("#approve_rental").click(function(){
+              Approval.SetState(Approval.State.Approved);
+            });
+
+            $("#deny_rental").click(function(){
+              Approval.SetState(Approval.State.Denied);
+            });
+
+            $("#approval_status").click(function(){
+              Approval.SetState(Approval.State.Awaiting);
+            });
+            
+    
+          });
+      </script>
+    
   </div>
+  
 </body>
 
 </html>
