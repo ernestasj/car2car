@@ -27,10 +27,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body ng-app="">
-  <div ng-include="'navbar.html'">
-
-  </div>
+<body ng-app="page" ng-controller="navbarCtrl">
+    <div ng-include="'navbar.html'">
+    
+    </div>
+    <div ng-include="'login.html'">
+  
+    </div>
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -68,6 +71,8 @@
             <img src="./img/user3.jpg" class="img-circle centered-and-cropped" alt="" style="object-fit:cover;width:50px; height:50px;"> Paul </div>
         </div>
         <div class="col-md-8">
+            <div ng-include="'chatwindow.html'"></div>
+          <!--
           <div class="col-sm-12 well-sm ">
             <div class="col-sm-2">
               <img src="./img/user1.jpg" class="img-circle centered-and-cropped" alt="" style="object-fit:cover;width:50px; height:50px;"> Wilfred </div>
@@ -100,7 +105,9 @@
             <div class="col-sm-2">
               <img src="./img/user4.jpg" class="img-circle centered-and-cropped" alt="" style="object-fit:cover;width:50px; height:50px;"> Peter </div>
           </div>
+          -->
         </div>
+
         <div class="col-sm-2"> </div>
       </div>
       <div class="row">
@@ -118,6 +125,9 @@
         <div class="col-sm-2"> </div>
       </div>
     </div>
+    <script src="./app.js"></script>
+    <script src="./navbar.js"></script>
+    <script src="./chatwindow.js"></script>
     <script>
         var Approval = {
           State: {
@@ -185,7 +195,7 @@
       </script>
     
   </div>
-  
+  <script src="./login.js"></script>
 </body>
 
 </html>

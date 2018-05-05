@@ -10,10 +10,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body ng-app="">
+<body ng-app="page" ng-controller="navbarCtrl">
   <div ng-include="'navbar.html'">
+  
+  </div>
+  <div ng-include="'login.html'">
 
   </div>
+  
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -60,30 +64,31 @@
                   <div class="col-sm-12 m-1">
                     <div class="col-sm-12 checkbox">
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="">&nbsp;Monday</label>
+                        <input type="checkbox" class="weekday day" value="" id="monday" name="monday">&nbsp;Monday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="">&nbsp;Tuesday</label>
+                        <input type="checkbox" class="weekday day" value="" id="tuesday" name="tuesday">&nbsp;Tuesday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="">&nbsp;Wednesday</label>
+                        <input type="checkbox" class="weekday day" value="" id="wednesday" name="wednesday">&nbsp;Wednesday</label>
                     </div>
                     <div class="col-sm-12 checkbox">
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="">&nbsp;Thursday</label>
+                        <input type="checkbox" class="weekday day" value="" id="thursday" name="thursday">&nbsp;Thursday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="">&nbsp;Friday</label>
+                        <input type="checkbox" class="weekday day" value="" id="friday" name="friday">&nbsp;Friday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="">&nbsp;Saturday</label>
+                        <input type="checkbox" class="weekend day" value="" id="saturday" name="saturday">&nbsp;Saturday</label>
                     </div>
                     <div class="col-sm-12 checkbox">
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="">&nbsp;Sunday</label>
+                        <input type="checkbox" class="weekend day" value="" id="sunday" name="sunday">&nbsp;Sunday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="">&nbsp;Public Holidays</label>
+                        <input type="checkbox" value="" class="day" id="public_holidays" name="public_holidays">&nbsp;Public Holidays</label>
                     </div>
                     <div class="col-sm-12 m-1 btn-group">
-                      <button type="button" class="btn btn-outline-primary col-sm-3" id="allavailable">All</button>
-                      <button type="button" class="btn btn-outline-primary col-sm-3" id="allavailable">Weekend</button>
-                      <button type="button" class="btn btn-outline-primary col-sm-3" id="allavailable">Weekdays</button>
+                      <button type="button" class="btn btn-outline-primary col-sm-2" id="all_available">All</button>
+                      <button type="button" class="btn btn-outline-primary col-sm-2" id="weekends_available">Weekend</button>
+                      <button type="button" class="btn btn-outline-primary col-sm-2" id="weekdays_available">Weekdays</button>
+                      <button type="button" class="btn btn-outline-primary col-sm-2" id="none_available">Clear</button>
                     </div>
                   </div>
                   <div class="">
@@ -209,23 +214,34 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="./app.js"></script>
   <script>
     $(document).ready(function(){
       	$("#show_advanced_button").click(function(){
       		$( "#advanced_options" ).toggle();
-      	});
-        $("#login").click(function(){
-      		window.location.href = "./login.html";
-      	});
-        $("#signup").click(function(){
-      		window.location.href = "./createaccount.html";
-      	});
-      	$("#search").click(function(){
-          window.location.href = "./results.html";
-      	});
+        });
+        
+        $("#all_available").click(function(){
+            $(".day").prop('checked', true);
+          });
+
+          $("#none_available").click(function(){
+            $(".day").prop('checked', false);
+          });
+
+          $("#weekends_available").click(function(){
+            $(".day").prop('checked', false);
+            $(".weekend").prop('checked', true);
+          });
+
+          $("#weekdays_available").click(function(){
+            $(".day").prop('checked', false);
+            $(".weekday").prop('checked', true);
+          });
 
       });
   </script>
+  <script src="./navbar.js"></script>
 
 </body>
 

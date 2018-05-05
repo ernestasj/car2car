@@ -13,11 +13,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body ng-app="resultsApp" ng-controller="resultsCtrl">
-  <div ng-include="'navbar.html'">
-
-  </div>
-  <div class="py-5">
+<body ng-app="page" ng-controller="navbarCtrl">
+    <div ng-include="'navbar.html'">
+    
+    </div>
+    <div ng-include="'login.html'">
+  
+    </div>
+  <div class="py-5" ng-controller="resultsCtrl">
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
@@ -82,7 +85,12 @@
   
         });
   </script>
+
+  
+<script src="./app.js"></script>
+<script src="./navbar.js"></script>
 <script src="./results.js"></script>
+<script src="./login.js"></script>
 </body>
 
 </html>

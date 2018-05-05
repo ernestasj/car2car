@@ -75,8 +75,35 @@
                     <div class="col-sm-12 row">
                         <h5> Available </h5>
                     </div>
+                    
                     <div class="col-sm-12 row">
-                        <span class="label label-success p-1" ng-repeat="available in car.availability">{{available}}</span>
+                        <div ng-if="car.monday == 'yes'">
+                            <span class="label label-success p-1">Monday</span>
+                        </div>
+                        <div ng-if="car.tuesday == 'yes'">
+                            <span class="label label-success p-1">Tuesday</span>
+                        </div>
+                        <div ng-if="car.wednesday == 'yes'">
+                                <span class="label label-success p-1">Wednesday</span>
+                        </div>
+                        <div ng-if="car.thursday == 'yes'">
+                                <span class="label label-success p-1">Thursday</span>
+                        </div>
+                        <div ng-if="car.friday == 'yes'">
+                                <span class="label label-success p-1">Friday</span>
+                        </div>
+                        <div ng-if="car.saturday == 'yes'">
+                                <span class="label label-success p-1">Saturday</span>
+                        </div>
+                        <div ng-if="car.sunday == 'yes'">
+                                <span class="label label-success p-1">Sunday</span>
+                        </div>
+                        <div ng-if="car.public_holidays == 'yes'">
+                                <span class="label label-success p-1">Public Holidays</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row p-1">
+                        <button type="button" class="btn btn-primary col-sm-12">View</button>
                     </div>    
                         
                     

@@ -10,8 +10,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body ng-app="">
-  <div ng-include="'navbar.html'"> </div>
+<body ng-app="page" ng-controller="navbarCtrl">
+    <div ng-include="'navbar.html'">
+    
+    </div>
+    <div ng-include="'login.html'">
+  
+    </div>
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -22,7 +27,7 @@
               <h3>Tell us about your car</h3>
             </div>
             <div class="panel-body">
-              <form class="" action="/action_page.php">
+              <form class="" action="./submit/addcar.php" method="post">
                 <div class="">
                   <h4 class="m-2 py-1">Identification</h4>
                 </div>
@@ -34,7 +39,7 @@
                   <h4 class="m-2 py-1">Photo</h4>
                 </div>
                 <div class="row col-sm-12 m-1">
-                  <input type="file" class="form-control-file" id="photo" name="photo"> </div>
+                  <input type="file" class="form-control-file" id="photo" name="photo" multiple> </div>
                 <div>
                   <h4 class="m-1 py-1"> Location </h4>
                 </div>
@@ -58,25 +63,25 @@
                 <div class="col-sm-12 m-1">
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="" id="monday" name="monday">&nbsp;Monday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="monday" name="monday">&nbsp;Monday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="" id="tuesday" name="tuesday">&nbsp;Tuesday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="tuesday" name="tuesday">&nbsp;Tuesday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="" id="wednesday" name="wednesday">&nbsp;Wednesday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="wednesday" name="wednesday">&nbsp;Wednesday</label>
                   </div>
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="" id="thursday" name="thursday">&nbsp;Thursday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="thursday" name="thursday">&nbsp;Thursday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="" id="friday" name="friday">&nbsp;Friday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="friday" name="friday">&nbsp;Friday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekend day" value="" id="saturday" name="saturday">&nbsp;Saturday</label>
+                      <input type="checkbox" class="weekend day" value="yes" id="saturday" name="saturday">&nbsp;Saturday</label>
                   </div>
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekend day" value="" id="sunday" name="sunday">&nbsp;Sunday</label>
+                      <input type="checkbox" class="weekend day" value="yes" id="sunday" name="sunday">&nbsp;Sunday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" value="" class="day" id="public_holidays" name="public_holidays">&nbsp;Public Holidays</label>
+                      <input type="checkbox" value="yes" class="day" id="public_holidays" name="public_holidays">&nbsp;Public Holidays</label>
                   </div>
                   <div class="col-sm-12 m-1 btn-group">
                     <button type="button" class="btn btn-outline-primary col-sm-2" id="all_available">All</button>
@@ -92,9 +97,9 @@
                   <div class="col-sm-4">
                     <select type="text" class="form-control m-1" id="make" name="make">
                       <option value="" selected="">Make</option>
-                      <option value="ford">Ford</option>
-                      <option value="holden">Holden</option>
-                      <option value="toyota">Toyota</option>
+                      <option value="Ford">Ford</option>
+                      <option value="Holden">Holden</option>
+                      <option value="Toyota">Toyota</option>
                     </select>
                   </div>
                   <div class="col-sm-4">
@@ -110,23 +115,23 @@
                   <div class="col-sm-4">
                     <select type="text" class="form-control m-1" id="body" placeholder="" name="body">
                       <option value="" selected="">Body</option>
-                      <option value="">Sedan</option>
-                      <option value="">Hatch</option>
-                      <option value="">Coupe</option>
-                      <option value="">SUV</option>
-                      <option value="">Van</option>
+                      <option value="Sedan">Sedan</option>
+                      <option value="Hatch">Hatch</option>
+                      <option value="Coupe">Coupe</option>
+                      <option value="SUV">SUV</option>
+                      <option value="Van">Van</option>
                     </select>
                   </div>
                   <div class="col-sm-4">
                     <select type="text" class="form-control m-1" id="doors" placeholder="" name="doors">
                       <option value="" selected="">Doors</option>
-                      <option value="">None</option>
-                      <option value="">1</option>
-                      <option value="">2</option>
-                      <option value="">3</option>
-                      <option value="">4</option>
-                      <option value="">5</option>
-                      <option value="">6+</option>
+                      <option value="None">None</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6+">6+</option>
                     </select>
                   </div>
                 </div>
@@ -139,15 +144,15 @@
                   <div class="col-sm-4">
                     <select type="text" class="form-control m-1" id="kms" name="kms">
                       <option value="" selected="">Odometer</option>
-                      <option value="">Under 5,000km</option>
-                      <option value="">5,000 to 9,999km</option>
-                      <option value="">10,000 to 19,999km</option>
-                      <option value="">20,000 to 39,999km</option>
-                      <option value="">40,000 to 69,999km</option>
-                      <option value="">70,000 to 99,999km</option>
-                      <option value="">100,000 to 149,999km</option>
-                      <option value="">150,000 to 199,999km</option>
-                      <option value="">200,000km+</option>
+                      <option value="Under 5,000km">Under 5,000km</option>
+                      <option value="5,000 to 9,999km">5,000 to 9,999km</option>
+                      <option value="10,000 to 19,999km">10,000 to 19,999km</option>
+                      <option value="20,000 to 39,999km">20,000 to 39,999km</option>
+                      <option value="40,000 to 69,999km">40,000 to 69,999km</option>
+                      <option value="70,000 to 99,999km">70,000 to 99,999km</option>
+                      <option value="100,000 to 149,999km">100,000 to 149,999km</option>
+                      <option value="150,000 to 199,999km">150,000 to 199,999km</option>
+                      <option value="200,000km+">200,000km+</option>
                     </select>
                   </div>
                   <div class="col-sm-4"> </div>
@@ -159,35 +164,35 @@
                   <div class="col-sm-4">
                     <select type="text" class="form-control m-1" id="enginecc" placeholder="Card Type" name="enginecc">
                       <option value="" selected="">Engine Size</option>
-                      <option value="">Under 1000cc</option>
-                      <option value="">1000 to 1499cc</option>
-                      <option value="">1500 to 1999cc</option>
-                      <option value="">2000 to 2499cc</option>
-                      <option value="">2500 to 2999cc</option>
-                      <option value="">3000 to 3499cc</option>
-                      <option value="">3500 to 3999cc</option>
-                      <option value="">4000 to 4999cc</option>
-                      <option value="">5000 to 5999cc</option>
-                      <option value="">6000cc and over</option>
-                      <option value="">Electric Engine</option>
+                      <option value="Under 1000cc">Under 1000cc</option>
+                      <option value="1000 to 1499cc">1000 to 1499cc</option>
+                      <option value="1500 to 1999cc">1500 to 1999cc</option>
+                      <option value="2000 to 2499cc">2000 to 2499cc</option>
+                      <option value="2500 to 2999cc">2500 to 2999cc</option>
+                      <option value="3000 to 3499cc">3000 to 3499cc</option>
+                      <option value="3500 to 3999cc">3500 to 3999cc</option>
+                      <option value="4000 to 4999cc">4000 to 4999cc</option>
+                      <option value="5000 to 5999cc">5000 to 5999cc</option>
+                      <option value="6000cc and over">6000cc and over</option>
+                      <option value="Electric Engine">Electric Engine</option>
                     </select>
                   </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="fuel" placeholder="Card Type" name="fuel">
-                      <option value="" selected="">Fuel type</option>
-                      <option value="">E10</option>
-                      <option value="">RON-91</option>
-                      <option value="">RON-95</option>
-                      <option value="">RON-98</option>
-                      <option value="">Diesel</option>
-                      <option value="">Electric</option>
+                    <select type="text" class="form-control m-1" id="petrol" placeholder="Card Type" name="petrol">
+                      <option value="" selected="">Petrol type</option>
+                      <option value="E10">E10</option>
+                      <option value="RON-91">RON-91</option>
+                      <option value="Ron-95">RON-95</option>
+                      <option value="Ron-98">RON-98</option>
+                      <option value="Diesel">Diesel</option>
+                      <option value="Electric">Electric</option>
                     </select>
                   </div>
                   <div class="col-sm-4">
                     <select type="text" class="form-control m-1" id="transmission" name="transmission">
                       <option value="" selected="">Transmission</option>
-                      <option value="auto">Auto</option>
-                      <option value="manual">Manual</option>
+                      <option value="Auto">Auto</option>
+                      <option value="Manual">Manual</option>
                     </select>
                   </div>
                 </div>
@@ -195,7 +200,7 @@
                   <h4 class="m-1 py-1" draggable="true"> Description </h4>
                 </div>
                 <div class="row col-sm-12">
-                  <textarea class="form-control" rows="10" id="comment" placeholder="Tell your potential renters why they should choose your car!" name="description"></textarea>
+                  <textarea class="form-control" rows="10" id="description" placeholder="Tell your potential renters why they should choose your car!" name="description"></textarea>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12 text-center py-2">
@@ -213,22 +218,9 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="./app.js"></script>
   <script>
     $(document).ready(function(){
-
-
-          $("#show_advanced_button").click(function(){
-            $( "#advanced_options" ).toggle();
-          });
-          $("#login").click(function(){
-            window.location.href = "./login.html";
-          });
-          $("#signup").click(function(){
-            window.location.href = "./createaccount.html";
-          });
-          $("#search").click(function(){
-            window.location.href = "./results.html";
-          });
 
           $("#all_available").click(function(){
             $(".day").prop('checked', true);
@@ -250,9 +242,7 @@
 
         });
   </script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
-    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
-  </pingendo>
+  <script src="./navbar.js"></script><script src="./login.js"></script>
 </body>
 
 </html>

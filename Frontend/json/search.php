@@ -9,7 +9,7 @@
     $cars->LoadCars($db, $keywords);
     echo $cars->ToJSON();
     $_SESSION['cars'] = serialize($cars);
-
+    
     /*
     if(isset($_POST["keywords"]))
     {

@@ -1,19 +1,3 @@
-var cars = [
-    {
-        images: ["car.jpg", "cara.jpg", "carb.jpg"],
-        rego: "ABC-123",
-        make: "Holden",
-        model: "Commodore",
-        kms: "10000-14999kms",
-        year: "1998",
-        suburb: "Bondi",
-        transmission: "Auto",
-        availabilities: [
-            "Monday", "Tuesday", "Thursday", "Saturday", "Sunday", "Weekends", "Public Holidays"
-        ]
-    }
-];
-
 function GetURLParameter(sParam)
 {
     var sPageURL = window.location.search.substring(1);
@@ -27,9 +11,9 @@ function GetURLParameter(sParam)
         }
     }
 }
-var app = angular.module('resultsApp', []);
 
 app.controller('resultsCtrl', function($scope, $http) {
+    $scope.yes = "yes";
     /*
         var cars = [
             {
@@ -82,10 +66,9 @@ app.controller('resultsCtrl', function($scope, $http) {
             keywords: GetURLParameter("keywords")
         })
         .then(function(response) {
-            //debugger;
             console.log(response);
             $scope.cars = response.data;
-            });
+        });
         
         
     //});

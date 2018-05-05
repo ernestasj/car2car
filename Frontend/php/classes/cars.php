@@ -50,10 +50,10 @@
 
         function AddCar($db, $row)
         {
-            $car = new Car;
-            $car->rego = $row['rego'];
-            $car->make = $row['make'];
-            $car->model = $row['model'];
+            $car = new Car($row);
+            //$car->rego = $row['rego'];
+            //$car->make = $row['make'];
+            //$car->model = $row['model'];
             $car->AddRating($db);
             array_push($this->cars, $car);
         }
