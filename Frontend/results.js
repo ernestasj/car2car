@@ -12,6 +12,10 @@ function GetURLParameter(sParam)
     }
 }
 
+
+
+
+
 app.controller('resultsCtrl', function($scope, $http) {
     $scope.yes = "yes";
     /*
@@ -60,7 +64,11 @@ app.controller('resultsCtrl', function($scope, $http) {
         $scope.pizza = "Yum!";
     //$http.get("customers.php").then(function (response) {
         */
-
+        $scope.show_modal = function(car){
+            console.log(car);
+            $scope.car = car;
+            $("#detailed").modal("show");
+        };
         $http.post("./json/search.php",
         {
             keywords: GetURLParameter("keywords")

@@ -22,7 +22,8 @@
     <div ng-include="'login.html'">
   
     </div>
-  <div class="py-5" ng-controller="resultsCtrl">
+  
+    <div class="py-5" ng-controller="resultsCtrl">
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
@@ -34,7 +35,10 @@
       <div ng-include="'car_result.html'">
 
       </div>
-      
+      <div ng-include="'car_modal.html'">
+    
+        </div>
+  
       
     </div>
     <div class="container">
@@ -72,20 +76,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script>
     $(document).ready(function(){
-          $("#show_advanced_button").click(function(){
-            $( "#advanced_options" ).toggle();
-          });
-          $("#login").click(function(){
-            window.location.href = "./login.html";
-          });
-          $("#signup").click(function(){
-            window.location.href = "./createaccount.html";
-          });
-          $("#search").click(function(){
-            window.location.href = "./results.html";
-          });
-  
-        });
+      });
   </script>
 
   
