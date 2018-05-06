@@ -52,6 +52,15 @@ app.controller('messagesCtrl', function($scope, $http) {
                 $scope.username = response.data.username;
                 $scope.messages = response.data.messages;
                 });
+
+        $scope.$on('ChangeMessage', function(event, data) {
+            $scope.userimage = data.userimage;
+            $scope.userid = data.userid;
+            $scope.otherimage = data.otherimage;
+            $scope.othername = data.othername;
+            $scope.username = data.username;
+            $scope.messages = data.messages;
+        });
         /*
         $scope.bookingid = 0;
         $interval(function () {

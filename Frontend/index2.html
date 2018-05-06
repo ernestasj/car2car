@@ -8,6 +8,41 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="dist/css/theme.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+  <script src="./angularSlideables.js"></script>
+
+
+  <style>
+  .show_animation {
+  animation: 0.5s advshow;
+  height: 800px;
+  
+}
+  .show_animation.ng-hide {
+    animation: 0.5s advhide;
+  }
+
+  @keyframes advhide {
+    from {
+    height: 800px;
+    }
+    to {
+    height: 0;
+    }
+
+  }
+
+  @keyframes advshow {
+    from {
+    height: 0;
+    }
+    to {
+    height: 800px;
+    }
+
+  }
+
+</style>
 </head>
 
 <body ng-app="page" ng-controller="navbarCtrl">
@@ -18,7 +53,7 @@
 
   </div>
   
-  <div class="py-5">
+  <div class="py-5" ng-controller="searchCtrl">
     <div class="container">
       <div class="row">
         <div class="col-md-2"></div>
@@ -28,16 +63,16 @@
               <h2 class="py-2"> Welcome </h2>
             </div>
             <div class="panel-body">
-              <form class="" action="/action_page.php">
+              <form class="" action="./results.html" method="get">
                 <div class="row col-sm-12">
                   <div class="col-sm-8">
-                    <input type="text" class="form-control m-1" id="keywords" placeholder="What are you looking for?"> </div>
+                    <input type="text" class="form-control m-1" id="keywords" name="keywords" placeholder="What are you looking for?"> </div>
                   <div class="col-sm-4 btn-group" text-center="">
-                    <button type="button" class="btn col-sm-6 btn-outline-primary m-1" id="search">Search</button>
-                    <button class="btn col-sm-7 col-lg-6 m-1 btn-outline-primary" id="show_advanced_button" type="button">Advanced</button>
+                    <button class="btn col-sm-6 btn-outline-primary m-1" id="search">Search</button>
+                    <button class="btn col-sm-7 col-lg-6 m-1 btn-outline-primary" id="show_advanced_button" type="button" ng-click="toggleAdv()">Advanced</button>
                   </div>
                 </div>
-                <div class="col-sm-12" id="advanced_options" style="display:none;">
+                <div class="col-sm-12" ng-hide="advOptions" id="advanced_options">
                   <div class="text-center">
                     <h3 class="m-1 py-2">Advanced Options</h3>
                   </div>
@@ -217,10 +252,11 @@
   <script src="./app.js"></script>
   <script>
     $(document).ready(function(){
+      /*
       	$("#show_advanced_button").click(function(){
       		$( "#advanced_options" ).toggle();
         });
-        
+        */
         $("#all_available").click(function(){
             $(".day").prop('checked', true);
           });
@@ -241,6 +277,16 @@
 
       });
   </script>
+  <script>
+    app.controller('searchCtrl', function($scope) {
+      $scope.advOptions = true;
+      $scope.toggleAdv = function(){
+        $scope.advOptions = !$scope.advOptions;
+      }
+    });
+  </script>
+  
+  
   <script src="./navbar.js"></script>
 
 </body>
