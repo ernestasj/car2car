@@ -1,0 +1,114 @@
+<div class="modal " id="detailed">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title row m-1">
+            Car Details
+              <div ng-show="requested"> 
+                  <span class="label label-success p-1">Booked!</span>
+              </div>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 row">
+            <div class="div-car col-sm-4">
+              <img ng-src="{{'./img/' + car.image}}" class="img-thumbnail img-car"> </div>
+            <div class="col-sm-8">
+              <div class="col-sm-12 row div-car">
+                <table class="img-car col-sm-12">
+                  
+                    <tr >
+                      <th >Rego </th>
+                      <td >{{car.rego}}</td>
+                      <th >Make </th>
+                      <td >{{car.make}}</td>
+                    </tr>
+                    <tr >
+                      <th >Make </th>
+                      <td >{{car.make}}</td>
+                      <th >Kms </th>
+                      <td >{{car.kms}}</td>
+                    </tr>
+                    <tr >
+                      <th >Model </th>
+                      <td >{{car.model}}</td>
+                      <th >Body </th>
+                      <td >{{car.body}}</td>
+                    </tr>
+                    <tr >
+                      <th >Year </th>
+                      <td >{{car.year}}</td>
+                      <th >State </th>
+                      <td >{{car.state}}</td>
+                    </tr>
+                    <tr >
+                      <th >Transmission </th>
+                      <td >{{car.transmission}}</td>
+                      <th >Suburb </th>
+                      <td >{{car.suburb}}</td>
+                    </tr>
+                    <tr >
+                      <th >Suburb </th>
+                      <td >{{car.suburb}}</td>
+                      <th > Postcode</th>
+                      <td >{{car.postcode}}</td>
+                    </tr>
+                  
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 py-1 row">
+            <div class="col-sm-4" >
+              <h6> Availability </h6>
+              <div class="col-sm-12 row">
+                <div ng-if="car.monday == 'yes'">
+                  <span class="label label-success p-1">Monday</span>
+                </div>
+                <div ng-if="car.tuesday == 'yes'">
+                  <span class="label label-success p-1">Tuesday</span>
+                </div>
+                <div ng-if="car.wednesday == 'yes'">
+                  <span class="label label-success p-1">Wednesday</span>
+                </div>
+                <div ng-if="car.thursday == 'yes'">
+                  <span class="label label-success p-1">Thursday</span>
+                </div>
+                <div ng-if="car.friday == 'yes'">
+                  <span class="label label-success p-1">Friday</span>
+                </div>
+                <div ng-if="car.saturday == 'yes'">
+                  <span class="label label-success p-1">Saturday</span>
+                </div>
+                <div ng-if="car.sunday == 'yes'">
+                  <span class="label label-success p-1">Sunday</span>
+                </div>
+                <div ng-if="car.public_holidays == 'yes'">
+                  <span class="label label-success p-1">Public Holidays</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8"> {{car.description}} </div>
+          </div>
+
+          <div class="col-sm-12">
+            <div class="col-sm-4"></div>
+            <input type="text" id="datepicker" size="30" ng-model="car.date" class="hasDatepicker col-sm-4">
+            <div class="col-sm-4"></div>
+          </div>
+          <div class="col-sm-12">
+            <div class="col-sm-4"></div>
+            <button type="button" ng-class="booking_class" class="btn btn-primary col-sm-2" ng-click="action(car)">{{action_text}}</button>
+            <button type="button" class="btn btn-secondary col-sm-2" data-dismiss="modal">Close</button>
+            <div class="col-sm-4"></div>
+          </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+    
+  </div>

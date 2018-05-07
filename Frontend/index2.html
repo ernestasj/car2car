@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="dist/css/theme.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+
+
+
+  <style>
+  .show_animation {
+  animation: 0.5s advshow;
+  height: 800px;
+  
+}
+  .show_animation.ng-hide {
+    animation: 0.5s advhide;
+  }
+
+  @keyframes advhide {
+    from {
+    height: 800px;
+    }
+    to {
+    height: 0;
+    }
+
+  }
+
+  @keyframes advshow {
+    from {
+    height: 0;
+    }
+    to {
+    height: 800px;
+    }
+
+  }
+
+</style>
+</head>
+
+<body ng-app="page" ng-controller="navbarCtrl">
+  <div ng-include="'navbar.html'">
+  
+  </div>
+  <div ng-include="'login.html'">
+
+  </div>
+  
+  <div class="py-5" ng-controller="searchCtrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <h2 class="py-2"> Welcome </h2>
+            </div>
+            <div class="panel-body">
+              <form class="" action="./results.html" method="get">
+                <div class="row col-sm-12">
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control m-1" id="keywords" name="keywords" placeholder="What are you looking for?"> </div>
+                  <div class="col-sm-4 btn-group" text-center="">
+                    <button class="btn col-sm-6 btn-outline-primary m-1" id="search">Search</button>
+                    <button class="btn col-sm-7 col-lg-6 m-1 btn-outline-primary" id="show_advanced_button" type="button" ng-click="toggleAdv()">Advanced</button>
+                  </div>
+                </div>
+                <div class="col-sm-12" ng-hide="advOptions" id="advanced_options">
+                  <div class="text-center">
+                    <h3 class="m-1 py-2">Advanced Options</h3>
+                  </div>
+                  <div>
+                    <h4 class="m-1 py-1"> Location </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="row col-sm-12">
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb"> </div>
+                      <div class="col-sm-3">
+                        <select type="text" class="form-control m-1" id="state" placeholder="State">
+                          <option value="nsw" selected="">NSW</option>
+                          <option value="vic">VIC</option>
+                        </select>
+                      </div>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control m-1" id="postcode" placeholder="Post code"> </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="m-1 py-1"> Availability </h4>
+                  </div>
+                  <div class="col-sm-12 m-1">
+                    <div class="col-sm-12 checkbox">
+                      <label class="checkbox-inline col-sm-3">
+                        <input type="checkbox" class="weekday day" value="" id="monday" name="monday">&nbsp;Monday</label>
+                      <label class="checkbox-inline col-sm-3">
+                        <input type="checkbox" class="weekday day" value="" id="tuesday" name="tuesday">&nbsp;Tuesday</label>
+                      <label class="checkbox-inline col-sm-3">
+                        <input type="checkbox" class="weekday day" value="" id="wednesday" name="wednesday">&nbsp;Wednesday</label>
+                    </div>
+                    <div class="col-sm-12 checkbox">
+                      <label class="checkbox-inline col-sm-3">
+                        <input type="checkbox" class="weekday day" value="" id="thursday" name="thursday">&nbsp;Thursday</label>
+                      <label class="checkbox-inline col-sm-3">
+                        <input type="checkbox" class="weekday day" value="" id="friday" name="friday">&nbsp;Friday</label>
+                      <label class="checkbox-inline col-sm-3">
+                        <input type="checkbox" class="weekend day" value="" id="saturday" name="saturday">&nbsp;Saturday</label>
+                    </div>
+                    <div class="col-sm-12 checkbox">
+                      <label class="checkbox-inline col-sm-3">
+                        <input type="checkbox" class="weekend day" value="" id="sunday" name="sunday">&nbsp;Sunday</label>
+                      <label class="checkbox-inline col-sm-3">
+                        <input type="checkbox" value="" class="day" id="public_holidays" name="public_holidays">&nbsp;Public Holidays</label>
+                    </div>
+                    <div class="col-sm-12 m-1 btn-group">
+                      <button type="button" class="btn btn-outline-primary col-sm-2" id="all_available">All</button>
+                      <button type="button" class="btn btn-outline-primary col-sm-2" id="weekends_available">Weekend</button>
+                      <button type="button" class="btn btn-outline-primary col-sm-2" id="weekdays_available">Weekdays</button>
+                      <button type="button" class="btn btn-outline-primary col-sm-2" id="none_available">Clear</button>
+                    </div>
+                  </div>
+                  <div class="">
+                    <h4 class="m-2 py-1"> Type </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-4">
+                      <select type="text" class="form-control m-1" id="make">
+                        <option value="" selected="">Make</option>
+                        <option value="ford">Ford</option>
+                        <option value="holden">Holden</option>
+                        <option value="toyota">Toyota</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <select type="text" class="form-control m-1" id="model">
+                        <option value="" selected="">Model</option>
+                        <option value="86">86</option>
+                        <option value="ranger">Ranger</option>
+                        <option value="commodore">Commodore</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-4">
+                      <select type="text" class="form-control m-1" id="body" placeholder="">
+                        <option value="" selected="">Body</option>
+                        <option value="">Sedan</option>
+                        <option value="">Hatch</option>
+                        <option value="">Coupe</option>
+                        <option value="">SUV</option>
+                        <option value="">Van</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <select type="text" class="form-control m-1" id="doors" placeholder="">
+                        <option value="" selected="">Doors</option>
+                        <option value="">None</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                        <option value="">6+</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="">
+                    <h4 class="m-2 py-1"> Age </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control m-1" id="year" placeholder="Year"> </div>
+                    <div class="col-sm-4">
+                      <select type="text" class="form-control m-1" id="kms">
+                        <option value="" selected="">Odometer</option>
+                        <option value="">Under 5,000km</option>
+                        <option value="">5,000 to 9,999km</option>
+                        <option value="">10,000 to 19,999km</option>
+                        <option value="">20,000 to 39,999km</option>
+                        <option value="">40,000 to 69,999km</option>
+                        <option value="">70,000 to 99,999km</option>
+                        <option value="">100,000 to 149,999km</option>
+                        <option value="">150,000 to 199,999km</option>
+                        <option value="">200,000km+</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4"> </div>
+                  </div>
+                  <div>
+                    <h4 class="m-1 py-1"> Motor </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-4">
+                      <select type="text" class="form-control m-1" id="enginecc" placeholder="Card Type">
+                        <option value="" selected="">Engine Size</option>
+                        <option value="">Under 1000cc</option>
+                        <option value="">1000 to 1499cc</option>
+                        <option value="">1500 to 1999cc</option>
+                        <option value="">2000 to 2499cc</option>
+                        <option value="">2500 to 2999cc</option>
+                        <option value="">3000 to 3499cc</option>
+                        <option value="">3500 to 3999cc</option>
+                        <option value="">4000 to 4999cc</option>
+                        <option value="">5000 to 5999cc</option>
+                        <option value="">6000cc and over</option>
+                        <option value="">Electric Engine</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <select type="text" class="form-control m-1" id="fuel" placeholder="Card Type">
+                        <option value="" selected="">Fuel type</option>
+                        <option value="">E10</option>
+                        <option value="">RON-91</option>
+                        <option value="">RON-95</option>
+                        <option value="">RON-98</option>
+                        <option value="">Diesel</option>
+                        <option value="">Electric</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <select type="text" class="form-control m-1" id="transmission">
+                        <option value="" selected="">Transmission</option>
+                        <option value="auto">Auto</option>
+                        <option value="manual">Manual</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-12 text-center py-2">
+                      <button type="submit" class="btn col-sm-4 btn-outline-primary m-1">Search</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12"> </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="./app.js"></script>
+  <script>
+    $(document).ready(function(){
+      /*
+      	$("#show_advanced_button").click(function(){
+      		$( "#advanced_options" ).toggle();
+        });
+        */
+        $("#all_available").click(function(){
+            $(".day").prop('checked', true);
+          });
+
+          $("#none_available").click(function(){
+            $(".day").prop('checked', false);
+          });
+
+          $("#weekends_available").click(function(){
+            $(".day").prop('checked', false);
+            $(".weekend").prop('checked', true);
+          });
+
+          $("#weekdays_available").click(function(){
+            $(".day").prop('checked', false);
+            $(".weekday").prop('checked', true);
+          });
+
+      });
+  </script>
+  <script>
+    app.controller('searchCtrl', function($scope) {
+      $scope.advOptions = true;
+      $scope.toggleAdv = function(){
+        $scope.advOptions = !$scope.advOptions;
+      }
+    });
+  </script>
+  
+  
+  <script src="./navbar.js"></script>
+
+</body>
+
+</html>
