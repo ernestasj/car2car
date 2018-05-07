@@ -63,9 +63,96 @@
             </div>
             <!-- /.navbar-header -->
 
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="newmail fa fa-envelope fa-fw" id="mail_icon"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages" id="messages">
+
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks" id="tasks">
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts" id="alerts">
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a id="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="sidebar">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a id="link_dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a id="link_search"><i class="fa fa-search fa-fw"></i> Search</a>
+                        </li>
+                        <li>
+                            <a id="link_triplog"><i class="fa fa-table fa-fw"></i> Recent Trips</a>
+                        </li>
+                        <li>
+                            <a id="link_bookings"><i class="fa fa-edit fa-fw"></i> Bookings</a>
+                        </li>
+                        <li>
+                            <a id="link_addcar"><i class="fa fa-car fa-fw"></i> Add a car</a>
+                        </li>
+                        <li>
+                            <a id="link_createaccount"><i class="fa fa-edit fa-fw"></i> Create Account</a>
+                        </li>
+                        <li>
+                            <a id="link_review"><i class="fa fa-edit fa-fw"></i> Review</a>
+                        </li>
+                        <li>
+                            <a id="link_inbox"><i class="fa fa-envelope-square fa-fw"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a id="link_logout"><i class="fa fa-times-circle-o fa-fw"></i> Logout</a>
+                        </li>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -124,13 +211,13 @@
     <script src="js/chat.js"></script>
     <script src="js/chatlist.js"></script>
     <script src="js/inbox.js"></script>
-    <script src="js/bookings.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/sidebar.js"></script>
-    
 
     
 <script>
+    Dashboard = {};
+    Bookings = {};
     $( document ).ready(function() {
         var page_layout = {
             header: "content-header",
@@ -138,8 +225,8 @@
         };
         
         Login.Display(Page.Layout);
-        //SideBar.AddListeners();
-        //NavBar.IntervalUpdate(5000);
+        SideBar.AddListeners();
+        NavBar.IntervalUpdate(5000);
     });
 </script>
 

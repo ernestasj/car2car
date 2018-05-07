@@ -1,4 +1,5 @@
 <?php
+    include("../php/loggedin.php");
 // Needs to be a database call. Something like GetCarBodyList()
     $body = [["value" => "Coupe", "text" => "Coupe"]];
     array_push($body, ["value" => "Hatch", "text" => "Hatch"]);

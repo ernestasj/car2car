@@ -32,8 +32,8 @@ Chat.Form.TextBox = Template.Form.TextBox({
 });
 
 Chat.Form.HiddenInput = Template.Form.HiddenInput({
-    id: "bookingid",
-    name: "bookingid"
+    id: "messageid",
+    name: "messageid"
 });
 
 Chat.Form.SendButton = Template.Submit({
@@ -50,6 +50,30 @@ Chat.Body.Form = Template.Form({
     Chat.Form.HiddenInput +
     Chat.Form.SendButton
 });
+
+/*
+    Chat.Body = '<div class="col-lg-12" >\
+    <div class="list-car-panel panel panel-default">\
+        <div class="panel-heading">\
+            <h3 class="panel-title">Chat</h3>\
+        </div>\
+        <div class="panel-body">\
+            <form role="form" action = "" method = "post" enctype="multipart/form-data" id="chatform">\
+                <fieldset>\
+                    <div class="form-group messages" id="message_history">\
+                    </div>\
+                    <div class="form-group">\
+                        <textarea class="form-control" placeholder="Your comments" name="message" rows="5" autofocus id="message"></textarea>\
+                        <input type="hidden" name="messageid" id="messageid">\
+                    </div>\
+                    <button class="btn btn-lg btn-success btn-block" id="btnSubmit">Submit Review</button>\
+                </fieldset>\
+            </form>\
+        </div>\
+    </div>\
+</div>';
+
+*/
 
 Chat.FormatMessage = function(message)
 {
@@ -68,47 +92,34 @@ Chat.AppendMessages = function(messages)
     });
 }
 
-Chat.Display = function(page, bookingid){
-    //console.log(bookingid);
+Chat.Display = function(page, messageid){
+
 
     $("#"+page.header).html(Chat.Header);
 
     $("#"+page.body).html(Chat.Body.Form);
 
-    $("#bookingid").val(bookingid);
-
     Util.LoadJSON("../json/chat.php", function(data){
-        var chat_history = Template.Messages({messages: data});
+        var messages = data.messages;
+        test_messages = data.messages;
+        var messageid = data.messageid;
+        var chat_history = Template.Messages({messages: messages});
         $("#message_history").html(chat_history);
-    }, {bookingid: bookingid});
-    if(Chat.MessageRetrievalInterval != -1){
-        clearInterval(Chat.MessageRetrievalInterval);
-    }
-    Chat.MessageRetrievalInterval = setInterval(Chat.CheckForNewMessages, 1000);
-    Util.PrepareForm("#chatform", "../submit/message.php", "#btnSubmit", "", Chat.ClearInput, Util.DoNothing);
+        $("#messageid").val(messageid);
+    }, {messageid: messageid});
+
+    Chat.MessageRetrievalInterval = setInterval(Chat.CheckForNewMessages, 3000)
+    Util.PrepareForm("#chatform", "../submit/message.php", "#btnSubmit", "", Util.DoNothing, Util.DoNothing);
 };
-
-Chat.Refresh = function () {
-    var bookingid = $("#bookingid").val();
-    Chat.Display(bookingid);
-}
-
-Chat.ClearInput = function () {
-    $("#message").val("");
-}
 
 Chat.CheckForNewMessages = function()
 {
-    if($("#message_history").length == 0)
-    {
-        clearInterval(Chat.MessageRetrievalInterval); 
-    }
-    else
-    {
-        var bookingid = $("#bookingid").val();
-        Util.LoadJSON("../json/chat.php", function(data){
-            var chat_history = Template.Messages({messages: data});
-            $("#message_history").html(chat_history);
-        }, {bookingid: bookingid});
-    }
+    Util.LoadJSON("../json/chat.php", function(data){
+        var messages = data.messages;
+        test_messages = data.messages;
+        var messageid = data.messageid;
+        var chat_history = Template.Messages({messages: messages});
+        $("#message_history").html(chat_history);
+        $("#messageid").val(messageid);
+    }, {messageid: messageid});    
 }

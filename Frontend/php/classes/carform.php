@@ -7,7 +7,7 @@ class CarFormClass
     public $body;
     public $transmission;
 
-    function __construct()
+    function __constructor()
     {
         $this->make = array();
         $this->door = array();
@@ -15,15 +15,6 @@ class CarFormClass
         $this->body = array();
         $this->transmission = array();
         $this->refreshValues();
-    }
-
-    function __construct0()
-    {
-        $this->make = array("make");
-        $this->door = array("door");
-        $this->petrol = array("petrol");
-        $this->body = array("body");
-        $this->transmission = array("transmission");
     }
 
     function refreshValues()

@@ -19,7 +19,6 @@ ViewCar.Form.Book = Template.Submit({
 
 ViewCar.DateInput = Template.Form.DateInput({
     id: "date",
-    name: "date",
     classes: ""
 });
 
@@ -28,52 +27,24 @@ ViewCar.Make = Template.Form.Info({
     label: "Make",
     classes: "",
     content: "Vehicle Make"
-});
+})
 
 ViewCar.Model = Template.Form.Info({
     id: "model",
     label: "Model",
     classes: "",
     content: "Vehicle Model"
-});
-
-ViewCar.Rating = Template.Form.StarRating ({
-    name: "rating"
-});
-
-// id, classes, name, rows, placeholder
-ViewCar.Comments = Template.Form.TextBox({
-    id: "comments",
-    classes: "",
-    name: "comments",
-    rows: "10",
-    placeholder: "Your comments"
 })
 
-ViewCar.ReviewHeader = Template.SubHeading({
-    id: "",
-    classes: "",
-    title: "Leave a Review"
-});
-
-// name, id
-ViewCar.CarID = Template.Form.HiddenInput({
-    id: "carid",
-    name: "carid"
-});
 
 ViewCar.Body.Form = Template.Form({
     formid: "viewcar",
     method: "post",
     groups: 
-    ViewCar.Make + 
-    ViewCar.Model + 
-    ViewCar.DateInput + 
-    ViewCar.Form.Book + 
-    ViewCar.ReviewHeader + 
-    ViewCar.Rating + 
-    ViewCar.Comments + 
-    ViewCar.CarID +
+    ViewCar.Make +
+    ViewCar.Model +
+    ViewCar.DateInput +
+    ViewCar.Form.Book +
     ViewCar.Form.Review
 });
 
@@ -81,7 +52,6 @@ ViewCar.Body.PanelBody = Template.PanelBody({
     title:"Rego",
     body: ViewCar.Body.Form
 });
-
 /*
 ViewCar.Body = '<div class="col-lg-12" >\
     <div class="list-car-panel panel panel-default">\
@@ -104,20 +74,15 @@ ViewCar.InsertData = function(data)
 ViewCar.Display = function(page, carid){
     $("#"+page.header).html(ViewCar.Header);
     $("#"+page.body).html(ViewCar.Body.PanelBody);
-    $("#carid").val(carid);
-    
     Util.LoadJSON("../json/viewcar.php", function(data){
         //console.log(data);
         ViewCar.InsertData(data);
     }, {carid: carid});
-    
     $(function () {
         $(".datepicker").datepicker({
             format: "mm/dd/yyyy"
         });
     });
-    
-    
 
     /*
     $("#btnReview").click(function(){
@@ -125,17 +90,5 @@ ViewCar.Display = function(page, carid){
     });
     */
     //Util.PrepareForm("#reviewform", "../json/search.php", "#btnSearch", "", Util.DoNothing, Util.DoNothing);
-    Util.PrepareForm("#viewcar", "../submit/addreview.php", "#btnReview", "", ViewCar.ConfirmReview, Util.DoNothing);
-    Util.PrepareForm("#viewcar", "../submit/booking.php", "#btnBook", "", ViewCar.ConfirmBooking, Util.DoNothing);
 };
 
-
-ViewCar.ConfirmBooking = function(data)
-{
-    Bookings.Display(Page.Layout);
-}
-
-ViewCar.ConfirmReview = function(data)
-{
-    Search.Display(Page.Layout);
-}

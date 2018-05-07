@@ -3,7 +3,13 @@ var Login = {};
 Login.Header = Template.Header({
     title: "Welcome"
 });
-
+/*
+Login.Header = '\
+    <div class="col-lg-12">\
+        <h1 class="page-header">Welcome</h1>\
+    </div>\
+    <!-- /.col-lg-12 -->';
+*/
 Login.Body = {};
 Login.Form = {};
 
@@ -63,7 +69,6 @@ Login.Check = function(data)
     if(data.status == 'success')
     {
         Search.Display(Page.Layout);
-        SideBar.Display(Page.Layout);
     }
     else
     {

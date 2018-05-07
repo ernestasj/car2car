@@ -35,8 +35,8 @@
         }
          
         function WriteDB($db) {
-            $stmt = $db->prepare("call CreateAccount(?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssss", $this->email, $this->password, $this->first_name, $this->last_name, $this->licence, $this->photo);
+            $stmt = $db->prepare("call CreateAccount(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssssssss", $this->email, $this->password, $this->first_name, $this->last_name, $this->licence, $this->cardtype, $this->ccnumber, $this->expiry, $this->cvc, $this->cardname, $this->photo);
             $stmt->execute();
             $stmt->close();    
         }
