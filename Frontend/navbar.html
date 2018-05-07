@@ -16,14 +16,14 @@
             <a class="nav-link" href="addcar.html">Add Car</a>
             </li>
             <li class="nav-item" ng-show="show_accountlinks">
-            <a class="nav-link" href="./submit/logout.php"">Logout </a>
+            <a class="nav-link" href="./submit/logout.php">Logout </a>
             </li>
         </ul>
         <form class="form-inline m-0 col-sm-6" id="navbar_search_form" action="./results.html" method="GET">
             <input type="text" name="keywords" class="col-sm-8 col-md-6 col-lg-7 form-control input-sm">
             <button class="btn btn-primary" id="nav_search">Search</button>
             <button class="btn btn-primary" type="button" id="nav_login" data-toggle="modal" data-target="#login" ng-show="show_login">Login</button>
-            <button class="btn btn-primary" type="button" id="nav_signup" ng-show="show_signup">Signup</button>
+            <button class="btn btn-primary" type="button" ng-click="login()" ng-show="show_signup">Signup</button>
             
         </form>
         </div>

@@ -1,24 +1,14 @@
 
 
-
-$(document).ready(function(){
-    /*$("#nav_login").click(function(){
-          window.location.href = "./login.html";
-    });*/
-    $("#nav_signup").click(function(){
-          window.location.href = "./createaccount.html";
-    });
-/*
-    $("#nav_search").click(function(){
-        window.location.href = "./results.html";
-    });
-*/
-});
-
 app.controller('navbarCtrl', function($scope, $http) {
     $scope.show_login = true;
     $scope.show_signup = true;
     $scope.show_accountlinks = false;
+
+    $scope.login = function(){
+        window.location.href = "./createaccount.html";
+    }
+
     $scope.form = {};
 
     $http.post("./json/loggedin.php",
@@ -59,7 +49,7 @@ app.controller('navbarCtrl', function($scope, $http) {
             //debugger;
             if(response.data.status == "loggedin")
             {
-                console.log("logged in!");
+                window.location.href = "./index2.html";
                 $scope.show_login = false;
                 $scope.show_signup = false;
                 $scope.show_accountlinks = true;
