@@ -1,6 +1,5 @@
 <?php
 // similar to body. needs to be a db call so admin can update.
-    include("../php/loggedin.php");
     $makes = [["value" => "Ford", "text" => "Ford"]];
     array_push($makes, ["value" => "Holden", "text" => "Holden"]);
     array_push($makes, ["value" => "Nissan", "text" => "Nissan"]);

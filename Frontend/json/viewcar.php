@@ -7,6 +7,7 @@
         $carid = $_GET["carid"];
         $cars = unserialize($_SESSION['cars']);
         echo $cars->CarToJSON($carid);
+        $_SESSION['cars'] = serialize($cars);
     }
     else
     {

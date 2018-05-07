@@ -1,7 +1,6 @@
 <?php
 
     // This needs to be a database call as well. GetModels(make)
-    include("../php/loggedin.php");
     $models = [];
     $ford = [["value" => "Falcon", "text" => "Falcon"]];
     array_push($ford, ["value" => "Ranger", "text" => "Ranger"]);

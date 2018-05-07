@@ -6,7 +6,7 @@ Review.Header = '\
     </div>\
     <!-- /.col-lg-12 -->';
 
-    Review.Body = '<div class="col-lg-12" >\
+Review.Body = '<div class="col-lg-12" >\
     <div class="list-car-panel panel panel-default">\
         <div class="panel-heading">\
             <h3 class="panel-title">Review</h3>\
@@ -58,11 +58,13 @@ Review.Header = '\
     </div>\
 </div>';
 
-Review.Display = function(page, carid){
+Review.Display = function(page, carid) {
+    
     $("#"+page.header).html(Review.Header);
     $("#"+page.body).html(Review.Body);
 
     $('#carid').val(carid);
 
     Util.PrepareForm("#reviewform", "../json/addreview.php", "#btnSubmit", "", Search.Display, Page.Layout);
+    
 };

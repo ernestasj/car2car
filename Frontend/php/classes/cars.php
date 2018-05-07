@@ -12,9 +12,12 @@
             // Load rows from DB
             if(mysqli_num_rows($result) > 0)
             {
+                $car = new Car;
+                array_push($this->cars, $car);
+
                 while($row = mysqli_fetch_array($result))
                 {
-                    $this->AddCar($row);
+                    $this->AddCar($db, $row);
                 }
             }
             
@@ -45,12 +48,13 @@
             return $result;
         }
 
-        function AddCar($row)
+        function AddCar($db, $row)
         {
-            $car = new Car;
-            $car->rego = $row['rego'];
-            $car->make = $row['make'];
-            $car->model = $row['model'];
+            $car = new Car($row);
+            //$car->rego = $row['rego'];
+            //$car->make = $row['make'];
+            //$car->model = $row['model'];
+            $car->AddRating($db);
             array_push($this->cars, $car);
         }
 
@@ -74,17 +78,20 @@
             $data = [];
             $count = 0;
             foreach($this->cars as $car) {
-                $car_array = $car->AsArray();
-                $car_array['id'] = $count;
-                array_push($data, $car_array);
+                if($count > 0)
+                {
+                    $car_array = $car->AsArray();
+                    $car_array['id'] = $count;
+                    array_push($data, $car_array);
+                }
                 $count = $count + 1;
             }
             return json_encode($data);
         }
 
-        function AddReview($user, $carid, $rating, $comments)
+        function AddReview($db, $user, $carid, $rating, $comments)
         {
-            if(array_key_exists($carid, $cars))
+            if(array_key_exists($carid, $this->cars))
             {
                 $this->cars[$carid]->AddReview($db, $user, $rating, $comments);
             }
@@ -98,6 +105,16 @@
                 $car = $this->cars[$carid]->AsArray();
                 return json_encode($car);
             }
+        }
+
+        function GetRego($carid)
+        {
+            if(array_key_exists($carid, $this->cars))
+            {
+                $car = $this->cars[$carid];
+                return $car->rego;
+            }
+           
         }
 
     }

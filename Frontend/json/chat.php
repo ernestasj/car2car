@@ -1,41 +1,57 @@
 <?php
-    include("../php/loggedin.php");
-    // this needs a class. messageid comes from inbox
-    $messages = [];
-    
-    $message1 = [["sender" => "Bob", "message" => "Hello! :D"]];
-    array_push($message1, ["sender" => "Joe", "message" => "Hi!"]);
-    array_push($message1, ["sender" => "Joe", "message" => "How can I help you?"]);
-    array_push($message1, ["sender" => "Bob", "message" => "When is your car available?"]);
-    array_push($message1, ["sender" => "Joe", "message" => "Anytime!"]);
-    
-    $messages['0'] = $message1;
-
-    $message2 = [["sender" => "Bob", "message" => "Hello! :D"]];
-    array_push($message2, ["sender" => "Patrick", "message" => "Hi!"]);
-    array_push($message2, ["sender" => "Patrick", "message" => "How can I help you?"]);
-    array_push($message2, ["sender" => "Bob", "message" => "When is your car available?"]);
-    array_push($message2, ["sender" => "Patrick", "message" => "Not until Monday sorry :("]);
-
-    $messages['1'] = $message2;
-
-     $none = [];
+    include("../php/includes.php");
+    //include("../php/loggedin.php");
      //echo json_encode($message1);
-    if(isset($_GET["messageid"])) {
-        $messageid = $_GET["messageid"];
-        if(array_key_exists($messageid, $messages))
-        {
-            $message = ["messageid" => $messageid, "messages" => $messages[$messageid]];
-            echo json_encode($message);
-        }
-        else
-        {
-            echo json_encode($none);
-        }
+    
+    $none = [];
+    $postdata = file_get_contents("php://input");
+
+    $request = json_decode($postdata);
+    $bookingid = $request->bookingid;
+
+    if(isset($bookingid)) {
+        //$user = unserialize($_SESSION['user']);
+        //$messages = new Messages;
+        //$messages->LoadMessages($db, $user->email, $bookingid);
+        //echo $messages->ToJSON();
+        $inbox = [];
+        $msg1 = [];
+        $msg1["userid"] = 0;
+        $msg1["userimage"] = "user1.jpg";
+        $msg1["otherimage"] = "user2.jpg";
+        $msg1["othername"] = "Bob";
+        $msg1["username"] = "Robert";
+        $msg1['messages'] = [];
+        array_push($msg1['messages'], ["senderid" => 1, "content"=>"Hello!"]);
+        array_push($msg1['messages'], ["senderid" => 0, "content"=>"Hi"]);
+        array_push($msg1['messages'], ["senderid" => 1, "content"=>"Is your car available on friday?"]);
+        array_push($msg1['messages'], ["senderid" => 0, "content"=>"It sure is. What time did you want to pick it up?"]);
+        array_push($msg1['messages'], ["senderid" => 1, "content"=>"10:30am?"]);
+        array_push($msg1['messages'], ["senderid" => 0, "content"=>"Sure!"]);
+        
+        array_push($inbox, $msg1);
+
+        $msg2 = [];
+        $msg2["userid"] = 0;
+        $msg2["userimage"] = "user1.jpg";
+        $msg2["otherimage"] = "user3.jpg";
+        $msg2["othername"] = "Harry";
+        $msg2["username"] = "Robert";
+        $msg2['messages'] = [];
+        array_push($msg2['messages'], ["senderid" => 1, "content"=>"Hello!"]);
+        array_push($msg2['messages'], ["senderid" => 0, "content"=>"Hi There!"]);
+        array_push($msg2['messages'], ["senderid" => 1, "content"=>"Is your car available on friday?"]);
+        array_push($msg2['messages'], ["senderid" => 0, "content"=>"It sure is. What time did you want to pick it up?"]);
+        array_push($msg2['messages'], ["senderid" => 1, "content"=>"10:30am?"]);
+        array_push($msg2['messages'], ["senderid" => 0, "content"=>"No Way!"]);
+        
+        array_push($inbox, $msg2);
+
+        //echo $bookingid;
+        echo json_encode($inbox[$bookingid]);
     }
     else
-    {
-        echo json_encode($none);
+    {echo json_encode($none);
     }
 
 
