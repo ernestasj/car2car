@@ -1,1 +1,1 @@
-var app = angular.module('page',  ['ngAnimate', 'angularSlideables']);
+var app = angular.module('page',  ['ngAnimate']);

@@ -5,11 +5,11 @@ app.controller('navbarCtrl', function($scope, $http) {
     $scope.show_signup = true;
     $scope.show_accountlinks = false;
 
-    $scope.login = function(){
+    $scope.form = {};
+
+    $scope.signup = function(){
         window.location.href = "./createaccount.html";
     }
-
-    $scope.form = {};
 
     $http.post("./json/loggedin.php",
     {
