@@ -40,6 +40,10 @@ app.controller('navbarCtrl', function($scope, $http) {
         };
     
     $scope.login = function () {
+        console.log("Logged in!");
+        console.log($scope.form.email);
+        console.log($scope.form.password);
+
         $http.post("./submit/login.php",
         {
             email: $scope.form.email,
@@ -47,8 +51,10 @@ app.controller('navbarCtrl', function($scope, $http) {
         })
         .then(function(response) {
             //debugger;
+            console.log(response);
             if(response.data.status == "loggedin")
             {
+                
                 window.location.href = "./index2.html";
                 $scope.show_login = false;
                 $scope.show_signup = false;
