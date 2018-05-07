@@ -1,6 +1,5 @@
 <?php
     // Another database call
-    include("../php/loggedin.php");
     $petrol = [["value" => "E10", "text" => "E10"]];
     array_push($petrol, ["value" => "RON-91", "text" => "RON-91"]);
     array_push($petrol, ["value" => "RON-95", "text" => "RON-95"]);

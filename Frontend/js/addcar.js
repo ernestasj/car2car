@@ -154,6 +154,7 @@ AddCar.Display = function(page){
     */
     //AddCar.InsertJSON();
     Util.PrepareForm("#addcarform", "../submit/addcar.php", "#btnSubmit", Util.DoNothing, AddCar.SubmitCallback, function() {
+        //Display.Search(Page.Layout);
         //Util.UpdateToggles(AddCar.ToggleValues);
     });
 };
@@ -306,7 +307,8 @@ AddCar.ToggleValues = [
 
 AddCar.SubmitCallback = function(data)
 {
-
+    //console.log("Hello!");
+    Search.Display(Page.Layout);
 }
 
 AddCar.AddMakes = function(id, value_pairs)
@@ -324,55 +326,3 @@ AddCar.AddPetrol = function(id, value_pairs)
 {
     Util.AppendChoices(id, value_pairs);
 }
-
-/*
-
-AddCar.PrepareForm = function() {
-
-    $("#btnSubmit").click(function (event) {
-        
-        Util.UpdateToggles(AddCar.ToggleValues);
-
-        //stop submit the form, we will post it manually.
-        event.preventDefault();
-
-        // Get form
-        var form = $('#addcarform')[0];
-
-        // Create an FormData object 
-        var data = new FormData(form);
-
-        // If you want to add an extra field for the FormData
-        //data.append("CustomField", "This is some extra data, testing");
-
-        // disabled the submit button
-        $("#btnSubmit").prop("disabled", true);
-
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: "../submit/addcar.php",
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
-
-                $("#result").text(data);
-                console.log("SUCCESS : ", data);
-                $("#btnSubmit").prop("disabled", false);
-
-            },
-            error: function (e) {
-
-                $("#result").text(e.responseText);
-                console.log("ERROR : ", e);
-                $("#btnSubmit").prop("disabled", false);
-
-            }
-        });
-
-    });
-}
-*/

@@ -9,10 +9,11 @@ CarList.Body = {};
 CarList.TableHeaders = {
     rego: "Rego",
     make: "Make",
-    model: "Model"
+    model: "Model",
+    rating: "Rating"
 };
 
-CarList.TableOrder = ["rego", "make", "model"];
+CarList.TableOrder = ["rego", "make", "model", "rating"];
 
 CarList.Table = {};
 
@@ -51,7 +52,6 @@ CarList.Display = function(page, data) {
         event.stopPropagation();
         event.stopImmediatePropagation();
         var carid = $(this).data('id');
-        console.log(carid);
         ViewCar.Display(Page.Layout, carid);
     });
 

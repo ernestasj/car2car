@@ -92,9 +92,9 @@ Template.Table.Headers = _.template('\
 // row, classes, fields
 Template.Table.Row = _.template('\
 <tr>\
-    <%_.forEach(fields, function (field){\
+    <%var id = row["id"] || "";\
+    _.forEach(fields, function (field){\
         var item = row[field];\
-        var id = row["id"] || "";\
         %>\
         <td data-id="<%=id%>" class="<%=classes%>"><%=item%></td>\
     <%});%>\
@@ -146,11 +146,11 @@ Template.Form.HiddenInput = _.template('\
 
 
 
-// id, classes
+// id, classes, name
 Template.Form.DateInput = _.template('\
 <div class="form-group">\
     <div class="input-group date <%=classes%>" data-provide="datepicker" id="<%=id%>">\
-        <input type="text" class="form-control" />\
+        <input type="text" class="form-control" name="<%=name%>"/>\
         <div class="input-group-addon">\
             <span class="fa fa-calendar"></span>\
             </span>\
@@ -165,5 +165,62 @@ Template.Form.Info = _.template('\
     <label for="<%=name%>"><%=label%></label>\
     <span id="<%=id%>" classes="<%=classes%>"><%=content%></span>\
 </div>\
+');
+
+// name
+Template.Form.StarRating = _.template('\
+<div class="form-group rating">\
+    <label>\
+        <input type="radio" name="<%=name%>" value="1" />\
+        <span class="icon">★</span>\
+    </label>\
+    <label>\
+        <input type="radio" name="<%=name%>" value="2" />\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+    </label>\
+    <label>\
+        <input type="radio" name="<%=name%>" value="3" />\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+    </label>\
+    <label>\
+        <input type="radio" name="<%=name%>" value="4" />\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+    </label>\
+    <label>\
+        <input type="radio" name="<%=name%>" value="5" />\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+        <span class="icon">★</span>\
+    </label>\
+</div>\
+');
+
+
+// classes, id, title
+Template.SubHeading = _.template('\
+<div class="form-group <%=classes%>" id="<%=id%>">\
+<h2><%=title%></h2>\
+</div>\
+');
+
+Template.Sidebar = {};
+
+// id, icon, text
+Template.Sidebar.Item =_.template('\
+<li>\
+    <a id="<%=id%>"><i class="fa <%=icon%> fa-fw"></i> <%=text%></a>\
+</li>\
+');
+
+Template.Car.Square = _.template('\
+<div></div>\
 ');
 
