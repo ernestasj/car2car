@@ -91,6 +91,29 @@ INSERT INTO `car` VALUES ('ABC-ABC','Ford','86','Diesel','auto','1234','4','3000
 UNLOCK TABLES;
 
 --
+-- Table structure for table `carphoto`
+--
+
+DROP TABLE IF EXISTS `carphoto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `carphoto` (
+  `rego` varchar(45) NOT NULL,
+  `filename` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`rego`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carphoto`
+--
+
+LOCK TABLES `carphoto` WRITE;
+/*!40000 ALTER TABLE `carphoto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `carphoto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `doors`
 --
 
@@ -248,13 +271,21 @@ CREATE TABLE `user` (
   `licence` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `ccnumber` varchar(45) DEFAULT NULL,
-  `ccexpiry` varchar(45) DEFAULT NULL,
+  `expiry` varchar(45) DEFAULT NULL,
   `cvc` varchar(45) DEFAULT NULL,
   `cardtype` varchar(45) DEFAULT NULL,
   `cardname` varchar(45) DEFAULT NULL,
   `photo` varchar(45) DEFAULT NULL,
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
+  `street` varchar(45) DEFAULT NULL,
+  `suburb` varchar(45) DEFAULT NULL,
+  `postcode` varchar(45) DEFAULT NULL,
+  `mobnumber` varchar(45) DEFAULT NULL,
+  `landline` varchar(45) DEFAULT NULL,
+  `dob` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `number` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -265,8 +296,31 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('a','a','a',NULL,NULL,NULL,NULL,NULL,'','a','a'),('Bob','123123','bob',NULL,NULL,NULL,NULL,NULL,'','sdfgsdf','bob'),('Ernesta ','ABY458999','ernestas',NULL,NULL,NULL,NULL,NULL,'','Janusas','ernestas.janusas@gmail.com'),('Joe','123123','joe',NULL,NULL,NULL,NULL,NULL,'','dfgdfg','joe'),('Mike','123123','mike',NULL,NULL,NULL,NULL,NULL,'','sdfsd','mike'),('Plonk','7654321','password',NULL,NULL,NULL,NULL,NULL,'','KerPlonk','plonk@plonkmail.gov'),('John','1300655506','potate',NULL,NULL,NULL,NULL,NULL,'','Cena','potate@yeet.com'),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie'),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie@vodka.gov.sru'),('test','234235235','test',NULL,NULL,NULL,NULL,NULL,'','test','test');
+INSERT INTO `user` VALUES ('a','a','a',NULL,NULL,NULL,NULL,NULL,'','a','a',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('a','a','b','a','a','a','a',NULL,NULL,'a','b','a','a','a','a','a','a','a','a'),('Bob','123123','bob',NULL,NULL,NULL,NULL,NULL,'','sdfgsdf','bob',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('d','d','d','d','d','d','Visa',NULL,NULL,'d','d@d','d','d','d','d','d','d','nsw','d'),('Ernesta ','ABY458999','ernestas',NULL,NULL,NULL,NULL,NULL,'','Janusas','ernestas.janusas@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Joe','123123','joe',NULL,NULL,NULL,NULL,NULL,'','dfgdfg','joe',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Mike','123123','mike',NULL,NULL,NULL,NULL,NULL,'','sdfsd','mike',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Plonk','7654321','password',NULL,NULL,NULL,NULL,NULL,'','KerPlonk','plonk@plonkmail.gov',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('John','1300655506','potate',NULL,NULL,NULL,NULL,NULL,'','Cena','potate@yeet.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie@vodka.gov.sru',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('test','234235235','test',NULL,NULL,NULL,NULL,NULL,'','test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `userphoto`
+--
+
+DROP TABLE IF EXISTS `userphoto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `userphoto` (
+  `email` varchar(45) NOT NULL,
+  `filename` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `userphoto`
+--
+
+LOCK TABLES `userphoto` WRITE;
+/*!40000 ALTER TABLE `userphoto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `userphoto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -448,9 +502,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateAccount`(email varchar(45), pass varchar(45), firstname varchar(45), lastname varchar(45), licence varchar(45), photo varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateAccount`(email VARCHAR(45), password VARCHAR(45), firstname VARCHAR(45), lastname VARCHAR(45), licence VARCHAR(45), dob VARCHAR(45), number VARCHAR(45), street VARCHAR(45), suburb VARCHAR(45), state VARCHAR(45), postcode VARCHAR(45), mobnumber VARCHAR(45), landline VARCHAR(45), ccnumber VARCHAR(45), cvc VARCHAR(45), cardtype VARCHAR(45), expiry  VARCHAR(45))
 BEGIN
-	INSERT INTO user (email, password, firstname, lastname, licence, photo) VALUES (email, pass, firstname, lastname, licence, photo);
+	INSERT INTO user (email, password, firstname, lastname, licence, dob, number, street, suburb, state, postcode, mobnumber, landline, ccnumber, cvc, cardtype, expiry) VALUES (email, password, firstname, lastname, licence, dob, number, street, suburb, state, postcode, mobnumber, landline, ccnumber, cvc, cardtype, expiry);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -843,17 +897,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUser`(email varchar(45))
 BEGIN
 	SELECT 
-		email AS email,
-        password as password,
-		firstname AS first_name,
-        lastname AS last_name,
-        licence AS licence,
-        cardtype as cardtype,
-        ccnumber as ccnumber,
-        ccexpiry as expiry,
-        cvc as cvc,
-        cardname as cardname,
-        photo as photo
+		*
 	FROM
 		user
 	WHERE
@@ -1034,4 +1078,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-06 14:44:25
+-- Dump completed on 2018-05-08 16:46:28

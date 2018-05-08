@@ -9,6 +9,7 @@
 ====================
 
     - Cannot Create Account into Database
+        - Should be working now. Needs new sql schema
 
 ====================
     Nathaniel
