@@ -153,6 +153,24 @@
             return $object;    
         }
 
+        function ToJSON()
+        {
+            
+            //$obj_ref = $this->desc;
+            $object = $this->desc;
+            if(isset($object['password']))
+                unset($object['password']);
+            if(isset($object['ccnumber']))
+                unset($object['ccnumber']);
+            if(isset($object['expiry']))
+                unset($object['expiry']);
+            if(isset($object['cvc']))
+                unset($object['cvc']);
+            if(isset($object['cardtype']))
+                unset($object['cardtype']);
+            return json_encode($object);
+        }
+
         function InsertAsJSObject($name)
         {
             echo $this->JSObject($name);

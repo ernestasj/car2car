@@ -7,17 +7,18 @@
                 <h3> {{form_title}} </h3>
               </div>
               <div class="panel-body">
-                <form class="" method="post" action="./submit/createaccount.php"> <!--Need to use angular value for edit account-->
+                <form class="" method="post" action="./submit/updateaccount.php"> <!--Need to use angular value for edit account-->
                   <div class="">
                     <h4 class="m-2"> Login </h4>
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-12">
-                      <input type="email" class="form-control m-1" required="" id="email" placeholder="Enter email" name="email"> </div>
+                      <input type="email" class="form-control m-1" required="" id="email" placeholder="Enter email" name="email" ng-model="form.email"> </div>
                     <div class="col-sm-12" id="email_valid"> </div>
                     <div class="col-sm-12">
-                      <input type="password" class="form-control m-1" required="" id="password" placeholder="Enter password" name="password">
-                      <input type="password" class="form-control m-1" required="" id="password_check" placeholder="Verify password" name="password2"> </div>
+                      <input type="password" class="form-control m-1" required="" id="old_password" placeholder="Enter old password" name="password">
+                      <input type="password" class="form-control m-1" required="" id="password" placeholder="Enter new password" name="password">
+                      <input type="password" class="form-control m-1" required="" id="password_check" placeholder="Verify new password" name="password2"> </div>
                     <div class="col-sm-12" id="passwords_match"> </div>
                   </div>
                   <div>
@@ -25,20 +26,20 @@
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" required="" id="firstname" placeholder="First Name" name="firstname" ng-model="firstname"> </div>
+                      <input type="text" class="form-control m-1" required="" id="firstname" placeholder="First Name" name="firstname" ng-model="form.firstname"> </div>
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" required="" id="lastname" placeholder="Last Name" name="lastname" ng-model="lastname"> </div>
+                      <input type="text" class="form-control m-1" required="" id="lastname" placeholder="Last Name" name="lastname" ng-model="form.lastname"> </div>
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" required="" id="dob" placeholder="Date of Birth" name="dob" ng-model="dob"> </div>
+                      <input type="text" class="form-control m-1" required="" id="dob" placeholder="Date of Birth" name="dob" ng-model="form.dob"> </div>
                   </div>
                   <div>
                     <h4 class="m-1"> Identification </h4>
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" required="" id="licence" placeholder="Licence No." name="licence" ng-model="licence"> </div>
+                      <input type="text" class="form-control m-1" required="" id="licence" placeholder="Licence No." name="licence" ng-model="form.licence"> </div>
                     <div class="col-sm-6">
                       <input type="file" class="form-control-file m-1" required="" id="photo" name="photo" ng-model="photo"> </div>
                   </div>
@@ -47,43 +48,43 @@
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-2">
-                      <input type="text" class="form-control m-1" required="" id="number" placeholder="Number" name="number" ng-model="number"> </div>
+                      <input type="text" class="form-control m-1" required="" id="number" placeholder="Number" name="number"ng-model="form.number"> </div>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control m-1" required="" id="street" placeholder="Street" name="street" ng-model="street"> </div>
+                      <input type="text" class="form-control m-1" required="" id="street" placeholder="Street" name="street" ng-model="form.street"> </div>
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" required="" id="suburb" placeholder="Suburb" name="suburb"  ng-model="suburb"> </div>
+                      <input type="text" class="form-control m-1" required="" id="suburb" placeholder="Suburb" name="suburb" ng-model="form.suburb"> </div>
                     <div class="col-sm-3">
-                      <select type="text" class="form-control m-1" required="" id="state" placeholder="State" name="state" ng-model="state">
+                      <select type="text" class="form-control m-1" required="" id="state" placeholder="State" name="state" ng-model="form.state">
                         <option value="nsw" selected="">NSW</option>
                         <option value="vic">VIC</option>
                       </select>
                     </div>
                     <div class="col-sm-3">
-                      <input type="text" class="form-control m-1" required="" id="postcode" placeholder="Post code" name="postcode" ng-model="postcode"> </div>
+                      <input type="text" class="form-control m-1" required="" id="postcode" placeholder="Post code" name="postcode" ng-model="form.postcode"> </div>
                   </div>
                   <div>
                     <h4 class="m-1"> Contact </h4>
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" required="" id="mobnumber" placeholder="Mobile Number" name="mobnumber" ng-model="mobnumber"> </div>
+                      <input type="text" class="form-control m-1" required="" id="mobnumber" placeholder="Mobile Number" name="mobnumber" ng-model="form.mobnumber"> </div>
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" id="landline" placeholder="Landline (Home/Business)" name="landline" ng-model="landline"> </div>
+                      <input type="text" class="form-control m-1" id="landline" placeholder="Landline (Home/Business)" name="landline" ng-model="form.landline"> </div>
                   </div>
                   <div>
                     <h4 class="m-1"> Payment </h4>
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-5">
-                      <input type="text" class="form-control m-1" required="" id="cardno" placeholder="Card No." name="ccnumber" ng-model="ccnumber"> </div>
+                      <input type="text" class="form-control m-1" required="" id="cardno" placeholder="Card No." name="ccnumber" ng-model="form.ccnumber"> </div>
                     <div class="col-sm-3">
-                      <input type="text" class="form-control m-1" required="" id="exp" placeholder="Expiry mm/yy" name="expiry" ng-model="expiry"> </div>
+                      <input type="text" class="form-control m-1" required="" id="exp" placeholder="Expiry mm/yy" name="expiry" ng-model="form.expiry"> </div>
                     <div class="col-sm-2">
-                      <input type="text" class="form-control m-1" required="" id="cvc" placeholder="cvc" name="cvc" ng-model="cvc"> </div>
+                      <input type="text" class="form-control m-1" required="" id="cvc" placeholder="cvc" name="cvc" ng-model="form.cvc"> </div>
                     <div class="col-sm-2">
-                      <select type="text" class="form-control m-1" required="" id="cardtype" placeholder="Card Type" name="cardtype"  ng-model="cardtype">
+                      <select type="text" class="form-control m-1" required="" id="cardtype" placeholder="Card Type" name="cardtype"  ng-model="form.cardtype">
                         <option value="Visa" selected="">Visa</option>
                         <option value="Mastercard">Mastercard</option>
                         <option value="Amex">Amex</option>
@@ -93,7 +94,7 @@
                   <div class="form-group">
                     <div class="col-sm-12 text-center py-2">
                       <span class="col-sm-4"></span>
-                      <button type="submit" class="btn col-sm-4 btn-outline-primary">Join</button>
+                      <button type="submit" class="btn col-sm-4 btn-outline-primary" ng-click="prntform()">Update Details</button>
                       <span class="col-sm-4"></span>
                     </div>
                   </div>

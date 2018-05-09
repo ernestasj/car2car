@@ -6,7 +6,7 @@
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
      $user = unserialize($_SESSION['user']);
-     $email = $user->email;
+     $email = $user->GetEmail();
       // This needs to be bundled into a car class
         //$photoname = $_FILES['photo']['name'];
         //$uploadfile = '../img/' . basename($_FILES['photo']['name']);

@@ -1,5 +1,5 @@
 node_modules
 bower_components
 config.php
-img/
-php/config.php
+Frontend/img/
+Frontend/php/config.php
