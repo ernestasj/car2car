@@ -298,7 +298,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('a','a','a',NULL,NULL,NULL,NULL,NULL,'','a','a',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('a','a','b','a','a','a','a',NULL,NULL,'a','b','a','a','a','a','a','a','a','a'),('Bob','123123','bob',NULL,NULL,NULL,NULL,NULL,'','sdfgsdf','bob',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('d','d','d','d','d','d','Visa',NULL,NULL,'d','d@d','d','d','d','d','d','d','nsw','d'),('Ernesta ','ABY458999','ernestas',NULL,NULL,NULL,NULL,NULL,'','Janusas','ernestas.janusas@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Joe','123123','joe',NULL,NULL,NULL,NULL,NULL,'','dfgdfg','joe',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Mike','123123','mike',NULL,NULL,NULL,NULL,NULL,'','sdfsd','mike',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Plonk','7654321','password',NULL,NULL,NULL,NULL,NULL,'','KerPlonk','plonk@plonkmail.gov',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('John','1300655506','potate',NULL,NULL,NULL,NULL,NULL,'','Cena','potate@yeet.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie@vodka.gov.sru',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('test','234235235','test',NULL,NULL,NULL,NULL,NULL,'','test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES ('dfgdsfg','dfgdsfg','a','24234','234234','234234','Visa',NULL,'','dgdsfg','a','a','a','a','a','a','dfgdsfg','? string:a ?','a'),('a','a','b','a','a','a','a',NULL,NULL,'a','b','a','a','a','a','a','a','a','a'),('Bob','123123','bob',NULL,NULL,NULL,NULL,NULL,'','sdfgsdf','bob',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('d','d','d','d','d','d','Visa',NULL,NULL,'d','d@d','d','d','d','d','d','d','nsw','d'),('Ernesta ','ABY458999','ernestas',NULL,NULL,NULL,NULL,NULL,'','Janusas','ernestas.janusas@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Joe','123123','joe',NULL,NULL,NULL,NULL,NULL,'','dfgdfg','joe',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Mike','123123','mike',NULL,NULL,NULL,NULL,NULL,'','sdfsd','mike',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Plonk','7654321','password',NULL,NULL,NULL,NULL,NULL,'','KerPlonk','plonk@plonkmail.gov',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('John','1300655506','potate',NULL,NULL,NULL,NULL,NULL,'','Cena','potate@yeet.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie@vodka.gov.sru',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('test','234235235','test',NULL,NULL,NULL,NULL,NULL,'','test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1156,7 +1156,7 @@ BEGIN
         cardtype = cardtype,
         expiry = expiry
         WHERE
-        email = email;
+        user.email = email;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1211,4 +1211,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-09 18:05:15
+-- Dump completed on 2018-05-09 19:55:38

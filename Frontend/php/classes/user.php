@@ -195,11 +195,14 @@
 
         function UpdateUser($post)
         {
+
             foreach ($post as $key => $value)
             {
-                if(isset($value) && $value != "")
+                echo "Key:".$key. "|";
+                if(isset($value) && $value != "" && $key != "email")
                 {
-                    $desc[$key] = $value;
+                    echo "Value:". $value. "|";
+                    $this->desc[$key] = $value;
                 }
             }
         }
