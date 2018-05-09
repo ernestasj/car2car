@@ -30,7 +30,7 @@ CREATE TABLE `booking` (
   `date` varchar(45) NOT NULL,
   `bookingid` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`bookingid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES ('bob123','mike','05/31/2018',1),('bob123','mike','05/28/2018',2),('bob123','potate@yeet.com','',3),('bob123','plonk@plonkmail.gov','05/17/2018',4),('bob123','test','05/24/2018',5);
+INSERT INTO `booking` VALUES ('bob123','mike','05/31/2018',1),('bob123','mike','05/28/2018',2),('bob123','potate@yeet.com','',3),('bob123','plonk@plonkmail.gov','05/17/2018',4),('bob123','test','05/24/2018',5),('PH','a','12/12/56',6);
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +86,7 @@ CREATE TABLE `car` (
 
 LOCK TABLES `car` WRITE;
 /*!40000 ALTER TABLE `car` DISABLE KEYS */;
-INSERT INTO `car` VALUES ('ABC-ABC','Ford','86','Diesel','auto','1234','4','3000 to 3499cc','20,000 to 39,999km','suv',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Bondi','NSW','It\'s an awesome car! :D','2000','yes'),('abc123','Ford','86','Ron-98','Auto','1234','1','3500 to 3999cc','10,000 to 19,999km','Sedan',NULL,'bob','yes','yes','yes','yes','yes','no','no','Kingsford','nsw','It\'s a great car! A++++','2032','no'),('PH','Ford','ranger','Diesel','Auto','124','3','6000cc and over','200,000km+','Hatch',NULL,'bob','yes','no','no','no','no','no','no','Minto','nsw','Sort of okay car. You can\'t do any worse!','12345','yes'),('pizza','Holden','commodore','Ron-98','Manual','2008','4','3000 to 3499cc','100,000 to 149,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Coogee','nsw','This is a pretty crap car. Don\'t rent it!','1234','yes');
+INSERT INTO `car` VALUES ('ABC-ABC','Ford','86','Diesel','auto','1234','4','3000 to 3499cc','20,000 to 39,999km','suv',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Bondi','NSW','It\'s an awesome car! :D','2000','yes'),('abc123','Ford','86','Ron-98','Auto','1234','1','3500 to 3999cc','10,000 to 19,999km','Sedan',NULL,'bob','yes','yes','yes','yes','yes','no','no','Kingsford','nsw','It\'s a great car! A++++','2032','no'),('acar','Holden','commodore','RON-91','Auto','1234','3','3000 to 3499cc','20,000 to 39,999km','Hatch',NULL,'a','yes','yes','yes','yes','yes','no','no','a','nsw','Best car eva!!\r\n\r\nNo really. I drove this car once and I found a penny 3 years later!','123','no'),('PH','Ford','ranger','Diesel','Auto','124','3','6000cc and over','200,000km+','Hatch',NULL,'bob','yes','no','no','no','no','no','no','Minto','nsw','Sort of okay car. You can\'t do any worse!','12345','yes'),('pizza','Holden','commodore','Ron-98','Manual','2008','4','3000 to 3499cc','100,000 to 149,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Coogee','nsw','This is a pretty crap car. Don\'t rent it!','1234','yes'),('QWERTY','Holden','commodore','Ron-98','Auto','2001','2','3000 to 3499cc','200,000km+','Sedan',NULL,'','no','no','no','no','no','yes','yes','bondi','nsw','Best car you\'ll ever drive. Available from 10:30am Saturday and Sunday. Return by 9pm Sunday.','2001','no'),('ssdfsdf','Holden','ranger','Ron-98','Manual','34234','3','3500 to 3999cc','10,000 to 19,999km','Hatch',NULL,'','yes','yes','yes','yes','yes','yes','yes','sdfsdf','vic','','sdf','yes');
 /*!40000 ALTER TABLE `car` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,6 +156,7 @@ CREATE TABLE `make` (
 
 LOCK TABLES `make` WRITE;
 /*!40000 ALTER TABLE `make` DISABLE KEYS */;
+INSERT INTO `make` VALUES ('Ford','Ford'),('Holden','Holden'),('Mitsubishi','Mitsubishi'),('Subaru','Subaru'),('Toyota','Toyota');
 /*!40000 ALTER TABLE `make` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,9 +196,9 @@ DROP TABLE IF EXISTS `model`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `model` (
   `make` varchar(45) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
+  `name` varchar(45) NOT NULL,
   `text` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`make`)
+  PRIMARY KEY (`make`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -207,6 +208,7 @@ CREATE TABLE `model` (
 
 LOCK TABLES `model` WRITE;
 /*!40000 ALTER TABLE `model` DISABLE KEYS */;
+INSERT INTO `model` VALUES ('Ford','Falcon','Falcon'),('Ford','Focus','Focus'),('Ford','XR6','XR6'),('Holden','Astra','Astra'),('Holden','Barina','Barina'),('Holden','Captiva','Captiva'),('Holden','Colorado','Colarado'),('Holden','Commodore','Commodore'),('Mitsubishi','Challenger','Challenger'),('Mitsubishi','Lancer','Lancer'),('Mitsubishi','Pajero','Pajero'),('Mitsubishi','Triton','Triton'),('Subaru','Forester','Forester'),('Subaru','Outback','Outback'),('Subaru','WRX','WRX'),('Toyota','Corolla','Corolla'),('Toyota','Hilux','Hilux'),('Toyota','Prius','Prius'),('Toyota','Yaris','Yaris');
 /*!40000 ALTER TABLE `model` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -492,6 +494,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `AddUserPhoto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserPhoto`(email VARCHAR(45), filename VARCHAR(45))
+BEGIN
+	INSERT INTO userphoto (email, filename) VALUES (email, filename);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `CreateAccount` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -580,9 +601,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBookings`(email VARCHAR(45))
 BEGIN
-	SELECT rego as rego, renteremail as renter, date as date, bookingid as bookingid FROM booking WHERE booking.renteremail = email
-    UNION
-    SELECT booking.rego as rego, booking.renteremail as renter, booking.date as date, booking.bookingid as bookingid FROM booking JOIN car WHERE booking.rego = car.rego and car.email = email;
+    SELECT booking.rego as rego, renter.firstname as firstname, booking.date as date, booking.bookingid as bookingid FROM booking JOIN car JOIN user AS renter WHERE booking.rego = car.rego AND car.email = email AND renter.email = booking.renteremail;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -601,7 +620,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBookingsMade`(email VARCHAR(45))
 BEGIN
-	SELECT rego as rego, renteremail as renter, date as date, bookingid as bookingid FROM booking WHERE booking.renteremail = email;
+	SELECT * FROM booking WHERE booking.renteremail = email;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -630,17 +649,17 @@ BEGIN
                 ruser.firstname as othername,
                 rimage.filename as otherimage 
             FROM
-				(SELECT firstname, filename FROM user JOIN image WHERE email = email) as ouser,
-                (SELECT firstname, filename FROM image JOIN user JOIN booking ON user.email = booking.renteremail WHERE booking.bookingid = bookingid) AS ruser;
+				(SELECT firstname, filename FROM user JOIN userphoto WHERE email = email) as ouser,
+                (SELECT firstname, filename FROM userphoto JOIN user JOIN booking ON user.email = booking.renteremail WHERE booking.bookingid = bookingid) AS ruser;
         ELSE
 			SELECT 
 				ruser.firstname as username,
                 rimage.filename as userimage,
                 ouser.firstname as othername,
-                oimage.filename as otherimage 
+                oimage.filename as otherimage
 			FROM
- 				(SELECT firstname, filename FROM user JOIN image WHERE email = email) as ruser,
-                (SELECT firstname, filename FROM image JOIN user JOIN car JOIN booking ON car.rego = booking.rego WHERE booking.bookingid = bookingid) AS ouser;
+ 				(SELECT firstname, filename FROM user JOIN userphoto WHERE email = email) as ruser,
+                (SELECT firstname, filename FROM userphoto JOIN user JOIN car JOIN booking ON car.rego = booking.rego WHERE booking.bookingid = bookingid) AS ouser;
 		END IF;
  	END IF;
 END ;;
@@ -737,7 +756,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetMakes`()
 BEGIN
-	SELECT * FROM make;
+	SELECT name AS value, text as name FROM make;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -779,7 +798,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetModels`(make VARCHAR(45))
 BEGIN
-	SELECT text AS text, model AS value FROM model WHERE model.make = make;
+	SELECT text AS name, name AS value FROM model WHERE model.make = make;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -908,6 +927,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetUserCars` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserCars`(email VARCHAR(45), count int, oset int)
+BEGIN
+	SELECT email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holidays, postcode, suburb, state, description
+	FROM car
+    WHERE car.email = email;
+    #SELECT id, title, body, MATCH (title,body)  AGAINST ('database' IN BOOLEAN MODE)
+	#AS score FROM articles ORDER BY score DESC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ListCar` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -959,6 +1001,59 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ModelList`(make VARCHAR(45))
 BEGIN
 	SELECT name FROM model WHERE model.make = make;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PopulateMakesAndModels` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PopulateMakesAndModels`()
+BEGIN
+
+	TRUNCATE model;
+    TRUNCATE make;
+	INSERT INTO make (name, text) VALUES ("Ford", "Ford");
+    INSERT INTO make (name, text) VALUES ("Holden", "Holden");
+    INSERT INTO make (name, text) VALUES ("Toyota", "Toyota");
+    INSERT INTO make (name, text) VALUES ("Mitsubishi", "Mitsubishi");
+    INSERT INTO make (name, text) VALUES ("Subaru", "Subaru");
+
+
+    INSERT INTO model (make, name, text) VALUES ("Subaru", "Forester", "Forester");
+    INSERT INTO model (make, name, text) VALUES ("Subaru", "Outback", "Outback");
+    INSERT INTO model (make, name, text) VALUES ("Subaru", "WRX", "WRX");
+
+    INSERT INTO model (make, name, text) VALUES ("Ford", "Falcon", "Falcon");
+    INSERT INTO model (make, name, text) VALUES ("Ford", "XR6", "XR6");
+    INSERT INTO model (make, name, text) VALUES ("Ford", "Focus", "Focus");
+    
+    INSERT INTO model (make, name, text) VALUES ("Holden", "Commodore", "Commodore");
+    INSERT INTO model (make, name, text) VALUES ("Holden", "Astra", "Astra");
+    INSERT INTO model (make, name, text) VALUES ("Holden", "Barina", "Barina");
+    INSERT INTO model (make, name, text) VALUES ("Holden", "Captiva", "Captiva");
+    INSERT INTO model (make, name, text) VALUES ("Holden", "Colorado", "Colarado");
+
+    INSERT INTO model (make, name, text) VALUES ("Toyota", "Yaris", "Yaris");
+    INSERT INTO model (make, name, text) VALUES ("Toyota", "Corolla", "Corolla");
+    INSERT INTO model (make, name, text) VALUES ("Toyota", "Hilux", "Hilux");
+    INSERT INTO model (make, name, text) VALUES ("Toyota", "Prius", "Prius");
+
+
+    INSERT INTO model (make, name, text) VALUES ("Mitsubishi", "Lancer", "Lancer");
+    INSERT INTO model (make, name, text) VALUES ("Mitsubishi", "Challenger", "Challenger");
+    INSERT INTO model (make, name, text) VALUES ("Mitsubishi", "Triton", "Triton");
+    INSERT INTO model (make, name, text) VALUES ("Mitsubishi", "Pajero", "Pajero");
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1078,4 +1173,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-08 16:46:28
+-- Dump completed on 2018-05-09 17:02:18
