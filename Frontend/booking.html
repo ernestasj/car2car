@@ -1,0 +1,51 @@
+
+    <div class="row col-sm-12" ng-repeat="booking in bookings">
+
+        <div class="col-md-2"> </div>
+        <div class="col-md-8 well">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-8">
+                <div class="col-sm-8">
+                    <div class="col-sm-12 row">
+                        <label class="col-sm-4 col-lg-5">Rego</label>
+                        <div class="col-sm-7">
+                            <span class="col-sm-12 col-lg-12">{{booking.rego}} </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row">
+                        <label class="col-sm-4 col-lg-5">Name</label>
+                        <div class="col-sm-7">
+                            <span class="col-sm-12 col-lg-12">{{booking.firstname}}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row">
+                        <label class="col-sm-4 col-lg-5">Date</label>
+                        <div class="col-sm-7">
+                            <span class="col-sm-12 col-lg-12">{{booking.date}}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row">
+                        <label class="col-sm-4 col-lg-5">Status</label>
+                        <div class="col-sm-7">
+                            <span class="col-sm-12 col-lg-12">{{booking.status}}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row">
+                            <div class="col-sm-3">
+                                <button type="button" ng-click="Approve(booking)">Approve</button>
+                            </div>
+                            <div class="col-sm-3">
+                                    <button type="button" ng-click="Reject(booking)">Reject</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                </div>
+    
+        </div>
+        <div class="col-md-2"></div>
+        
+    </div>
+    
