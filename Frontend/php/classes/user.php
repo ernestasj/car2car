@@ -172,7 +172,7 @@
         }
         function GetEmail()
         {
-            return $this->email;
+            return $this->desc["email"];
         }
 
     }

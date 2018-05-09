@@ -2,6 +2,34 @@
     class Cars {
         var $cars = [];
         var $db;
+   
+        function LoadUserCars($db, $email)
+        {
+            $this->db = $db;
+            $result = $this->ReadDBUserCars($this->db, $email);
+            if(mysqli_num_rows($result) > 0)
+            {
+                $car = new Car;
+                array_push($this->cars, $car);
+
+                while($row = mysqli_fetch_array($result))
+                {
+                    $this->AddCar($db, $row);
+                }
+            }
+            
+        }
+
+        function ReadDBUserCars($db, $email) {
+            $count = 10;
+            $offset = 0;
+            $stmt = $db->stmt_init();
+            $stmt = $db->prepare("call GetUserCars(?, ? , ?)");
+            $stmt->bind_param("sii", $email, $count, $offset);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result;
+        }
 
         function LoadCars($db, $keywords)
         {
@@ -54,7 +82,7 @@
             //$car->rego = $row['rego'];
             //$car->make = $row['make'];
             //$car->model = $row['model'];
-            $car->AddRating($db);
+            //$car->AddRating($db);
             array_push($this->cars, $car);
         }
 

@@ -169,5 +169,14 @@
             $stmt->bind_param("siss", $user, $rating_score, $comments, $this->rego);
             $stmt->execute();
         }
+
+        function LoadCar($db, $rego, $email)
+        {
+            $result = $this->LoadCar($email, $rego);
+            
+            $row = mysqli_fetch_array($result);
+
+            $desc = $row;
+        }
     }
 ?>
