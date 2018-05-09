@@ -193,5 +193,24 @@
             return $this->desc["email"];
         }
 
+        function UpdateUser($post)
+        {
+            foreach ($post as $key => $value)
+            {
+                if(isset($value) && $value != "")
+                {
+                    $desc[$key] = $value;
+                }
+            }
+        }
+
+        function WriteUpdateDB($db)
+        {
+            $stmt = $db->prepare("call UpdateAccount(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssssssssssssss", $this->desc['email'], $this->desc['password'], $this->desc['firstname'], $this->desc['lastname'], $this->desc['licence'], $this->desc['dob'], $this->desc['number'], $this->desc['street'], $this->desc['suburb'], $this->desc['state'], $this->desc['postcode'], $this->desc['mobnumber'], $this->desc['landline'], $this->desc['ccnumber'], $this->desc['cvc'], $this->desc['cardtype'], $this->desc['expiry']);
+            $stmt->execute();
+            $stmt->close(); 
+        }
+
     }
 ?>
