@@ -3,7 +3,7 @@ BEGIN
 
 	TRUNCATE model;
     TRUNCATE make;
-	  INSERT INTO make (name, text) VALUES ("Ford", "Ford");
+    INSERT INTO make (name, text) VALUES ("Ford", "Ford");
     INSERT INTO make (name, text) VALUES ("Holden", "Holden");
     INSERT INTO make (name, text) VALUES ("Toyota", "Toyota");
     INSERT INTO make (name, text) VALUES ("Mitsubishi", "Mitsubishi");
@@ -18,7 +18,6 @@ BEGIN
     INSERT INTO model (make, name, text) VALUES ("Subaru", "Impreza", "Impreza");
 
     INSERT INTO model (make, name, text) VALUES ("Ford", "Falcon", "Falcon");
-    INSERT INTO model (make, name, text) VALUES ("Ford", "XR6", "XR6");
     INSERT INTO model (make, name, text) VALUES ("Ford", "Focus", "Focus");
     INSERT INTO model (make, name, text) VALUES ("Ford", "Mondeo", "Mondeo");
     INSERT INTO model (make, name, text) VALUES ("Ford", "Ranger", "Ranger");
