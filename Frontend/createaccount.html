@@ -21,7 +21,7 @@
       </div>
   
   <div class="py-5">
-      <div ng-include="'accountdetailsform.html'">
+      <div ng-include="'createaccountdetails.html'">
 
         </div>
 
@@ -54,6 +54,7 @@
 
       function SetValidEmailStatus()
       {
+        return true;
         if(!ValidateEmail($("#email").val()))
             {
               $("#email_valid").html("Email is invalid");
