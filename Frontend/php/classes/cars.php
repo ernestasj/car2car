@@ -103,6 +103,7 @@
             //$car->make = $row['make'];
             //$car->model = $row['model'];
             //$car->AddRating($db);
+            $car->GetPhoto($db);
             array_push($this->cars, $car);
         }
 

@@ -178,5 +178,33 @@
 
             $desc = $row;
         }
+
+        function AddPhoto($db, $filename)
+        {
+            $stmt = $db->prepare("call AddCarPhoto(?, ?)");
+            $stmt->bind_param("ss", $this->desc["rego"], $filename);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+        function GetPhoto($db)
+        {
+            $stmt = $db->stmt_init();
+            $stmt = $db->prepare("call GetCarPhoto(?)");
+            $stmt->bind_param("s", $this->desc["rego"]);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if(mysqli_num_rows($result) > 0)
+            {
+
+                $row = mysqli_fetch_array($result);
+                $this->desc["image"] = $row["filename"];
+            }
+            else
+            {
+                $this->desc["image"] = "default.jpg";
+            }
+            $stmt->close();
+        }
     }
 ?>
