@@ -1,6 +1,7 @@
 <?php
 
     include("config.php");
+    include("util.php");
     include("classes/car.php");
     include("classes/cars.php");
     include("classes/booking.php");

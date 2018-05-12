@@ -31,11 +31,11 @@
             return $result;
         }
 
-        function LoadCars($db, $keywords)
+        function LoadCars($db, $search)
         {
             $this->db = $db;
 
-            $result = $this->ReadDB($this->db, $keywords);
+            $result = $this->ReadDB($this->db, $search);
             
             // Load rows from DB
             if(mysqli_num_rows($result) > 0)
@@ -58,14 +58,34 @@
             */
         }
 
-        function ReadDB($db, $keywords) {
-            $count = 10;
-            $offset = 0;
+        function ReadDB($db, $search) {
+            $search["count"] = (int)$search["count"];
+            $search["offset"] = (int)$search["offset"];
+            if(!isset($search["count"]) || $search["count"] == "" || !is_int($search["count"]) )
+            {
+                $search["count"] = 10;
+            }
+            else
+            {
+                
+            }
+            if(!isset($search["offset"]) || $search["offset"] == "" || !is_int($search["offset"]) )
+            {
+                $search["offset"] = 0;
+            }
+            
+
             $stmt = $db->stmt_init();
-            $stmt = $db->prepare("call Search(?, ?, ?)");
-            $stmt->bind_param("sii", $keywords, $count, $offset);
+            $stmt = $db->prepare("call Search(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("siisssssssssssssssssss", $search["keywords"], $search["count"], $search["offset"], $search["suburb"], $search["state"], $search["postcode"], $search["monday"], $search["tuesday"], $search["wednesday"], $search["thursday"], $search["friday"], $search["saturday"], $search["sunday"], $search["public_holidays"], $search["make"], $search["model"], $search["body"], $search["doors"], $search["year"], $search["kms"], $search["enginecc"], $search["transmission"]);
             $stmt->execute();
             $result = $stmt->get_result();
+
+            
+            
+        
+
+
             /*
             $result = [
                 ['rego' => "HGD-ERT", 'make' => "Holden", 'model' => 'Commodore'],

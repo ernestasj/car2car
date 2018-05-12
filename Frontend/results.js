@@ -115,10 +115,56 @@ app.controller('resultsCtrl', function($scope, $http) {
             $scope.car.date = "";
             $("#detailed").modal("show");
         };
-        
+
+        var search = {
+            keywords: GetURLParameter("keywords"),
+            suburb: GetURLParameter("suburb"),
+            state: GetURLParameter("state"),
+            postcode: GetURLParameter("postcode"),
+            monday: GetURLParameter("monday"),
+            tuesday: GetURLParameter("tuesday"),
+            wednesday: GetURLParameter("wednesday"),
+            thursday: GetURLParameter("thursday"),
+            friday: GetURLParameter("friday"),
+            saturday: GetURLParameter("saturday"),
+            sunday: GetURLParameter("sunday"),
+            public_holidays: GetURLParameter("public_holidays"),
+            make: GetURLParameter("make"),
+            model: GetURLParameter("model"),
+            body: GetURLParameter("body"),
+            doors: GetURLParameter("doors"),
+            year: GetURLParameter("year"),
+            kms: GetURLParameter("kms"),
+            enginecc: GetURLParameter("enginecc"),
+            transmission: GetURLParameter("transmission")
+
+        };
+
+        console.log(search);
+    
         $http.post("./json/search.php",
         {
-            keywords: GetURLParameter("keywords")
+            keywords: GetURLParameter("keywords"),
+            suburb: GetURLParameter("suburb"),
+            state: GetURLParameter("state"),
+            postcode: GetURLParameter("postcode"),
+            monday: GetURLParameter("monday"),
+            tuesday: GetURLParameter("tuesday"),
+            wednesday: GetURLParameter("wednesday"),
+            thursday: GetURLParameter("thursday"),
+            friday: GetURLParameter("friday"),
+            saturday: GetURLParameter("saturday"),
+            sunday: GetURLParameter("sunday"),
+            public_holidays: GetURLParameter("public_holidays"),
+            make: GetURLParameter("make"),
+            model: GetURLParameter("model"),
+            body: GetURLParameter("body"),
+            doors: GetURLParameter("doors"),
+            year: GetURLParameter("year"),
+            kms: GetURLParameter("kms"),
+            enginecc: GetURLParameter("enginecc"),
+            transmission: GetURLParameter("transmission")
+
         })
         .then(function(response) {
             console.log(response);
