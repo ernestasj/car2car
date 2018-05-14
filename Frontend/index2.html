@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="dist/css/theme.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
-
+  <script src="./angularSlideables.js"></script>
 
 
   <style>
@@ -63,7 +63,7 @@
               <h2 class="py-2"> Welcome </h2>
             </div>
             <div class="panel-body">
-              <form class="" action="./results.html" method="get">
+              <form class="" action="./results.html" method="GET">
                 <div class="row col-sm-12">
                   <div class="col-sm-8">
                     <input type="text" class="form-control m-1" id="keywords" name="keywords" placeholder="What are you looking for?"> </div>
@@ -82,15 +82,15 @@
                   <div class="row col-sm-12">
                     <div class="row col-sm-12">
                       <div class="col-sm-6">
-                        <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb"> </div>
+                        <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb" name="suburb"> </div>
                       <div class="col-sm-3">
-                        <select type="text" class="form-control m-1" id="state" placeholder="State">
+                        <select type="text" class="form-control m-1" id="state" placeholder="State" name="state">
                           <option value="nsw" selected="">NSW</option>
                           <option value="vic">VIC</option>
                         </select>
                       </div>
                       <div class="col-sm-3">
-                        <input type="text" class="form-control m-1" id="postcode" placeholder="Post code"> </div>
+                        <input type="text" class="form-control m-1" id="postcode" placeholder="Post code" name="postcode"> </div>
                     </div>
                   </div>
                   <div>
@@ -131,25 +131,17 @@
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-4">
-                      <select type="text" class="form-control m-1" id="make">
-                        <option value="" selected="">Make</option>
-                        <option value="ford">Ford</option>
-                        <option value="holden">Holden</option>
-                        <option value="toyota">Toyota</option>
+                      <select class="form-control m-1" ng-model="selectedMake" name="make" ng-options="make.name for make in makes track by make.value" ng-change="MakeChanged()"></select>
                       </select>
                     </div>
                     <div class="col-sm-4">
-                      <select type="text" class="form-control m-1" id="model">
-                        <option value="" selected="">Model</option>
-                        <option value="86">86</option>
-                        <option value="ranger">Ranger</option>
-                        <option value="commodore">Commodore</option>
+                      <select class="form-control m-1" ng-model="selectedModel" name="model" ng-options="model.name for model in models track by model.value"></select>
                       </select>
                     </div>
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-4">
-                      <select type="text" class="form-control m-1" id="body" placeholder="">
+                      <select type="text" class="form-control m-1" id="body" placeholder="" name="body">
                         <option value="" selected="">Body</option>
                         <option value="">Sedan</option>
                         <option value="">Hatch</option>
@@ -159,7 +151,7 @@
                       </select>
                     </div>
                     <div class="col-sm-4">
-                      <select type="text" class="form-control m-1" id="doors" placeholder="">
+                      <select type="text" class="form-control m-1" id="doors" placeholder="" name="doors">
                         <option value="" selected="">Doors</option>
                         <option value="">None</option>
                         <option value="">1</option>
@@ -178,7 +170,7 @@
                     <div class="col-sm-4">
                       <input type="text" class="form-control m-1" id="year" placeholder="Year"> </div>
                     <div class="col-sm-4">
-                      <select type="text" class="form-control m-1" id="kms">
+                      <select type="text" class="form-control m-1" id="kms" name="kms">
                         <option value="" selected="">Odometer</option>
                         <option value="">Under 5,000km</option>
                         <option value="">5,000 to 9,999km</option>
@@ -198,7 +190,7 @@
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-4">
-                      <select type="text" class="form-control m-1" id="enginecc" placeholder="Card Type">
+                      <select type="text" class="form-control m-1" id="enginecc" name="enginecc" placeholder="Card Type">
                         <option value="" selected="">Engine Size</option>
                         <option value="">Under 1000cc</option>
                         <option value="">1000 to 1499cc</option>
@@ -214,7 +206,7 @@
                       </select>
                     </div>
                     <div class="col-sm-4">
-                      <select type="text" class="form-control m-1" id="fuel" placeholder="Card Type">
+                      <select type="text" class="form-control m-1" id="fuel" name="petrol" placeholder="Card Type">
                         <option value="" selected="">Fuel type</option>
                         <option value="">E10</option>
                         <option value="">RON-91</option>
@@ -225,7 +217,7 @@
                       </select>
                     </div>
                     <div class="col-sm-4">
-                      <select type="text" class="form-control m-1" id="transmission">
+                      <select type="text" class="form-control m-1" id="transmission" name="transmission">
                         <option value="" selected="">Transmission</option>
                         <option value="auto">Auto</option>
                         <option value="manual">Manual</option>
@@ -278,11 +270,33 @@
       });
   </script>
   <script>
-    app.controller('searchCtrl', function($scope) {
+    app.controller('searchCtrl', function($scope, $http) {
       $scope.advOptions = true;
       $scope.toggleAdv = function(){
         $scope.advOptions = !$scope.advOptions;
       }
+      $scope.form = {};
+      $http.post("./json/makes.php",
+    {
+    })
+    .then(function(response) {
+        
+        $scope.makes = response.data;
+    });
+
+    $scope.MakeChanged = function (){
+        console.log("Model changed!");
+        
+        $http.post("./json/models.php",
+        {
+            make: $scope.selectedMake.value
+        })
+        .then(function(response) {
+            console.log(response.data);
+            $scope.models = response.data;
+        });
+    }
+
     });
   </script>
   

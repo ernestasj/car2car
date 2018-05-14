@@ -3,11 +3,11 @@
         var $bookings = [];
         var $db;
 
-        function LoadBookings($db, $user)
+        function LoadBookings($db, $email)
         {
             $this->db = $db;
 
-            $result = $this->ReadDB($this->db, $user);
+            $result = $this->ReadDB($this->db, $email);
             
             // Load rows from DB
             if(mysqli_num_rows($result) > 0)
@@ -27,10 +27,10 @@
             */
         }
 
-        function ReadDB($db, $user) {
+        function ReadDB($db, $email) {
             $stmt = $db->stmt_init();
             $stmt = $db->prepare("call GetBookings(?)");
-            $stmt->bind_param("s", $user);
+            $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
             return $result;
@@ -38,11 +38,11 @@
 
         function AddBooking($db, $row)
         {
-            $booking = new Booking;
-            $booking->rego = $row['rego'];
-            $booking->renter = $row['renter'];
-            $booking->date = $row['date'];
-            $booking->bookingid = $row['bookingid'];
+            $booking = new Booking($row);
+            //$booking->rego = $row['rego'];
+            //$booking->renter = $row['renter'];
+            //$booking->date = $row['date'];
+            //$booking->bookingid = $row['bookingid'];
             array_push($this->bookings, $booking);
         }
 

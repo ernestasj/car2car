@@ -1,6 +1,6 @@
 <?php
     class Booking {
-
+        var $desc = [];
         var $rego = "rego";
         var $renter = "email";
         var $date = "";
@@ -9,6 +9,8 @@
             $argv = func_get_args();
             switch( func_num_args() ) {
                 case 0:self::__construct0();
+                    break;
+                case 1:self::__construct1($argv[0]);
                     break;
                 case 4:
                     self::__construct3( $argv[0], $argv[1], $argv[2]);
@@ -24,6 +26,11 @@
             $stmt->bind_param("sss", $this->rego, $this->renter, $this->date);
             $stmt->execute();
             $stmt->close();
+        }
+
+        function __construct1($row)
+        {
+            $this->desc = $row;            
         }
 
         function __construct3($rego, $renter, $date)
@@ -59,8 +66,8 @@
         }
 
         function AsArray(){
-            $data = ["rego" => $this->rego, "renter" => $this->renter, "date" => $this->date, "id" => $this->bookingid];
-            return $data;
+            //$data = ["rego" => $this->rego, "renter" => $this->renter, "date" => $this->date, "id" => $this->bookingid];
+            return $this->desc;
         }
     }
 ?>

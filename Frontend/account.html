@@ -19,12 +19,10 @@
       <div ng-include="'login.html'">
     
       </div>
-  
-  <div class="py-5">
-      <div ng-include="'createaccountdetails.html'">
+  <div class="py-5" ng-controller="accountCtrl">
+      <div ng-include="'accountdetailsform.html'">
 
         </div>
-
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -54,7 +52,6 @@
 
       function SetValidEmailStatus()
       {
-        return true;
         if(!ValidateEmail($("#email").val()))
             {
               $("#email_valid").html("Email is invalid");
@@ -80,12 +77,14 @@
             SetValidEmailStatus();
           });
         });
+        app.controller('formCtrl', function($scope, $http) {
+          $scope.form_title = "Account Details";
+});
 
-        app.controller('formCtrl', function($scope) {
-          $scope.form_title = "Join Us!";
-        });
   </script>
 <script src="./navbar.js"></script>
-<script src="./login.js"></script></body>
+<script src="./login.js"></script>
+<script src="./account.js"></script>
+</body>
 
 </html>
