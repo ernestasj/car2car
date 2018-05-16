@@ -57,7 +57,4 @@ function validateCard($cardTypeP, $cardNumberP)
         }
     }
 }
-
-
-
 ?>
