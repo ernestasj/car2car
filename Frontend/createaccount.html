@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="dist/css/theme.css"> </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+  <script src="./angularSlideables.js"></script>
+
+
+  <body ng-app="page" ng-controller="navbarCtrl">
+      <div ng-include="'navbar.html'">
+      
+      </div>
+      <div ng-include="'login.html'">
+    
+      </div>
+  
+  <div class="py-5">
+      <div ng-include="'createaccountdetails.html'">
+
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="./app.js"></script>
+  <script>
+    function ValidateEmail(mail) 
+    {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+      {
+        return (true)
+      }
+        //alert("You have entered an invalid email address!")
+        return (false)
+    }
+      function SetPasswordMatchStatus()
+      {
+        if($("#password").val() != $("#password_check").val())
+            {
+              $("#passwords_match").html("Passwords Do Not Match!");
+            } else
+            {
+              $("#passwords_match").html("");
+            }
+
+      }
+
+      function SetValidEmailStatus()
+      {
+        return true;
+        if(!ValidateEmail($("#email").val()))
+            {
+              $("#email_valid").html("Email is invalid");
+            } else
+            {
+              $("#email_valid").html("");
+            }
+
+      }
+
+      $(document).ready(function(){
+
+          $("#password_check").change(function(){
+            SetPasswordMatchStatus();
+          });
+  
+          $("#password").change(function(){
+            SetPasswordMatchStatus();
+            
+          });
+          $("#email").change(function(){
+            //console.log("Hello");
+            SetValidEmailStatus();
+          });
+        });
+
+        app.controller('formCtrl', function($scope) {
+          $scope.form_title = "Join Us!";
+        });
+  </script>
+<script src="./navbar.js"></script>
+<script src="./login.js"></script></body>
+
+</html>

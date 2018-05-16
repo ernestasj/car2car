@@ -1,0 +1,106 @@
+<div class="container" ng-controller="formCtrl">
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <div class="panel panel-default">
+              <div class="panel-heading text-center">
+                <h3> {{form_title}} </h3>
+              </div>
+              <div class="panel-body">
+                <form class="" method="post" action="./submit/createaccount.php"> <!--Need to use angular value for edit account-->
+                  <div class="">
+                    <h4 class="m-2"> Login </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control m-1" id="email" required="" placeholder="Enter email" name="email" ng-model="form.email"> </div>
+                    <div class="col-sm-12" id="email_valid"> </div>
+                    <div class="col-sm-12">
+                      <input type="password" class="form-control m-1" required="" id="password" placeholder="Enter new password" name="password">
+                      <input type="password" class="form-control m-1" required="" id="password_check" placeholder="Verify new password" name="password2"> </div>
+                    <div class="col-sm-12" id="passwords_match"> </div>
+                  </div>
+                  <div>
+                    <h4 class="m-1"> Personal </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control m-1"  id="firstname" required="" placeholder="First Name" name="firstname" ng-model="form.firstname"> </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control m-1"  id="lastname" required="" placeholder="Last Name" name="lastname" ng-model="form.lastname"> </div>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control m-1"  id="dob" required="" placeholder="Date of Birth" name="dob" ng-model="form.dob"> </div>
+                  </div>
+                  <div>
+                    <h4 class="m-1"> Identification </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control m-1"  id="licence" required="" placeholder="Licence No." name="licence" ng-model="form.licence"> </div>
+                    <div class="col-sm-6">
+                      <input type="file" class="form-control-file m-1"  id="photo" name="photo" ng-model="photo"> </div>
+                  </div>
+                  <div class="">
+                    <h4 class="m-2"> Address </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control m-1"  id="number" required="" placeholder="Number" name="number"ng-model="form.number"> </div>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control m-1"  id="street" required="" placeholder="Street" name="street" ng-model="form.street"> </div>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control m-1"  id="suburb" required="" placeholder="Suburb" name="suburb" ng-model="form.suburb"> </div>
+                    <div class="col-sm-3">
+                      <select type="text" class="form-control m-1"  id="state" required="" placeholder="State" name="state" ng-model="form.state">
+                        <option value="nsw" selected="">NSW</option>
+                        <option value="vic">VIC</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control m-1"  id="postcode" required=""  placeholder="Post code" name="postcode" ng-model="form.postcode"> </div>
+                  </div>
+                  <div>
+                    <h4 class="m-1"> Contact </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control m-1"  id="mobnumber" required="" placeholder="Mobile Number" name="mobnumber" ng-model="form.mobnumber"> </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control m-1" id="landline" required="" placeholder="Landline (Home/Business)" name="landline" ng-model="form.landline"> </div>
+                  </div>
+                  <div>
+                    <h4 class="m-1"> Payment </h4>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control m-1"  id="cardno" required="" placeholder="Card No." name="ccnumber" ng-model="form.ccnumber"> </div>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control m-1"  id="exp" required="" placeholder="Expiry mm/yy" name="expiry" ng-model="form.expiry"> </div>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control m-1"  id="cvc" required="" placeholder="cvc" name="cvc" ng-model="form.cvc"> </div>
+                    <div class="col-sm-2">
+                      <select type="text" class="form-control m-1"  id="cardtype" required="" placeholder="Card Type" name="cardtype"  ng-model="form.cardtype">
+                        <option value="Visa" selected="">Visa</option>
+                        <option value="Mastercard">Mastercard</option>
+                        <option value="Amex">Amex</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-12 text-center py-2">
+                      <span class="col-sm-4"></span>
+                      <button type="submit" class="btn col-sm-4 btn-outline-primary" ng-click="prntform()">Create Account</button>
+                      <span class="col-sm-4"></span>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>

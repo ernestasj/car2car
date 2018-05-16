@@ -9,6 +9,17 @@
 ====================
 
     - Cannot Create Account into Database
+        - Should be working now. Needs new sql schema
+
+    - Inbox
+    - Making Bookings
+    - Booking Page
+    - List user cars and link to edit page
+    - Full search options
+    - Fix edit account details page
+    - Multipage for search
+    - Save images
+
 
 ====================
     Nathaniel
@@ -16,6 +27,7 @@
 
     - Validation
     - Dummy External Sources (Banking, licence)
+    - Save images
 
 
 ====================

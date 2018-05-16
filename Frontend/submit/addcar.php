@@ -16,6 +16,13 @@
 
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
+<<<<<<< HEAD
+=======
+     $user = unserialize($_SESSION['user']);
+     $email = $user->GetEmail();
+
+
+>>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
       // This needs to be bundled into a car class
         $email = $user->GetEmail();
         $rego = mysqli_real_escape_string($db,$_POST['rego']);
@@ -34,8 +41,14 @@
 
         $car = new Car($rego, $make, $model, $year, $doors, $petrol, $transmission, $enginecc, $kms, $body, $photoname);
         $car->WriteDB($db, $email);
+<<<<<<< HEAD
 
         echo '{"success": "success"}';
+=======
+        $filename = UploadPhoto("photo");
+        $car->AddPhoto($db, $filename);
+   //     echo '{"success": "success"}';
+>>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
         //$_SESSION['login_user'] = $email;
         //$_SESSION['login_password'] = $password;
         //header("location: ../pages/index.php");
