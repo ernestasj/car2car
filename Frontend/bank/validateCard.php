@@ -2,13 +2,13 @@
 //Php file for validating a card
 function validateCard($cardTypeP, $cardNumberP)
 {
-//=======================================
+//=========================================
 //Set Card number and type here
     $cardType = $cardTypeP;
     $cardNumber = $cardNumberP;
     //$cardType = $_POST['cardType'];
     //$cardNumber = $_POST['cardNum'];
-//=======================================
+//=========================================
     $cardResult = false;
     $cardNumber = $res = preg_replace("/[^0-9,.]/", "", $cardNumber);
     echo "CARD: ".$cardNumber."<br>";
@@ -57,7 +57,4 @@ function validateCard($cardTypeP, $cardNumberP)
         }
     }
 }
-
-
-
 ?>
