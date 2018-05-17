@@ -98,20 +98,12 @@
 
         function AddCar($db, $row)
         {
-<<<<<<< HEAD
-            $car = new Car;
-            $car->rego = $row['rego'];
-            $car->make = $row['make'];
-            $car->model = $row['model'];
-            $car->AddRating($db);
-=======
             $car = new Car($row);
             //$car->rego = $row['rego'];
             //$car->make = $row['make'];
             //$car->model = $row['model'];
             //$car->AddRating($db);
             $car->GetPhoto($db);
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
             array_push($this->cars, $car);
         }
 

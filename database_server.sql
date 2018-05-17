@@ -25,18 +25,11 @@ DROP TABLE IF EXISTS `booking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking` (
-  `owneremail` varchar(45) NOT NULL,
   `rego` varchar(45) NOT NULL,
   `renteremail` varchar(45) NOT NULL,
-  `days` varchar(45) NOT NULL,
+  `date` varchar(45) NOT NULL,
   `bookingid` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`bookingid`)
-<<<<<<< HEAD
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
-=======
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,7 +44,6 @@ INSERT INTO `booking` VALUES ('bob123','mike','05/31/2018',1),('bob123','mike','
 UNLOCK TABLES;
 
 --
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 -- Table structure for table `car`
 --
 
@@ -60,30 +52,35 @@ DROP TABLE IF EXISTS `car`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `car` (
   `rego` varchar(45) NOT NULL,
-  `make` varchar(45) DEFAULT NULL,
-  `model` varchar(45) DEFAULT NULL,
-  `manufacturer` varchar(45) DEFAULT NULL,
-  `petrol` varchar(45) DEFAULT NULL,
-  `transmission` varchar(45) DEFAULT NULL,
-  `year` varchar(45) DEFAULT NULL,
-  `doors` varchar(45) DEFAULT NULL,
-  `enginecc` varchar(45) DEFAULT NULL,
-  `kms` varchar(45) DEFAULT NULL,
-  `body` varchar(45) DEFAULT NULL,
+  `make` varchar(45) NOT NULL,
+  `model` varchar(45) NOT NULL,
+  `petrol` varchar(45) NOT NULL,
+  `transmission` varchar(45) NOT NULL,
+  `year` varchar(45) NOT NULL,
+  `doors` varchar(45) NOT NULL,
+  `enginecc` varchar(45) NOT NULL,
+  `kms` varchar(45) NOT NULL,
+  `body` varchar(45) NOT NULL,
   `photo` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
+  `monday` varchar(45) NOT NULL,
+  `tuesday` varchar(45) NOT NULL,
+  `wednesday` varchar(45) NOT NULL,
+  `thursday` varchar(45) NOT NULL,
+  `friday` varchar(45) NOT NULL,
+  `saturday` varchar(45) NOT NULL,
+  `sunday` varchar(45) NOT NULL,
+  `suburb` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `description` longtext NOT NULL,
+  `postcode` varchar(45) NOT NULL,
+  `public_holidays` varchar(45) NOT NULL,
   PRIMARY KEY (`rego`,`email`),
-<<<<<<< HEAD
-  FULLTEXT KEY `Search` (`make`,`model`,`petrol`,`transmission`,`doors`,`year`,`enginecc`,`body`)
-=======
   FULLTEXT KEY `Search` (`rego`,`make`,`model`,`petrol`,`transmission`,`year`,`doors`,`enginecc`,`kms`,`body`,`suburb`,`state`,`description`,`postcode`)
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
-<<<<<<< HEAD
-=======
 -- Dumping data for table `car`
 --
 
@@ -118,7 +115,6 @@ INSERT INTO `carphoto` VALUES ('qwerty1','1522791847.png'),('qwerty2','173342403
 UNLOCK TABLES;
 
 --
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 -- Table structure for table `doors`
 --
 
@@ -131,6 +127,15 @@ CREATE TABLE `doors` (
   PRIMARY KEY (`value`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `doors`
+--
+
+LOCK TABLES `doors` WRITE;
+/*!40000 ALTER TABLE `doors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `doors` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `make`
@@ -147,8 +152,6 @@ CREATE TABLE `make` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
-<<<<<<< HEAD
-=======
 -- Dumping data for table `make`
 --
 
@@ -159,7 +162,6 @@ INSERT INTO `make` VALUES ('Ford','Ford'),('Holden','Holden'),('Hyundai','Hyunda
 UNLOCK TABLES;
 
 --
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 -- Table structure for table `message`
 --
 
@@ -173,8 +175,18 @@ CREATE TABLE `message` (
   `message` longtext,
   `bookingid` int(11) DEFAULT NULL,
   PRIMARY KEY (`idmessages`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `message`
+--
+
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (1,'mike',NULL,'Hi!',1),(2,'bob',NULL,'Howdy',1),(3,'bob',NULL,'Hi!',1),(4,'bob',NULL,'how are you?',1),(5,'mike',NULL,'Bla',1),(6,'potate@yeet.com',NULL,'Yeah G\'Day Cobba want ur car\r\n',3),(7,'plonk@plonkmail.gov',NULL,'hi there\r\n',4),(8,'bob',NULL,'Yo',3),(9,'bob',NULL,'Heya',4),(10,'bob',NULL,'you made the booking!',3),(11,'test',NULL,'Hi!',5),(12,'bob',NULL,'Hi there!',5),(13,'test',NULL,'jkhgsfgsdf',5),(14,'bob',NULL,'sdkfghsdkjfhsd',5);
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `model`
@@ -192,8 +204,6 @@ CREATE TABLE `model` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
-<<<<<<< HEAD
-=======
 -- Dumping data for table `model`
 --
 
@@ -204,7 +214,6 @@ INSERT INTO `model` VALUES ('Ford','Falcon','Falcon'),('Ford','Fiesta','Fiesta')
 UNLOCK TABLES;
 
 --
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 -- Table structure for table `petrol`
 --
 
@@ -217,6 +226,15 @@ CREATE TABLE `petrol` (
   PRIMARY KEY (`value`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `petrol`
+--
+
+LOCK TABLES `petrol` WRITE;
+/*!40000 ALTER TABLE `petrol` DISABLE KEYS */;
+/*!40000 ALTER TABLE `petrol` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `review`
@@ -236,8 +254,6 @@ CREATE TABLE `review` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
-<<<<<<< HEAD
-=======
 -- Dumping data for table `review`
 --
 
@@ -296,7 +312,6 @@ INSERT INTO `suburb` VALUES ('','','0','0','0'),('AARONS PASS','NSW','2850','149
 UNLOCK TABLES;
 
 --
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 -- Table structure for table `user`
 --
 
@@ -328,8 +343,6 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
-<<<<<<< HEAD
-=======
 -- Dumping data for table `user`
 --
 
@@ -363,7 +376,6 @@ LOCK TABLES `userphoto` WRITE;
 UNLOCK TABLES;
 
 --
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 -- Dumping routines for database 'car'
 --
 /*!50003 DROP FUNCTION IF EXISTS `CheckPassword` */;
@@ -460,9 +472,6 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-<<<<<<< HEAD
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddBooking`(owneremail varchar(45), rego varchar(45), renteremail varchar(45), days varchar(45))
-=======
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddBooking`(rego varchar(45), renteremail varchar(45), date varchar(45))
 BEGIN
 	INSERT INTO BOOKING (rego, renteremail, date) VALUES (rego, renteremail, date);
@@ -502,9 +511,12 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddMessage`(sender VARCHAR(45), text LONGTEXT, bookingid INT)
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 BEGIN
-	INSERT INTO BOOKING (owneremail, rego, renteremail, days) VALUES (owneremail, rego, renteremail, days);
+	IF EXISTS (SELECT * FROM booking JOIN car JOIN user ON booking.rego = car.rego AND car.email = user.email AND user.email = sender AND booking.bookingid = bookingid)
+    OR EXISTS (SELECT * FROM booking WHERE booking.bookingid = bookingid AND booking.renteremail = sender)
+	THEN
+		INSERT INTO message (sender, message, bookingid) VALUES (sender, text, bookingid);
+    END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -646,6 +658,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetBookingRequests` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBookingRequests`(email VARCHAR(45))
+BEGIN
+	SELECT * FROM booking JOIN car WHERE booking.rego = car.rego and car.email = email;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `GetBookings` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -658,9 +689,6 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBookings`(email VARCHAR(45))
 BEGIN
-<<<<<<< HEAD
-	SELECT * FROM booking WHERE owneremail = email OR renteremail = email;
-=======
     SELECT booking.rego as rego, renter.firstname as firstname, booking.date as date, booking.bookingid as bookingid FROM booking JOIN car JOIN user AS renter WHERE booking.rego = car.rego AND car.email = email AND renter.email = booking.renteremail;
 END ;;
 DELIMITER ;
@@ -722,7 +750,6 @@ BEGIN
                 (SELECT firstname, filename FROM userphoto JOIN user JOIN car JOIN booking ON car.rego = booking.rego WHERE booking.bookingid = bookingid) AS ouser;
 		END IF;
  	END IF;
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -741,20 +768,20 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCar`(email varchar(45), rego varchar(45))
 BEGIN
-	SELECT 
-		email AS email,
-		rego AS rego, 
-		manufacturer AS manufacturer, 
-		make AS make, 
-        model AS model, 
-        year AS year, 
-        doors AS doors, 
-        petrol AS petrol, 
-        transmission AS transmission, 
-        enginecc AS enginecc,
-        kms AS kms,
-        body AS body,
-        photo AS photo
+	SELECT *
+#		email AS email,
+#		rego AS rego, 
+#		manufacturer AS manufacturer, 
+#		make AS make, 
+ #       model AS model, 
+ #       year AS year, 
+  #      doors AS doors, 
+  #      petrol AS petrol, 
+  #      transmission AS transmission, 
+  #      enginecc AS enginecc,
+  #      kms AS kms,
+  #      body AS body,
+  #      photo AS photo
 	FROM 
 		car
 	WHERE
@@ -767,8 +794,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-<<<<<<< HEAD
-=======
 /*!50003 DROP PROCEDURE IF EXISTS `GetCarPhoto` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -826,7 +851,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
 /*!50003 DROP PROCEDURE IF EXISTS `GetDoors` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -875,9 +899,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetMessages`(bookingid INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetMessages`(email VARCHAR(45), bookingid INT)
 BEGIN
-	SELECT sender, message FROM message WHERE message.bookingid = bookingid;
+	IF EXISTS (SELECT * FROM booking JOIN car JOIN user ON booking.rego = car.rego AND car.email = user.email AND user.email = email AND booking.bookingid = bookingid)
+    OR EXISTS (SELECT * FROM booking WHERE booking.bookingid = bookingid AND booking.renteremail = email)
+	THEN
+		SELECT IF (message.sender = email, 0, 1) AS senderid, message as content FROM message WHERE message.bookingid = bookingid;
+	END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -897,6 +925,45 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetModels`(make VARCHAR(45))
 BEGIN
 	SELECT text AS name, name AS value FROM model WHERE model.make = make ORDER BY model.text;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetNameImageOfChats` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetNameImageOfChats`(email VARCHAR(45))
+BEGIN
+	SELECT 
+		user.firstname AS username,
+		image.filename AS userimage,
+        booking.bookingid AS bookingid
+	FROM
+		image JOIN user JOIN car JOIN booking
+			ON car.rego = booking.rego 
+        WHERE 
+			booking.renteremail = email
+	UNION
+	
+    SELECT
+		user.firstname AS username,
+		image.filename AS userimage,
+        booking.bookingid AS bookingid
+	FROM
+		image JOIN user JOIN booking JOIN car JOIN user AS ouser
+        WHERE
+        ouser.email = email;
+
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1038,9 +1105,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ListCar`(email varchar(45), rego varchar(45), make varchar(45), model varchar(45), year varchar(45), doors varchar(45), petrol varchar(45), transmission varchar(45), enginecc varchar(45), kms varchar(45), body varchar(45), photoname varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ListCar`(email VARCHAR(45), rego VARCHAR(45), make VARCHAR(45), model VARCHAR(45), year VARCHAR(45), doors VARCHAR(45), petrol VARCHAR(45), transmission VARCHAR(45), enginecc VARCHAR(45), kms VARCHAR(45), body VARCHAR(45), monday VARCHAR(45), tuesday VARCHAR(45), wednesday VARCHAR(45), thursday VARCHAR(45), friday VARCHAR(45), saturday VARCHAR(45), sunday VARCHAR(45), public_holidays VARCHAR(45), postcode VARCHAR(45), suburb VARCHAR(45), state VARCHAR(45), description LONGTEXT)
 BEGIN
-	INSERT INTO car (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, photo) VALUES (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, photoname);
+	INSERT INTO car (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holidays, postcode, suburb, state, description) VALUES (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holidays, postcode, suburb, state, description);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1173,12 +1240,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Search`(keywords longtext, count in
 	s_suburb VARCHAR(35), s_state VARCHAR(45), s_postcode VARCHAR(45), s_monday VARCHAR(45), s_tuesday VARCHAR(45), s_wednesday VARCHAR(45), s_thursday VARCHAR(45), s_friday VARCHAR(45), s_saturday VARCHAR(45), s_sunday VARCHAR(45), 
     s_public_holidays VARCHAR(45), s_make VARCHAR(45), s_model VARCHAR(45), s_body VARCHAR(45), s_doors VARCHAR(45), s_year VARCHAR(45), s_kms VARCHAR(45), s_enginecc VARCHAR(45), s_transmission VARCHAR(45))
 BEGIN
-	SELECT 
-		rego AS rego, 
-        model AS model, 
-        make AS make,
+	SELECT email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holidays, postcode, suburb, state, description
+		,
         
-	MATCH (make, model, petrol, transmission, year, doors, enginecc, body)
+	MATCH (rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, postcode, suburb, state, description)
         
 	AGAINST (keywords IN BOOLEAN MODE) AS score FROM car
     WHERE 
@@ -1432,8 +1497,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2018-05-02 14:17:57
-=======
 -- Dump completed on 2018-05-14 12:08:35
->>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
