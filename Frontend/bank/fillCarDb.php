@@ -9,7 +9,7 @@ class ModelClass
         $this->model = $model;
     }
 }
-$numberOfEntries = 10000;
+$numberOfEntries = 200;
 $globalDoors = 4;
 $globalCC = 1000;
 $yearMin = 1995;
