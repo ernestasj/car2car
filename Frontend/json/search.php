@@ -1,5 +1,8 @@
 <?php
     include("../php/includes.php");
+<<<<<<< HEAD
+    include("../php/loggedin.php");
+=======
     //include("../php/loggedin.php");
     $postdata = file_get_contents("php://input");
 
@@ -42,6 +45,7 @@
     $_SESSION['cars'] = serialize($cars);
     
     /*
+>>>>>>> c58eb864badfa9b74643147fb8485b868efa1b55
     if(isset($_POST["keywords"]))
     {
         $keywords = $_POST["keywords"];
@@ -56,5 +60,5 @@
     {
         echo "";
     }
-    */
+    
 ?>

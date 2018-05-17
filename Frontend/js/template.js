@@ -220,7 +220,3 @@ Template.Sidebar.Item =_.template('\
 </li>\
 ');
 
-Template.Car.Square = _.template('\
-<div></div>\
-');
-
