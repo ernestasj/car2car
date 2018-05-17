@@ -1,4 +1,4 @@
-<?php   
+<?php   //THIS IS FOR CAR DATABSE NOT FAKE RMS
 class ModelClass
 {
     public $make;
@@ -9,7 +9,7 @@ class ModelClass
         $this->model = $model;
     }
 }
-$numberOfEntries = 10000;
+$numberOfEntries = 100;
 $globalDoors = 4;
 $globalCC = 1000;
 $yearMin = 1995;
@@ -113,7 +113,6 @@ $globalPetrol = "petrol";
 
 //====================================
 //Filling Database
-mysqli_query($con, "use fakeRMS");
 
 $count = 0;
 while ($count < $numberOfEntries)
@@ -122,7 +121,7 @@ while ($count < $numberOfEntries)
     $kms = rand(0, $kmsMax);
     $yearTemp = rand($yearMin, $yearMax);
     $makeNum = rand(0, count($modelArray)-1);
-    $insertStatement = "INSERT INTO carlist VALUES(
+    $insertStatement = "INSERT INTO car VALUES(
         '".$regoArray[$count]."',
         '".$modelArray[$makeNum]->make."',
         '".$modelArray[$makeNum]->model."',
@@ -133,7 +132,9 @@ while ($count < $numberOfEntries)
         '".$globalDoors."',
         '".$globalCC."',
         '".$kms."', 
-        '".$globalBody."'
+        '".$globalBody."',
+        'default.jpg',
+        'bob'
         )";
     mysqli_query($con, $insertStatement);
     $count++;

@@ -20,3 +20,14 @@ CREATE TABLE CarList
     PRIMARY KEY (rego)
 );
 
+DROP TABLE IF EXISTS LicenceList;
+
+CREATE TABLE LicenceList
+(
+    licenceNum varchar(45) NOT NULL,
+    firstName varchar(45),
+    lastName varchar(45),
+    DOB DATE, 
+    gender char(1)
+);
+
