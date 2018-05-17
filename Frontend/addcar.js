@@ -1,6 +1,6 @@
 app.controller('addcarCtrl', function($scope, $http) {
     $scope.form = {};
-    ;
+    
     $scope.addcar = function () {
         console.log($scope.form)
         /*$http.post("./submit/login.php",
