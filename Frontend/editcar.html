@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="dist/css/theme.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+  <script src="./angularSlideables.js"></script>
+
+</head>
+
+<body ng-app="page" ng-controller="navbarCtrl">
+    <div ng-include="'navbar.html'">
+    
+    </div>
+    <div ng-include="'login.html'">
+  
+    </div>
+  <div class="py-5" ng-controller="editcarCtrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <h3>Tell us about changes to your car</h3>
+            </div>
+            <div class="panel-body">
+              <form class="" action="./submit/addcar.php" method="post" enctype="multipart/form-data">
+                <div class="">
+                  <h4 class="m-2 py-1">Identification</h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control m-1" id="rego" placeholder="Rego" name="rego"> </div>
+                </div>
+                <div class="">
+                  <h4 class="m-2 py-1">Photo</h4>
+                </div>
+                <div class="row col-sm-12 m-1">
+                  <input type="file" class="form-control-file" id="photo" name="photo"> </div>
+                <div>
+                  <h4 class="m-1 py-1"> Location </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="row col-sm-12">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb" name="suburb"> </div>
+                    <div class="col-sm-3">
+                      <select type="text" class="form-control m-1" id="state" placeholder="State" name="state">
+                        <option value="nsw" selected="">NSW</option>
+                        <option value="vic">VIC</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control m-1" id="postcode" placeholder="Post code" name="postcode"> </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="m-1 py-1"> Availability </h4>
+                </div>
+                <div class="col-sm-12 m-1">
+                  <div class="col-sm-12 checkbox">
+                    <label class="checkbox-inline col-sm-3">
+                      <input type="checkbox" class="weekday day" value="yes" id="monday" name="monday">&nbsp;Monday</label>
+                    <label class="checkbox-inline col-sm-3">
+                      <input type="checkbox" class="weekday day" value="yes" id="tuesday" name="tuesday">&nbsp;Tuesday</label>
+                    <label class="checkbox-inline col-sm-3">
+                      <input type="checkbox" class="weekday day" value="yes" id="wednesday" name="wednesday">&nbsp;Wednesday</label>
+                  </div>
+                  <div class="col-sm-12 checkbox">
+                    <label class="checkbox-inline col-sm-3">
+                      <input type="checkbox" class="weekday day" value="yes" id="thursday" name="thursday">&nbsp;Thursday</label>
+                    <label class="checkbox-inline col-sm-3">
+                      <input type="checkbox" class="weekday day" value="yes" id="friday" name="friday">&nbsp;Friday</label>
+                    <label class="checkbox-inline col-sm-3">
+                      <input type="checkbox" class="weekend day" value="yes" id="saturday" name="saturday">&nbsp;Saturday</label>
+                  </div>
+                  <div class="col-sm-12 checkbox">
+                    <label class="checkbox-inline col-sm-3">
+                      <input type="checkbox" class="weekend day" value="yes" id="sunday" name="sunday">&nbsp;Sunday</label>
+                    <label class="checkbox-inline col-sm-3">
+                      <input type="checkbox" value="yes" class="day" id="public_holidays" name="public_holidays">&nbsp;Public Holidays</label>
+                  </div>
+                  <div class="col-sm-12 m-1 btn-group">
+                    <button type="button" class="btn btn-outline-primary col-sm-2" id="all_available">All</button>
+                    <button type="button" class="btn btn-outline-primary col-sm-2" id="weekends_available">Weekend</button>
+                    <button type="button" class="btn btn-outline-primary col-sm-2" id="weekdays_available">Weekdays</button>
+                    <button type="button" class="btn btn-outline-primary col-sm-2" id="none_available">Clear</button>
+                  </div>
+                </div>
+                <div class="">
+                  <h4 class="m-2 py-1"> Type </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-4">
+                      <select class="form-control m-1" ng-model="selectedMake" name="make" ng-options="make.name for make in makes track by make.value" ng-change="MakeChanged()"></select>
+                      </select>
+                  </div>
+                  <div class="col-sm-4">
+                      <select class="form-control m-1" ng-model="selectedModel" name="model" ng-options="model.name for model in models track by model.value"></select>
+                      </select>
+                  </div>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-4">
+                    <select type="text" class="form-control m-1" id="body" placeholder="" name="body">
+                      <option value="" selected="">Body</option>
+                      <option value="Sedan">Sedan</option>
+                      <option value="Hatch">Hatch</option>
+                      <option value="Coupe">Coupe</option>
+                      <option value="SUV">SUV</option>
+                      <option value="Van">Van</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <select type="text" class="form-control m-1" id="doors" placeholder="" name="doors">
+                      <option value="" selected="">Doors</option>
+                      <option value="None">None</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6+">6+</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="">
+                  <h4 class="m-2 py-1"> Age </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control m-1" id="year" placeholder="Year" name="year"> </div>
+                  <div class="col-sm-4">
+                    <select type="text" class="form-control m-1" id="kms" name="kms">
+                      <option value="" selected="">Odometer</option>
+                      <option value="Under 5,000km">Under 5,000km</option>
+                      <option value="5,000 to 9,999km">5,000 to 9,999km</option>
+                      <option value="10,000 to 19,999km">10,000 to 19,999km</option>
+                      <option value="20,000 to 39,999km">20,000 to 39,999km</option>
+                      <option value="40,000 to 69,999km">40,000 to 69,999km</option>
+                      <option value="70,000 to 99,999km">70,000 to 99,999km</option>
+                      <option value="100,000 to 149,999km">100,000 to 149,999km</option>
+                      <option value="150,000 to 199,999km">150,000 to 199,999km</option>
+                      <option value="200,000km+">200,000km+</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4"> </div>
+                </div>
+                <div>
+                  <h4 class="m-1 py-1"> Motor </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-4">
+                    <select type="text" class="form-control m-1" id="enginecc" placeholder="Card Type" name="enginecc">
+                      <option value="" selected="">Engine Size</option>
+                      <option value="Under 1000cc">Under 1000cc</option>
+                      <option value="1000 to 1499cc">1000 to 1499cc</option>
+                      <option value="1500 to 1999cc">1500 to 1999cc</option>
+                      <option value="2000 to 2499cc">2000 to 2499cc</option>
+                      <option value="2500 to 2999cc">2500 to 2999cc</option>
+                      <option value="3000 to 3499cc">3000 to 3499cc</option>
+                      <option value="3500 to 3999cc">3500 to 3999cc</option>
+                      <option value="4000 to 4999cc">4000 to 4999cc</option>
+                      <option value="5000 to 5999cc">5000 to 5999cc</option>
+                      <option value="6000cc and over">6000cc and over</option>
+                      <option value="Electric Engine">Electric Engine</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <select type="text" class="form-control m-1" id="petrol" placeholder="Card Type" name="petrol">
+                      <option value="" selected="">Petrol type</option>
+                      <option value="E10">E10</option>
+                      <option value="RON-91">RON-91</option>
+                      <option value="Ron-95">RON-95</option>
+                      <option value="Ron-98">RON-98</option>
+                      <option value="Diesel">Diesel</option>
+                      <option value="Electric">Electric</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <select type="text" class="form-control m-1" id="transmission" name="transmission">
+                      <option value="" selected="">Transmission</option>
+                      <option value="Auto">Auto</option>
+                      <option value="Manual">Manual</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="m-1 py-1" draggable="true"> Description </h4>
+                </div>
+                <div class="row col-sm-12">
+                  <textarea class="form-control" rows="10" id="description" placeholder="Tell your potential renters why they should choose your car!" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12 text-center py-2">
+                    <button type="submit" class="btn col-sm-4 btn-outline-primary m-1">Add Car</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="./app.js"></script>
+  <script>
+    $(document).ready(function(){
+
+          $("#all_available").click(function(){
+            $(".day").prop('checked', true);
+          });
+
+          $("#none_available").click(function(){
+            $(".day").prop('checked', false);
+          });
+
+          $("#weekends_available").click(function(){
+            $(".day").prop('checked', false);
+            $(".weekend").prop('checked', true);
+          });
+
+          $("#weekdays_available").click(function(){
+            $(".day").prop('checked', false);
+            $(".weekday").prop('checked', true);
+          });
+
+        });
+  </script>
+  <script src="./navbar.js"></script>
+  <script src="./login.js"></script>
+  <script src="./addcar.js"></script>
+</body>
+
+</html>

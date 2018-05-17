@@ -86,7 +86,7 @@ CREATE TABLE `car` (
 
 LOCK TABLES `car` WRITE;
 /*!40000 ALTER TABLE `car` DISABLE KEYS */;
-INSERT INTO `car` VALUES ('ABC-ABC','Ford','86','Diesel','auto','1234','4','3000 to 3499cc','20,000 to 39,999km','suv',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Bondi','NSW','It\'s an awesome car! :D','2000','yes'),('abc123','Ford','86','Ron-98','Auto','1234','1','3500 to 3999cc','10,000 to 19,999km','Sedan',NULL,'bob','yes','yes','yes','yes','yes','no','no','Kingsford','nsw','It\'s a great car! A++++','2032','no'),('acar','Holden','commodore','RON-91','Auto','1234','3','3000 to 3499cc','20,000 to 39,999km','Hatch',NULL,'a','yes','yes','yes','yes','yes','no','no','a','nsw','Best car eva!!\r\n\r\nNo really. I drove this car once and I found a penny 3 years later!','123','no'),('PH','Ford','ranger','Diesel','Auto','124','3','6000cc and over','200,000km+','Hatch',NULL,'bob','yes','no','no','no','no','no','no','Minto','nsw','Sort of okay car. You can\'t do any worse!','12345','yes'),('pizza','Holden','commodore','Ron-98','Manual','2008','4','3000 to 3499cc','100,000 to 149,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Coogee','nsw','This is a pretty crap car. Don\'t rent it!','1234','yes'),('QWERTY','Holden','commodore','Ron-98','Auto','2001','2','3000 to 3499cc','200,000km+','Sedan',NULL,'','no','no','no','no','no','yes','yes','bondi','nsw','Best car you\'ll ever drive. Available from 10:30am Saturday and Sunday. Return by 9pm Sunday.','2001','no'),('qwerty1','Mazda','CX3','Ron-95','Auto','1234','2','4000 to 4999cc','20,000 to 39,999km','Coupe',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Canberra','nsw','A car. What else did you want?','23445','yes'),('qwerty2','Ford','Falcon','RON-91','Auto','1234','2','2500 to 2999cc','40,000 to 69,999km','Hatch',NULL,'bob','no','no','no','no','no','yes','yes','sdfsdf','nsw','','sdfsdf','no'),('ssdfsdf','Holden','ranger','Ron-98','Manual','34234','3','3500 to 3999cc','10,000 to 19,999km','Hatch',NULL,'','yes','yes','yes','yes','yes','yes','yes','sdfsdf','vic','','sdf','yes');
+INSERT INTO `car` VALUES ('123456789','Holden','Captiva','Electric','Auto','2012','6+','2500 to 2999cc','70,000 to 99,999km','Van',NULL,'henry_y23@hotmail.com','no','no','no','no','no','yes','yes','Gyme','nsw','Big car','2227','no'),('ABC-ABC','Ford','86','Diesel','auto','1234','4','3000 to 3499cc','20,000 to 39,999km','suv',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Bondi','NSW','It\'s an awesome car! :D','2000','yes'),('abc123','Ford','86','Ron-98','Auto','1234','1','3500 to 3999cc','10,000 to 19,999km','Sedan',NULL,'bob','yes','yes','yes','yes','yes','no','no','Kingsford','nsw','It\'s a great car! A++++','2032','no'),('acar','Holden','commodore','RON-91','Auto','1234','3','3000 to 3499cc','20,000 to 39,999km','Hatch',NULL,'a','yes','yes','yes','yes','yes','no','no','a','nsw','Best car eva!!\r\n\r\nNo really. I drove this car once and I found a penny 3 years later!','123','no'),('PH','Ford','ranger','Diesel','Auto','124','3','6000cc and over','200,000km+','Hatch',NULL,'bob','yes','no','no','no','no','no','no','Minto','nsw','Sort of okay car. You can\'t do any worse!','12345','yes'),('pizza','Holden','commodore','Ron-98','Manual','2008','4','3000 to 3499cc','100,000 to 149,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Coogee','nsw','This is a pretty crap car. Don\'t rent it!','1234','yes'),('QWERTY','Holden','commodore','Ron-98','Auto','2001','2','3000 to 3499cc','200,000km+','Sedan',NULL,'','no','no','no','no','no','yes','yes','bondi','nsw','Best car you\'ll ever drive. Available from 10:30am Saturday and Sunday. Return by 9pm Sunday.','2001','no'),('qwerty1','Mazda','CX3','Ron-95','Auto','1234','2','4000 to 4999cc','20,000 to 39,999km','Coupe',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Canberra','nsw','A car. What else did you want?','23445','yes'),('qwerty2','Ford','Falcon','RON-91','Auto','1234','2','2500 to 2999cc','40,000 to 69,999km','Hatch',NULL,'bob','no','no','no','no','no','yes','yes','sdfsdf','nsw','','sdfsdf','no'),('ssdfsdf','Holden','ranger','Ron-98','Manual','34234','3','3500 to 3999cc','10,000 to 19,999km','Hatch',NULL,'','yes','yes','yes','yes','yes','yes','yes','sdfsdf','vic','','sdf','yes');
 /*!40000 ALTER TABLE `car` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +110,7 @@ CREATE TABLE `carphoto` (
 
 LOCK TABLES `carphoto` WRITE;
 /*!40000 ALTER TABLE `carphoto` DISABLE KEYS */;
-INSERT INTO `carphoto` VALUES ('qwerty1','1522791847.png'),('qwerty2','173342403.png');
+INSERT INTO `carphoto` VALUES ('123456789',NULL),('5646489465',NULL),('qwerty1','1522791847.png'),('qwerty2','173342403.png');
 /*!40000 ALTER TABLE `carphoto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,7 +348,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('Robert!','dfgdsfg','a','24234','234234','234234','Visa',NULL,'','dgdsfg','a','a','a','a','a','a','dfgdsfg','? string:a ?','a'),('a','a','b','a','a','a','a',NULL,NULL,'a','b','a','a','a','a','a','a','a','a'),('Bob','123123','bob',NULL,NULL,NULL,NULL,NULL,'','sdfgsdf','bob',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('d','d','d','d','d','d','Visa',NULL,NULL,'d','d@d','d','d','d','d','d','d','nsw','d'),('Ernesta ','ABY458999','ernestas',NULL,NULL,NULL,NULL,NULL,'','Janusas','ernestas.janusas@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('g','g','g','g','g','g','Visa',NULL,NULL,'g','g','g','g','g','g','g','g','nsw','g'),('Joe','123123','joe',NULL,NULL,NULL,NULL,NULL,'','dfgdfg','joe',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Mike','123123','mike',NULL,NULL,NULL,NULL,NULL,'','sdfsd','mike',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Plonk','7654321','password',NULL,NULL,NULL,NULL,NULL,'','KerPlonk','plonk@plonkmail.gov',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('John','1300655506','potate',NULL,NULL,NULL,NULL,NULL,'','Cena','potate@yeet.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie@vodka.gov.sru',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('test','234235235','test',NULL,NULL,NULL,NULL,NULL,'','test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES ('Robert!','dfgdsfg','a','24234','234234','234234','Visa',NULL,'','dgdsfg','a','a','a','a','a','a','dfgdsfg','? string:a ?','a'),('a','a','b','a','a','a','a',NULL,NULL,'a','b','a','a','a','a','a','a','a','a'),('Bob','123123','bob',NULL,NULL,NULL,NULL,NULL,'','sdfgsdf','bob',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('d','d','d','d','d','d','Visa',NULL,NULL,'d','d@d','d','d','d','d','d','d','nsw','d'),('Ernesta ','ABY458999','ernestas',NULL,NULL,NULL,NULL,NULL,'','Janusas','ernestas.janusas@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('g','g','g','g','g','g','Visa',NULL,NULL,'g','g','g','g','g','g','g','g','nsw','g'),('Henry','1234567','password','4000000000006','22/12/58','666','Mastercard',NULL,NULL,'Yu','henry_y23@hotmail.com','Casuarina Road','Gymea Bay','2227','11111111','22222222','2/3/97','nsw','15'),('Joe','123123','joe',NULL,NULL,NULL,NULL,NULL,'','dfgdfg','joe',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Mike','123123','mike',NULL,NULL,NULL,NULL,NULL,'','sdfsd','mike',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Plonk','7654321','password',NULL,NULL,NULL,NULL,NULL,'','KerPlonk','plonk@plonkmail.gov',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('John','1300655506','potate',NULL,NULL,NULL,NULL,NULL,'','Cena','potate@yeet.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie@vodka.gov.sru',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('test','234235235','test',NULL,NULL,NULL,NULL,NULL,'','test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1124,9 +1124,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `MakeBooking`(email VARCHAR(45), rego VARCHAR(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `MakeBooking`(email VARCHAR(45), rego VARCHAR(45), date VARCHAR(45))
 BEGIN
-	INSERT INTO booking (owneremail, rego) VALUES (email, rego);
+	INSERT INTO booking (owneremail, rego, date) VALUES (email, rego, date);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1220,6 +1220,27 @@ BEGIN
     INSERT INTO model (make, name, text) VALUES ("Mazda", "CX5", "CX5");
     INSERT INTO model (make, name, text) VALUES ("Mazda", "CX7", "CX7");
     INSERT INTO model (make, name, text) VALUES ("Mazda", "CX9", "CX9");
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `RandomSuburb` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RandomSuburb`()
+BEGIN
+	SELECT * FROM suburb
+	ORDER BY RAND()
+	LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1497,4 +1518,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-14 12:08:35
+-- Dump completed on 2018-05-17 14:04:44
