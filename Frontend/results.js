@@ -70,19 +70,20 @@ app.controller('resultsCtrl', function($scope, $http) {
         */
     $scope.book = function(car) {
         console.log("Booking!");
+        console.log(car);
         $http.post("./submit/booking.php",
         {
             rego: car.rego,
             date: car.date
         })
         .then(function(response) {
-            console.log(response)
+            console.log(response);
             $scope.requested = true;
             //<button type="button" class="btn btn-danger col-sm-2" ng-show="requested" ng-click="unbook(car)">Cancel Booking</button>
 
             $scope.action = $scope.unbook;
             $scope.booking_class = "btn-danger";
-            $scope.action_text = "Cancel";  
+            $scope.action_text = "Cancel";
         });
 
 

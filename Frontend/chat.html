@@ -39,16 +39,18 @@
   
     </div>
   <div class="py-5">
-    <div class="container">
+    <div class="container" ng-controller="inboxCtrl">
       <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8 well">
+        <div class="col-md-8" ng-show="car == false"></div>
+        <div class="col-md-8 well" ng-show="car != false">
+          
           <div class="col-sm-2 text-right">
-            <img src="./img/car.jpg" class="img-circle centered-and-cropped" alt="" style="object-fit:cover;width:75px; height:75px;"> </div>
+            <img ng-src="{{'./img/' + car.image}}" class="img-circle centered-and-cropped" alt="" style="object-fit:cover;width:75px; height:75px;"> </div>
           <div class="col-sm-2 btn-group-vertical">
-            <button type="button" class="btn col-sm-12 text-dark btn-outline-info">Rating: 4.5/5 </button>
-            <button type="button" class="btn col-sm-12 text-dark btn-outline-info">Car: AGD-435 </button>
-            <button type="button" class="btn col-sm-12 text-dark btn-outline-info">Date: 23/5/2018 </button>
+            <!--<button type="button" class="btn col-sm-12 text-dark btn-outline-info">Rating: {{car.rating}}/5 </button>-->
+            <button type="button" class="btn col-sm-12 text-dark btn-outline-info">Car: {{car.rego}} </button>
+            <!--<button type="button" class="btn col-sm-12 text-dark btn-outline-info">Date: 23/5/2018 </button>-->
           </div>
           <div class="col-sm-2">
             <button type="button" class="btn col-sm-12 btn-secondary" id="approval_status">Awaiting Decision</button>
@@ -62,15 +64,16 @@
           <div class="col-sm-2 btn-group-vertical">
             <h3> Amount: $45.00 </h3>
           </div>
+        
         </div>
         <div class="col-md-2"></div>
       </div>
       <div class="row">
-        <div class="col-md-2" ng-controller="inboxCtrl">          
+        <div class="col-md-2" >          
           <div class="col-sm-12 well-sm hoverDiv" ng-repeat="mail in inbox">
-            <a href="#" ng-click="loadConversation(mail.bookingid)"><img ng-src="{{'./img/'+mail.userimage}}" data-bookingid="{{mail.bookingid}}" class="img-circle centered-and-cropped" alt="" style="object-fit:cover;width:50px; height:50px;"> {{mail.username}}</a> </div>
+            <a href="#" ng-click="loadConversation(mail.bookingid, mail.otherimage, mail.othername)"><img ng-src="{{'./img/'+mail.otherimage}}" data-bookingid="{{mail.bookingid}}" class="img-circle centered-and-cropped" alt="" style="object-fit:cover;width:50px; height:50px;"> {{mail.othername}}</a> </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" style="max-height: 40vh; overflow:auto;display: flex; flex-direction: column-reverse;">
             <div ng-include="'chatwindow.html'"></div>
         </div>
 
@@ -80,11 +83,11 @@
         <div class="col-sm-2"> </div>
         <div class="col-sm-8">
           <div class="col-sm-12">
-            <textarea class="form-control" rows="10" id="comment" placeholder="Send a message"></textarea>
+            <textarea class="form-control" rows="10" id="comment" placeholder="Send a message" ng-model="form.message"></textarea>
           </div>
-          <div class="col-sm-12 text-center  btn-group">
+          <div class="col-sm-12 text-center btn-group">
             <span class="col-sm-4"></span>
-            <button type="button" class="btn btn-outline-primary col-sm-4 m-1" id="send">Send</button>
+            <button type="button" class="btn btn-outline-primary col-sm-4 m-1" id="send" ng-click="SendMessage()">Send</button>
             <span class="col-sm-4"></span>
           </div>
         </div>

@@ -7,18 +7,20 @@
             $result = $this->ReadDB($db, $email, $bookingid);
             
             // Load rows from DB
-            $rows;
-            foreach($result as $row)
+            if(mysqli_num_rows($result) > 0)
             {
-                $this->AddMessage($row);
+                while($row = mysqli_fetch_array($result))
+                {
+                    array_push($this->messages, $row);
+                }
             }
         }
 
         function ReadDB($db, $email, $bookingid) {
 
             $stmt = $db->stmt_init();
-            $stmt = $db->prepare("call GetMessages(?)");
-            $stmt->bind_param("i", $bookingid);
+            $stmt = $db->prepare("call GetMessages(?, ?)");
+            $stmt->bind_param("si", $email, $bookingid);
             $stmt->execute();
             $result = $stmt->get_result();
 /*
@@ -58,11 +60,11 @@
         }
         function ToJSON()
         {
-            $data = [];
-            foreach($this->messages as $message) {
-                array_push($data, $message->AsArray());
-            }
-            return json_encode($data);
+            //$data = [];
+            //foreach($this->messages as $message) {
+            //    array_push($data, $message->AsArray());
+           // }
+            return json_encode($this->messages);
         }
 
     }

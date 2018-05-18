@@ -1,13 +1,16 @@
 <?php
-    include ("../php/includes.php");
-    include ("../php/loggedin.php");
+    include("../php/includes.php");
 
+    
+    $none = [];
+    $postdata = file_get_contents("php://input");
+
+    $request = json_decode($postdata);
+    $rego = $request->rego;
+    $date = $request->date;
     $user = unserialize($_SESSION['user']);
-    $cars = unserialize($_SESSION['cars']);
-    $carid = $_POST['carid'];
-    $date = $_POST['date'];
-    $rego = $cars->GetRego($carid);
-    $booking = new Booking($rego, $user->email, $date);
+    $email = $user->GetEmail();
+    $booking = new Booking($rego, $email, $date);
     $booking->WriteDB($db);
 
 ?>

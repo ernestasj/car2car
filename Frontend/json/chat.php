@@ -10,11 +10,12 @@
     $bookingid = $request->bookingid;
 
     if(isset($bookingid)) {
-        //$user = unserialize($_SESSION['user']);
-        //$messages = new Messages;
-        //$messages->LoadMessages($db, $user->email, $bookingid);
-        //echo $messages->ToJSON();
-        $inbox = [];
+        $user = unserialize($_SESSION['user']);
+        $messages = new Messages;
+        $email = $user->GetEmail();
+        $messages->LoadMessages($db, $email, $bookingid);
+        echo $messages->ToJSON();
+/*        $inbox = [];
         $msg1 = [];
         $msg1["userid"] = 0;
         $msg1["userimage"] = "user1.jpg";
@@ -48,7 +49,7 @@
         array_push($inbox, $msg2);
 
         //echo $bookingid;
-        echo json_encode($inbox[$bookingid]);
+        echo json_encode($inbox[$bookingid]);*/
     }
     else
     {echo json_encode($none);

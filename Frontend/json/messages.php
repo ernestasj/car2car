@@ -1,7 +1,7 @@
 <?php 
 
     include("../php/includes.php");
-    include("../php/loggedin.php");
+    //include("../php/loggedin.php");
     //include("../php/loggedin.php");
 
     $messages = new Messages();

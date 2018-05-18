@@ -1,44 +1,5 @@
 app.controller('messagesCtrl', function($scope, $http) {
-/*
-        var data = {
-            userid: 1,
-            userimage: "user1.jpg",
-            otherimage: "user2.jpg",
-            othername: "Bob",
-            username: "Robert",
-            messages: [
-                {
-                    senderid: 0,
-                    content: "Hello!"
-                },
-                {
-                    senderid: 1,
-                    content: "Howdy!"
-                },
-                {
-                    senderid: 0,
-                    content: "Is the car still for rent?"
-                },
-                {
-                    senderid: 1,
-                    content: "No"
-                },
-                {
-                    senderid: 1,
-                    content: "Just kidding ofcourse it is! XD"
-                },
-                {
-                    senderid: 0,
-                    content: "Phew. I need it on Friday from 6pm"
-                },
-                {
-                    senderid: 1,
-                    content: "Sure. Come pick it up."
-                }
-            ]
-        };
-*/
-        
+        $scope.userid = 0;
         $scope.bookingid = 0;
          $http.post("./json/chat.php",
             {
@@ -50,7 +11,7 @@ app.controller('messagesCtrl', function($scope, $http) {
                 $scope.otherimage = response.data.otherimage;
                 $scope.othername = response.data.othername;
                 $scope.username = response.data.username;
-                $scope.messages = response.data.messages;
+                $scope.messages = [];
                 });
 
         $scope.$on('ChangeMessage', function(event, data) {
@@ -60,6 +21,8 @@ app.controller('messagesCtrl', function($scope, $http) {
             $scope.othername = data.othername;
             $scope.username = data.username;
             $scope.messages = data.messages;
+            $scope.userid = 0;
+            
         });
         /*
         $scope.bookingid = 0;

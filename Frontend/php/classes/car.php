@@ -206,5 +206,19 @@
             }
             $stmt->close();
         }
+
+        function LoadCarViaBooking($db, $email, $bookingid)
+        {
+            $stmt = $db->stmt_init();
+            $stmt = $db->prepare("call GetCarByBookingId(?, ?)");
+            $stmt->bind_param("ss", $email, $bookingid);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = mysqli_fetch_assoc($result);
+            $this->desc["rego"] = $row["rego"];
+            $this->desc["image"] = $row["filename"];
+            $this->desc["renter"] = $row["renter"];
+            $stmt->close();
+        }
     }
 ?>

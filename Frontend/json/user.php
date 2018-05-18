@@ -5,7 +5,7 @@
     $user = unserialize($_SESSION['user']);
 
     $stmt = $db->stmt_init();
-    $stmt = $db->prepare("call GetInbox(?)");
+    $stmt = $db->prepare("call GetUserPhoto(?)");
     $email = $user->GetEmail();
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -15,13 +15,16 @@
 
     if(mysqli_num_rows($result) > 0)
     {
-        while($row = mysqli_fetch_array($result))
-        {
-            array_push($channels, $row);
-        }
+        $row = mysqli_fetch_array($result);
+        
+        echo json_encode($row);
+        
     }
-
-    echo json_encode($channels);
+    else 
+    {
+        echo json_code([]);
+    }
+    
 
 
 ?>
