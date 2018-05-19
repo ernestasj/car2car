@@ -215,5 +215,12 @@
             $stmt->close(); 
         }
 
+        function AddPhoto($db, $filename)
+        {
+            $stmt = $db->prepare("call AddUserPhoto(?, ?)");
+            $stmt->bind_param("ss", $this->desc['email'], $filename);
+            $stmt->execute();
+            $stmt->close();             
+        }
     }
 ?>
