@@ -30,7 +30,7 @@ CREATE TABLE `booking` (
   `date` varchar(45) NOT NULL,
   `bookingid` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`bookingid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES ('abc123','mike','05/31/2018',1),('abc123','mike','05/28/2018',2),('abc123','potate@yeet.com','',3),('abc123','plonk@plonkmail.gov','05/17/2018',4),('abc123','test','05/24/2018',5),('PH','a','12/12/56',6),('PH','','',7),('abc123','','',8),('PH','','',9),('PH','','',10),('PH','mike','',11);
+INSERT INTO `booking` VALUES ('abc123','mike','05/31/2018',1),('abc123','mike','05/28/2018',2),('abc123','potate@yeet.com','',3),('abc123','plonk@plonkmail.gov','05/17/2018',4),('abc123','test','05/24/2018',5),('PH','a','12/12/56',6),('PH','','',7),('abc123','','',8),('PH','','',9),('PH','','',10),('PH','mike','',11),('PH','u','',12);
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,6 +75,8 @@ CREATE TABLE `car` (
   `description` longtext NOT NULL,
   `postcode` varchar(45) NOT NULL,
   `public_holidays` varchar(45) NOT NULL,
+  `rate` int(11) DEFAULT NULL,
+  `carcol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`rego`,`email`),
   FULLTEXT KEY `Search` (`rego`,`make`,`model`,`petrol`,`transmission`,`year`,`doors`,`enginecc`,`kms`,`body`,`suburb`,`state`,`description`,`postcode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -86,7 +88,7 @@ CREATE TABLE `car` (
 
 LOCK TABLES `car` WRITE;
 /*!40000 ALTER TABLE `car` DISABLE KEYS */;
-INSERT INTO `car` VALUES ('123456789','Holden','Captiva','Electric','Auto','2012','6+','2500 to 2999cc','70,000 to 99,999km','Van',NULL,'henry_y23@hotmail.com','no','no','no','no','no','yes','yes','Gyme','nsw','Big car','2227','no'),('ABC-ABC','Ford','86','Diesel','auto','1234','4','3000 to 3499cc','20,000 to 39,999km','suv',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Bondi','NSW','It\'s an awesome car! :D','2000','yes'),('abc123','Ford','86','Ron-98','Auto','1234','1','3500 to 3999cc','10,000 to 19,999km','Sedan',NULL,'bob','yes','yes','yes','yes','yes','no','no','Kingsford','nsw','It\'s a great car! A++++','2032','no'),('acar','Holden','commodore','RON-91','Auto','1234','3','3000 to 3499cc','20,000 to 39,999km','Hatch',NULL,'a','yes','yes','yes','yes','yes','no','no','a','nsw','Best car eva!!\r\n\r\nNo really. I drove this car once and I found a penny 3 years later!','123','no'),('cvbdf','Hyundai','i30','Ron-98','Auto','1234','3','1500 to 1999cc','20,000 to 39,999km','Hatch',NULL,'w','yes','yes','yes','yes','yes','yes','yes','St Andrews','nsw','Awesome car!! No dents yet!','2560','yes'),('PH','Ford','ranger','Diesel','Auto','124','3','6000cc and over','200,000km+','Hatch',NULL,'bob','yes','no','no','no','no','no','no','Minto','nsw','Sort of okay car. You can\'t do any worse!','12345','yes'),('pizza','Holden','commodore','Ron-98','Manual','2008','4','3000 to 3499cc','100,000 to 149,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Coogee','nsw','This is a pretty crap car. Don\'t rent it!','1234','yes'),('QWERTY','Holden','commodore','Ron-98','Auto','2001','2','3000 to 3499cc','200,000km+','Sedan',NULL,'','no','no','no','no','no','yes','yes','bondi','nsw','Best car you\'ll ever drive. Available from 10:30am Saturday and Sunday. Return by 9pm Sunday.','2001','no'),('qwerty1','Mazda','CX3','Ron-95','Auto','1234','2','4000 to 4999cc','20,000 to 39,999km','Coupe',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Canberra','nsw','A car. What else did you want?','23445','yes'),('qwerty2','Ford','Falcon','RON-91','Auto','1234','2','2500 to 2999cc','40,000 to 69,999km','Hatch',NULL,'bob','no','no','no','no','no','yes','yes','sdfsdf','nsw','','sdfsdf','no'),('ssdfsdf','Holden','ranger','Ron-98','Manual','34234','3','3500 to 3999cc','10,000 to 19,999km','Hatch',NULL,'','yes','yes','yes','yes','yes','yes','yes','sdfsdf','vic','','sdf','yes');
+INSERT INTO `car` VALUES ('123456789','Holden','Captiva','Electric','Auto','2012','6+','2500 to 2999cc','70,000 to 99,999km','Van',NULL,'henry_y23@hotmail.com','no','no','no','no','no','yes','yes','Gyme','nsw','Big car','2227','no',NULL,NULL),('ABC-ABC','Ford','86','Diesel','auto','1234','4','3000 to 3499cc','20,000 to 39,999km','suv',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Bondi','NSW','It\'s an awesome car! :D','2000','yes',NULL,NULL),('abc123','Ford','86','Ron-98','Auto','1234','1','3500 to 3999cc','10,000 to 19,999km','Sedan',NULL,'bob','yes','yes','yes','yes','yes','no','no','Kingsford','nsw','It\'s a great car! A++++','2032','no',NULL,NULL),('acar','Holden','commodore','RON-91','Auto','1234','3','3000 to 3499cc','20,000 to 39,999km','Hatch',NULL,'a','yes','yes','yes','yes','yes','no','no','a','nsw','Best car eva!!\r\n\r\nNo really. I drove this car once and I found a penny 3 years later!','123','no',NULL,NULL),('cvbdf','Hyundai','i30','Ron-98','Auto','1234','3','1500 to 1999cc','20,000 to 39,999km','Hatch',NULL,'w','yes','yes','yes','yes','yes','yes','yes','St Andrews','nsw','Awesome car!! No dents yet!','2560','yes',NULL,NULL),('PH','Ford','ranger','Diesel','Auto','124','3','6000cc and over','200,000km+','Hatch',NULL,'bob','yes','no','no','no','no','no','no','Minto','nsw','Sort of okay car. You can\'t do any worse!','12345','yes',NULL,NULL),('pizza','Holden','commodore','Ron-98','Manual','2008','4','3000 to 3499cc','100,000 to 149,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Coogee','nsw','This is a pretty crap car. Don\'t rent it!','1234','yes',NULL,NULL),('QWERTY','Holden','commodore','Ron-98','Auto','2001','2','3000 to 3499cc','200,000km+','Sedan',NULL,'','no','no','no','no','no','yes','yes','bondi','nsw','Best car you\'ll ever drive. Available from 10:30am Saturday and Sunday. Return by 9pm Sunday.','2001','no',NULL,NULL),('qwerty1','Mazda','CX3','Ron-95','Auto','1234','2','4000 to 4999cc','20,000 to 39,999km','Coupe',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Canberra','nsw','A car. What else did you want?','23445','yes',NULL,NULL),('qwerty2','Ford','Falcon','RON-91','Auto','1234','2','2500 to 2999cc','40,000 to 69,999km','Hatch',NULL,'bob','no','no','no','no','no','yes','yes','sdfsdf','nsw','','sdfsdf','no',NULL,NULL),('ssdfsdf','Holden','ranger','Ron-98','Manual','34234','3','3500 to 3999cc','10,000 to 19,999km','Hatch',NULL,'','yes','yes','yes','yes','yes','yes','yes','sdfsdf','vic','','sdf','yes',NULL,NULL),('testrate','Mazda','BT50','Ron-98','Auto','123','2','3000 to 3499cc','40,000 to 69,999km','Hatch',NULL,'bob','yes','yes','yes','yes','yes','no','no','dfgfdg','nsw','dgdgdfgdfg','234234','no',12,NULL);
 /*!40000 ALTER TABLE `car` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +112,7 @@ CREATE TABLE `carphoto` (
 
 LOCK TABLES `carphoto` WRITE;
 /*!40000 ALTER TABLE `carphoto` DISABLE KEYS */;
-INSERT INTO `carphoto` VALUES ('123456789',NULL),('5646489465',NULL),('abc123','173342403.png'),('cvbdf','1987337173.png'),('PH','1987337173.png'),('qwerty1','1522791847.png'),('qwerty2','173342403.png');
+INSERT INTO `carphoto` VALUES ('123456789',NULL),('5646489465',NULL),('abc123','173342403.png'),('cvbdf','1987337173.png'),('PH','1987337173.png'),('qwerty1','1522791847.png'),('qwerty2','173342403.png'),('testrate',NULL);
 /*!40000 ALTER TABLE `carphoto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +177,7 @@ CREATE TABLE `message` (
   `message` longtext,
   `bookingid` int(11) DEFAULT NULL,
   PRIMARY KEY (`idmessages`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +186,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,'mike',NULL,'Hi!',1),(2,'bob',NULL,'Howdy',1),(3,'bob',NULL,'Hi!',1),(4,'bob',NULL,'how are you?',1),(5,'mike',NULL,'Bla',1),(6,'potate@yeet.com',NULL,'Yeah G\'Day Cobba want ur car\r\n',3),(7,'plonk@plonkmail.gov',NULL,'hi there\r\n',4),(8,'bob',NULL,'Yo',3),(9,'bob',NULL,'Heya',4),(10,'bob',NULL,'you made the booking!',3),(11,'test',NULL,'Hi!',5),(12,'bob',NULL,'Hi there!',5),(13,'test',NULL,'jkhgsfgsdf',5),(14,'bob',NULL,'sdkfghsdkjfhsd',5),(15,'bob',NULL,'Hi!',1),(16,'bob',NULL,'Wow it works!',1),(17,'bob',NULL,'wow!',1),(18,'bob',NULL,'woo!',1),(19,'bob',NULL,'Hi!',1),(20,'bob',NULL,'Yo mike what\'s up?',2),(21,'bob',NULL,'Heya Robert!',6);
+INSERT INTO `message` VALUES (1,'mike',NULL,'Hi!',1),(2,'bob',NULL,'Howdy',1),(3,'bob',NULL,'Hi!',1),(4,'bob',NULL,'how are you?',1),(5,'mike',NULL,'Bla',1),(6,'potate@yeet.com',NULL,'Yeah G\'Day Cobba want ur car\r\n',3),(7,'plonk@plonkmail.gov',NULL,'hi there\r\n',4),(8,'bob',NULL,'Yo',3),(9,'bob',NULL,'Heya',4),(10,'bob',NULL,'you made the booking!',3),(11,'test',NULL,'Hi!',5),(12,'bob',NULL,'Hi there!',5),(13,'test',NULL,'jkhgsfgsdf',5),(14,'bob',NULL,'sdkfghsdkjfhsd',5),(15,'bob',NULL,'Hi!',1),(16,'bob',NULL,'Wow it works!',1),(17,'bob',NULL,'wow!',1),(18,'bob',NULL,'woo!',1),(19,'bob',NULL,'Hi!',1),(20,'bob',NULL,'Yo mike what\'s up?',2),(21,'bob',NULL,'Heya Robert!',6),(22,'u',NULL,'Heya!',12),(23,'bob',NULL,'Sup!',12);
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,7 +350,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('Robert!','dfgdsfg','a','24234','234234','234234','Visa',NULL,'','dgdsfg','a','a','a','a','a','a','dfgdsfg','? string:a ?','a'),('a','a','b','a','a','a','a',NULL,NULL,'a','b','a','a','a','a','a','a','a','a'),('Bob','123123','bob',NULL,NULL,NULL,NULL,NULL,'','sdfgsdf','bob',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('d','d','d','d','d','d','Visa',NULL,NULL,'d','d@d','d','d','d','d','d','d','nsw','d'),('Ernesta ','ABY458999','ernestas',NULL,NULL,NULL,NULL,NULL,'','Janusas','ernestas.janusas@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('g','g','g','g','g','g','Visa',NULL,NULL,'g','g','g','g','g','g','g','g','nsw','g'),('Henry','1234567','password','4000000000006','22/12/58','666','Mastercard',NULL,NULL,'Yu','henry_y23@hotmail.com','Casuarina Road','Gymea Bay','2227','11111111','22222222','2/3/97','nsw','15'),('Joe','123123','joe',NULL,NULL,NULL,NULL,NULL,'','dfgdfg','joe',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Mike','123123','mike',NULL,NULL,NULL,NULL,NULL,'','sdfsd','mike',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Plonk','7654321','password',NULL,NULL,NULL,NULL,NULL,'','KerPlonk','plonk@plonkmail.gov',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('John','1300655506','potate',NULL,NULL,NULL,NULL,NULL,'','Cena','potate@yeet.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie@vodka.gov.sru',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('test','234235235','test',NULL,NULL,NULL,NULL,NULL,'','test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('w','1232423','w','24323476','34786','3475','Visa',NULL,NULL,'w','w','10','suburb','2563','23874623874`1','348756348756','w','nsw','10');
+INSERT INTO `user` VALUES ('Robert!','dfgdsfg','a','24234','234234','234234','Visa',NULL,'','dgdsfg','a','a','a','a','a','a','dfgdsfg','? string:a ?','a'),('a','a','b','a','a','a','a',NULL,NULL,'a','b','a','a','a','a','a','a','a','a'),('Bob','123123','bob',NULL,NULL,NULL,NULL,NULL,'','sdfgsdf','bob',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('d','d','d','d','d','d','Visa',NULL,NULL,'d','d@d','d','d','d','d','d','d','nsw','d'),('e','231231','e','123124','1231','1231','Mastercard',NULL,NULL,'e','e','12314','123123','1234','12312412','123123123','e','nsw','12'),('Ernesta ','ABY458999','ernestas',NULL,NULL,NULL,NULL,NULL,'','Janusas','ernestas.janusas@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('f','f','f','123123','123','123','Amex',NULL,NULL,'f','f','f','f','1234','21323','123123','f','nsw','f'),('g','g','g','g','g','g','Visa',NULL,NULL,'g','g','g','g','g','g','g','g','nsw','g'),('Henry','1234567','password','4000000000006','22/12/58','666','Mastercard',NULL,NULL,'Yu','henry_y23@hotmail.com','Casuarina Road','Gymea Bay','2227','11111111','22222222','2/3/97','nsw','15'),('Joe','123123','joe',NULL,NULL,NULL,NULL,NULL,'','dfgdfg','joe',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Mike','123123','mike',NULL,NULL,NULL,NULL,NULL,'','sdfsd','mike',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('pi','pi','pi','234234','234','234','Mastercard',NULL,NULL,'pi','pi','1','2','2345','13434','234234','pi','nsw','1'),('Plonk','7654321','password',NULL,NULL,NULL,NULL,NULL,'','KerPlonk','plonk@plonkmail.gov',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('John','1300655506','potate',NULL,NULL,NULL,NULL,NULL,'','Cena','potate@yeet.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('q','q','q','12313','123','231','Mastercard',NULL,NULL,'q','q','q','q','1234','1231421','12312312','q','nsw','q'),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Sergie','7654321','password',NULL,NULL,NULL,NULL,NULL,'','Vlodkaplonk','sergie@vodka.gov.sru',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('t','t','t','234234','234234','2342','Visa',NULL,NULL,'t','t','t','t','2345','543543','234234','t','nsw','t'),('test','234235235','test',NULL,NULL,NULL,NULL,NULL,'','test','test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('u','u','u','u','u','u567','Visa',NULL,NULL,'u','u','u','u','45675','u','u','u','vic','u'),('w','1232423','w','24323476','34786','3475','Visa',NULL,NULL,'w','w','10','suburb','2563','23874623874`1','348756348756','w','nsw','10');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,7 +374,7 @@ CREATE TABLE `userphoto` (
 
 LOCK TABLES `userphoto` WRITE;
 /*!40000 ALTER TABLE `userphoto` DISABLE KEYS */;
-INSERT INTO `userphoto` VALUES ('a','user3.jpg'),('bob','user1.jpg'),('mike','user2.jpg');
+INSERT INTO `userphoto` VALUES ('a','user3.jpg'),('bob','user1.jpg'),('e',NULL),('f',NULL),('mike','user2.jpg'),('q',NULL),('t',NULL),('u','395479764.jpg');
 /*!40000 ALTER TABLE `userphoto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1176,9 +1178,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ListCar`(email VARCHAR(45), rego VARCHAR(45), make VARCHAR(45), model VARCHAR(45), year VARCHAR(45), doors VARCHAR(45), petrol VARCHAR(45), transmission VARCHAR(45), enginecc VARCHAR(45), kms VARCHAR(45), body VARCHAR(45), monday VARCHAR(45), tuesday VARCHAR(45), wednesday VARCHAR(45), thursday VARCHAR(45), friday VARCHAR(45), saturday VARCHAR(45), sunday VARCHAR(45), public_holidays VARCHAR(45), postcode VARCHAR(45), suburb VARCHAR(45), state VARCHAR(45), description LONGTEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ListCar`(email VARCHAR(45), rego VARCHAR(45), make VARCHAR(45), model VARCHAR(45), year VARCHAR(45), doors VARCHAR(45), petrol VARCHAR(45), transmission VARCHAR(45), enginecc VARCHAR(45), kms VARCHAR(45), body VARCHAR(45), monday VARCHAR(45), tuesday VARCHAR(45), wednesday VARCHAR(45), thursday VARCHAR(45), friday VARCHAR(45), saturday VARCHAR(45), sunday VARCHAR(45), public_holidays VARCHAR(45), postcode VARCHAR(45), suburb VARCHAR(45), state VARCHAR(45), description LONGTEXT, rate INT)
 BEGIN
-	INSERT INTO car (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holidays, postcode, suburb, state, description) VALUES (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holidays, postcode, suburb, state, description);
+	INSERT INTO car (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holidays, postcode, suburb, state, description, rate) VALUES (email, rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holidays, postcode, suburb, state, description, rate);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1608,4 +1610,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-18 19:16:06
+-- Dump completed on 2018-05-19 15:20:55
