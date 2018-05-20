@@ -29,8 +29,10 @@ CREATE TABLE `booking` (
   `renteremail` varchar(45) NOT NULL,
   `date` varchar(45) NOT NULL,
   `bookingid` int(11) NOT NULL AUTO_INCREMENT,
+  `owneraccepted` varchar(45) DEFAULT NULL,
+  `renteraccepted` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`bookingid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +41,7 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES ('abc123','mike','05/31/2018',1),('abc123','mike','05/28/2018',2),('abc123','potate@yeet.com','',3),('abc123','plonk@plonkmail.gov','05/17/2018',4),('abc123','test','05/24/2018',5),('PH','a','12/12/56',6),('PH','','',7),('abc123','','',8),('PH','','',9),('PH','','',10),('PH','mike','',11),('PH','u','',12);
+INSERT INTO `booking` VALUES ('abc123','mike','05/31/2018',1,'yes','yes'),('abc123','mike','05/28/2018',2,'no','maybe'),('abc123','potate@yeet.com','',3,'maybe','maybe'),('abc123','plonk@plonkmail.gov','05/17/2018',4,'maybe','maybe'),('abc123','test','05/24/2018',5,'maybe','maybe'),('PH','a','12/12/56',6,'maybe','maybe'),('PH','','',7,'maybe','maybe'),('abc123','','',8,'maybe','maybe'),('PH','','',9,'maybe','maybe'),('PH','','',10,'maybe','maybe'),('PH','mike','',11,'maybe','maybe'),('PH','u','',12,'maybe','maybe'),('PH','a','123235',13,'no','maybe');
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,7 +252,8 @@ CREATE TABLE `review` (
   `rating` int(11) DEFAULT NULL,
   `comments` longtext,
   `rego` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`user`),
+  `bookingid` int(11) NOT NULL,
+  PRIMARY KEY (`user`,`bookingid`),
   FULLTEXT KEY `index2` (`rego`,`comments`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -465,6 +468,52 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `AcceptBoking` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AcceptBoking`(email VARCHAR(45), bookingid INT)
+BEGIN
+	IF EXISTS (SELECT * FROM booking WHERE booking.email = email AND booking.bookingid = bookingid) THEN
+		UPDATE booking SET booking.renteraccepted = "yes" WHERE booking.bookingid = bookingid;
+	ELSEIF EXISTS (SELECT * FROM booking JOIN car ON booking.rego = car.rego WHERE car.email = email AND booking.bookingid = bookingid) THEN
+		UPDATE booking SET booking.owneraccepted = "yes" WHERE booking.bookingid = bookingid;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `AcceptBooking` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AcceptBooking`(email VARCHAR(45), bookingid INT)
+BEGIN
+	IF EXISTS (SELECT * FROM booking WHERE booking.renteremail = email AND booking.bookingid = bookingid) THEN
+		UPDATE booking SET booking.renteraccepted = "yes" WHERE booking.bookingid = bookingid;
+	ELSEIF EXISTS (SELECT * FROM booking JOIN car ON booking.rego = car.rego WHERE car.email = email AND booking.bookingid = bookingid) THEN
+		UPDATE booking SET booking.owneraccepted = "yes" WHERE booking.bookingid = bookingid;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `AddBooking` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -477,7 +526,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddBooking`(rego varchar(45), renteremail varchar(45), date varchar(45))
 BEGIN
-	INSERT INTO BOOKING (rego, renteremail, date) VALUES (rego, renteremail, date);
+	INSERT INTO BOOKING (rego, renteremail, date, renteraccepted, owneraccepted) VALUES (rego, renteremail, date, "maybe", "maybe");
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -661,6 +710,28 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetBooking` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBooking`(email VARCHAR(45), bookingid INT)
+BEGIN
+	IF EXISTS (SELECT * FROM booking WHERE booking.email = email AND booking.bookingid = bookingid)
+	OR EXISTS (SELECT * FROM booking JOIN car ON booking.rego = car.rego WHERE car.email = email AND booking.bookingid = bookingid) THEN
+		SELECT bookingid, rego, renteraccepted, owneraccepted FROM booking WHERE booking.bookingid = bookingid;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `GetBookingRequests` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -712,6 +783,28 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBookingsMade`(email VARCHAR(45))
 BEGIN
 	SELECT * FROM booking WHERE booking.renteremail = email;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetBookingStatus` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBookingStatus`(email VARCHAR(45), bookingid INT)
+BEGIN
+	IF EXISTS (SELECT * FROM booking WHERE booking.renteremail = email AND booking.bookingid = bookingid)
+	OR EXISTS (SELECT * FROM booking JOIN car ON booking.rego = car.rego WHERE car.email = email AND booking.bookingid = bookingid) THEN
+		SELECT bookingid, rego, renteraccepted, owneraccepted FROM booking WHERE booking.bookingid = bookingid;
+	END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -917,7 +1010,7 @@ BEGIN
 	FROM
 		(SELECT booking.bookingid as bookingid, ouser.email AS oemail, ophoto.filename as oimage, rphoto.filename as rimage, ruser.firstname as rname, ouser.firstname as oname FROM userphoto as ophoto JOIN user as ouser JOIN car JOIN booking JOIN user AS ruser JOIN userphoto as rphoto 
 			ON ruser.email = booking.renteremail AND car.rego = booking.rego AND car.email = ouser.email AND ouser.email = ophoto.email AND booking.renteremail = rphoto.email
-            WHERE ruser.email = email OR ouser.email = email) AS Users
+            WHERE ruser.email = email OR ouser.email = email AND booking.renteraccepted != "no" AND booking.owneraccepted <> "no") AS Users
 		;       
 END ;;
 DELIMITER ;
@@ -1340,6 +1433,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `RejectBooking` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RejectBooking`(email VARCHAR(45), bookingid INT)
+BEGIN
+	IF EXISTS (SELECT * FROM booking WHERE booking.renteremail = email AND booking.bookingid = bookingid) THEN
+		UPDATE booking SET booking.renteraccepted = "no" WHERE booking.bookingid = bookingid;
+	ELSEIF EXISTS (SELECT * FROM booking JOIN car ON booking.rego = car.rego WHERE car.email = email AND booking.bookingid = bookingid) THEN
+		UPDATE booking SET booking.owneraccepted = "no" WHERE booking.bookingid = bookingid;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `Search` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1675,4 +1791,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-20 18:30:28
+-- Dump completed on 2018-05-20 21:12:53

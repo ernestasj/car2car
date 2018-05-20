@@ -54,7 +54,8 @@
             $stmt->execute();
             $result = $stmt->get_result();
             $row = mysqli_fetch_assoc($result);
-            $this->UpdateFromRow($row);
+            //$this->UpdateFromRow($row);
+            $this->desc = $row;
             $stmt->close();
         }
 
@@ -69,5 +70,32 @@
             //$data = ["rego" => $this->rego, "renter" => $this->renter, "date" => $this->date, "id" => $this->bookingid];
             return $this->desc;
         }
+
+        function LoadBookingStatus($db, $email, $bookingid)
+        {
+            $stmt = $db->stmt_init();
+            $stmt = $db->prepare("call GetBookingStatus(?, ?)");
+            $stmt->bind_param("ss", $email, $bookingid);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = mysqli_fetch_assoc($result);
+            $this->desc = $row;
+            $stmt->close();
+        }
+
+        function WriteAccept($db, $email, $bookingid) {
+            $stmt = $db->prepare("call AcceptBooking(?, ?)");
+            $stmt->bind_param("ss", $email, $bookingid);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+        function WriteDecline($db, $email, $bookingid) {
+            $stmt = $db->prepare("call RejectBooking(?, ?)");
+            $stmt->bind_param("ss", $email, $bookingid);
+            $stmt->execute();
+            $stmt->close();
+        }
+
     }
 ?>

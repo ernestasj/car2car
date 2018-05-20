@@ -12,6 +12,9 @@ app.controller('inboxCtrl', function($scope, $http, $rootScope, $interval) {
     $scope.bookingid = -1;
     $scope.car = false;
     var user;
+    $scope.ApprovalStatusText = "-";
+    $scope.nodecision = true;
+
     $http.post("./json/user.php", {})
     .then(function(response){
         
@@ -42,6 +45,7 @@ app.controller('inboxCtrl', function($scope, $http, $rootScope, $interval) {
 
 
                 }
+                
                 //console.log(data);
                 $rootScope.$broadcast('ChangeMessage', data);
             });
@@ -55,7 +59,54 @@ app.controller('inboxCtrl', function($scope, $http, $rootScope, $interval) {
                 console.log(response.data);
                 $scope.car = response.data;
             });
+
+        $http.post("./json/bookingstatus.php", {
+            bookingid: bookingid
+        })
+        .then(function(response){
+            console.log(response.data);
+            $scope.bookingStatus = response.data;
+            $scope.UpdateStatus($scope.bookingStatus);
+        });
+
     };
+
+    $scope.UpdateStatus = function(bookingStatus){
+        console.log("Update Status");
+        console.log(bookingStatus);
+        console.log(bookingStatus.renteraccepted == "yes");
+        if(bookingStatus.renteraccepted == "yes" && bookingStatus.owneraccepted == "yes")
+        {
+            $scope.nodecision = false;
+            $scope.ApprovalStatusText = "Booking Accepted!";
+        }
+        else if(bookingStatus.renteraccepted == "no")
+        {
+            $scope.nodecision = true;
+            $scope.ApprovalStatusText = "Renter Declined";
+        }
+        else if(bookingStatus.owneraccepted == "no")
+        {
+            $scope.nodecision = true;
+            $scope.ApprovalStatusText = "Owner Declined";
+        }
+        else if(bookingStatus.renteraccepted == "yes")
+        {
+            $scope.nodecision = true;
+            $scope.ApprovalStatusText = "Awaiting Owner Confirmation";
+        }
+        else if(bookingStatus.owneraccepted == "yes")
+        {
+            $scope.nodecision = true;
+            $scope.ApprovalStatusText = "Awaiting Renter Confirmation";
+        }
+        else
+        {
+            $scope.nodecision = true;
+            $scope.ApprovalStatusText = "Awaiting Decision";
+        }
+    };
+
     $scope.SendMessage = function() {
         $http.post("./submit/message.php", 
             {
@@ -76,4 +127,27 @@ app.controller('inboxCtrl', function($scope, $http, $rootScope, $interval) {
         }
     }
     $interval($scope.intervalLoadConversation, 1000);
+
+    $scope.Approve = function(bookingid) {
+        console.log("Approving!");
+        $http.post("./submit/acceptbooking.php",{
+            bookingid: bookingid
+        })
+        .then(function(response){
+            console.log(response.data);
+            $scope.loadConversation($scope.bookingid, $scope.otherimage, $scope.othername);
+        });
+    };
+
+    $scope.Decline = function(bookingid) {
+        console.log("Declining!");
+        $http.post("./submit/declinebooking.php",{
+            bookingid: bookingid
+        })
+        .then(function(response){
+            console.log(response.data);
+            $scope.loadConversation($scope.bookingid, $scope.otherimage, $scope.othername);
+        });
+    };
+
 });

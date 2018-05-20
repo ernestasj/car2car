@@ -53,13 +53,13 @@
             <!--<button type="button" class="btn col-sm-12 text-dark btn-outline-info">Date: 23/5/2018 </button>-->
           </div>
           <div class="col-sm-2">
-            <button type="button" class="btn col-sm-12 btn-secondary" id="approval_status">Awaiting Decision</button>
+            <button type="button" class="btn col-sm-12 btn-secondary" id="approval_status" >{{ApprovalStatusText}}</button>
           </div>
           <div class="col-sm-2">
-            <button type="button" class="btn btn-outline-primary col-sm-12" id="approve_rental">Approve Rental</button>
+            <button type="button" class="btn btn-outline-primary col-sm-12" id="approve_rental" ng-show="nodecision" ng-click="Approve(bookingid)">Approve Rental</button>
           </div>
           <div class="col-sm-2">
-            <button type="button" class="btn btn-outline-danger col-sm-12" id="deny_rental">Deny Rental</button>
+            <button type="button" class="btn btn-outline-danger col-sm-12" id="deny_rental" ng-show="nodecision" ng-click="Decline(bookingid)">Deny Rental</button>
           </div>
           <div class="col-sm-2 btn-group-vertical">
             <h3> Rate: ${{car.rate}} </h3>
@@ -147,6 +147,7 @@
               window.location.href = "./results.html";
             });
 
+            /*
             $("#approve_rental").click(function(){
               Approval.SetState(Approval.State.Approved);
             });
@@ -158,8 +159,7 @@
             $("#approval_status").click(function(){
               Approval.SetState(Approval.State.Awaiting);
             });
-            
-    
+          */
           });
       </script>
     
