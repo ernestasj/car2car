@@ -88,7 +88,7 @@ CREATE TABLE `car` (
 
 LOCK TABLES `car` WRITE;
 /*!40000 ALTER TABLE `car` DISABLE KEYS */;
-INSERT INTO `car` VALUES ('123456789','Holden','Captiva','Electric','Auto','2012','6+','2500 to 2999cc','70,000 to 99,999km','Van',NULL,'henry_y23@hotmail.com','no','no','no','no','no','yes','yes','Gyme','nsw','Big car','2227','no',NULL,NULL),('ABC-ABC','Ford','Fiesta','Diesel','Auto','1234','4','3000 to 3499cc','','Sedan',NULL,'bob','no','no','no','no','no','no','no','Bondi','? string:NSW ?','It\'s an awesome car! :D','2000','no',NULL,NULL),('abc123','Ford','Fiesta','Ron-98','Auto','1234','1','3500 to 3999cc','10,000 to 19,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Kingsford','nsw','It\'s a great car! A++++','2032','no',123,NULL),('acar','Holden','commodore','RON-91','Auto','1234','3','3000 to 3499cc','20,000 to 39,999km','Hatch',NULL,'a','yes','yes','yes','yes','yes','no','no','a','nsw','Best car eva!!\r\n\r\nNo really. I drove this car once and I found a penny 3 years later!','123','no',NULL,NULL),('cvbdf','Hyundai','i30','Ron-98','Auto','1234','3','1500 to 1999cc','20,000 to 39,999km','Hatch',NULL,'w','yes','yes','yes','yes','yes','yes','yes','St Andrews','nsw','Awesome car!! No dents yet!','2560','yes',NULL,NULL),('PH','Ford','ranger','Diesel','Auto','124','3','6000cc and over','200,000km+','Hatch',NULL,'bob','yes','no','no','no','no','no','no','Minto','nsw','Sort of okay car. You can\'t do any worse!','12345','yes',NULL,NULL),('pizza','Holden','commodore','Ron-98','Manual','2008','4','3000 to 3499cc','100,000 to 149,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Coogee','nsw','This is a pretty crap car. Don\'t rent it!','1234','yes',NULL,NULL),('QWERTY','Holden','commodore','Ron-98','Auto','2001','2','3000 to 3499cc','200,000km+','Sedan',NULL,'','no','no','no','no','no','yes','yes','bondi','nsw','Best car you\'ll ever drive. Available from 10:30am Saturday and Sunday. Return by 9pm Sunday.','2001','no',NULL,NULL),('qwerty1','Mazda','CX3','Ron-95','Auto','1234','2','4000 to 4999cc','20,000 to 39,999km','Coupe',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Canberra','nsw','A car. What else did you want?','23445','yes',NULL,NULL),('qwerty2','Ford','Falcon','RON-91','Auto','1234','2','2500 to 2999cc','40,000 to 69,999km','Hatch',NULL,'bob','no','no','no','no','no','yes','yes','sdfsdf','nsw','','sdfsdf','no',NULL,NULL),('ssdfsdf','Holden','ranger','Ron-98','Manual','34234','3','3500 to 3999cc','10,000 to 19,999km','Hatch',NULL,'','yes','yes','yes','yes','yes','yes','yes','sdfsdf','vic','','sdf','yes',NULL,NULL),('testrate','Mazda','BT50','Ron-98','Auto','123','2','3000 to 3499cc','40,000 to 69,999km','Hatch',NULL,'bob','yes','yes','yes','yes','yes','no','no','dfgfdg','nsw','dgdgdfgdfg','234234','no',12,NULL);
+INSERT INTO `car` VALUES ('123456789','Holden','Captiva','Electric','Auto','2012','6+','2500 to 2999cc','70,000 to 99,999km','Van',NULL,'henry_y23@hotmail.com','no','no','no','no','no','yes','yes','Gyme','nsw','Big car','2227','no',NULL,NULL),('ABC-ABC','Ford','Fiesta','Diesel','Auto','1234','4','3000 to 3499cc','','Sedan',NULL,'bob','no','no','no','no','no','no','no','Bondi','? string:NSW ?','It\'s an awesome car! :D','2000','no',NULL,NULL),('abc123','Ford','Fiesta','Ron-98','Auto','1234','1','3500 to 3999cc','70,000 to 99,999km','Sedan',NULL,'bob','yes','yes','yes','yes','yes','no','no','Kingsford','nsw','It\'s a great car! A++++','2032','no',123,NULL),('acar','Holden','commodore','RON-91','Auto','1234','3','3000 to 3499cc','20,000 to 39,999km','Hatch',NULL,'a','yes','yes','yes','yes','yes','no','no','a','nsw','Best car eva!!\r\n\r\nNo really. I drove this car once and I found a penny 3 years later!','123','no',NULL,NULL),('cvbdf','Hyundai','i30','Ron-98','Auto','1234','3','1500 to 1999cc','20,000 to 39,999km','Hatch',NULL,'w','yes','yes','yes','yes','yes','yes','yes','St Andrews','nsw','Awesome car!! No dents yet!','2560','yes',NULL,NULL),('PH','Ford','ranger','Diesel','Auto','124','3','6000cc and over','200,000km+','Hatch',NULL,'bob','yes','no','no','no','no','no','no','Minto','nsw','Sort of okay car. You can\'t do any worse!','12345','yes',NULL,NULL),('pizza','Holden','commodore','Ron-98','Manual','2008','4','3000 to 3499cc','100,000 to 149,999km','Sedan',NULL,'bob','no','no','no','no','no','no','no','Coogee','nsw','This is a pretty crap car. Don\'t rent it!','1234','yes',NULL,NULL),('QWERTY','Holden','commodore','Ron-98','Auto','2001','2','3000 to 3499cc','200,000km+','Sedan',NULL,'','no','no','no','no','no','yes','yes','bondi','nsw','Best car you\'ll ever drive. Available from 10:30am Saturday and Sunday. Return by 9pm Sunday.','2001','no',NULL,NULL),('qwerty1','Mazda','CX3','Ron-95','Auto','1234','2','4000 to 4999cc','20,000 to 39,999km','Coupe',NULL,'bob','yes','yes','yes','yes','yes','yes','yes','Canberra','nsw','A car. What else did you want?','23445','yes',NULL,NULL),('qwerty2','Ford','Falcon','RON-91','Auto','1234','2','2500 to 2999cc','40,000 to 69,999km','Hatch',NULL,'bob','no','no','no','no','no','yes','yes','sdfsdf','nsw','','sdfsdf','no',NULL,NULL),('ssdfsdf','Holden','ranger','Ron-98','Manual','34234','3','3500 to 3999cc','10,000 to 19,999km','Hatch',NULL,'','yes','yes','yes','yes','yes','yes','yes','sdfsdf','vic','','sdf','yes',NULL,NULL),('testrate','Mazda','BT50','Ron-98','Auto','123','2','3000 to 3499cc','40,000 to 69,999km','Hatch',NULL,'bob','yes','yes','yes','yes','yes','no','no','dfgfdg','nsw','dgdgdfgdfg','234234','no',12,NULL);
 /*!40000 ALTER TABLE `car` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -557,9 +557,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddReview`(reviewer VARCHAR(45), rating INT, comments LONGTEXT, rego VARCHAR(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddReview`(reviewer VARCHAR(45), rating INT, comments LONGTEXT, rego VARCHAR(45), bookingid INT)
 BEGIN
-	INSERT INTO review (user, rating, comments, rego) VALUES (reviewer, rating, comments, rego);
+	INSERT INTO review (user, rating, comments, rego, bookingid) VALUES (reviewer, rating, comments, rego, bookingid);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1078,6 +1078,25 @@ BEGIN
 	
     SELECT COALESCE(AVG(rating), 0) AS rating FROM review WHERE review.rego = rego;
 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetRatings` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetRatings`(rego VARCHAR(45))
+BEGIN
+	SELECT * FROM rego WHERE review.rego = rego;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1656,4 +1675,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-20 17:49:28
+-- Dump completed on 2018-05-20 18:30:28
