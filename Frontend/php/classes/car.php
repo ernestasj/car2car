@@ -42,6 +42,18 @@
   
         }
 
+        function UpdateDB($db, $email) {
+            $stmt = $db->prepare("call UpdateCar(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+            $stmt->bind_param("sssssssssssssssssssssssi", $email, $this->desc["rego"], $this->desc["make"], $this->desc["model"], $this->desc["year"], $this->desc["doors"], $this->desc["petrol"], $this->desc["transmission"], $this->desc["enginecc"], $this->desc["kms"], $this->desc["body"], $this->desc["monday"], $this->desc["tuesday"], $this->desc["wednesday"], $this->desc["thursday"], $this->desc["friday"], $this->desc["saturday"], $this->desc["sunday"], $this->desc["public_holidays"], $this->desc["postcode"], $this->desc["suburb"], $this->desc["state"], $this->desc["description"], $this->desc["rate"]);
+            //$stmt->bind_param("ssssssssssss", $email, $this->rego, $this->make, $this->model, $this->year, $this->doors, $this->petrol, $this->transmission, $this->enginecc, $this->kms, $this->body, $this->photo);
+            $stmt->execute();
+            $stmt->close();
+            //(rego, make, model, year, doors, petrol, transmission, enginecc, kms, body, monday, tuesday, wednesday, thursday, friday, saturday, sunday, public_holdays, postcode, suburb, state, description)
+            
+  
+        }
+
+
         function __construct11($rego, $make, $model, $year, $doors, $petrol, $transmission, $enginecc, $kms, $body, $photo)
         {
             
@@ -108,8 +120,14 @@
             $stmt->bind_param("ss", $email, $rego);
             $stmt->execute();
             $result = $stmt->get_result();
-            $row = mysqli_fetch_assoc($result);
-            $this->UpdateFromRow($row);
+            if(mysqli_num_rows($result) > 0)
+            {
+                $row = mysqli_fetch_assoc($result);
+                $this->desc = $row;
+            }
+            
+            //$this->UpdateFromRow($row);
+            
             $stmt->close();
         }
 

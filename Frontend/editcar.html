@@ -30,13 +30,16 @@
               <h3>Tell us about changes to your car</h3>
             </div>
             <div class="panel-body">
-              <form class="" action="./submit/addcar.php" method="post" enctype="multipart/form-data">
+              <form class="" action="./submit/updatecar.php" method="post" enctype="multipart/form-data">
                 <div class="">
                   <h4 class="m-2 py-1">Identification</h4>
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                    <input type="text" class="form-control m-1" id="rego" placeholder="Rego" name="rego"> </div>
+                    <input type="text" class="form-control m-1" id="rego" placeholder="Rego" name="rego" ng-model="car.rego"> </div>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control m-1" id="rate" placeholder="Daily Rate" name="rate"> </div>
+
                 </div>
                 <div class="">
                   <h4 class="m-2 py-1">Photo</h4>
@@ -49,15 +52,15 @@
                 <div class="row col-sm-12">
                   <div class="row col-sm-12">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb" name="suburb"> </div>
+                      <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb" name="suburb" ng-model="car.suburb"> </div>
                     <div class="col-sm-3">
-                      <select type="text" class="form-control m-1" id="state" placeholder="State" name="state">
+                      <select type="text" class="form-control m-1" id="state" placeholder="State" name="state" ng-model="car.state">
                         <option value="nsw" selected="">NSW</option>
                         <option value="vic">VIC</option>
                       </select>
                     </div>
                     <div class="col-sm-3">
-                      <input type="text" class="form-control m-1" id="postcode" placeholder="Post code" name="postcode"> </div>
+                      <input type="text" class="form-control m-1" id="postcode" placeholder="Post code" name="postcode" ng-model="car.postcode"> </div>
                   </div>
                 </div>
                 <div>
@@ -66,25 +69,25 @@
                 <div class="col-sm-12 m-1">
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="monday" name="monday">&nbsp;Monday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="monday" name="monday" ng-model="car.monday">&nbsp;Monday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="tuesday" name="tuesday">&nbsp;Tuesday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="tuesday" name="tuesday"  ng-model="car.tuesday">&nbsp;Tuesday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="wednesday" name="wednesday">&nbsp;Wednesday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="wednesday" name="wednesday" ng-model="car.wednesday">&nbsp;Wednesday</label>
                   </div>
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="thursday" name="thursday">&nbsp;Thursday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="thursday" name="thursday" ng-model="car.thursday">&nbsp;Thursday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="friday" name="friday">&nbsp;Friday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="friday" name="friday" ng-model="car.friday">&nbsp;Friday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekend day" value="yes" id="saturday" name="saturday">&nbsp;Saturday</label>
+                      <input type="checkbox" class="weekend day" value="yes" id="saturday" name="saturday" ng-model="car.saturday">&nbsp;Saturday</label>
                   </div>
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekend day" value="yes" id="sunday" name="sunday">&nbsp;Sunday</label>
+                      <input type="checkbox" class="weekend day" value="yes" id="sunday" name="sunday" ng-model="car.sunday">&nbsp;Sunday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" value="yes" class="day" id="public_holidays" name="public_holidays">&nbsp;Public Holidays</label>
+                      <input type="checkbox" value="yes" class="day" id="public_holidays" name="public_holidays" ng-model="car.public_holidays">&nbsp;Public Holidays</label>
                   </div>
                   <div class="col-sm-12 m-1 btn-group">
                     <button type="button" class="btn btn-outline-primary col-sm-2" id="all_available">All</button>
@@ -98,17 +101,17 @@
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                      <select class="form-control m-1" ng-model="selectedMake" name="make" ng-options="make.name for make in makes track by make.value" ng-change="MakeChanged()"></select>
+                      <select class="form-control m-1" ng-model="selectedMake" name="make"  ng-model=car."make" ng-options="make.name for make in makes track by make.value" ng-change="MakeChanged()"></select>
                       </select>
                   </div>
                   <div class="col-sm-4">
-                      <select class="form-control m-1" ng-model="selectedModel" name="model" ng-options="model.name for model in models track by model.value"></select>
+                      <select class="form-control m-1" ng-model="selectedModel" name="model"  ng-model="car.model" ng-options="model.name for model in models track by model.value"></select>
                       </select>
                   </div>
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="body" placeholder="" name="body">
+                    <select type="text" class="form-control m-1" id="body" placeholder="" name="body" ng-model="car.body">
                       <option value="" selected="">Body</option>
                       <option value="Sedan">Sedan</option>
                       <option value="Hatch">Hatch</option>
@@ -118,7 +121,7 @@
                     </select>
                   </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="doors" placeholder="" name="doors">
+                    <select type="text" class="form-control m-1" id="doors" placeholder="" name="doors"  ng-model="car.doors">
                       <option value="" selected="">Doors</option>
                       <option value="None">None</option>
                       <option value="1">1</option>
@@ -135,9 +138,9 @@
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                    <input type="text" class="form-control m-1" id="year" placeholder="Year" name="year"> </div>
+                    <input type="text" class="form-control m-1" id="year" placeholder="Year" name="year" ng-model="car.year"> </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="kms" name="kms">
+                    <select type="text" class="form-control m-1" id="kms" name="kms" ng-model="kms">
                       <option value="" selected="">Odometer</option>
                       <option value="Under 5,000km">Under 5,000km</option>
                       <option value="5,000 to 9,999km">5,000 to 9,999km</option>
@@ -157,7 +160,7 @@
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="enginecc" placeholder="Card Type" name="enginecc">
+                    <select type="text" class="form-control m-1" id="enginecc" placeholder="Card Type" name="enginecc" ng-model="car.enginecc">
                       <option value="" selected="">Engine Size</option>
                       <option value="Under 1000cc">Under 1000cc</option>
                       <option value="1000 to 1499cc">1000 to 1499cc</option>
@@ -173,7 +176,7 @@
                     </select>
                   </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="petrol" placeholder="Card Type" name="petrol">
+                    <select type="text" class="form-control m-1" id="petrol" placeholder="Card Type" name="petrol" ng-model="car.petrol">
                       <option value="" selected="">Petrol type</option>
                       <option value="E10">E10</option>
                       <option value="RON-91">RON-91</option>
@@ -184,7 +187,7 @@
                     </select>
                   </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="transmission" name="transmission">
+                    <select type="text" class="form-control m-1" id="transmission" name="transmission" ng-model="car.transmission">
                       <option value="" selected="">Transmission</option>
                       <option value="Auto">Auto</option>
                       <option value="Manual">Manual</option>
@@ -195,11 +198,11 @@
                   <h4 class="m-1 py-1" draggable="true"> Description </h4>
                 </div>
                 <div class="row col-sm-12">
-                  <textarea class="form-control" rows="10" id="description" placeholder="Tell your potential renters why they should choose your car!" name="description"></textarea>
+                  <textarea class="form-control" rows="10" id="description" placeholder="Tell your potential renters why they should choose your car!" name="description" ng-model="car.description"></textarea>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12 text-center py-2">
-                    <button type="submit" class="btn col-sm-4 btn-outline-primary m-1">Add Car</button>
+                    <button type="submit" class="btn col-sm-4 btn-outline-primary m-1">Update Car</button>
                   </div>
                 </div>
               </form>
@@ -239,7 +242,7 @@
   </script>
   <script src="./navbar.js"></script>
   <script src="./login.js"></script>
-  <script src="./addcar.js"></script>
+  <script src="./editcar.js"></script>
 </body>
 
 </html>
