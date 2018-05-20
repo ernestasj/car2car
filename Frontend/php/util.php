@@ -30,7 +30,7 @@
     {
         $stmt = $db->stmt_init();
         $stmt = $db->prepare("call ".$functionName."()");
-        $stmt->bind_param("");
+        //$stmt->bind_param();
         $stmt->execute();
         $result = $stmt->get_result();
         $entry;
@@ -43,7 +43,11 @@
         $stmt->close();
         return $entry;        
     }
-
+    function RandomValue($db, $function)
+    {
+        $entry = RandomEntry($db, $function);
+        return $entry["value"];
+    }
     function RandomSuburb($db) {
         return RandomEntry($db, "RandomSuburb");
     }
@@ -57,25 +61,69 @@
     }
 
     function RandomDoors($db) {
-        return RandomEntry($db, "RandomDoors");
+        return RandomValue($db, "RandomDoors");
     }
     function RandomTransmission($db) {
-        return RandomEntry($db, "RandomTransmission");
+        return RandomValue($db, "RandomTransmission");
     }
 
     function RandomEnginecc($db) {
-        return RandomEntry($db, "RandomEnginecc");
+        return RandomValue($db, "RandomEnginecc");
     }
     function RandomBody($db) {
-        return RandomEntry($db, "RandomBody");
+        return RandomValue($db, "RandomBody");
     }
 
     function RandomKMS($db) {
-        return RandomEntry($db, "RandomKMS");
+        return RandomValue($db, "RandomKMS");
     }
-    
+
     function RandomPetrol($db) {
-        return RandomEntry($db, "RandomPetrol");
+        return RandomValue($db, "RandomPetrol");
+    }
+
+    function RandomYesNo()
+    {
+        $yes_no = ["yes", "no"];
+        return array_rand($yes_no);
+    }
+
+    function RandomDescription()
+    {
+        return "";
+    }
+
+    function InsertSingleString($db, $functionName, $var)
+    {
+        $stmt = $db->prepare("call ".$functionName."(?)");
+        $stmt->bind_param("s", $var);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    function InsertNames($db, $filename)
+    {
+        $file = $filename;
+        $content = file_get_contents($file);
+        $arr = explode(PHP_EOL, $content);
+        $count = 0;
+        $entries = count($arr);
+        while($count < $entries)
+        {
+            $names = explode(" ", $arr[$count]);
+            $firstname = $names[0];
+            $lastname = $names[1];
+            InsertSingleString($db, "AddFirst", $firstname);
+            InsertSingleString($db, "AddLast", $lastname);
+
+            echo "first: ". $firstname. " | last: ".$lastname;
+            $count = $count + 1;
+        }    
+    }
+
+    function RandomName($db)
+    {
+        return RandomEntry($db, "RandomName");
     }
 
 ?>

@@ -37,27 +37,10 @@
         {
             $regoNumMain = 10;
         }
-        echo $count.") ".$returnVal."<br>";
+        //echo $count.") ".$returnVal."<br>";
         $regoArray[$count] = $returnVal;
         $count++;
     }
-
-
-    /*==================================
-    $numberOfEntries = 100;
-    $globalDoors = 4;
-    $globalCC = 1000;
-    $yearMin = 1995;
-    $yearMax = 2018;
-    $kmsMax = 500000;
-    $body = "body";
-    $modelArray = array();
-    $regoArray = array();
-    $globalPetrol = "petrol";
-    ==================================*/
-
-    //====================================
-    //Filling Database
 
     $count = 0;
     while ($count < $numberOfEntries)
@@ -77,14 +60,14 @@
         $desc["enginecc"] = RandomEnginecc($db);
         $desc["kms"] = RandomKMS($db);
         $desc["body"] = RandomPetrol($db);
-        $desc["monday"] = array_rand(["yes"], ["no"]);
-        $desc["tuesday"] = array_rand(["yes"], ["no"]);
-        $desc["wednesday"] = array_rand(["yes"], ["no"]);
-        $desc["thursday"] = array_rand(["yes"], ["no"]);
-        $desc["friday"] = array_rand(["yes"], ["no"]);
-        $desc["saturday"] = array_rand(["yes"], ["no"]);
-        $desc["sunday"] = array_rand(["yes"], ["no"]);
-        $desc["public_holidays"] = array_rand(["yes"], ["no"]);
+        $desc["monday"] = RandomYesNo();
+        $desc["tuesday"] = RandomYesNo();
+        $desc["wednesday"] = RandomYesNo();
+        $desc["thursday"] = RandomYesNo();
+        $desc["friday"] = RandomYesNo();
+        $desc["saturday"] = RandomYesNo();
+        $desc["sunday"] = RandomYesNo();
+        $desc["public_holidays"] = RandomYesNo();
         $desc["postcode"] = $suburb["postcode"];
         $desc["suburb"] = $suburb["name"];
         $desc["state"] = $suburb["state"];
@@ -92,7 +75,8 @@
         $desc["rate"] = rand(15, 100);
 
         $car = new Car($desc);
-        $car->UpdateDB($db, $user["email"]);
+        //$car->UpdateDB($db, $user["email"]);
+        echo json_encode($car->AsArray());
         $count++;
     }
 
