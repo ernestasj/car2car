@@ -237,6 +237,7 @@
             $this->desc["rego"] = $row["rego"];
             $this->desc["image"] = $row["filename"];
             $this->desc["renter"] = $row["renter"];
+            $this->desc["rate"] = $row["rate"];
             $stmt->close();
         }
     }

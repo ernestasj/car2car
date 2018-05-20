@@ -38,7 +38,7 @@
                   <div class="col-sm-4">
                     <input type="text" class="form-control m-1" id="rego" placeholder="Rego" name="rego" ng-model="car.rego"> </div>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control m-1" id="rate" placeholder="Daily Rate" name="rate"> </div>
+                      <input type="text" class="form-control m-1" id="rate" placeholder="Daily Rate" name="rate" ng-model="car.rate"> </div>
 
                 </div>
                 <div class="">
@@ -101,7 +101,7 @@
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                      <select class="form-control m-1" ng-model="selectedMake" name="make"  ng-model=car."make" ng-options="make.name for make in makes track by make.value" ng-change="MakeChanged()"></select>
+                      <select class="form-control m-1" ng-model="selectedMake" name="make"  ng-model="car.make" ng-options="make.name for make in makes track by make.value" ng-change="MakeChanged()"></select>
                       </select>
                   </div>
                   <div class="col-sm-4">

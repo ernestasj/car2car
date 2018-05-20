@@ -16,13 +16,57 @@ function GetURLParameter(sParam)
 app.controller('editcarCtrl', function($scope, $http) {
     $scope.car = {};
     $scope.rego = GetURLParameter("car");
+
+    $scope.MakeChanged = function (callback){
+        console.log("Model changed!");
+        
+        $http.post("./json/models.php",
+        {
+            make: $scope.selectedMake.value
+        })
+        .then(function(response) {
+            console.log(response.data);
+            $scope.models = response.data;
+            if(callback !== undefined) callback();
+        });
+    }
+
     $http.post("./json/car.php", {
         rego: GetURLParameter("car")
     })
     .then(function(response) {
-        console.log($scope.rego);
-        console.log(response.data);
         $scope.car = response.data;
+        console.log($scope.car);
+        $http.post("./json/makes.php",
+        {
+        })
+        .then(function(makeresponse) {
+            
+            $scope.makes = makeresponse.data;
+            var makeindex = 0;
+            $scope.makes.forEach(function(item, index)
+            {
+                if(item.value == $scope.car.make)
+                {
+                    makeindex = index;
+                }
+            }
+            );
+            //$scope.car.make = $scope.makes[2].value;
+            $scope.selectedMake = $scope.makes[makeindex];
+            var modelindex = 0;
+            $scope.MakeChanged(function(){
+                $scope.models.forEach(function(item, index)
+                {
+                    if(item.value == $scope.car.model)
+                    {
+                        modelindex = index;
+                    }
+                    
+                });
+                $scope.selectedModel = $scope.models[modelindex];
+            });
+        });
     });
 
 
@@ -52,25 +96,5 @@ app.controller('editcarCtrl', function($scope, $http) {
         console.log("Clicked!");
     }
 
-    $http.post("./json/makes.php",
-    {
-    })
-    .then(function(response) {
-        
-        $scope.makes = response.data;
-    });
-
-    $scope.MakeChanged = function (){
-        console.log("Model changed!");
-        
-        $http.post("./json/models.php",
-        {
-            make: $scope.selectedMake.value
-        })
-        .then(function(response) {
-            console.log(response.data);
-            $scope.models = response.data;
-        });
-    }
 
 });
