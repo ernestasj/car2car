@@ -7,7 +7,7 @@ function GetURLParameter(sParam)
         var sParameterName = sURLVariables[i].split('=');
         if (sParameterName[0] == sParam)
         {
-            return sParameterName[1];
+            return decodeURIComponent(sParameterName[1]);
         }
     }
 }
@@ -140,6 +140,12 @@ app.controller('resultsCtrl', function($scope, $http) {
             transmission: GetURLParameter("transmission")
 
         };
+        for (var key in search) {
+            if(search[key] == "?" || search[key] == undefined)
+            {
+                search[key] = "";
+            }
+          }
 
         console.log(search);
     
