@@ -69,25 +69,25 @@
                 <div class="col-sm-12 m-1">
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="monday" name="monday" ng-model="car.monday">&nbsp;Monday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="monday" name="monday" ng-model="car.monday" ng-true-value="'yes'" ng-false-value="'no'" >&nbsp;Monday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="tuesday" name="tuesday"  ng-model="car.tuesday">&nbsp;Tuesday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="tuesday" name="tuesday"  ng-model="car.tuesday" ng-true-value="'yes'" ng-false-value="'no'">&nbsp;Tuesday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="wednesday" name="wednesday" ng-model="car.wednesday">&nbsp;Wednesday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="wednesday" name="wednesday" ng-model="car.wednesday" ng-true-value="'yes'" ng-false-value="'no'">&nbsp;Wednesday</label>
                   </div>
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="thursday" name="thursday" ng-model="car.thursday">&nbsp;Thursday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="thursday" name="thursday" ng-model="car.thursday" ng-true-value="'yes'" ng-false-value="'no'">&nbsp;Thursday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekday day" value="yes" id="friday" name="friday" ng-model="car.friday">&nbsp;Friday</label>
+                      <input type="checkbox" class="weekday day" value="yes" id="friday" name="friday" ng-model="car.friday" ng-true-value="'yes'" ng-false-value="'no'">&nbsp;Friday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekend day" value="yes" id="saturday" name="saturday" ng-model="car.saturday">&nbsp;Saturday</label>
+                      <input type="checkbox" class="weekend day" value="yes" id="saturday" name="saturday" ng-model="car.saturday" ng-true-value="'yes'" ng-false-value="'no'">&nbsp;Saturday</label>
                   </div>
                   <div class="col-sm-12 checkbox">
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" class="weekend day" value="yes" id="sunday" name="sunday" ng-model="car.sunday">&nbsp;Sunday</label>
+                      <input type="checkbox" class="weekend day" value="yes" id="sunday" name="sunday" ng-model="car.sunday" ng-true-value="'yes'" ng-false-value="'no'">&nbsp;Sunday</label>
                     <label class="checkbox-inline col-sm-3">
-                      <input type="checkbox" value="yes" class="day" id="public_holidays" name="public_holidays" ng-model="car.public_holidays">&nbsp;Public Holidays</label>
+                      <input type="checkbox" value="yes" class="day" id="public_holidays" name="public_holidays" ng-model="car.public_holidays" ng-true-value="'yes'" ng-false-value="'no'">&nbsp;Public Holidays</label>
                   </div>
                   <div class="col-sm-12 m-1 btn-group">
                     <button type="button" class="btn btn-outline-primary col-sm-2" id="all_available">All</button>
@@ -140,7 +140,7 @@
                   <div class="col-sm-4">
                     <input type="text" class="form-control m-1" id="year" placeholder="Year" name="year" ng-model="car.year"> </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="kms" name="kms" ng-model="kms">
+                    <select type="text" class="form-control m-1" id="kms" name="kms" ng-model="car.kms">
                       <option value="" selected="">Odometer</option>
                       <option value="Under 5,000km">Under 5,000km</option>
                       <option value="5,000 to 9,999km">5,000 to 9,999km</option>
