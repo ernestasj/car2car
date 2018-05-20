@@ -34,7 +34,7 @@
     $search["count"] = EmptyIfUnset($request, "count");
     $search["offset"] = EmptyIfUnset($request, "offset");
 
-    
+    //echo json_encode($search);
 
     $cars = new Cars;
     $cars->LoadCars($db, $search);

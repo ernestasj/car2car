@@ -150,7 +150,7 @@ app.controller('resultsCtrl', function($scope, $http) {
         console.log(search);
     
         $http.post("./json/search.php",
-        {
+        /*{
             keywords: GetURLParameter("keywords"),
             suburb: GetURLParameter("suburb"),
             state: GetURLParameter("state"),
@@ -172,7 +172,8 @@ app.controller('resultsCtrl', function($scope, $http) {
             enginecc: GetURLParameter("enginecc"),
             transmission: GetURLParameter("transmission")
 
-        })
+        }*/
+        search)
         .then(function(response) {
             console.log(response);
             $scope.cars = response.data;

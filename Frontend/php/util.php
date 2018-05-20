@@ -8,10 +8,10 @@
             if(isset($obj->$key))
             {
                 $newvar = $obj->$key;
-                if($newvar != "%3F")
-                {
+                //if($newvar != "%3F")
+                //{
                     $var = $newvar;
-                }
+                //}
             }
         }
         return $var;
