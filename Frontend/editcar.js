@@ -12,6 +12,20 @@ function GetURLParameter(sParam)
     }
 }
 
+function findIndex(arr, target, key)
+{
+  var target_index = -1;
+  arr.forEach(function(item, index)
+  {
+    if(item[key] == target )
+    {
+      target_index = index;
+    }
+    
+  });
+  return target_index;
+}
+
 
 app.controller('editcarCtrl', function($scope, $http) {
     $scope.car = {};
@@ -30,6 +44,25 @@ app.controller('editcarCtrl', function($scope, $http) {
             if(callback !== undefined) callback();
         });
     }
+
+    $scope.addcar = function () {
+        console.log($scope.form)
+        /*$http.post("./submit/login.php",
+        {
+            email: $scope.form.email,
+            password: $scope.form.password
+        })
+        .then(function(response) {
+            //debugger;
+            console.log(response);
+            if(response.data.status == "loggedin")
+            {
+                $scope.show_login = false;
+                $scope.show_signup = false;
+                $scope.show_accountlinks = true;
+            }
+            });            */
+    };
 
     $http.post("./json/car.php", {
         rego: GetURLParameter("car")
@@ -67,28 +100,78 @@ app.controller('editcarCtrl', function($scope, $http) {
                 $scope.selectedModel = $scope.models[modelindex];
             });
         });
+
+        $http.post("./json/body.php", {})
+        .then(function(response){
+    
+            $scope.bodys = response.data;
+            var index = findIndex($scope.bodys, $scope.car.body, "value");
+            $scope.selectedBody = $scope.bodys[index];
+  
+          });
+    
+        $scope.doors = [];
+        $http.post("./json/doors.php", {})
+        .then(function(response){
+    
+            $scope.doors = response.data;
+            var index = findIndex($scope.doors, $scope.car.doors, "value");
+            $scope.selectedDoor = $scope.doors[index];
+
+          });
+    
+        $scope.engineccs = [];
+        $http.post("./json/enginecc.php", {})
+        .then(function(response){
+    
+            $scope.engineccs = response.data;
+            var index = findIndex($scope.engineccs, $scope.car.enginecc, "value");
+            $scope.selectedEnginecc = $scope.engineccs[index];
+          });
+        $scope.transmissions = [];
+        $http.post("./json/transmission.php", {})
+        .then(function(response){
+    
+            $scope.transmissions = response.data;
+            var index = findIndex($scope.transmissions, $scope.car.transmission, "value");
+            $scope.selectedTransmission = $scope.transmissions[index];
+
+          });
+    
+        $scope.kms = [];
+          
+        $http.post("./json/kms.php", {})
+        .then(function(response){
+            $scope.kms = response.data;
+            var index = findIndex($scope.kms, $scope.car.kms, "value");
+            $scope.selectedKms = $scope.kms[index];
+
+          });
+    
+        $scope.petrols = [];
+        $http.post("./json/petrol.php", {})
+        .then(function(response){
+            $scope.petrols = response.data;
+            var index = findIndex($scope.petrols, $scope.car.petrol, "value");
+            $scope.selectedPetrol = $scope.petrols[index];
+
+          });
+    
+        $scope.states = [];
+    
+        $http.post("./json/state.php", {})
+        .then(function(response){
+    
+            $scope.states = response.data;
+            var index = findIndex($scope.states, $scope.car.state, "value");
+            $scope.selectedState = $scope.states[index];
+
+          });
     });
 
 
 
-    $scope.addcar = function () {
-        console.log($scope.form)
-        /*$http.post("./submit/login.php",
-        {
-            email: $scope.form.email,
-            password: $scope.form.password
-        })
-        .then(function(response) {
-            //debugger;
-            console.log(response);
-            if(response.data.status == "loggedin")
-            {
-                $scope.show_login = false;
-                $scope.show_signup = false;
-                $scope.show_accountlinks = true;
-            }
-            });            */
-    };
+
 
     $scope.models_clicked = false
     $scope.ShowModels = function(){
@@ -97,4 +180,22 @@ app.controller('editcarCtrl', function($scope, $http) {
     }
 
 
+
+    $scope.SuburbChanged = function(){
+      $http.post("./json/suburbfill.php",
+      {
+        suburb:$scope.suburb
+      })
+      .then(function(response){
+        if("state" in response.data && "postcode" in response.data)
+        {
+          var data = response.data;
+
+          var state_index = findIndex($scope.states, data.state, "value");
+          $scope.selectedState = $scope.states[state_index];
+          
+          $scope.selectedPostcode = data.postcode;
+        }
+      });
+    };
 });

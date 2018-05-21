@@ -308,7 +308,7 @@
 
     $http.post("./json/state.php", {})
     .then(function(response){
-      console.log(response.data);
+
         $scope.states = response.data;
       });
 
@@ -318,7 +318,6 @@
         suburb:$scope.suburb
       })
       .then(function(response){
-        console.log(response.data);
         if("state" in response.data && "postcode" in response.data)
         {
           var data = response.data;

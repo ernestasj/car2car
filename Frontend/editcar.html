@@ -52,15 +52,12 @@
                 <div class="row col-sm-12">
                   <div class="row col-sm-12">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb" name="suburb" ng-model="car.suburb"> </div>
+                        <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb" name="suburb"  ng-model="suburb" ng-change="SuburbChanged()">  </div>
                     <div class="col-sm-3">
-                      <select type="text" class="form-control m-1" id="state" placeholder="State" name="state" ng-model="car.state">
-                        <option value="nsw" selected="">NSW</option>
-                        <option value="vic">VIC</option>
-                      </select>
+                        <select class="form-control m-1" name="state" ng-model="selectedState" ng-options="state.text for state in states track by state.value"></select>
                     </div>
                     <div class="col-sm-3">
-                      <input type="text" class="form-control m-1" id="postcode" placeholder="Post code" name="postcode" ng-model="car.postcode"> </div>
+                        <input type="text" class="form-control m-1" ng-model="selectedPostcode" id="postcode" placeholder="Post code" name="postcode"> </div>
                   </div>
                 </div>
                 <div>
@@ -101,37 +98,19 @@
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                      <select class="form-control m-1" ng-model="selectedMake" name="make"  ng-model="car.make" ng-options="make.name for make in makes track by make.value" ng-change="MakeChanged()"></select>
-                      </select>
+                      <select class="form-control m-1" ng-model="selectedMake" name="make" ng-options="make.name for make in makes track by make.value" ng-change="MakeChanged()"></select>
                   </div>
                   <div class="col-sm-4">
-                      <select class="form-control m-1" ng-model="selectedModel" name="model"  ng-model="car.model" ng-options="model.name for model in models track by model.value"></select>
-                      </select>
+                      <select class="form-control m-1" ng-model="selectedModel" name="model" ng-options="model.name for model in models track by model.value"></select>
                   </div>
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="body" placeholder="" name="body" ng-model="car.body">
-                      <option value="" selected="">Body</option>
-                      <option value="Sedan">Sedan</option>
-                      <option value="Hatch">Hatch</option>
-                      <option value="Coupe">Coupe</option>
-                      <option value="SUV">SUV</option>
-                      <option value="Van">Van</option>
-                    </select>
-                  </div>
+                      <select class="form-control m-1" ng-model="selectedBody" name="body" ng-options="body.text for body in bodys track by body.value"></select>
+                    </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="doors" placeholder="" name="doors"  ng-model="car.doors">
-                      <option value="" selected="">Doors</option>
-                      <option value="None">None</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6+">6+</option>
-                    </select>
-                  </div>
+                      <select class="form-control m-1" ng-model="selectedDoor" name="doors" ng-options="door.text for door in doors track by door.value"></select>
+                    </div>
                 </div>
                 <div class="">
                   <h4 class="m-2 py-1"> Age </h4>
@@ -140,19 +119,8 @@
                   <div class="col-sm-4">
                     <input type="text" class="form-control m-1" id="year" placeholder="Year" name="year" ng-model="car.year"> </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="kms" name="kms" ng-model="car.kms">
-                      <option value="" selected="">Odometer</option>
-                      <option value="Under 5,000km">Under 5,000km</option>
-                      <option value="5,000 to 9,999km">5,000 to 9,999km</option>
-                      <option value="10,000 to 19,999km">10,000 to 19,999km</option>
-                      <option value="20,000 to 39,999km">20,000 to 39,999km</option>
-                      <option value="40,000 to 69,999km">40,000 to 69,999km</option>
-                      <option value="70,000 to 99,999km">70,000 to 99,999km</option>
-                      <option value="100,000 to 149,999km">100,000 to 149,999km</option>
-                      <option value="150,000 to 199,999km">150,000 to 199,999km</option>
-                      <option value="200,000km+">200,000km+</option>
-                    </select>
-                  </div>
+                      <select class="form-control m-1" ng-model="selectedKms" name="kms" ng-options="km.text for km in kms track by km.value"></select>
+                    </div>
                   <div class="col-sm-4"> </div>
                 </div>
                 <div>
@@ -160,38 +128,13 @@
                 </div>
                 <div class="row col-sm-12">
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="enginecc" placeholder="Card Type" name="enginecc" ng-model="car.enginecc">
-                      <option value="" selected="">Engine Size</option>
-                      <option value="Under 1000cc">Under 1000cc</option>
-                      <option value="1000 to 1499cc">1000 to 1499cc</option>
-                      <option value="1500 to 1999cc">1500 to 1999cc</option>
-                      <option value="2000 to 2499cc">2000 to 2499cc</option>
-                      <option value="2500 to 2999cc">2500 to 2999cc</option>
-                      <option value="3000 to 3499cc">3000 to 3499cc</option>
-                      <option value="3500 to 3999cc">3500 to 3999cc</option>
-                      <option value="4000 to 4999cc">4000 to 4999cc</option>
-                      <option value="5000 to 5999cc">5000 to 5999cc</option>
-                      <option value="6000cc and over">6000cc and over</option>
-                      <option value="Electric Engine">Electric Engine</option>
-                    </select>
+                      <select class="form-control m-1" ng-model="selectedEnginecc" name="enginecc" ng-options="enginecc.text for enginecc in engineccs track by enginecc.value"></select>
                   </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="petrol" placeholder="Card Type" name="petrol" ng-model="car.petrol">
-                      <option value="" selected="">Petrol type</option>
-                      <option value="E10">E10</option>
-                      <option value="RON-91">RON-91</option>
-                      <option value="Ron-95">RON-95</option>
-                      <option value="Ron-98">RON-98</option>
-                      <option value="Diesel">Diesel</option>
-                      <option value="Electric">Electric</option>
-                    </select>
-                  </div>
+                      <select class="form-control m-1" ng-model="selectedPetrol" name="petrol" ng-options="petrol.text for petrol in petrols track by petrol.value"></select>
+                    </div>
                   <div class="col-sm-4">
-                    <select type="text" class="form-control m-1" id="transmission" name="transmission" ng-model="car.transmission">
-                      <option value="" selected="">Transmission</option>
-                      <option value="Auto">Auto</option>
-                      <option value="Manual">Manual</option>
-                    </select>
+                      <select class="form-control m-1" ng-model="selectedTransmission" name="transmission" ng-options="transmission.text for transmission in transmissions track by transmission.value"></select>
                   </div>
                 </div>
                 <div>
