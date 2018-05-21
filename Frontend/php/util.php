@@ -86,7 +86,7 @@
     function RandomYesNo()
     {
         $yes_no = ["yes", "no"];
-        return array_rand($yes_no);
+        return $yes_no[array_rand($yes_no)];
     }
 
     function RandomDescription()

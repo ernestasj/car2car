@@ -21,7 +21,7 @@
         }
 
         function ReadDBUserCars($db, $email) {
-            $count = 10;
+            $count = 100;
             $offset = 0;
             $stmt = $db->stmt_init();
             $stmt = $db->prepare("call GetUserCars(?, ? , ?)");

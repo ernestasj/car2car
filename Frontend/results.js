@@ -16,7 +16,7 @@ function GetURLParameter(sParam)
 
 
 
-app.controller('resultsCtrl', function($scope, $http) {
+app.controller('resultsCtrl', function($scope, $http, $window) {
     $scope.yes = "yes";
     $scope.requested = false;
     
@@ -91,7 +91,7 @@ app.controller('resultsCtrl', function($scope, $http) {
 
     $scope.unbook = function(car) {
         console.log("Unbooking!");
-        
+
         $http.post("./submit/unbooking.php",
         {
             rego: car.rego,
@@ -117,7 +117,10 @@ app.controller('resultsCtrl', function($scope, $http) {
             $("#detailed").modal("show");
         };
 
-        var search = {
+        $scope.offset = 0;
+        $scope.count = 10;
+    
+        $scope.search = {
             keywords: GetURLParameter("keywords"),
             suburb: GetURLParameter("suburb"),
             state: GetURLParameter("state"),
@@ -137,49 +140,76 @@ app.controller('resultsCtrl', function($scope, $http) {
             year: GetURLParameter("year"),
             kms: GetURLParameter("kms"),
             enginecc: GetURLParameter("enginecc"),
-            transmission: GetURLParameter("transmission")
-
+            transmission: GetURLParameter("transmission"),
+            count: $scope.count,
+            offset: $scope.offset
         };
-        for (var key in search) {
-            if(search[key] == "?" || search[key] == undefined)
+
+        for (var key in $scope.search) {
+            if($scope.search[key] == "?" || $scope.search[key] == undefined)
             {
-                search[key] = "";
+                $scope.search[key] = "";
             }
           }
 
-        console.log(search);
+        $scope.GetResults = function()
+        {
+            $scope.search.offset = $scope.offset;
+            $scope.search.count = $scope.count;
+            console.log($scope.search);
+            $http.post("./json/search.php",
+            /*{
+                keywords: GetURLParameter("keywords"),
+                suburb: GetURLParameter("suburb"),
+                state: GetURLParameter("state"),
+                postcode: GetURLParameter("postcode"),
+                monday: GetURLParameter("monday"),
+                tuesday: GetURLParameter("tuesday"),
+                wednesday: GetURLParameter("wednesday"),
+                thursday: GetURLParameter("thursday"),
+                friday: GetURLParameter("friday"),
+                saturday: GetURLParameter("saturday"),
+                sunday: GetURLParameter("sunday"),
+                public_holidays: GetURLParameter("public_holidays"),
+                make: GetURLParameter("make"),
+                model: GetURLParameter("model"),
+                body: GetURLParameter("body"),
+                doors: GetURLParameter("doors"),
+                year: GetURLParameter("year"),
+                kms: GetURLParameter("kms"),
+                enginecc: GetURLParameter("enginecc"),
+                transmission: GetURLParameter("transmission")
     
-        $http.post("./json/search.php",
-        /*{
-            keywords: GetURLParameter("keywords"),
-            suburb: GetURLParameter("suburb"),
-            state: GetURLParameter("state"),
-            postcode: GetURLParameter("postcode"),
-            monday: GetURLParameter("monday"),
-            tuesday: GetURLParameter("tuesday"),
-            wednesday: GetURLParameter("wednesday"),
-            thursday: GetURLParameter("thursday"),
-            friday: GetURLParameter("friday"),
-            saturday: GetURLParameter("saturday"),
-            sunday: GetURLParameter("sunday"),
-            public_holidays: GetURLParameter("public_holidays"),
-            make: GetURLParameter("make"),
-            model: GetURLParameter("model"),
-            body: GetURLParameter("body"),
-            doors: GetURLParameter("doors"),
-            year: GetURLParameter("year"),
-            kms: GetURLParameter("kms"),
-            enginecc: GetURLParameter("enginecc"),
-            transmission: GetURLParameter("transmission")
-
-        }*/
-        search)
-        .then(function(response) {
-            console.log(response);
-            $scope.cars = response.data;
-        });
+            }*/
+            $scope.search)
+            .then(function(response) {
+                console.log(response);
+                $scope.cars = response.data;
+                $window.scrollTo(0, 0);
+            });
+        }
+        $scope.GetResults();
         
         $scope.action = $scope.book;
-    //});
+
+        $scope.next = function()
+        {
+            $scope.offset += $scope.count;
+            if($scope.offset < 0)
+            {
+                $scope.offset = 0;
+            }
+            $scope.GetResults();
+        }
+        $scope.prev = function()
+        {
+            $scope.offset -= $scope.count;
+            if($scope.offset < 0)
+            {
+                $scope.offset = 0;
+            }
+            $scope.GetResults();
+        }
+        //});
 });
 
