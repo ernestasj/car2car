@@ -97,25 +97,25 @@
                   <div class="col-sm-12 m-1">
                     <div class="col-sm-12 checkbox">
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" class="weekday day" value="" id="monday" name="monday">&nbsp;Monday</label>
+                        <input type="checkbox" class="weekday day" value="yes" id="monday" name="monday">&nbsp;Monday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" class="weekday day" value="" id="tuesday" name="tuesday">&nbsp;Tuesday</label>
+                        <input type="checkbox" class="weekday day" value="yes" id="tuesday" name="tuesday">&nbsp;Tuesday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" class="weekday day" value="" id="wednesday" name="wednesday">&nbsp;Wednesday</label>
+                        <input type="checkbox" class="weekday day" value="yes" id="wednesday" name="wednesday">&nbsp;Wednesday</label>
                     </div>
                     <div class="col-sm-12 checkbox">
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" class="weekday day" value="" id="thursday" name="thursday">&nbsp;Thursday</label>
+                        <input type="checkbox" class="weekday day" value="yes" id="thursday" name="thursday">&nbsp;Thursday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" class="weekday day" value="" id="friday" name="friday">&nbsp;Friday</label>
+                        <input type="checkbox" class="weekday day" value="yes" id="friday" name="friday">&nbsp;Friday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" class="weekend day" value="" id="saturday" name="saturday">&nbsp;Saturday</label>
+                        <input type="checkbox" class="weekend day" value="yes" id="saturday" name="saturday">&nbsp;Saturday</label>
                     </div>
                     <div class="col-sm-12 checkbox">
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" class="weekend day" value="" id="sunday" name="sunday">&nbsp;Sunday</label>
+                        <input type="checkbox" class="weekend day" value="yes" id="sunday" name="sunday">&nbsp;Sunday</label>
                       <label class="checkbox-inline col-sm-3">
-                        <input type="checkbox" value="" class="day" id="public_holidays" name="public_holidays">&nbsp;Public Holidays</label>
+                        <input type="checkbox" value="yes" class="day" id="public_holidays" name="public_holidays">&nbsp;Public Holidays</label>
                     </div>
                     <div class="col-sm-12 m-1 btn-group">
                       <button type="button" class="btn btn-outline-primary col-sm-2" id="all_available">All</button>
@@ -170,11 +170,6 @@
                     <div class="col-sm-4">
                       <select class="form-control m-1" ng-model="selectedTransmission" name="transmission" ng-options="transmission.text for transmission in transmissions track by transmission.value"></select>
 
-                      <select type="text" class="form-control m-1" id="transmission" name="transmission">
-                        <option value="" selected="">Transmission</option>
-                        <option value="Auto">Auto</option>
-                        <option value="Manual">Manual</option>
-                      </select>
                     </div>
                   </div>
                   <div class="form-group">

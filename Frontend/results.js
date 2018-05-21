@@ -122,7 +122,7 @@ app.controller('resultsCtrl', function($scope, $http, $window) {
     
         $scope.search = {
             keywords: GetURLParameter("keywords"),
-            suburb: GetURLParameter("suburb"),
+            suburb: GetURLParameter("suburb").replace("+", " "),
             state: GetURLParameter("state"),
             postcode: GetURLParameter("postcode"),
             monday: GetURLParameter("monday"),

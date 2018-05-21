@@ -1,7 +1,7 @@
 <?php
     include("../php/includes.php");
     include("./randomuser.php");
-    $user_count = 100;
+    $user_count = 10000;
     $count = 0;
 
     while($count < $user_count)
