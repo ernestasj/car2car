@@ -7,7 +7,7 @@
         $user->WriteDB($db);
         $user->AddPhoto($db, $filename);
         $_SESSION['user'] = serialize($user);
-        header("location: ../index2.html");
+        header("location: ../index.html");
 
    }
 

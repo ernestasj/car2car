@@ -13,6 +13,6 @@
       $car->AddPhoto($db, $filename);
    }
 
-   header("Location: ../index2.html");
+   header("Location: ../index.html");
    die();
 ?>

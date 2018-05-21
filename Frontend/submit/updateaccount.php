@@ -8,7 +8,7 @@
         //$user->WriteDB($db);
         $user->WriteUpdateDB($db);
         $_SESSION['user'] = serialize($user);
-        header("location: ../index2.html");
+        header("location: ../index.html");
 
    }
 

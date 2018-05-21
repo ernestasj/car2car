@@ -15,7 +15,7 @@ app.controller('loginCtrl', function($scope, $http) {
             console.log(response);
             if(response.data.status == "loggedin")
             {
-                //window.location.href = "./index2.html";
+                //window.location.href = "./index.html";
                 $scope.show_login = false;
                 $scope.show_signup = false;
                 $scope.show_accountlinks = true;
