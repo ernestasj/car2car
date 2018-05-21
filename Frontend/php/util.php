@@ -43,6 +43,7 @@
         $stmt->close();
         return $entry;        
     }
+
     function RandomValue($db, $function)
     {
         $entry = RandomEntry($db, $function);
@@ -124,6 +125,24 @@
     function RandomName($db)
     {
         return RandomEntry($db, "RandomName");
+    }
+
+    function GetEntries($db, $functionName)
+    {
+        $stmt = $db->stmt_init();
+        $stmt = $db->prepare("call ".$functionName."()");
+        //$stmt->bind_param();
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $entries = [];
+        if(mysqli_num_rows($result) > 0)
+        {
+            $row = mysqli_fetch_assoc($result);
+            array_push($entries, $row);
+            
+        }
+        $stmt->close();
+        return $entries;        
     }
 
 ?>

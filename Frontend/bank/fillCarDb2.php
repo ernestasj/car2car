@@ -59,7 +59,7 @@
         $desc["transmission"] = RandomTransmission($db);
         $desc["enginecc"] = RandomEnginecc($db);
         $desc["kms"] = RandomKMS($db);
-        $desc["body"] = RandomPetrol($db);
+        $desc["body"] = RandomBody($db);
         $desc["monday"] = RandomYesNo();
         $desc["tuesday"] = RandomYesNo();
         $desc["wednesday"] = RandomYesNo();
