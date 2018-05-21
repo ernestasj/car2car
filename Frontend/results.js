@@ -10,6 +10,7 @@ function GetURLParameter(sParam)
             return decodeURIComponent(sParameterName[1]);
         }
     }
+    return "";
 }
 
 
@@ -119,10 +120,9 @@ app.controller('resultsCtrl', function($scope, $http, $window) {
 
         $scope.offset = 0;
         $scope.count = 10;
-    
         $scope.search = {
             keywords: GetURLParameter("keywords"),
-            suburb: GetURLParameter("suburb").replace("+", " "),
+            suburb:  GetURLParameter("suburb").replace("+", " "),
             state: GetURLParameter("state"),
             postcode: GetURLParameter("postcode"),
             monday: GetURLParameter("monday"),
