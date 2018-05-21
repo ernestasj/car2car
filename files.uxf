@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>13</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>858</y>
+      <w>221</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>addcar.html
+-
+submit()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>260</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>index.html
+--
+search()
+SuburbChanged()
+MakeChanged()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>1183</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>createaccount.html 
+--
+join()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>715</x>
+      <y>806</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>car.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>1300</y>
+      <w>221</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>account.html
+--
+update()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>741</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>result.html
+--
+next()
+prev()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>1404</y>
+      <w>221</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>chat.html
+--
+loadConversation()
+UpdateStatus()
+SendMessage()
+Approve()
+Decline()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>598</y>
+      <w>221</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>editcar.html
+--
+update()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>494</y>
+      <w>221</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>login.html
+--
+login()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>377</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>navbar.html
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>299</x>
+      <y>1053</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>yourcars.html
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>312</x>
+      <y>0</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>bookings.html
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>689</x>
+      <y>247</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>account.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>416</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>body.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>559</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>booking.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>689</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>bookingstatus.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>715</x>
+      <y>949</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>chat.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>1144</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>doors.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>1313</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>enginecc.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>741</x>
+      <y>1430</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>inbox.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>1560</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>kms.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>715</x>
+      <y>1963</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>models.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>741</x>
+      <y>1690</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>logout.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>741</x>
+      <y>1833</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>makes.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>2106</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>petrol.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>2223</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>search.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>754</x>
+      <y>2353</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>state.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>2613</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>transmission.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>754</x>
+      <y>2756</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>user.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>2483</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>suburbfill.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>767</x>
+      <y>2873</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>usercars.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>767</x>
+      <y>3016</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>viewcar.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>312</x>
+      <y>143</y>
+      <w>130</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>HTML</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>715</x>
+      <y>143</y>
+      <w>130</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>JSON</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>117</y>
+      <w>130</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>SUBMIT</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1807</x>
+      <y>117</y>
+      <w>130</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>CLASSES</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1534</x>
+      <y>117</y>
+      <w>130</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>SYSTEM</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>39</x>
+      <y>143</y>
+      <w>130</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>JS</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>260</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>account.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>429</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>addcar.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>13</x>
+      <y>559</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>app.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>728</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>bookings.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>13</x>
+      <y>871</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>editcar.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>13</x>
+      <y>1014</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>login.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>13</x>
+      <y>1144</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>mail.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>13</x>
+      <y>1248</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>navbar.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>13</x>
+      <y>1378</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>result.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>26</x>
+      <y>1495</y>
+      <w>221</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>yourcars.js
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1144</x>
+      <y>234</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>acceptbooking.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>403</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>addcar.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>559</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>addreview.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>702</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>booking.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>884</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>createaccount.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>1066</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>declinebookig.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>1222</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>login.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>1391</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>logout.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>1521</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>message.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>1664</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>unbooking.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1196</x>
+      <y>1846</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>updateaccount.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1196</x>
+      <y>1989</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>updatecar.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1495</x>
+      <y>234</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>config.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1521</x>
+      <y>403</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>includes.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1547</x>
+      <y>767</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>util.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1534</x>
+      <y>572</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>photo.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1859</x>
+      <y>247</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>booking.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1859</x>
+      <y>403</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>bookings.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1885</x>
+      <y>559</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>car.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1872</x>
+      <y>715</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>cars.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1872</x>
+      <y>871</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>chat.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1872</x>
+      <y>1027</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>chatlist.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1872</x>
+      <y>1170</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>message.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1885</x>
+      <y>1300</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>messages.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1859</x>
+      <y>1443</y>
+      <w>221</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>user.php
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
