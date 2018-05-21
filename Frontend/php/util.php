@@ -137,12 +137,34 @@
         $entries = [];
         if(mysqli_num_rows($result) > 0)
         {
-            $row = mysqli_fetch_assoc($result);
-            array_push($entries, $row);
+            while($row = mysqli_fetch_assoc($result))
+            {
+                array_push($entries, $row);
+            }
+            
             
         }
         $stmt->close();
         return $entries;        
     }
+
+    function GetEntryOneParamater($db, $functionName, $parameter)
+    {
+        $stmt = $db->stmt_init();
+        $stmt = $db->prepare("call ".$functionName."(?)");
+        $stmt->bind_param("s", $parameter);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $entry = [];
+        if(mysqli_num_rows($result) > 0)
+        {
+            $row = mysqli_fetch_assoc($result);
+            $entry = $row;
+        }
+        $stmt->close();
+        return $entry;        
+    }
+
+    
 
 ?>
