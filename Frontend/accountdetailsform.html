@@ -54,15 +54,14 @@
                   </div>
                   <div class="row col-sm-12">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control m-1"  id="suburb" placeholder="Suburb" name="suburb" ng-model="form.suburb"> </div>
-                    <div class="col-sm-3">
-                      <select type="text" class="form-control m-1"  id="state" placeholder="State" name="state" ng-model="form.state">
-                        <option value="nsw" selected="">NSW</option>
-                        <option value="vic">VIC</option>
-                      </select>
+                      <input type="text" class="form-control m-1" id="suburb" placeholder="Suburb" name="suburb"  ng-model="form.suburb" ng-change="SuburbChanged()"> 
                     </div>
                     <div class="col-sm-3">
-                      <input type="text" class="form-control m-1"  id="postcode" placeholder="Post code" name="postcode" ng-model="form.postcode"> </div>
+                        <select class="form-control m-1" name="state" ng-model="form.state" ng-options="state.text for state in states track by state.value"></select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control m-1" ng-model="form.postcode" id="postcode" placeholder="Post code" name="form.postcode"> 
+                      </div>
                   </div>
                   <div>
                     <h4 class="m-1"> Contact </h4>
