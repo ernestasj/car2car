@@ -2,7 +2,7 @@
     include("../php/includes.php");
     include("./randomcar.php");
 
-    $numberOfEntries = 10000;
+    $numberOfEntries = 500;
     $yearMin = 1995;
     $yearMax = 2018;
 

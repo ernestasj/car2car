@@ -37,8 +37,10 @@
         }
          
         function WriteDB($db) {
+            $password = $this->desc['password'];
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
             $stmt = $db->prepare("call CreateAccount(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssssssssssssssss", $this->desc['email'], $this->desc['password'], $this->desc['firstname'], $this->desc['lastname'], $this->desc['licence'], $this->desc['dob'], $this->desc['number'], $this->desc['street'], $this->desc['suburb'], $this->desc['state'], $this->desc['postcode'], $this->desc['mobnumber'], $this->desc['landline'], $this->desc['ccnumber'], $this->desc['cvc'], $this->desc['cardtype'], $this->desc['expiry']);
+            $stmt->bind_param("sssssssssssssssss", $this->desc['email'], $hashed_password, $this->desc['firstname'], $this->desc['lastname'], $this->desc['licence'], $this->desc['dob'], $this->desc['number'], $this->desc['street'], $this->desc['suburb'], $this->desc['state'], $this->desc['postcode'], $this->desc['mobnumber'], $this->desc['landline'], $this->desc['ccnumber'], $this->desc['cvc'], $this->desc['cardtype'], $this->desc['expiry']);
             $stmt->execute();
             $stmt->close();
             
@@ -184,7 +186,8 @@
             }
             else
             {
-                return $password == $this->desc["password"];
+                //return $password == $this->desc["password"];
+                return password_verify($password, $this->desc["password"]);
             }   
             
         }
